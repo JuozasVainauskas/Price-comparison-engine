@@ -5,6 +5,10 @@
 - Aivaras Rinkevičius
 - Justas Vitkauskas
 ## About the project
-Text to be added
+- Register/login forms
+- Search field
+- FAQ
+- Contacts
+- Review about the page
 ## Initial goal <!-- this point here is temporarily -->
 Create a program/website/app which takes the data of the prices from different shopping websites and provides a comparison in a visual manner
