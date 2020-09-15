@@ -25,9 +25,16 @@ namespace Price_comparison_engine
             InitializeComponent();
         }
 
-        private void Button_Click()
+        private void DUKMygtukas_Click(object sender, RoutedEventArgs e)
         {
+            DUK_Langas dukLangoAtidarymas = new DUK_Langas();
+            dukLangoAtidarymas.Show();
+        }
 
+        private void KontaktaiMygtukas_Click(object sender, RoutedEventArgs e)
+        {
+            KontaktuLangas kontaktuLangoAtidarymas = new KontaktuLangas();
+            kontaktuLangoAtidarymas.Show();
         }
     }
 }
