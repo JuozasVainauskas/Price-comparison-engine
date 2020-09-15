@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Pagrindinis" Height="450" Width="800">
     <Grid>
         <TextBox HorizontalAlignment="Left" Height="56" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36"/>
-        <Button Content="Ieškoti" HorizontalAlignment="Left" Margin="617,153,0,0" VerticalAlignment="Top" Width="144" Height="56"/>
+        <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Left" Margin="617,153,0,0" VerticalAlignment="Top" Width="144" Height="56" Click="Ieškoti_Click"/>
         <Button Content="Prisijungti" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" VerticalAlignment="Top" Width="112"/>
         <Button Content="Registruotis" HorizontalAlignment="Left" Height="33" Margin="135,10,0,0" VerticalAlignment="Top" Width="112"/>
         <Button x:Name="DUKMygtukas" Content="DUK" HorizontalAlignment="Left" Height="33" Margin="536,10,0,0" VerticalAlignment="Top" Width="112" Click="DUKMygtukas_Click"/>

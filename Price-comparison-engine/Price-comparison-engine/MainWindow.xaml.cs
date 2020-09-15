@@ -36,5 +36,11 @@ namespace Price_comparison_engine
             KontaktuLangas kontaktuLangoAtidarymas = new KontaktuLangas();
             kontaktuLangoAtidarymas.Show();
         }
+
+        private void Ieškoti_Click(object sender, RoutedEventArgs e)
+        {
+            PrekiųLangas prekiųLangoAtidarymas = new PrekiųLangas();
+            prekiųLangoAtidarymas.Show();
+        }
     }
 }

@@ -32,3 +32,5 @@ C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\P
 C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.exe
 C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.pdb
+C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiųLangas.g.cs
+C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiųLangas.baml
