@@ -1,4 +1,4 @@
-# Price-comparison-engine
+# Price comparison engine
 ### Developers working on the project: 
 - Juozas Vainauskas
 - Ernestas Ščevinskas
