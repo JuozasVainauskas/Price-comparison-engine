@@ -24,5 +24,10 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
         }
+
+        private void Button_Click()
+        {
+
+        }
     }
 }

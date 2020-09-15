@@ -11,6 +11,8 @@
         <Button Content="Ieškoti" HorizontalAlignment="Left" Margin="617,153,0,0" VerticalAlignment="Top" Width="144" Height="56"/>
         <Button Content="Prisijungti" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" VerticalAlignment="Top" Width="112"/>
         <Button Content="Registruotis" HorizontalAlignment="Left" Height="33" Margin="135,10,0,0" VerticalAlignment="Top" Width="124"/>
+        <Button Content="DUK" HorizontalAlignment="Right" Height="33" Margin="0,10,98,0" VerticalAlignment="Top" Width="58"/>
+        <Button Content="Kontaktai" HorizontalAlignment="Right" Height="33" Margin="0,10,10,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
