@@ -7,7 +7,19 @@
         mc:Ignorable="d"
         Title="Pagrindinis" Height="450" Width="800">
     <Grid>
-        <TextBox HorizontalAlignment="Left" Height="56" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36"/>
+        <TextBox HorizontalAlignment="Left" x:Name="SearchField" Height="56" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36"/>
+        <TextBlock IsHitTestVisible="False" Text="Enter Search Term Here" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="16,153,0,210" Foreground="DarkGray" Height="56" Width="494" FontSize="36">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=SearchField}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
         <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Left" Margin="617,153,0,0" VerticalAlignment="Top" Width="144" Height="56" Click="Ieškoti_Click"/>
         <Button Content="Prisijungti" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" VerticalAlignment="Top" Width="112"/>
         <Button Content="Registruotis" HorizontalAlignment="Left" Height="33" Margin="135,10,0,0" VerticalAlignment="Top" Width="112"/>
