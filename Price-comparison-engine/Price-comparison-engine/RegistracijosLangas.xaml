@@ -7,6 +7,21 @@
         mc:Ignorable="d"
         Title="RegistracijosLangas" Height="450" Width="800">
     <Grid>
-        
+        <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,219,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
+        <PasswordBox x:Name="PasswordBoxConfirm" HorizontalAlignment="Left" Margin="164,274,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
+        <TextBlock IsHitTestVisible="False" Text="Username" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="171,159,0,230" Foreground="DarkGray" Height="30" Width="97" FontSize="20">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=UsernameBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
     </Grid>
 </Window>
