@@ -61,6 +61,7 @@ C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\DUK_Langas.baml
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\KontaktuLangas.baml
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiųLangas.baml
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Prisijungti.g.cs
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Prisijungti.baml
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.g.cs
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrisijungimoLangas.g.cs
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrisijungimoLangas.baml
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.baml

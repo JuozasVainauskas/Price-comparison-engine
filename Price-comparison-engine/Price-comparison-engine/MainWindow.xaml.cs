@@ -43,14 +43,16 @@ namespace Price_comparison_engine
             prekiųLangoAtidarymas.Show();
         }
 
-        private void Registruotis_Click(object sender, RoutedEventArgs e)
+        private void RegistruotisMygtukas_Click(object sender, RoutedEventArgs e)
         {
             RegistracijosLangas registracijosLangoAtidarymas = new RegistracijosLangas();
+            registracijosLangoAtidarymas.Show();
         }
 
-        private void Prisijungti_Click(object sender, RoutedEventArgs e)
+        private void PrisijungtiMygtukas_Click(object sender, RoutedEventArgs e)
         {
             PrisijungimoLangas prisijungimoLangoAtidarymas = new PrisijungimoLangas();
+            prisijungimoLangoAtidarymas.Show();
         }
     }
 }

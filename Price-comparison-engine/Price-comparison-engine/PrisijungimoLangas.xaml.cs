@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Price_comparison_engine
@@ -18,7 +17,7 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for PrisijungimoLangas.xaml
     /// </summary>
-    public partial class PrisijungimoLangas : Page
+    public partial class PrisijungimoLangas : Window
     {
         public PrisijungimoLangas()
         {
