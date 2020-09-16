@@ -1,0 +1,17 @@
+﻿<Window x:Class="Price_comparison_engine.KontaktuLangas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Price_comparison_engine"
+        mc:Ignorable="d"
+        Title="KontaktuLangas" Height="450" Width="262.831">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Height="106" Margin="10,10,0,0" TextWrapping="Wrap" Text="Šią aplikaciją kuria šie studentai:
+                   Aivaras Rinkevičius
+                   Ernestas Ščevinskas
+                   Justas Vitkauskas
+                   Juozas Vainauskas" VerticalAlignment="Top" Width="170"/>
+
+    </Grid>
+</Window>
