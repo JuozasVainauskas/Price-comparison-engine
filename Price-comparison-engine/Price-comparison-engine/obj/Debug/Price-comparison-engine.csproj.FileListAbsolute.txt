@@ -55,3 +55,12 @@ C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Pri
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.CoreCompileInputs.cache
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.exe
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.pdb
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\DUK_Langas.g.cs
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\KontaktuLangas.g.cs
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiųLangas.g.cs
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\DUK_Langas.baml
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\KontaktuLangas.baml
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiųLangas.baml
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Prisijungti.g.cs
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Prisijungti.baml
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.g.cs

@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PrisijungimoLangas.xaml.cs">
+      <DependentUpon>PrisijungimoLangas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistracijosLangas.xaml.cs">
+      <DependentUpon>RegistracijosLangas.xaml</DependentUpon>
+    </Compile>
     <Page Include="DUK_Langas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -82,6 +88,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PrekiųLangas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PrisijungimoLangas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistracijosLangas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

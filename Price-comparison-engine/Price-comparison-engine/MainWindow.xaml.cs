@@ -42,5 +42,15 @@ namespace Price_comparison_engine
             PrekiųLangas prekiųLangoAtidarymas = new PrekiųLangas();
             prekiųLangoAtidarymas.Show();
         }
+
+        private void Registruotis_Click(object sender, RoutedEventArgs e)
+        {
+            RegistracijosLangas registracijosLangoAtidarymas = new RegistracijosLangas();
+        }
+
+        private void Prisijungti_Click(object sender, RoutedEventArgs e)
+        {
+            PrisijungimoLangas prisijungimoLangoAtidarymas = new PrisijungimoLangas();
+        }
     }
 }
