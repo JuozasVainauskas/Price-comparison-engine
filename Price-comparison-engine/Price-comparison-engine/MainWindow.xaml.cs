@@ -42,7 +42,5 @@ namespace Price_comparison_engine
             PrekiųLangas prekiųLangoAtidarymas = new PrekiųLangas();
             prekiųLangoAtidarymas.Show();
         }
-        
-
     }
 }

@@ -25,6 +25,8 @@
         <Button Content="Registruotis" HorizontalAlignment="Left" Height="33" Margin="135,10,0,0" VerticalAlignment="Top" Width="112"/>
         <Button x:Name="DUKMygtukas" Content="DUK" HorizontalAlignment="Left" Height="33" Margin="536,10,0,0" VerticalAlignment="Top" Width="112" Click="DUKMygtukas_Click"/>
         <Button Content="Kontaktai" HorizontalAlignment="Left" Height="33" Margin="665,10,0,0" VerticalAlignment="Top" Width="112" Click="KontaktaiMygtukas_Click"/>
+        <ScrollViewer HorizontalAlignment="Left" Height="73.767" Margin="249.821,335.233,0,0" VerticalAlignment="Top" Width="314.91"/>
+        <TextBlock HorizontalAlignment="Left" Margin="316.85,311.613,0,0" TextWrapping="Wrap" Text="Atsiliepimai apie šią programą:" VerticalAlignment="Top" FontSize="14"/>
 
     </Grid>
 </Window>
