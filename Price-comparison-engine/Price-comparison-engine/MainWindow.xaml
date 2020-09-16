@@ -1,11 +1,11 @@
-﻿<Window x:Class="Price_comparison_engine.MainWindow"
+﻿<Window x:Name="pagrindinisLangas" x:Class="Price_comparison_engine.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="Pagrindinis" Height="450" Width="800">
+        Title="Pagrindinis" Height="450" Width="800" MinWidth="800" MinHeight="595" SizeChanged="Window_SizeChanged">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -64,8 +64,13 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TextBox HorizontalAlignment="Left" x:Name="SearchField" Height="56" Margin="10,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36"/>
-        <TextBlock IsHitTestVisible="False" Text="Ko šiandien ieškote?" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="16,153,0,210" Foreground="DarkGray" Height="56" Width="520" FontSize="36">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="101*"/>
+            <ColumnDefinition Width="13*"/>
+            <ColumnDefinition Width="84*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False" Grid.ColumnSpan="3"/>
+        <TextBlock IsHitTestVisible="False" Text="Ko šiandien ieškote?" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,161,0,0" Foreground="DarkGray" Height="56" Width="520" FontSize="36" Grid.ColumnSpan="3">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -77,17 +82,18 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Left" Margin="617,153,0,0" VerticalAlignment="Top" Width="144" Height="56" Click="Ieškoti_Click"/>
-        <Button Content="Prisijungti" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" VerticalAlignment="Top" Width="112" Click="PrisijungtiMygtukas_Click"
+        <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,161,24,0" VerticalAlignment="Top" Width="144" Height="56" Click="Ieškoti_Click" Grid.Column="2"/>
+        <Button x:Name="prisijungimosMygtukas" Content="Prisijungti" HorizontalAlignment="Left" Height="40" Margin="10,10,0,0" VerticalAlignment="Top" Width="144" Click="PrisijungtiMygtukas_Click"
                 Background="#FF015DFF"
                 Foreground="White"
                 FontFamily="Arial" Style="{DynamicResource ButtonRounded}"
                 />
-        <Button Content="Registruotis" HorizontalAlignment="Left" Height="33" Margin="135,10,0,0" VerticalAlignment="Top" Width="112" Click="RegistruotisMygtukas_Click"/>
-        <Button x:Name="DUKMygtukas" Content="DUK" HorizontalAlignment="Left" Height="33" Margin="536,10,0,0" VerticalAlignment="Top" Width="112" Click="DUKMygtukas_Click"/>
-        <Button Content="Kontaktai" HorizontalAlignment="Left" Height="33" Margin="665,10,0,0" VerticalAlignment="Top" Width="112" Click="KontaktaiMygtukas_Click"/>
-        <ScrollViewer HorizontalAlignment="Left" Height="73.767" Margin="249.821,335.233,0,0" VerticalAlignment="Top" Width="314.91"/>
-        <TextBlock HorizontalAlignment="Left" Margin="316.85,311.613,0,0" TextWrapping="Wrap" Text="Atsiliepimai apie šią programą:" VerticalAlignment="Top" FontSize="14"/>
+        <Button x:Name="registracijosMygtukas" Content="Registruotis" HorizontalAlignment="Center" Height="40" Margin="190,10,69,0" VerticalAlignment="Top" Width="145
+                " Click="RegistruotisMygtukas_Click"/>
+        <Button x:Name="DUKMygtukas" Content="DUK" Height="40" Margin="46,10,197,0" VerticalAlignment="Top" Width="145" Click="DUKMygtukas_Click" HorizontalAlignment="Center" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Button x:Name="kontaktuMygtukas" Content="Kontaktai" Height="40" Margin="168,10,24,0" VerticalAlignment="Top" Width="144" Click="KontaktaiMygtukas_Click" HorizontalAlignment="Right" Grid.Column="2"/>
+        <ScrollViewer x:Name="pasiūlymųLangas" HorizontalAlignment="Center" Height="232" Margin="10,322,10,10" VerticalAlignment="Center" Width="772" Grid.ColumnSpan="3"/>
+        <TextBlock x:Name="pranešimas" HorizontalAlignment="Center" Margin="233,274,197,247" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="43" Width="362" Grid.ColumnSpan="3"><Run Text="    "/><Run Text="Šiandienos specialūs pasiūlymai"/><Run Text=":"/></TextBlock>
 
     </Grid>
 </Window>

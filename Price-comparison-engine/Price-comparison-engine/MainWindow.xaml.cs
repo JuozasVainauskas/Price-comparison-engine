@@ -54,5 +54,35 @@ namespace Price_comparison_engine
             PrisijungimoLangas prisijungimoLangoAtidarymas = new PrisijungimoLangas();
             prisijungimoLangoAtidarymas.Show();
         }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            double skirtumasPlocio = this.ActualWidth / 1.2;
+            double skirtumasIlgio = this.ActualHeight / 1.1;
+            mygtukoResize(prisijungimosMygtukas, skirtumasPlocio, skirtumasIlgio);
+            mygtukoResize(registracijosMygtukas, skirtumasPlocio, skirtumasIlgio);
+            mygtukoResize(DUKMygtukas, skirtumasPlocio, skirtumasIlgio);
+            mygtukoResize(kontaktuMygtukas, skirtumasPlocio, skirtumasIlgio);
+            mygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
+            textBoxResize(ieškojimoLaukas, skirtumasPlocio/3, skirtumasIlgio);
+        }
+
+        private void mygtukoResize(Button mygtukas, double plotis, double ilgis)
+        {
+            mygtukas.Width = this.ActualWidth - plotis;
+            mygtukas.Height = this.ActualHeight - ilgis;
+        }
+
+        private void textBlockResize(TextBlock tekstoBlokas, double plotis, double ilgis)
+        {
+            tekstoBlokas.Width = this.ActualWidth - plotis;
+            tekstoBlokas.Height = this.ActualHeight - ilgis;
+        }
+
+        private void textBoxResize(TextBox tekstBoksas, double plotis, double ilgis)
+        {
+            tekstBoksas.Width = this.ActualWidth - plotis;
+            tekstBoksas.Height = this.ActualHeight - ilgis;
+        }
     }
 }

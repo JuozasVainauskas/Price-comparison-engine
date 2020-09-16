@@ -64,3 +64,7 @@ C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.CoreCompileInputs.cache
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.exe
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.pdb
+C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\PrisijungimoLangas.g.cs
+C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.g.cs
+C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\PrisijungimoLangas.baml
+C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.baml
