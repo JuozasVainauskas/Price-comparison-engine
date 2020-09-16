@@ -7,6 +7,32 @@
         mc:Ignorable="d"
         Title="PrisijungimoLangas" Height="450" Width="800">
     <Grid>
-        
+        <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20"/>
+        <TextBlock IsHitTestVisible="False" Text="Username" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="169,186,0,203" Foreground="DarkGray" Height="30" Width="97" FontSize="20">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=UsernameBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,247,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
+        <TextBlock IsHitTestVisible="False" Text="Username" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="169,247,0,142" Foreground="DarkGray" Height="30" Width="97" FontSize="20">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=PasswordBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
     </Grid>
 </Window>
