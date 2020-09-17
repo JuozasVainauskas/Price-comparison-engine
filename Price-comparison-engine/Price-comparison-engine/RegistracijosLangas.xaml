@@ -75,7 +75,7 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Button Content="Registruotis" HorizontalAlignment="Left" Margin="301,314,0,0" VerticalAlignment="Top" Width="177" Height="38" Click="RegistruotisMygtukas"
+        <Button Content="Registruotis" HorizontalAlignment="Left" Margin="301,314,0,0" VerticalAlignment="Top" Width="177" Height="38"
             Background="#FF015DFF"
             Foreground="white"
             FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}"/>
