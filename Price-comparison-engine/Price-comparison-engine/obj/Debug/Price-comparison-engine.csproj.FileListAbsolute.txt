@@ -69,3 +69,7 @@ C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\P
 C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\PrisijungimoLangas.baml
 C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.baml
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csprojAssemblyReference.cache
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrisijungimoLangas.g.cs
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.g.cs
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrisijungimoLangas.baml
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.baml
