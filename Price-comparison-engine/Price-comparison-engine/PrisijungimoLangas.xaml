@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="PrisijungimoLangas" Height="450" Width="800">
+        Title="PrisijungimoLangas" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
         <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20"/>
         <TextBlock IsHitTestVisible="False" Text="Slapyvardis" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="169,186,0,203" Foreground="DarkGray" Height="30" Width="105" FontSize="20">
