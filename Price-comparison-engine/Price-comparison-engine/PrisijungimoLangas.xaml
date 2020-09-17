@@ -85,20 +85,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="265.474,395.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Stroke="Black" VerticalAlignment="Top" Width="794"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="188,78,0,0" TextWrapping="Wrap" Text="Prisijunkite prie savo paskyros" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="24"/>
-        <Button x:Name="button" Content="Sukurti naują slaptažodį" HorizontalAlignment="Left" Margin="337,294,0,0" VerticalAlignment="Top" Width="108" Background="#87c1ff"
+        <Button x:Name="button" Content="Sukurti naują slaptažodį" HorizontalAlignment="Left" Margin="310,315,0,0" VerticalAlignment="Top" Width="154" Background="#87c1ff"
                 Foreground="white"
-                FontFamily="Arial" FontSize="8" Style="{DynamicResource RoundedButton}" Click="Sukurti_nauja_slaptazodi_mygtukas" Height="32"/>
-        <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="167,189,0,202" Foreground="DarkGray" Height="30" Width="216" FontSize="20" Text="Jūsų slaptažodis">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=UsernameBox}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style></TextBlock>
+                FontFamily="Arial" Style="{DynamicResource RoundedButton}" Click="Sukurti_nauja_slaptazodi_mygtukas" Height="45"/>
 
     </Grid>
 </Window>

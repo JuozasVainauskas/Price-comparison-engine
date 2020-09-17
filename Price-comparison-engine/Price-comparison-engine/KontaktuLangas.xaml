@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="KontaktuLangas" Height="450" Width="262.831">
+        Title="KontaktuLangas" Height="450" Width="262.831" ResizeMode="NoResize">
     <Grid>
 
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="53" Stroke="Black" VerticalAlignment="Top" Width="257" Margin="0,0,-0.2,0"/>
