@@ -10,14 +10,14 @@
 
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="53" Stroke="Black" VerticalAlignment="Top" Width="257" Margin="0,0,-0.2,0"/>
         <TextBlock HorizontalAlignment="Left" Margin="24,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="55" Width="213"><Run Text="Nor"/><Run Text="ė"/><Run Text="da"/><Run Text="mi susisiekti su administratoriais, spustelėkite ant vardo ir pavardės"/><Run Text="!"/></TextBlock>
-        <Image Margin="24,76,204.8,316" Source="Assets/user.jpg" Stretch="Fill"/>
-        <Image Margin="24,142,204.8,250" Source="Assets/user.jpg" Stretch="Fill"/>
-        <Image Margin="24,109,204.8,283" Source="Assets/user.jpg" Stretch="Fill"/>
-        <Image Margin="24,175,204.8,217" Source="Assets/user.jpg" Stretch="Fill" RenderTransformOrigin="0.705,3.8"/>
         <TextBlock Name="ref1"  MouseDown="tbReferAFriend_MouseDown" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="63,82,0,0" Width="135" Height="22"><Run Text="Aivaras Rinkevi"/><Run Text="čius"/><LineBreak/><Run/></TextBlock>
         <TextBlock Name="ref2"  MouseDown="tbReferAFriend_MouseDown" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="63,115,0,0" Width="135"><Run Text="Ernestas"/><Run Text=" Ščevinskas"/></TextBlock>
         <TextBlock Name="ref3"  MouseDown="tbReferAFriend_MouseDown" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Juozas Vainauskas" VerticalAlignment="Top" Margin="63,147,0,0" Width="135"/>
         <TextBlock Name="ref4"  MouseDown="tbReferAFriend_MouseDown" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Justas Vitkauskas" VerticalAlignment="Top" Margin="63,180,0,0" Width="135"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="24,136,0,0" VerticalAlignment="Top" Width="30" Source="user.jpg"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="24,74,0,0" VerticalAlignment="Top" Width="30" Source="user.jpg"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="24,106,0,0" VerticalAlignment="Top" Width="30" Source="user.jpg" RenderTransformOrigin="0.6,2.542"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="24,171,0,0" VerticalAlignment="Top" Width="30" Source="user.jpg" RenderTransformOrigin="0.44,0.924"/>
 
     </Grid>
 </Window>
