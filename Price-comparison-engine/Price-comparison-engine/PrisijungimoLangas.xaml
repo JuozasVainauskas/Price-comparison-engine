@@ -64,8 +64,8 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20"/>
-        <TextBlock IsHitTestVisible="False" Text="Slapyvardis" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="169,186,0,203" Foreground="DarkGray" Height="30" Width="105" FontSize="20">
+        <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20"/>
+        <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="176,139,0,252" Foreground="DarkGray" Height="30" Width="153" FontSize="20">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -75,16 +75,20 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </TextBlock.Style>
-        </TextBlock>
-        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,247,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
-        <Button Content="Prisijungti" HorizontalAlignment="Left" Margin="293.907,304.927,0,0" VerticalAlignment="Top" Width="177.062" Height="38.517"
+            </TextBlock.Style><Run Text="nick"/><Run Text="@gmail.com"/><LineBreak/><Run/><LineBreak/><Run Text=""/></TextBlock>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,189,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
+        <Button Content="Prisijungti" HorizontalAlignment="Left" Margin="300,240,0,0" VerticalAlignment="Top" Width="177" Height="39"
                 Background="#FF015DFF"
                 Foreground="white"
                 FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Button_Click"/>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,384,0,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
         <TextBlock HorizontalAlignment="Left" Margin="265.474,395.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Stroke="Black" VerticalAlignment="Top" Width="794"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="188,78,0,0" TextWrapping="Wrap" Text="Prisijunkite prie savo paskyros" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="24"/>
+        <TextBlock x:Name="pranešimas" HorizontalAlignment="Center" Margin="265,314,285,90" TextWrapping="Wrap" VerticalAlignment="Center" Height="17" Width="244"><Run Text="Jeigu pamiršote savo slaptažodį spauskite čia"/><Run Text=":"/></TextBlock>
+        <Button x:Name="button" Content="Sukurti naują slaptažodį" HorizontalAlignment="Left" Margin="340,336,0,0" VerticalAlignment="Top" Width="108" Background="#87c1ff"
+                Foreground="white"
+                FontFamily="Arial" FontSize="8" Style="{DynamicResource RoundedButton}" Click="Sukurti_nauja_slaptazodi_mygtukas" Height="32"/>
 
     </Grid>
 </Window>
