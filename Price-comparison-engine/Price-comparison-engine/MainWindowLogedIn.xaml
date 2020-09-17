@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="Prisijungta" Height="450" Width="800">
+        Title="Prisijungta" Height="450" Width="800" MinWidth="800" MinHeight="595" >
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -61,13 +61,13 @@
     </Window.Resources>
     <Grid>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
-        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,382,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
-        <TextBlock HorizontalAlignment="Left" Margin="286.474,393.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,527,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
+        <TextBlock HorizontalAlignment="Left" Margin="301.474,538.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Height="42" Margin="313.474,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241.371" FontSize="20" FontFamily="Cooper Black"><Run Text="Sveiki prisijung"/><Run Text="ę!"/></TextBlock>
-        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="15" Margin="0,281.04,0,0" Stroke="Black" VerticalAlignment="Top" Width="792"/>
-        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="15.96" Margin="0,178.08,0,0" Stroke="Black" VerticalAlignment="Top" Width="792"/>
-        <TextBlock HorizontalAlignment="Left" Margin="356,178.08,0,0" TextWrapping="Wrap" Text="Išsaugotos prekės:" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="347,281.04,0,0" TextWrapping="Wrap" Text="Populiariausios prekės:" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="15.96" Margin="0,346.04,0,0" Stroke="Black" VerticalAlignment="Top" Width="792"/>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="15.96" Margin="0,194.04,0,0" Stroke="Black" VerticalAlignment="Top" Width="792"/>
+        <TextBlock HorizontalAlignment="Left" Margin="346,194.04,0,0" TextWrapping="Wrap" Text="Išsaugotos prekės:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="346,346.04,0,0" TextWrapping="Wrap" Text="Populiariausios prekės:" VerticalAlignment="Top" RenderTransformOrigin="0.467,3.632"/>
         <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,100,33,0" VerticalAlignment="Top" Width="144" Height="56"
             Background="#FF0FA943"
             Foreground="#FF015DFF"

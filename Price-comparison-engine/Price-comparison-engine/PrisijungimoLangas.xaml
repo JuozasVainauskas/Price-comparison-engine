@@ -81,7 +81,7 @@
         <Button Content="Prisijungti" HorizontalAlignment="Left" Margin="293.907,304.927,0,0" VerticalAlignment="Top" Width="177.062" Height="38.517"
                 Background="#FF015DFF"
                 Foreground="white"
-                FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}"/>
+                FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Button_Click"/>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,384,0,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
         <TextBlock HorizontalAlignment="Left" Margin="265.474,395.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Stroke="Black" VerticalAlignment="Top" Width="794"/>

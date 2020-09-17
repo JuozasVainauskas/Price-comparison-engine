@@ -30,5 +30,6 @@ namespace Price_comparison_engine
             mainwindowlogedin.Show();
             this.Close();
         }
+
     }
 }
