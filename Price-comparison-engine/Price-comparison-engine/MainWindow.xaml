@@ -108,9 +108,9 @@
                 Foreground="White"
                 FontFamily="Arial" Style="{DynamicResource ButtonRounded}"/>
         <TextBlock x:Name="pranešimas" HorizontalAlignment="Center" Margin="233,274,197,247" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="43" Width="362" Grid.ColumnSpan="3"><Run Text="    "/><Run Text="Šiandienos specialūs pasiūlymai"/><Run Text=":"/></TextBlock>
-        <Image Margin="11,-9,300.8,507.6" Source="logo.png" Stretch="Fill" RenderTransformOrigin="0.509,0.534"/>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,529,-0.4,-0.4" Stroke="Black" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="3"/>
         <TextBlock HorizontalAlignment="Left" Margin="303,540,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
+        <Image HorizontalAlignment="Left" Height="52" Margin="10,0,0,0" VerticalAlignment="Top" Width="100" Source="logo.png"/>
 
     </Grid>
 </Window>
