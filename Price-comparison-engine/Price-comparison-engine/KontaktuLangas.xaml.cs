@@ -23,5 +23,27 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
         }
+        private void tbReferAFriend_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+
+                launchEmailClientByShellExecute();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + Environment.NewLine + ex.StackTrace);
+            }
+        }
+
+        [System.Runtime.InteropServices.DllImport("shell32.dll")]
+        public static extern IntPtr ShellExecute(IntPtr hwnd, string lpOperation,
+                    string lpFile, string lpParameters, string lpDirectory, int nShowCmd);
+
+        private void launchEmailClientByShellExecute()
+        {
+            ShellExecute(IntPtr.Zero, "open", "mailto:vitkauskas.j@gmail.com?subject=Read%20This&body=message%20contents", "", "", 4/* sw_shownoactivate */);
+        }
     }
+
 }
