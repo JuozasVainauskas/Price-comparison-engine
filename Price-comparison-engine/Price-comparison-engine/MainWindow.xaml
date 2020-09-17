@@ -69,9 +69,9 @@
             <ColumnDefinition Width="13*"/>
             <ColumnDefinition Width="84*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="#FFBA7538" HorizontalAlignment="Left" Height="259" Margin="0,270,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="3"/>
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="259" Margin="0,270,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="3"/>
 
-        <Rectangle Fill="#FF006321" HorizontalAlignment="Left" Height="218" Stroke="Black" VerticalAlignment="Top" Width="794" RenderTransformOrigin="0.88,1.122" Margin="0,52,-0.4,0" Grid.ColumnSpan="3"/>
+        <Rectangle Fill="#e6f3ff" HorizontalAlignment="Left" Height="218" Stroke="Black" VerticalAlignment="Top" Width="794" RenderTransformOrigin="0.88,1.122" Margin="0,52,-0.4,0" Grid.ColumnSpan="3"/>
 
         <Rectangle Grid.ColumnSpan="3" Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Margin="0,0,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
 
@@ -99,7 +99,7 @@
         <Button x:Name="kontaktuMygtukas" Content="Kontaktai" Height="40" Margin="0,67,23.6,0" VerticalAlignment="Top" Width="144" Click="KontaktaiMygtukas_Click" HorizontalAlignment="Right" Grid.Column="2"/>
         <TextBlock x:Name="pranešimas" HorizontalAlignment="Center" Margin="233,274,197,247" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="43" Width="362" Grid.ColumnSpan="3"><Run Text="    "/><Run Text="Šiandienos specialūs pasiūlymai"/><Run Text=":"/></TextBlock>
         <Image Margin="11,-9,300.8,507.6" Source="logo.png" Stretch="Fill" RenderTransformOrigin="0.509,0.534"/>
-        <Rectangle Fill="#FF0E7A32" HorizontalAlignment="Left" Height="37" Margin="0,529,-0.4,-0.4" Stroke="Black" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="3"/>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,529,-0.4,-0.4" Stroke="Black" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="3"/>
         <TextBlock HorizontalAlignment="Left" Margin="303,540,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
 
     </Grid>
