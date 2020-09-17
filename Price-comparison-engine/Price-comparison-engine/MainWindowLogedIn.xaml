@@ -6,7 +6,74 @@
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
         Title="Prisijungta" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="ButtonRounded" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="20" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#EEBB1100"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#EEBB1100"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FFF18168"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FFF18168"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,382,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
+        <TextBlock HorizontalAlignment="Left" Margin="286.474,393.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="42" Margin="313.474,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241.371" FontSize="20" FontFamily="Cooper Black"><Run Text="Sveiki prisijung"/><Run Text="ę!"/></TextBlock>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="15" Margin="0,281.04,0,0" Stroke="Black" VerticalAlignment="Top" Width="792"/>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="15.96" Margin="0,178.08,0,0" Stroke="Black" VerticalAlignment="Top" Width="792"/>
+        <TextBlock HorizontalAlignment="Left" Margin="356,178.08,0,0" TextWrapping="Wrap" Text="Išsaugotos prekės:" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="347,281.04,0,0" TextWrapping="Wrap" Text="Populiariausios prekės:" VerticalAlignment="Top"/>
+        <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,100,33,0" VerticalAlignment="Top" Width="144" Height="56"
+            Background="#FF0FA943"
+            Foreground="#FF015DFF"
+            FontFamily="Cooper Black" Style="{DynamicResource ButtonRounded}" FontSize="24"
+                />
+        <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False"/>
+
     </Grid>
 </Window>
