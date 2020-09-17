@@ -53,6 +53,7 @@ namespace Price_comparison_engine
         {
             PrisijungimoLangas prisijungimoLangoAtidarymas = new PrisijungimoLangas();
             prisijungimoLangoAtidarymas.Show();
+            this.Close();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)

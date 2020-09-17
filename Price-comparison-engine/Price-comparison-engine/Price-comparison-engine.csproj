@@ -61,6 +61,9 @@
     <Compile Include="RegistracijosLangas.xaml.cs">
       <DependentUpon>RegistracijosLangas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MainWindowLogedIn.xaml.cs">
+      <DependentUpon>MainWindowLogedIn.xaml</DependentUpon>
+    </Compile>
     <Page Include="DUK_Langas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -96,6 +99,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="RegistracijosLangas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindowLogedIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

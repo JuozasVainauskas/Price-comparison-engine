@@ -21,6 +21,7 @@
             </TextBlock.Style>
         </TextBlock>
         <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,247,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
+        <Button Content="Prisijungti" HorizontalAlignment="Left" Margin="293.907,304.927,0,0" VerticalAlignment="Top" Width="177.062" Height="38.517" Click="Button_Click"/>
 
     </Grid>
 </Window>

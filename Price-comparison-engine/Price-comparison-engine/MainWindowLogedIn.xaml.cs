@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace Price_comparison_engine
 {
     /// <summary>
-    /// Interaction logic for PrisijungimoLangas.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class PrisijungimoLangas : Window
+    public partial class MainWindowLogedIn : Window
     {
-        public PrisijungimoLangas()
+        public MainWindowLogedIn()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindowLogedIn mainwindowlogedin = new MainWindowLogedIn();
-            mainwindowlogedin.Show();
-            this.Close();
         }
     }
 }
