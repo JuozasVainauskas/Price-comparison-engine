@@ -63,7 +63,7 @@
         <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20"/>
         <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,210,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
         <PasswordBox x:Name="PasswordBoxConfirm" HorizontalAlignment="Left" Margin="164,263,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
-        <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="172,163,0,228" Foreground="DarkGray" Height="30" Width="172" FontSize="20">
+        <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="172,163,0,228" Foreground="DarkGray" Height="30" Width="212" FontSize="20" Text="Jūsų elektroninis paštas">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -73,7 +73,7 @@
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
-            </TextBlock.Style><Run Text="nick"/><Run Text="@gmail.com"/><LineBreak/><Run/></TextBlock>
+            </TextBlock.Style></TextBlock>
         <Button Content="Registruotis" HorizontalAlignment="Left" Margin="301,314,0,0" VerticalAlignment="Top" Width="177" Height="38"
             Background="#FF015DFF"
             Foreground="white"
@@ -82,6 +82,28 @@
         <TextBlock HorizontalAlignment="Left" Margin="265.474,395.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Stroke="Black" VerticalAlignment="Top" Width="794"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="212,74,0,0" TextWrapping="Wrap" Text="Susikurkite naują paskyrą" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="24"/>
+        <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="164,210,0,181" Foreground="DarkGray" Height="30" Width="146" FontSize="20" Text="Jūsų slaptažodis">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=UsernameBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style></TextBlock>
+        <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="164,263,0,128" Foreground="DarkGray" Height="30" Width="200" FontSize="20" Text="Pakartokite slaptažodį">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text, ElementName=UsernameBox}" Value="">
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style></TextBlock>
 
     </Grid>
 </Window>

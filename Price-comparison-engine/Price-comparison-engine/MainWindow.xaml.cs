@@ -57,6 +57,22 @@ namespace Price_comparison_engine
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            viršutinėLinija.Width = this.ActualWidth;
+            vidurinėLinija.Width = this.ActualWidth;
+            //pasiūlymaiLinija.Width = this.ActualWidth;
+            apatinėLinija.Width = this.ActualWidth;
+
+            /*
+            viršutinėLinija.Height = this.ActualHeight/11;
+            vidurinėLinija.Height = this.ActualHeight/4;
+            pasiūlymaiLinija.Height = this.ActualHeight/4;
+            apatinėLinija.Height = this.ActualHeight/4;
+            */
+
+            double skirtumasPlocioqqq = this.ActualHeight / 1.7;
+
+            rectangleResize(vidurinėLinija, skirtumasPlocioqqq);
+
             double skirtumasPlocio = this.ActualWidth / 1.2;
             double skirtumasIlgio = this.ActualHeight / 1.1;
             mygtukoResize(prisijungimosMygtukas, skirtumasPlocio, skirtumasIlgio);
@@ -83,6 +99,10 @@ namespace Price_comparison_engine
         {
             tekstBoksas.Width = this.ActualWidth - plotis;
             tekstBoksas.Height = this.ActualHeight - ilgis;
+        }
+        private void rectangleResize(Rectangle a, double plotis)
+        {
+            a.Height = this.ActualHeight - plotis;
         }
     }
 }

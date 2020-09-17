@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="Pagrindinis" Height="450" Width="800" MinWidth="800" MinHeight="595" SizeChanged="Window_SizeChanged">
+        Title="Pagrindinis" Height="600" Width="800" MinWidth="800" MinHeight="600" SizeChanged="Window_SizeChanged">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -69,13 +69,12 @@
             <ColumnDefinition Width="13*"/>
             <ColumnDefinition Width="84*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="259" Margin="0,270,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="3"/>
 
-        <Rectangle Fill="#e6f3ff" HorizontalAlignment="Left" Height="218" Stroke="Black" VerticalAlignment="Top" Width="794" RenderTransformOrigin="0.88,1.122" Margin="0,52,-0.4,0" Grid.ColumnSpan="3"/>
+        <Rectangle x:Name="vidurinėLinija" Fill="#e6f3ff" HorizontalAlignment="Left" Height="218" Stroke="Black" VerticalAlignment="Top" Width="794" RenderTransformOrigin="0.88,1.122" Margin="0,52,-0.4,0" Grid.ColumnSpan="3"/>
 
-        <Rectangle Grid.ColumnSpan="3" Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Margin="0,0,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
+        <Rectangle x:Name="viršutinėLinija" Grid.ColumnSpan="3" Fill="#FF0FA943" Height="52" Margin="0,0,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="794" HorizontalAlignment="Center"/>
 
-        <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,161,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False" Grid.ColumnSpan="3"/>
+        <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10.4,136,0,372" TextWrapping="Wrap" Width="585" FontSize="36" UseLayoutRounding="False" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
         <TextBlock IsHitTestVisible="False" Text="Ko šiandien ieškote?" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,161,0,0" Foreground="DarkGray" Height="56" Width="520" FontSize="36" Grid.ColumnSpan="3">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -88,10 +87,10 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,161,24,0" VerticalAlignment="Top" Width="144" Height="56" Click="Ieškoti_Click" Grid.Column="2"
+        <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,137,24,371" Width="144" Height="56" Click="Ieškoti_Click" Grid.Column="2"
                 Background="#FF0FA943"
                 Foreground="#e6f3ff"
-                FontFamily="Cooper Black" Style="{DynamicResource ButtonRounded}" FontSize="24"
+                FontFamily="Cooper Black" Style="{DynamicResource ButtonRounded}" FontSize="24" VerticalAlignment="Center"
                 />
         <Button x:Name="prisijungimosMygtukas" Content="Prisijungti" HorizontalAlignment="Left" Height="40" Margin="10,67,0,0" VerticalAlignment="Top" Width="144" Click="PrisijungtiMygtukas_Click"
                 Background="#FF015DFF"
@@ -108,8 +107,8 @@
                 Foreground="White"
                 FontFamily="Arial" Style="{DynamicResource ButtonRounded}"/>
         <TextBlock x:Name="pranešimas" HorizontalAlignment="Center" Margin="233,274,197,247" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="43" Width="362" Grid.ColumnSpan="3"><Run Text="    "/><Run Text="Šiandienos specialūs pasiūlymai"/><Run Text=":"/></TextBlock>
-        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,529,-0.4,-0.4" Stroke="Black" VerticalAlignment="Top" Width="794" Grid.ColumnSpan="3"/>
-        <TextBlock HorizontalAlignment="Left" Margin="303,540,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
+        <Rectangle x:Name="apatinėLinija" Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,529,-0.4,-0.4" Stroke="Black" VerticalAlignment="Bottom" Width="794" Grid.ColumnSpan="3"/>
+        <TextBlock HorizontalAlignment="Center" Margin="278,0,145,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.ColumnSpan="3" Width="369" Foreground="#FFF9F9F9" Height="27"><Run Text="     "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <Image HorizontalAlignment="Left" Height="52" Margin="10,0,0,0" VerticalAlignment="Top" Width="100" Source="logo.png"/>
 
     </Grid>

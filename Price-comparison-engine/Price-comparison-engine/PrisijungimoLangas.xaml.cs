@@ -31,5 +31,9 @@ namespace Price_comparison_engine
             this.Close();
         }
 
+        private void Sukurti_nauja_slaptazodi_mygtukas(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
