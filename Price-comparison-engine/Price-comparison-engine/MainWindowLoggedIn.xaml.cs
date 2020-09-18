@@ -60,6 +60,63 @@ namespace Price_comparison_engine
         {
             plotelis.Width = this.ActualWidth;
         }
+        public static int slideCounter = 1;
+        public static int slideCounter2 = 3;
+        public static int slideCounter_2 = 1;
+        public static int slideCounter2_2 = 3;
+        private void Slider_Back(object sender, MouseButtonEventArgs e)
+        {
+            if (slideCounter > 3)
+            {
+                slideCounter = 1;
+            }
+            img1.Source = img2.Source;
+            img2.Source = img3.Source;
+            img3.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
+            slideCounter2 = slideCounter;
+            slideCounter++;
+        }
+
+        private void Slider_Front(object sender, MouseButtonEventArgs e)
+        {
+            if (slideCounter2 <= 0)
+            {
+                slideCounter2 = 3;
+            }
+            img3.Source = img2.Source;
+            img2.Source = img1.Source;
+            img1.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter2 + ".jpg", UriKind.RelativeOrAbsolute));
+            slideCounter = slideCounter2;
+            slideCounter2--;
+        }
+        
+
+        private void Slider_Back2(object sender, MouseButtonEventArgs e)
+        {
+            if (slideCounter_2 > 3)
+            {
+                slideCounter_2 = 1;
+            }
+            img1_2.Source = img2_2.Source;
+            img2_2.Source = img3_2.Source;
+            img3_2.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter_2 + ".jpg", UriKind.RelativeOrAbsolute));
+            slideCounter2_2 = slideCounter_2;
+            slideCounter_2++;
+        }
+
+
+        private void Slider_Front2(object sender, MouseButtonEventArgs e)
+        {
+            if (slideCounter2_2 <= 0)
+            {
+                slideCounter2_2 = 3;
+            }
+            img3_2.Source = img2_2.Source;
+            img2_2.Source = img1_2.Source;
+            img1_2.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter2_2 + ".jpg", UriKind.RelativeOrAbsolute));
+            slideCounter_2 = slideCounter2_2;
+            slideCounter2_2--;
+        }
     }
 }
     
