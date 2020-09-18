@@ -61,8 +61,8 @@
     <Compile Include="RegistracijosLangas.xaml.cs">
       <DependentUpon>RegistracijosLangas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindowLogedIn.xaml.cs">
-      <DependentUpon>MainWindowLogedIn.xaml</DependentUpon>
+    <Compile Include="MainWindowLoggedIn.xaml.cs">
+      <DependentUpon>MainWindowLoggedIn.xaml</DependentUpon>
     </Compile>
     <Page Include="DUK_Langas.xaml">
       <SubType>Designer</SubType>
@@ -102,7 +102,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindowLogedIn.xaml">
+    <Page Include="MainWindowLoggedIn.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
