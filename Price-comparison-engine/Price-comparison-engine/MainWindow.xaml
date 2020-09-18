@@ -110,10 +110,10 @@
         <Rectangle x:Name="apatinėLinija" Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,529,-0.4,-0.4" Stroke="Black" VerticalAlignment="Bottom" Width="794" Grid.ColumnSpan="3"/>
         <TextBlock HorizontalAlignment="Center" Margin="278,0,145,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.ColumnSpan="3" Width="369" Foreground="#FFF9F9F9" Height="27"><Run Text="     "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <Image HorizontalAlignment="Left" Height="52" Margin="10,0,0,0" VerticalAlignment="Top" Width="100" Source="logo.png"/>
-        <Image x:Name="img1" HorizontalAlignment="Left" Height="184" Margin="134,320,0,0" VerticalAlignment="Top" Width="164" Source="1.jpg"/>
+        <Image x:Name="img1" Height="184" Margin="134,320,106.8,0" VerticalAlignment="Top" Source="1.jpg"/>
         <Image x:Name="img2" HorizontalAlignment="Left" Height="184" Margin="313,319,0,0" VerticalAlignment="Top" Width="164" Grid.ColumnSpan="3" Source="2.jpg"/>
         <Image x:Name="img3" HorizontalAlignment="Left" Height="184" Margin="35.2,319,0,0" VerticalAlignment="Top" Width="164" Grid.Column="2" Source="3.jpg"/>
-        <Image HorizontalAlignment="Left" Height="55" Margin="235.2,377,0,0" VerticalAlignment="Top" Width="55" Grid.Column="2" Source="next.png" RenderTransformOrigin="0.575,0.149"/>
+        <Image HorizontalAlignment="Left" Height="55" Margin="235.2,377,0,0" VerticalAlignment="Top" Width="55" Grid.Column="2" Source="next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front"/>
         <Image HorizontalAlignment="Left" Height="55" Margin="41,377,0,0" VerticalAlignment="Top" Width="55" Source="back.png" MouseDown="Slider_Back"/>
 
     </Grid>

@@ -20,6 +20,7 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static int slideCounter = 1;
         public MainWindow()
         {
             InitializeComponent();
@@ -100,9 +101,28 @@ namespace Price_comparison_engine
 
         private void Slider_Back(object sender, MouseButtonEventArgs e)
         {
-            img1.Source = new BitmapImage(new Uri("/2.png", UriKind.RelativeOrAbsolute));
-            img2.Source = new BitmapImage(new Uri("/3.png", UriKind.RelativeOrAbsolute));
-            img3.Source = new BitmapImage(new Uri("/1.png", UriKind.RelativeOrAbsolute));
+            if(slideCounter>3)
+            {
+                slideCounter = 1;
+            }
+            img1.Source = img2.Source;
+            img2.Source = img3.Source;
+            img3.Source = new BitmapImage(new Uri(slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
+            slideCounter++;
+            
+
         }
+        private void Slider_Front(object sender, MouseButtonEventArgs e)
+        {
+            if (slideCounter > 3)
+            {
+                slideCounter = 1;
+            }
+            img3.Source = img2.Source;
+            img2.Source = img1.Source;
+            img1.Source = new BitmapImage(new Uri(slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
+            slideCounter++;
+        }
+
     }
 }
