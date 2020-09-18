@@ -63,7 +63,7 @@
 
         <Rectangle x:Name="viršutinėlinija" Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
         <Rectangle x:Name="apatinėLinija" Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,527,-2,0" Stroke="Black" VerticalAlignment="Bottom" Width="794"/>
-        <TextBlock HorizontalAlignment="Center" Margin="313.474,0,116.526,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="362" Foreground="#FFF9F9F9" Height="18.96"><Run Text=" "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="291.052,0,138.948,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="362" Foreground="#FFF9F9F9" Height="18.96"><Run Text=" "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <TextBlock HorizontalAlignment="Center" Height="42" Margin="291.052,10,250.578,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250.37" FontSize="24" FontFamily="Cooper Black"><Run Text=" "/><Run Text="Sveiki prisijung"/><Run Text="ę!"/></TextBlock>
         <Rectangle x:Name="vidurinėLinija2" Fill="#FF0FA943" HorizontalAlignment="Center" Height="15.96" Margin="0,398,0,0" Stroke="Black" Width="792" VerticalAlignment="Top" MinWidth="0" MinHeight="0"/>
         <Rectangle x:Name="vidurinėLinija" Fill="#FF0FA943" HorizontalAlignment="Center" Height="15.96" Margin="0,230.96,0,0" Stroke="Black" VerticalAlignment="Top" Width="792"/>

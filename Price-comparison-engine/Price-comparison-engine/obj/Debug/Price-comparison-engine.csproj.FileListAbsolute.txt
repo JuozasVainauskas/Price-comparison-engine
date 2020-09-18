@@ -48,8 +48,6 @@ C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Pri
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.g.cs
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrisijungimoLangas.baml
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.baml
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\MainWindowLogedIn.g.cs
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\MainWindowLogedIn.baml
 C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\Price-comparison-engine.exe.config
 C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\Price-comparison-engine.exe
 C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\Price-comparison-engine.pdb
@@ -105,3 +103,5 @@ C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.CoreCompileInputs.cache
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.exe
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.pdb
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\MainWindowLoggedIn.g.cs
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\MainWindowLoggedIn.baml
