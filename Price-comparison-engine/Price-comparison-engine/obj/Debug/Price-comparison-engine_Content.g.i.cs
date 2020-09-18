@@ -8,6 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("next.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("duomenubaze.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("duomenubaze_log.ldf")]
 
 

@@ -107,7 +107,7 @@ namespace Price_comparison_engine
             }
             img1.Source = img2.Source;
             img2.Source = img3.Source;
-            img3.Source = new BitmapImage(new Uri(slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
+            img3.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
             slideCounter++;
             
 
@@ -120,7 +120,7 @@ namespace Price_comparison_engine
             }
             img3.Source = img2.Source;
             img2.Source = img1.Source;
-            img1.Source = new BitmapImage(new Uri(slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
+            img1.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
             slideCounter++;
         }
 

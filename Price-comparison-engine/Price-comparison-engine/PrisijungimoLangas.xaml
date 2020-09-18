@@ -64,8 +64,8 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20" DataContextChanged="Email_Laukas"/>
-        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,212,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20" DataContextChanged="Slaptazodzio_Laukas"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Email" Height="30" Margin="164,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20" DataContextChanged="Email_Laukas"/>
+        <PasswordBox x:Name="Slaptazodis" HorizontalAlignment="Left" Margin="164,212,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20" DataContextChanged="Slaptazodzio_Laukas"/>
         <Button Content="Prisijungti" HorizontalAlignment="Left" Margin="298,259,0,0" VerticalAlignment="Top" Width="177" Height="39"
                 Background="#FF015DFF"
                 Foreground="white"
@@ -77,8 +77,8 @@
         <Button x:Name="button" Content="Jei pamiršote savo slaptažodį, spauskite čia" HorizontalAlignment="Left" Margin="257,323,0,0" VerticalAlignment="Top" Width="262" Background="#87c1ff"
                 Foreground="white"
                 FontFamily="Arial" Style="{DynamicResource RoundedButton}" Click="Sukurti_nauja_slaptazodi_mygtukas" Height="37"/>
-        <TextBlock x:Name="pranešimas" HorizontalAlignment="Center" Margin="188,118,252,273" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="30" Width="354"><Run Text="Email"/><Run Text=":"/></TextBlock>
-        <TextBlock x:Name="pranešimas_Copy" HorizontalAlignment="Center" Margin="188,182,252,209" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="30" Width="354"><Run Text="Sla"/><Run Text="ptažodis"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="pranešimas" HorizontalAlignment="Center" Margin="188,118,252,273" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="30" Width="354"><Run Text=" "/><Run Text="Email"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="pranešimas_Copy" HorizontalAlignment="Center" Margin="188,182,252,209" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="30" Width="354"><Run Text=" "/><Run Text="Sla"/><Run Text="ptažodis"/><Run Text=":"/></TextBlock>
 
     </Grid>
 </Window>
