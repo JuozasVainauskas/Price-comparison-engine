@@ -97,5 +97,12 @@ namespace Price_comparison_engine
         {
             plotelis.Width = this.ActualWidth;
         }
+
+        private void Slider_Back(object sender, MouseButtonEventArgs e)
+        {
+            img1.Source = new BitmapImage(new Uri("/2.png", UriKind.RelativeOrAbsolute));
+            img2.Source = new BitmapImage(new Uri("/3.png", UriKind.RelativeOrAbsolute));
+            img3.Source = new BitmapImage(new Uri("/1.png", UriKind.RelativeOrAbsolute));
+        }
     }
 }
