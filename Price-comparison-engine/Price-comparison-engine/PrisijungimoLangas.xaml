@@ -64,30 +64,21 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,139,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20"/>
-        <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="167,139,0,252" Foreground="DarkGray" Height="30" Width="216" FontSize="20" Text="Jūsų elektroninis paštas">
-            <TextBlock.Style>
-                <Style TargetType="{x:Type TextBlock}">
-                    <Setter Property="Visibility" Value="Collapsed"/>
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=UsernameBox}" Value="">
-                            <Setter Property="Visibility" Value="Visible"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </TextBlock.Style></TextBlock>
-        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,189,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
-        <Button Content="Prisijungti" HorizontalAlignment="Left" Margin="300,240,0,0" VerticalAlignment="Top" Width="177" Height="39"
+        <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20" DataContextChanged="Email_Laukas"/>
+        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,212,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20" DataContextChanged="Slaptazodzio_Laukas"/>
+        <Button Content="Prisijungti" HorizontalAlignment="Left" Margin="298,259,0,0" VerticalAlignment="Top" Width="177" Height="39"
                 Background="#FF015DFF"
                 Foreground="white"
-                FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Button_Click"/>
+                FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Prisijungti_mygtukas"/>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,384,0,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
         <TextBlock HorizontalAlignment="Left" Margin="265.474,395.04,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="362" Foreground="#FFF9F9F9"><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Stroke="Black" VerticalAlignment="Top" Width="794"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="188,78,0,0" TextWrapping="Wrap" Text="Prisijunkite prie savo paskyros" VerticalAlignment="Top" FontFamily="Cooper Black" FontSize="24"/>
-        <Button x:Name="button" Content="Sukurti naują slaptažodį" HorizontalAlignment="Left" Margin="310,315,0,0" VerticalAlignment="Top" Width="154" Background="#87c1ff"
+        <Button x:Name="button" Content="Jei pamiršote savo slaptažodį, spauskite čia" HorizontalAlignment="Left" Margin="257,323,0,0" VerticalAlignment="Top" Width="262" Background="#87c1ff"
                 Foreground="white"
-                FontFamily="Arial" Style="{DynamicResource RoundedButton}" Click="Sukurti_nauja_slaptazodi_mygtukas" Height="45"/>
+                FontFamily="Arial" Style="{DynamicResource RoundedButton}" Click="Sukurti_nauja_slaptazodi_mygtukas" Height="37"/>
+        <TextBlock x:Name="pranešimas" HorizontalAlignment="Center" Margin="188,118,252,273" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="30" Width="354"><Run Text="Email"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="pranešimas_Copy" HorizontalAlignment="Center" Margin="188,182,252,209" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="30" Width="354"><Run Text="Sla"/><Run Text="ptažodis"/><Run Text=":"/></TextBlock>
 
     </Grid>
 </Window>

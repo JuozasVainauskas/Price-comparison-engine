@@ -23,5 +23,25 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
         }
+
+        private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Email_Laukas(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void Slaptazodzio_Laukas(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void Slaptazodzio_Patvirtinimo_Laukas(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 }

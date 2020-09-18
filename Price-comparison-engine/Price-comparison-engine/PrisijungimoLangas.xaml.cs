@@ -24,7 +24,7 @@ namespace Price_comparison_engine
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
             MainWindowLogedIn mainwindowlogedin = new MainWindowLogedIn();
             mainwindowlogedin.Show();
@@ -32,6 +32,16 @@ namespace Price_comparison_engine
         }
 
         private void Sukurti_nauja_slaptazodi_mygtukas(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Email_Laukas(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void Slaptazodzio_Laukas(object sender, DependencyPropertyChangedEventArgs e)
         {
 
         }
