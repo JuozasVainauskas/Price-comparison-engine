@@ -22,9 +22,13 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class PrisijungimoLangas : Window
     {
-        public PrisijungimoLangas()
+
+        MainWindow pagrindinisLangas;
+
+        public PrisijungimoLangas(MainWindow pagrindinisLangas)
         {
             InitializeComponent();
+            this.pagrindinisLangas = pagrindinisLangas;
         }
 
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
@@ -32,6 +36,7 @@ namespace Price_comparison_engine
             MainWindowLogedIn mainwindowlogedin = new MainWindowLogedIn();
             mainwindowlogedin.Show();
             this.Close();
+            pagrindinisLangas.Close();
         }
 
         private void Sukurti_nauja_slaptazodi_mygtukas(object sender, RoutedEventArgs e)

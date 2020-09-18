@@ -19,14 +19,20 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class RegistracijosLangas : Window
     {
-        public RegistracijosLangas()
+        MainWindow pagrindinisLangas;
+
+        public RegistracijosLangas(MainWindow pagrindinisLangas)
         {
             InitializeComponent();
+            this.pagrindinisLangas = pagrindinisLangas;
         }
 
         private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
         {
-
+            MainWindowLogedIn mainwindowlogedin = new MainWindowLogedIn();
+            mainwindowlogedin.Show();
+            this.Close();
+            pagrindinisLangas.Close();
         }
 
         private void Email_Laukas(object sender, DependencyPropertyChangedEventArgs e)
