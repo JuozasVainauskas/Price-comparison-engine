@@ -108,3 +108,4 @@ C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrisijungimoLangas.baml
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\RegistracijosLangas.baml
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\MainWindowLoggedIn.baml
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csprojAssemblyReference.cache
