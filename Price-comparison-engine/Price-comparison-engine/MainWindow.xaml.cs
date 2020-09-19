@@ -61,6 +61,8 @@ namespace Price_comparison_engine
             double skirtumasPlocio = this.ActualWidth / 1.2;
             double skirtumasIlgio = this.ActualHeight / 1.1;
             double skirtumasPlocioBlokeliui = this.ActualHeight / 1.7;
+            double skirtumasPlocioNuotraukai = this.ActualWidth / 1.4;
+            double skirtumasIlgioNuotraukai = this.ActualHeight / 1.4;
             MygtukoResize(prisijungimosMygtukas, skirtumasPlocio, skirtumasIlgio);
             MygtukoResize(registracijosMygtukas, skirtumasPlocio, skirtumasIlgio);
             MygtukoResize(DUKMygtukas, skirtumasPlocio, skirtumasIlgio);
@@ -71,6 +73,11 @@ namespace Price_comparison_engine
             RectangleIštempimas(viršutinėLinija);
             RectangleIštempimas(vidurinėLinija);
             RectangleIštempimas(apatinėLinija);
+            slideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(iKairePuse, skirtumasIlgio, skirtumasIlgio);
+            slideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
         }
 
         private void MygtukoResize(Button mygtukas, double plotis, double ilgis)
@@ -97,6 +104,11 @@ namespace Price_comparison_engine
         private void RectangleIštempimas(Rectangle plotelis)
         {
             plotelis.Width = this.ActualWidth;
+        }
+        private void slideShowResize(Image nuotrauka,double plotis, double ilgis)
+        {
+            nuotrauka.Width = this.ActualWidth-plotis;
+            nuotrauka.Height = this.ActualHeight-ilgis;
         }
 
         public static int slideCounter = 1;
