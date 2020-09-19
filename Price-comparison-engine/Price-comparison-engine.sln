@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Price-comparison-engine", "Price-comparison-engine\Price-comparison-engine.csproj", "{CE31D947-2FEB-4624-8DB1-83BBE24FE294}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Price-comparison-engine.EntityFramework", "Price-comparison-engine.EntityFramework\Price-comparison-engine.EntityFramework.csproj", "{7504A7D2-ADA1-468A-BC8F-08E7F63C8905}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Price-Comparison-Engine.Domain", "Price-Comparison-Engine.Domain\Price-Comparison-Engine.Domain.csproj", "{F7275687-A437-49C7-AD6F-D202B5C165DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{CE31D947-2FEB-4624-8DB1-83BBE24FE294}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE31D947-2FEB-4624-8DB1-83BBE24FE294}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE31D947-2FEB-4624-8DB1-83BBE24FE294}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7504A7D2-ADA1-468A-BC8F-08E7F63C8905}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7504A7D2-ADA1-468A-BC8F-08E7F63C8905}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7504A7D2-ADA1-468A-BC8F-08E7F63C8905}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7504A7D2-ADA1-468A-BC8F-08E7F63C8905}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7275687-A437-49C7-AD6F-D202B5C165DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7275687-A437-49C7-AD6F-D202B5C165DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7275687-A437-49C7-AD6F-D202B5C165DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7275687-A437-49C7-AD6F-D202B5C165DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

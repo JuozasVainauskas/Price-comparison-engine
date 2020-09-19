@@ -117,6 +117,13 @@ namespace Price_comparison_engine
             slideCounter_2 = slideCounter2_2;
             slideCounter2_2--;
         }
+
+        private void atsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow pagrindinisLangas = new MainWindow();
+            pagrindinisLangas.Show();
+            this.Close();
+        }
     }
 }
     
