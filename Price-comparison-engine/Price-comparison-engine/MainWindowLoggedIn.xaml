@@ -65,27 +65,27 @@
         <Rectangle x:Name="apatinėLinija" Fill="#FF0FA943" HorizontalAlignment="Left" Height="27.08" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Bottom" Width="794"/>
         <TextBlock HorizontalAlignment="Center" Margin="291.052,0,138.948,3.12" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="362" Foreground="#FFF9F9F9" Height="18.96"><Run Text=" "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <TextBlock HorizontalAlignment="Center" Height="42" Margin="291.052,10,250.578,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250.37" FontSize="24" FontFamily="Cooper Black"><Run Text=" "/><Run Text="Sveiki prisijung"/><Run Text="ę!"/></TextBlock>
-        <Rectangle x:Name="vidurinėLinija2" Fill="#FF0FA943" HorizontalAlignment="Center" Height="15.96" Margin="0,375.96,0,0" Stroke="Black" Width="792" VerticalAlignment="Top" MinWidth="0" MinHeight="0"/>
+        <Rectangle x:Name="vidurinėLinija2" Fill="#FF0FA943" HorizontalAlignment="Center" Height="27" Margin="0,373,0,169" Stroke="Black" Width="792" VerticalAlignment="Center" MinWidth="0" MinHeight="0"/>
         <Rectangle x:Name="vidurinėLinija" Fill="#FF0FA943" HorizontalAlignment="Center" Height="15.96" Margin="0,215,0,0" Stroke="Black" VerticalAlignment="Top" Width="792"/>
         <TextBlock HorizontalAlignment="Center" Margin="346.357,215,320.357,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125.286"><Run Text=" "/><Run Text="Išsaugotos prekės:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Center" Margin="328.75,375.96,320.357,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.467,3.632" Width="142.893"><Run Text=" "/><Run Text="Populiariausios prekės:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Center" Margin="329,376,320,177" TextWrapping="Wrap" VerticalAlignment="Center" RenderTransformOrigin="0.467,3.632" Width="143"><Run Text=" "/><Run Text="Populiariausios prekės:"/></TextBlock>
         <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,100,33,0" VerticalAlignment="Top" Width="144" Height="56"
             Background="#FF0FA943"
             Foreground="#e6f3ff"
             FontFamily="Cooper Black" Style="{DynamicResource ButtonRounded}" FontSize="24"
                 />
         <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False"/>
-        <Image HorizontalAlignment="Left" Height="55" Margin="83,279.5,0,0" VerticalAlignment="Top" Width="55" Source="Nuotraukos/back.png" MouseDown="Slider_Back" RenderTransformOrigin="0.518,-0.309"/>
-        <Image x:Name="img1" Height="112.5" Margin="143,245.96,508.3,0" VerticalAlignment="Top" Source="Nuotraukos/1.jpg"/>
-        <Image x:Name="img1_2" Height="110" Margin="179,0,525,43" VerticalAlignment="Bottom" Source="Nuotraukos/1.jpg" HorizontalAlignment="Center"/>
-        <Image HorizontalAlignment="Left" Height="55" Margin="88,443,0,0" VerticalAlignment="Top" Width="55" Source="Nuotraukos/back.png" MouseDown="Slider_Back2" RenderTransformOrigin="0.518,-0.309"/>
-        <Image x:Name="img2" HorizontalAlignment="Left" Height="112.5" Margin="311.2,245.96,0,0" VerticalAlignment="Top" Width="125" Source="Nuotraukos/2.jpg"/>
+        <Image x:Name="iKairePuse" HorizontalAlignment="Left" Height="54" Margin="83,280,0,235" VerticalAlignment="Top" Width="55" Source="Nuotraukos/back.png" MouseDown="Slider_Back" RenderTransformOrigin="0.518,-0.309"/>
+        <Image x:Name="img1" Height="113" Margin="177,247,525,209" VerticalAlignment="Top" Source="Nuotraukos/1.jpg" HorizontalAlignment="Left"/>
+        <Image x:Name="img1_2" Height="110" Margin="179,0,525,43" VerticalAlignment="Bottom" Source="Nuotraukos/1.jpg" HorizontalAlignment="Left"/>
+        <Image x:Name="iKairePuse1" HorizontalAlignment="Left" Height="55" Margin="83,0,0,71" VerticalAlignment="Bottom" Width="55" Source="Nuotraukos/back.png" MouseDown="Slider_Back2" RenderTransformOrigin="0.518,-0.309"/>
+        <Image x:Name="img2" HorizontalAlignment="Center" Height="113" Margin="329,247,338,209" VerticalAlignment="Top" Width="125" Source="Nuotraukos/2.jpg"/>
         <Image x:Name="img2_2" HorizontalAlignment="Center" Height="110" Margin="329,0,338,43" VerticalAlignment="Bottom" Width="125" Source="Nuotraukos/2.jpg"/>
-        <Image x:Name="img3" HorizontalAlignment="Left" Height="112.5" Margin="475.552,245.96,0,0" VerticalAlignment="Top" Width="87.948" Source="Nuotraukos/3.jpg"/>
-        <Image x:Name="img3_2" HorizontalAlignment="Center" Height="110" Margin="477,0,228,43" VerticalAlignment="Bottom" Width="87" Source="Nuotraukos/3.jpg"/>
-        <Image HorizontalAlignment="Left" Height="55" Margin="615,443,0,0" VerticalAlignment="Top" Width="55" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front2"/>
-        <Image HorizontalAlignment="Left" Height="55" Margin="615,279.5,0,0" VerticalAlignment="Top" Width="55" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front"/>
-        <Button x:Name="atsijungimoMygtukas" Content="Atsijungti" HorizontalAlignment="Left" Height="40" Margin="615,7,0,0" VerticalAlignment="Top" Width="144" Click="AtsijungimoMygtukas_Click"
+        <Image x:Name="img3" HorizontalAlignment="Right" Height="113" Margin="476,247,228,209" VerticalAlignment="Top" Width="88" Source="Nuotraukos/3.jpg"/>
+        <Image x:Name="img3_2" HorizontalAlignment="Right" Height="110" Margin="477,0,228,43" VerticalAlignment="Bottom" Width="87" Source="Nuotraukos/3.jpg"/>
+        <Image x:Name="iDesinePuse1" HorizontalAlignment="Right" Height="55" Margin="0,0,122,71" VerticalAlignment="Bottom" Width="55" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front2"/>
+        <Image x:Name="iDesinePuse" HorizontalAlignment="Right" Height="55" Margin="0,279,113,235" VerticalAlignment="Top" Width="55" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front"/>
+        <Button x:Name="atsijungimoMygtukas" Content="Atsijungti" HorizontalAlignment="Right" Height="40" Margin="615,7,0,0" VerticalAlignment="Top" Width="144" Click="AtsijungimoMygtukas_Click"
             Background="#FF015DFF"
             Foreground="White"
             FontFamily="Arial" Style="{DynamicResource ButtonRounded}"

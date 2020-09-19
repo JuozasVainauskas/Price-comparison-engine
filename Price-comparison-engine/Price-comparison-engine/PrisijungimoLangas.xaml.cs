@@ -32,6 +32,7 @@ namespace Price_comparison_engine
 
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
+
             SqlConnection sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=DuomenuBaze; Integrated Security=True;");
             try
             {

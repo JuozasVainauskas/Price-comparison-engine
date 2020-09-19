@@ -29,14 +29,26 @@ namespace Price_comparison_engine
             double skirtumasPlocio = this.ActualWidth / 1.2;
             double skirtumasIlgio = this.ActualHeight / 1.1;
             double skirtumasPlocioBlokeliui = this.ActualHeight / 1.05;
+            double skirtumasPlocioNuotraukai = this.ActualWidth / 1.2;
+            double skirtumasIlgioNuotraukai = this.ActualHeight / 1.2;
             MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
             TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
             RectangleIštempimas(viršutinėlinija);
             RectangleIštempimas(vidurinėLinija);
-            RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
+            //RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
             RectangleIštempimas(vidurinėLinija2);
-            RectangleResize(vidurinėLinija2, skirtumasPlocioBlokeliui);
+            //RectangleResize(vidurinėLinija2, skirtumasPlocioBlokeliui);
             RectangleIštempimas(apatinėLinija);
+            slideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img1_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img2_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img3_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(iKairePuse, skirtumasIlgio, skirtumasIlgio);
+            slideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
+            slideShowResize(iKairePuse1, skirtumasIlgio, skirtumasIlgio);
+            slideShowResize(iDesinePuse1, skirtumasIlgio, skirtumasIlgio);
         }
 
         private void RectangleResize(Rectangle plotelis, double ilgis)
@@ -60,6 +72,14 @@ namespace Price_comparison_engine
         {
             plotelis.Width = this.ActualWidth;
         }
+
+        private void slideShowResize(Image nuotrauka, double plotis, double ilgis)
+        {
+            nuotrauka.Width = this.ActualWidth - plotis;
+            nuotrauka.Height = this.ActualHeight - ilgis;
+        }
+
+
         public static int slideCounter = 1;
         public static int slideCounter2 = 3;
         public static int slideCounter_2 = 1;

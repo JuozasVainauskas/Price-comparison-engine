@@ -111,7 +111,7 @@
         <TextBlock HorizontalAlignment="Center" Margin="278,0,145,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.ColumnSpan="3" Width="369" Foreground="#FFF9F9F9" Height="27"><Run Text="     "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
 
         <Image HorizontalAlignment="Left" Height="52" Margin="10,0,0,0" VerticalAlignment="Top" Width="100" Source="Nuotraukos/logo.png"/>
-        <Image x:Name="img1" Height="184" Margin="142,0,115,63" VerticalAlignment="Bottom" Source="Nuotraukos/1.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Center"/>
+        <Image x:Name="img1" Height="184" Margin="136,0,120,61" VerticalAlignment="Bottom" Source="Nuotraukos/1.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Center"/>
         <Image x:Name="img2" HorizontalAlignment="Center" Height="184" Margin="328,0,300,61" VerticalAlignment="Bottom" Width="164" Grid.ColumnSpan="3" Source="Nuotraukos/2.jpg" MouseDown="Img2_MouseDown"/>
         <Image x:Name="img3" HorizontalAlignment="Center" Height="184" Margin="41,0,131,63" VerticalAlignment="Bottom" Width="164" Grid.Column="2" Source="Nuotraukos/3.jpg" MouseDown="Img3_MouseDown"/>
         <Image x:Name="iDesinePuse" HorizontalAlignment="Right" Height="55" Margin="200,0,78,128" VerticalAlignment="Bottom" Width="58" Grid.Column="2" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front"/>
