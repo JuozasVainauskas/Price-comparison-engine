@@ -60,9 +60,9 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TextBox HorizontalAlignment="Left" x:Name="UsernameBox" Height="30" Margin="164,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20" DataContextChanged="Email_Laukas"/>
-        <PasswordBox x:Name="PasswordBox" HorizontalAlignment="Left" Margin="164,200,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20" DataContextChanged="Slaptazodzio_Laukas"/>
-        <PasswordBox x:Name="PasswordBoxConfirm" HorizontalAlignment="Left" Margin="164,263,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20" DataContextChanged="Slaptazodzio_Patvirtinimo_Laukas"/>
+        <TextBox HorizontalAlignment="Left" x:Name="Email" Height="30" Margin="164,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20"/>
+        <PasswordBox x:Name="Slaptazodis" HorizontalAlignment="Left" Margin="164,200,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
+        <PasswordBox x:Name="SlaptazodisPatvirtinti" HorizontalAlignment="Left" Margin="164,263,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
         <Button Content="Registruotis" HorizontalAlignment="Left" Margin="301,314,0,0" VerticalAlignment="Top" Width="177" Height="38"
             Background="#FF015DFF"
             Foreground="white"

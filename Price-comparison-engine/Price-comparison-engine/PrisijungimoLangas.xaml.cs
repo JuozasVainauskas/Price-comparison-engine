@@ -32,52 +32,42 @@ namespace Price_comparison_engine
 
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
-            //SqlConnection sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=DuomenuBaze; Integrated Security=True;");
-            //try
-            //{
-            //    if (sqlPrisijungti.State == ConnectionState.Closed)
-            //    {
-            //        sqlPrisijungti.Open();
-            //    }
-            //    String eile = "SELECT COUNT(1) FROM NaudotojoLentele WHERE Email=@Email AND Slaptazodis=@Slaptazodis";
-            //    SqlCommand sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-            //    sqlKomanda.CommandType = CommandType.Text;
-            //    sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
-            //    sqlKomanda.Parameters.AddWithValue("@Slaptazodis", Slaptazodis.Password);
-            //    int kiekis = Convert.ToInt32(sqlKomanda.ExecuteScalar());
-            //    if (kiekis == 1)
-            //    {
+            SqlConnection sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=DuomenuBaze; Integrated Security=True;");
+            try
+            {
+                if (sqlPrisijungti.State == ConnectionState.Closed)
+                {
+                    sqlPrisijungti.Open();
+                }
+                String eile = "SELECT COUNT(1) FROM NaudotojoLentele WHERE Email=@Email AND Slaptazodis=@Slaptazodis";
+                SqlCommand sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
+                sqlKomanda.CommandType = CommandType.Text;
+                sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
+                sqlKomanda.Parameters.AddWithValue("@Slaptazodis", Slaptazodis.Password);
+                int kiekis = Convert.ToInt32(sqlKomanda.ExecuteScalar());
+                if (kiekis == 1)
+                {
                     MainWindowLogedIn mainwindowlogedin = new MainWindowLogedIn();
                     mainwindowlogedin.Show();
                     this.Close();
                     pagrindinisLangas.Close();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Blogai įvestas email arba slaptažodis!");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
-            //finally
-            //{
-            //    sqlPrisijungti.Close();
-            //}
+                }
+                else
+                {
+                    MessageBox.Show("Blogai įvestas email arba slaptažodis!");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlPrisijungti.Close();
+            }
         }
 
         private void Sukurti_nauja_slaptazodi_mygtukas(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Email_Laukas(object sender, DependencyPropertyChangedEventArgs e)
-        {
-
-        }
-
-        private void Slaptazodzio_Laukas(object sender, DependencyPropertyChangedEventArgs e)
         {
 
         }
