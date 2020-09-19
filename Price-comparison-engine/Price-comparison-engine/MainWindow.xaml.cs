@@ -61,40 +61,40 @@ namespace Price_comparison_engine
             double skirtumasPlocio = this.ActualWidth / 1.2;
             double skirtumasIlgio = this.ActualHeight / 1.1;
             double skirtumasPlocioBlokeliui = this.ActualHeight / 1.7;
-            mygtukoResize(prisijungimosMygtukas, skirtumasPlocio, skirtumasIlgio);
-            mygtukoResize(registracijosMygtukas, skirtumasPlocio, skirtumasIlgio);
-            mygtukoResize(DUKMygtukas, skirtumasPlocio, skirtumasIlgio);
-            mygtukoResize(kontaktuMygtukas, skirtumasPlocio, skirtumasIlgio);
-            mygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
-            textBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
-            rectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
-            rectangleIštempimas(viršutinėLinija);
-            rectangleIštempimas(vidurinėLinija);
-            rectangleIštempimas(apatinėLinija);
+            MygtukoResize(prisijungimosMygtukas, skirtumasPlocio, skirtumasIlgio);
+            MygtukoResize(registracijosMygtukas, skirtumasPlocio, skirtumasIlgio);
+            MygtukoResize(DUKMygtukas, skirtumasPlocio, skirtumasIlgio);
+            MygtukoResize(kontaktuMygtukas, skirtumasPlocio, skirtumasIlgio);
+            MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
+            TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
+            RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
+            RectangleIštempimas(viršutinėLinija);
+            RectangleIštempimas(vidurinėLinija);
+            RectangleIštempimas(apatinėLinija);
         }
 
-        private void mygtukoResize(Button mygtukas, double plotis, double ilgis)
+        private void MygtukoResize(Button mygtukas, double plotis, double ilgis)
         {
             mygtukas.Width = this.ActualWidth - plotis;
             mygtukas.Height = this.ActualHeight - ilgis;
         }
 
-        private void textBlockResize(TextBlock tekstoBlokas, double plotis, double ilgis)
+        private void TextBlockResize(TextBlock tekstoBlokas, double plotis, double ilgis)
         {
             tekstoBlokas.Width = this.ActualWidth - plotis;
             tekstoBlokas.Height = this.ActualHeight - ilgis;
         }
 
-        private void textBoxResize(TextBox tekstBoksas, double plotis, double ilgis)
+        private void TextBoxResize(TextBox tekstBoksas, double plotis, double ilgis)
         {
             tekstBoksas.Width = this.ActualWidth - plotis;
             tekstBoksas.Height = this.ActualHeight - ilgis;
         }
-        private void rectangleResize(Rectangle plotelis, double ilgis)
+        private void RectangleResize(Rectangle plotelis, double ilgis)
         {
             plotelis.Height = this.ActualHeight - ilgis;
         }
-        private void rectangleIštempimas(Rectangle plotelis)
+        private void RectangleIštempimas(Rectangle plotelis)
         {
             plotelis.Width = this.ActualWidth;
         }
@@ -144,17 +144,17 @@ namespace Price_comparison_engine
             slideCounter2--;
         }
 
-        private void img1_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start(link1);
         }
 
-        private void img2_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start(link2);
         }
 
-        private void img3_MouseDown(object sender, MouseButtonEventArgs e)
+        private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start(link3);
         }

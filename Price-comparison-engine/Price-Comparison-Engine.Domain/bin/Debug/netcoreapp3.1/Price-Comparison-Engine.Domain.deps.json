@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Price-Comparison-Engine.Domain/1.0.0": {
+        "runtime": {
+          "Price-Comparison-Engine.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Price-Comparison-Engine.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

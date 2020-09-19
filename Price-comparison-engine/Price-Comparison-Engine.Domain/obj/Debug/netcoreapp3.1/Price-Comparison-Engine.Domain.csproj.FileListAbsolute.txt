@@ -1,0 +1,9 @@
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-Comparison-Engine.Domain\bin\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.deps.json
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-Comparison-Engine.Domain\bin\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.dll
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-Comparison-Engine.Domain\bin\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.pdb
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-Comparison-Engine.Domain\obj\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.csprojAssemblyReference.cache
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-Comparison-Engine.Domain\obj\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.AssemblyInfoInputs.cache
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-Comparison-Engine.Domain\obj\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.AssemblyInfo.cs
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-Comparison-Engine.Domain\obj\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.csproj.CoreCompileInputs.cache
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-Comparison-Engine.Domain\obj\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.dll
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-Comparison-Engine.Domain\obj\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.pdb

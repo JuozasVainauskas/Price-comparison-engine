@@ -10,5 +10,11 @@ namespace Price_comparison_engine.EntityFramework
     {
         public DbSet<Naudotojas> Naudotojai { get; set; }
         public DbSet<Paskyra> Paskyros { get; set; }
+    
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
+        {
+            optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=DuomenuBaze;Trusted_Connection=True;");
+            base.OnConfiguring(optionsBuilder);
+        }
     }
 }

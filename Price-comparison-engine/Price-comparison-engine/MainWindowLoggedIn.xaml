@@ -85,7 +85,7 @@
         <Image x:Name="img3_2" HorizontalAlignment="Left" Height="110" Margin="475.552,411.92,0,0" VerticalAlignment="Top" Width="86.448" Source="Nuotraukos/3.jpg"/>
         <Image HorizontalAlignment="Left" Height="55" Margin="615,443,0,0" VerticalAlignment="Top" Width="55" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front2"/>
         <Image HorizontalAlignment="Left" Height="55" Margin="615,279.5,0,0" VerticalAlignment="Top" Width="55" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front"/>
-        <Button x:Name="atsijungimoMygtukas" Content="Atsijungti" HorizontalAlignment="Left" Height="40" Margin="615,7,0,0" VerticalAlignment="Top" Width="144" Click="atsijungimoMygtukas_Click"
+        <Button x:Name="atsijungimoMygtukas" Content="Atsijungti" HorizontalAlignment="Left" Height="40" Margin="615,7,0,0" VerticalAlignment="Top" Width="144" Click="AtsijungimoMygtukas_Click"
             Background="#FF015DFF"
             Foreground="White"
             FontFamily="Arial" Style="{DynamicResource ButtonRounded}"

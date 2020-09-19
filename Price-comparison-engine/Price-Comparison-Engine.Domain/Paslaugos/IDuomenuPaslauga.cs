@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Price_Comparison_Engine.Domain.Paslaugos
 {
-    interface DuomenuPaslauga<T>
+    interface IDuomenuPaslauga<T>
     {
         Task<IEnumerable<T>> GautiVisus();
 

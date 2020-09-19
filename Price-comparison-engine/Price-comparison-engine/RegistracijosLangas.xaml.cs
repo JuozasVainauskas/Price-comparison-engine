@@ -19,7 +19,7 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class RegistracijosLangas : Window
     {
-        MainWindow pagrindinisLangas;
+        readonly MainWindow pagrindinisLangas;
 
         public RegistracijosLangas(MainWindow pagrindinisLangas)
         {

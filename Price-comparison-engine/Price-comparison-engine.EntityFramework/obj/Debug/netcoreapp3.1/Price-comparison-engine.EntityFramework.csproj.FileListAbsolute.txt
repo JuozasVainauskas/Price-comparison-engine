@@ -5,3 +5,11 @@ C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\obj\Debug\netcoreapp3.1\Price-comparison-engine.EntityFramework.AssemblyInfo.cs
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\obj\Debug\netcoreapp3.1\Price-comparison-engine.EntityFramework.csproj.CoreCompileInputs.cache
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\bin\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.dll
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\bin\Debug\netcoreapp3.1\Price-comparison-engine.EntityFramework.runtimeconfig.json
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\bin\Debug\netcoreapp3.1\Price-comparison-engine.EntityFramework.runtimeconfig.dev.json
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\bin\Debug\netcoreapp3.1\Price-comparison-engine.EntityFramework.pdb
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\bin\Debug\netcoreapp3.1\Price-Comparison-Engine.Domain.pdb
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\obj\Debug\netcoreapp3.1\Price-comparison-engine.EntityFramework.csproj.CopyComplete
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\obj\Debug\netcoreapp3.1\Price-comparison-engine.EntityFramework.dll
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\obj\Debug\netcoreapp3.1\Price-comparison-engine.EntityFramework.pdb
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine.EntityFramework\obj\Debug\netcoreapp3.1\Price-comparison-engine.EntityFramework.genruntimeconfig.cache

@@ -22,8 +22,7 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class PrisijungimoLangas : Window
     {
-
-        MainWindow pagrindinisLangas;
+        readonly MainWindow pagrindinisLangas;
 
         public PrisijungimoLangas(MainWindow pagrindinisLangas)
         {

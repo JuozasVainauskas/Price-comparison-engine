@@ -29,34 +29,34 @@ namespace Price_comparison_engine
             double skirtumasPlocio = this.ActualWidth / 1.2;
             double skirtumasIlgio = this.ActualHeight / 1.1;
             double skirtumasPlocioBlokeliui = this.ActualHeight / 1.05;
-            mygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
-            textBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
-            rectangleIštempimas(viršutinėlinija);
-            rectangleIštempimas(vidurinėLinija);
-            rectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
-            rectangleIštempimas(vidurinėLinija2);
-            rectangleResize(vidurinėLinija2, skirtumasPlocioBlokeliui);
-            rectangleIštempimas(apatinėLinija);
+            MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
+            TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
+            RectangleIštempimas(viršutinėlinija);
+            RectangleIštempimas(vidurinėLinija);
+            RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
+            RectangleIštempimas(vidurinėLinija2);
+            RectangleResize(vidurinėLinija2, skirtumasPlocioBlokeliui);
+            RectangleIštempimas(apatinėLinija);
         }
 
-        private void rectangleResize(Rectangle plotelis, double ilgis)
+        private void RectangleResize(Rectangle plotelis, double ilgis)
         {
             plotelis.Height = this.ActualHeight - ilgis;
         }
 
-        private void mygtukoResize(Button mygtukas, double plotis, double ilgis)
+        private void MygtukoResize(Button mygtukas, double plotis, double ilgis)
         {
             mygtukas.Width = this.ActualWidth - plotis;
             mygtukas.Height = this.ActualHeight - ilgis;
         }
 
-        private void textBoxResize(TextBox tekstBoksas, double plotis, double ilgis)
+        private void TextBoxResize(TextBox tekstBoksas, double plotis, double ilgis)
         {
             tekstBoksas.Width = this.ActualWidth - plotis;
             tekstBoksas.Height = this.ActualHeight - ilgis;
         }
 
-        private void rectangleIštempimas(Rectangle plotelis)
+        private void RectangleIštempimas(Rectangle plotelis)
         {
             plotelis.Width = this.ActualWidth;
         }
@@ -118,7 +118,7 @@ namespace Price_comparison_engine
             slideCounter2_2--;
         }
 
-        private void atsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
+        private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {
             MainWindow pagrindinisLangas = new MainWindow();
             pagrindinisLangas.Show();
