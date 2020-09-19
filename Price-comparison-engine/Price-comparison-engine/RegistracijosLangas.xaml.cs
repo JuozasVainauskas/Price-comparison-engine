@@ -52,8 +52,6 @@ namespace Price_comparison_engine
                     }
                     else
                     {
-                        //SELECT ISNULL(MAX(CAST(NaudotojoID AS int)), 0) + 1 FROM NaudotojoLentele
-
                         sqlRegistruotis.Open();
                         SqlCommand sqlKomanda = new SqlCommand("PridetiNaudotoja", sqlRegistruotis);
                         sqlKomanda.CommandType = CommandType.StoredProcedure;
