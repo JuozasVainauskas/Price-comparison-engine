@@ -5,7 +5,7 @@
 - Aivaras Rinkevičius
 - Justas Vitkauskas
 ## About the project (first key tasks)
-*Front-End*
+**Front-End**
 - [x] Register/login forms -> *Create a database with a possibility of remote logins*
 - [x] Search field
 - [x] FAQ
@@ -13,7 +13,7 @@
 - [ ] Review about the page -> *Might be added in the future*
 - [ ] Comments under the products -> *Might be added in the future*
 - [x] Slideshow
-*Back-End*
+**Back-End**
 - [ ] Gather data from online shop websites
 - [ ] Store gathered data in the database
 - [ ] Compare the gathered data
