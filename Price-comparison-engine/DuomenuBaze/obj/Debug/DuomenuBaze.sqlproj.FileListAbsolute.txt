@@ -1,9 +1,0 @@
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\DuomenuBaze\bin\Debug\DuomenuBaze.dacpac
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\DuomenuBaze\bin\Debug\DuomenuBaze.dll
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\DuomenuBaze\bin\Debug\DuomenuBaze.pdb
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\DuomenuBaze\obj\Debug\Model.xml
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\DuomenuBaze\obj\Debug\refactor.xml
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\DuomenuBaze\obj\Debug\postdeploy.sql
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\DuomenuBaze\obj\Debug\predeploy.sql
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\DuomenuBaze\obj\Debug\DuomenuBaze.dll
-C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\DuomenuBaze\obj\Debug\DuomenuBaze.pdb
