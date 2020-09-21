@@ -63,6 +63,7 @@ namespace Price_comparison_engine
             double skirtumasPlocioBlokeliui = this.ActualHeight / 1.7;
             double skirtumasPlocioNuotraukai = this.ActualWidth / 1.4;
             double skirtumasIlgioNuotraukai = this.ActualHeight / 1.4;
+
             MygtukoResize(prisijungimosMygtukas, skirtumasPlocio, skirtumasIlgio);
             MygtukoResize(registracijosMygtukas, skirtumasPlocio, skirtumasIlgio);
             MygtukoResize(DUKMygtukas, skirtumasPlocio, skirtumasIlgio);
