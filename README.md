@@ -6,9 +6,9 @@
 - Justas Vitkauskas
 ## About the project (first key tasks)
 **Front-End**
-- **[x]** Register/login forms -> *Create a database with a possibility of remote logins*
-- **[x]** Search field
-- **[x]** FAQ
+- [x] Register/login forms -> *Create a database with a possibility of remote logins*
+- [x] Search field
+**- [x]** FAQ
 - [x] Contacts
 - [ ] Review about the page -> *Might be added in the future*
 - [ ] Comments under the products -> *Might be added in the future*
