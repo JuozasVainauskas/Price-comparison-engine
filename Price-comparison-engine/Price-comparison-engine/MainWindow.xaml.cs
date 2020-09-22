@@ -39,7 +39,7 @@ namespace Price_comparison_engine
 
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
-            PrekiųLangas prekiųLangoAtidarymas = new PrekiųLangas();
+            PrekiuLangas prekiųLangoAtidarymas = new PrekiuLangas();
             prekiųLangoAtidarymas.Show();
             this.Close();
         }
@@ -74,11 +74,11 @@ namespace Price_comparison_engine
             RectangleIštempimas(viršutinėLinija);
             RectangleIštempimas(vidurinėLinija);
             RectangleIštempimas(apatinėLinija);
-            slideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            slideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            slideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            slideShowResize(iKairePuse, skirtumasIlgio, skirtumasIlgio);
-            slideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
+            SlideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(iKairePuse, skirtumasIlgio, skirtumasIlgio);
+            SlideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
         }
 
         private void MygtukoResize(Button mygtukas, double plotis, double ilgis)
@@ -106,7 +106,7 @@ namespace Price_comparison_engine
         {
             plotelis.Width = this.ActualWidth;
         }
-        private void slideShowResize(Image nuotrauka,double plotis, double ilgis)
+        private void SlideShowResize(Image nuotrauka,double plotis, double ilgis)
         {
             nuotrauka.Width = this.ActualWidth-plotis;
             nuotrauka.Height = this.ActualHeight-ilgis;
