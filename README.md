@@ -13,7 +13,7 @@
 - [ ] Review about the page -> *Might be added in the future*
 - [ ] Comments under the products -> *Might be added in the future*
 - [ ] Stars/comments under the shops
-- [ ] Searched products' list / Interface
+- [ ] Searched products' list/Interface
 - [x] Slideshow
 
 **Back-End**
