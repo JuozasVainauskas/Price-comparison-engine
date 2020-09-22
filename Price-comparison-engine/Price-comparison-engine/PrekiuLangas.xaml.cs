@@ -17,9 +17,9 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for PrekiųLangas.xaml
     /// </summary>
-    public partial class PrekiųLangas : Window
+    public partial class PrekiuLangas : Window
     {
-        public PrekiųLangas()
+        public PrekiuLangas()
         {
             InitializeComponent();
         }
