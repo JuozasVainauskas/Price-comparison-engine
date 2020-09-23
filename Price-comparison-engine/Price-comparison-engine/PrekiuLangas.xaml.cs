@@ -73,7 +73,28 @@ namespace Price_comparison_engine
 
         private void loadTextboxData(object sender, EventArgs e)
         {
-            getHtmlAssync(testbox);
+            getHtmlAssync(textBoxLangas);
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            RectangleIstempimasAukstis(rectangle1);
+            RectangleIstempimasPlotis(rectangle2);
+            TextBoxIstempimasPlotis(textBoxLangas);
+        }
+
+        private void RectangleIstempimasAukstis(Rectangle plotelis)
+        {
+            plotelis.Height = this.ActualHeight;
+        }
+
+        private void RectangleIstempimasPlotis(Rectangle plotelis)
+        {
+            plotelis.Width = this.ActualWidth;
+        }
+        private void TextBoxIstempimasPlotis(TextBox tekstoBlokas)
+        {
+            tekstoBlokas.Width = this.ActualWidth-400;
         }
     }
 }

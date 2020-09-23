@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="Prekės" ResizeMode="NoResize" WindowState="Maximized">
+        Title="Prekės" Height="600" Width="800" SizeChanged="Window_SizeChanged" MinHeight="600" MinWidth="800">
     <Grid>
-        <Rectangle Fill="#FF8CD479" HorizontalAlignment="Left" Height="570" Stroke="Black" VerticalAlignment="Top" Width="188"/>
-        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="43" Margin="188,0,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="606"/>
+        <Rectangle x:Name="rectangle1" Fill="#FF8CD479" HorizontalAlignment="Left" Height="570" Stroke="Black" VerticalAlignment="Top" Width="188"/>
+        <Rectangle x:Name="rectangle2" Fill="#FF0FA943" Height="43" Margin="188,0,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="606" HorizontalAlignment="Left"/>
         <Image HorizontalAlignment="Left" Height="150" Margin="207,64,0,0" VerticalAlignment="Top" Width="119" Source="3.jpg"/>
-        <TextBox x:Name="testbox" HorizontalAlignment="Left" Height="419" Margin="376,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" Initialized="loadTextboxData" IsReadOnly="True"/>
+        <TextBox x:Name="textBoxLangas" HorizontalAlignment="Left" Height="150" Margin="376,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" Initialized="loadTextboxData" IsReadOnly="True"/>
     </Grid>
 </Window>
