@@ -27,9 +27,12 @@ namespace Price_comparison_engine
             InitializeComponent();
         }
 
+
         private static async void getHtmlAssync(TextBox textbox)
         {
-            var url = "https://www.kaina24.lt/search?q=iphone+10";
+
+
+            var url = "https://avitela.lt/paieska/" + MainWindow.zodis;
             var httpClient = new HttpClient();
             var html = await httpClient.GetStringAsync(url);
 
@@ -38,20 +41,49 @@ namespace Price_comparison_engine
 
             var ProductsHtml = htmlDocument.DocumentNode.Descendants("div")
                 .Where(node => node.GetAttributeValue("class", "")
-                .Equals("product-list-horisontal clearfix")).ToList();
-
+                .Equals("product-grid active")).ToList();
 
             var ProductListItems = ProductsHtml[0].Descendants("div")
                 .Where(node => node.GetAttributeValue("class", "")
-                .Contains("product-item-h-wrap")).ToList();
+                .Contains("col-6 col-md-4 col-lg-4")).ToList();
 
+            string pattern = " ";
+            string replacement = "+";
+
+            Regex regEx = new Regex(pattern);
+            var urlgalas = regEx.Replace(MainWindow.zodis, replacement);
+
+            var url2 = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
+            var httpClient2 = new HttpClient();
+            var html2 = await httpClient2.GetStringAsync(url2);
+
+            var htmlDocument2 = new HtmlDocument();
+            htmlDocument2.LoadHtml(html2);
+
+            var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
+               .Where(node => node.GetAttributeValue("class", "")
+               .Equals("manafilters-category-products category-products")).ToList();
+
+            var ProductListItems2 = ProductsHtml2[0].Descendants("li")
+                .Where(node => node.GetAttributeValue("class", "")
+                .Contains("item js-ua-item")).ToList();
 
             foreach (var ProductListItem in ProductListItems)
+
             {
 
-                var name = ProductListItem.Descendants("p")
-                    .Where(node => node.GetAttributeValue("class", "'\r', '\n', '\t'")
-                    .Equals("name")).FirstOrDefault().InnerText.Trim();
+                textbox.AppendText("Avitela:" + '\n');
+                textbox.AppendText("" + '\n');
+
+                var price = ProductListItem.Descendants("div")
+                   .Where(node => node.GetAttributeValue("class", "")
+                   .Equals("price")).FirstOrDefault().InnerText.Trim();
+
+                textbox.AppendText(price + '\n');
+
+                var name = ProductListItem.Descendants("div")
+                   .Where(node => node.GetAttributeValue("class", "")
+                   .Equals("name")).FirstOrDefault().InnerText.Trim();
 
                 textbox.AppendText(name + '\n');
 
@@ -59,17 +91,37 @@ namespace Price_comparison_engine
 
                 textbox.AppendText(link + '\n');
 
+                textbox.AppendText("" + '\n');
 
-                var price = ProductListItem.Descendants("p")
-                   .Where(node => node.GetAttributeValue("class", "'\r', '\n', '\t'")
-                   .Equals("price fl")).FirstOrDefault().InnerText.Trim();
+            }
+
+            foreach (var ProductListItem in ProductListItems2)
+            {
+
+                textbox.AppendText("Elektromarkt:" + '\n');
+                textbox.AppendText("" + '\n');
+
+                var name = ProductListItem.Descendants("h2")
+                   .Where(node => node.GetAttributeValue("class", "")
+                   .Equals("product-name")).FirstOrDefault().InnerText.Trim();
+
+                textbox.AppendText(name + '\n');
+
+                var price = ProductListItem.Descendants("span")
+                   .Where(node => node.GetAttributeValue("class", "")
+                   .Equals("price")).FirstOrDefault().InnerText.Trim();
 
                 textbox.AppendText(price + '\n');
 
+                var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+
+                textbox.AppendText(link + '\n');
 
                 textbox.AppendText("" + '\n');
+
             }
         }
+
 
         private void loadTextboxData(object sender, EventArgs e)
         {
