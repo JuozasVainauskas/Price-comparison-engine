@@ -18,6 +18,7 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -36,9 +37,10 @@ namespace Price_comparison_engine
             KontaktuLangas kontaktuLangoAtidarymas = new KontaktuLangas();
             kontaktuLangoAtidarymas.Show();
         }
-
+        public static String zodis;
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
+            zodis = ieskojimoLaukas.Text;
             PrekiuLangas prekiųLangoAtidarymas = new PrekiuLangas();
             prekiųLangoAtidarymas.Show();
             this.Close();
@@ -68,7 +70,7 @@ namespace Price_comparison_engine
             MygtukoResize(DUKMygtukas, skirtumasPlocio, skirtumasIlgio);
             MygtukoResize(kontaktuMygtukas, skirtumasPlocio, skirtumasIlgio);
             MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
-            TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
+            TextBoxResize(ieskojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
             RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
             RectangleIštempimas(viršutinėLinija);
             RectangleIštempimas(vidurinėLinija);

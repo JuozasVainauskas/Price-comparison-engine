@@ -74,7 +74,7 @@
 
         <Rectangle x:Name="viršutinėLinija" Grid.ColumnSpan="3" Fill="#FF0FA943" Height="52" Margin="0,0,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="794" HorizontalAlignment="Center"/>
 
-        <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10.4,136,0,372" TextWrapping="Wrap" Width="585" FontSize="36" UseLayoutRounding="False" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
+        <TextBox HorizontalAlignment="Left" x:Name="ieskojimoLaukas" Height="56" Margin="10.4,136,0,372" TextWrapping="Wrap" Width="585" FontSize="36" UseLayoutRounding="False" Grid.ColumnSpan="3" VerticalAlignment="Center"/>
         <TextBlock IsHitTestVisible="False" Text="Ko šiandien ieškote?" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,161,0,0" Foreground="DarkGray" Height="56" Width="520" FontSize="36" Grid.ColumnSpan="3">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
