@@ -26,14 +26,12 @@ C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Pri
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\DUK_Langas.g.cs
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\KontaktuLangas.g.cs
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\MainWindow.g.cs
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiųLangas.g.cs
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\App.g.cs
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine_MarkupCompile.cache
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine_MarkupCompile.lref
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\DUK_Langas.baml
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\KontaktuLangas.baml
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\MainWindow.baml
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiųLangas.baml
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.g.resources
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Properties.Resources.resources
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.GenerateResource.cache
@@ -106,3 +104,9 @@ C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\P
 C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\MainWindowLoggedIn.baml
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiuLangas.g.cs
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiuLangas.baml
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\HtmlAgilityPack.dll
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\HtmlAgilityPack.xml
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiuLangas.g.cs
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiuLangas.baml
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.CopyComplete
