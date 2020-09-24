@@ -44,6 +44,8 @@ namespace Price_comparison_engine
         private static async void getHtmlAssync(DataGrid dataGridas)
         {
 
+            var prices = new List<Item>();
+
             var url = "https://avitela.lt/paieska/" + MainWindow.zodis;
             var httpClient = new HttpClient();
             var html = await httpClient.GetStringAsync(url);
@@ -83,7 +85,6 @@ namespace Price_comparison_engine
             foreach (var ProductListItem in ProductListItems)
 
             {
-
                 var price = ProductListItem.Descendants("div")
                    .Where(node => node.GetAttributeValue("class", "")
                    .Equals("price")).FirstOrDefault().InnerText.Trim();
@@ -93,9 +94,8 @@ namespace Price_comparison_engine
                    .Equals("name")).FirstOrDefault().InnerText.Trim();
 
                 var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
-
                 var Itemas = new Item { Seller = "Avitela", Name = name, Price = price, Link = link };
-                dataGridas.Items.Add(Itemas);
+                prices.Add(Itemas);
             }
 
             foreach (var ProductListItem in ProductListItems2)
@@ -112,7 +112,13 @@ namespace Price_comparison_engine
                 var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
                 var Itemas = new Item { Seller = "Elektromarkt", Name = name, Price = price, Link = link };
-                dataGridas.Items.Add(Itemas);
+
+                prices.Add(Itemas);
+            }
+            List<Item> SortedPricesList = prices.OrderBy(o => o.Price).ToList();
+            foreach (Item item in SortedPricesList)
+            {
+                dataGridas.Items.Add(item);
             }
         }
 
