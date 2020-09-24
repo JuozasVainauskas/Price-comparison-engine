@@ -110,3 +110,9 @@ C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Pri
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiuLangas.g.cs
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiuLangas.baml
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.CopyComplete
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\HtmlAgilityPack.dll
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\HtmlAgilityPack.xml
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\VertinimoLangas.g.cs
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\VertinimoLangas.baml
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.CopyComplete
