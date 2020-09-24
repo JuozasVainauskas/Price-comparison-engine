@@ -135,5 +135,11 @@ namespace Price_comparison_engine
         {
             getHtmlAssync(DataGridas);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            VertinimoLangas vertinimoLangoAtidarymas = new VertinimoLangas();
+            vertinimoLangoAtidarymas.Show();
+        }
     }
 }

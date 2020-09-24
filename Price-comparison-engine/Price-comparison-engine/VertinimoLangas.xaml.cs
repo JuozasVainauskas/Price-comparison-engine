@@ -28,5 +28,36 @@ namespace Price_comparison_engine
         {
 
         }
+
+        private void Avitela_Aptarnavimas(object sender, SelectionChangedEventArgs e)
+        {
+            var item = avitelaApt.SelectedValue;
+            Console.WriteLine(item.ToString());
+        }
+
+        private void Avitela_Kokybe(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Avitela_Pristatymas(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Elektromarkt_Aptarnavimas(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Elektromarkt_Kokybe(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Elektromarkt_Pristatymas(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
