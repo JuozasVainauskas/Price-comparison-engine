@@ -13,7 +13,7 @@ namespace Price_comparison_engine.Klases
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int NaudotojoID { get; set; }
-        public string Email { get; set; }
-        public string Slaptazodis { get; set; }
+        public string NaudotojoEmail { get; set; }
+        public string NaudotojoSlaptazodis { get; set; }
     }
 }
