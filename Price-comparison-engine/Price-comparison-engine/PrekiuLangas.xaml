@@ -18,7 +18,7 @@
                 <DataGridTemplateColumn Header="Nuoroda">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Background="#FF36B04D" ContentStringFormat="">
+                            <Button x:Name="linkButton" Background="#FF36B04D" ContentStringFormat="" Click="linkButton_Click">
                                 <Hyperlink NavigateUri="{Binding Link}">
                                 </Hyperlink>
                             </Button>

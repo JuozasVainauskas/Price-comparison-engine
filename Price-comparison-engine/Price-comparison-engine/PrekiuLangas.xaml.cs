@@ -61,11 +61,8 @@ namespace Price_comparison_engine
                 .Where(node => node.GetAttributeValue("class", "")
                 .Contains("col-6 col-md-4 col-lg-4")).ToList();
 
-            string pattern = " ";
-            string replacement = "+";
-
-            Regex regEx = new Regex(pattern);
-            var urlgalas = regEx.Replace(MainWindow.zodis, replacement);
+            Regex regEx = new Regex(" ");
+            var urlgalas = regEx.Replace(MainWindow.zodis, "+");
 
             var url2 = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
             var httpClient2 = new HttpClient();
@@ -146,6 +143,17 @@ namespace Price_comparison_engine
         {
             VertinimoLangas vertinimoLangoAtidarymas = new VertinimoLangas();
             vertinimoLangoAtidarymas.Show();
+        }
+
+        private void mygtukasNuorodos_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void linkButton_Click(object sender, RoutedEventArgs e)
+        {
+            string link = (((Button)sender).DataContext as Item).Link;
+            System.Diagnostics.Process.Start(link);
         }
     }
 }
