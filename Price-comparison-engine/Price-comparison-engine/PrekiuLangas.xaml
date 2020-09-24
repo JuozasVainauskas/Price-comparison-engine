@@ -10,6 +10,22 @@
         <Rectangle x:Name="rectangle1" Fill="#FF8CD479" HorizontalAlignment="Left" Height="570" Stroke="Black" VerticalAlignment="Top" Width="188"/>
         <Rectangle x:Name="rectangle2" Fill="#FF0FA943" Height="43" Margin="188,0,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="606" HorizontalAlignment="Left"/>
         <Image HorizontalAlignment="Left" Height="150" Margin="207,64,0,0" VerticalAlignment="Top" Width="119" Source="3.jpg"/>
-        <TextBox x:Name="textBoxLangas" HorizontalAlignment="Left" Height="150" Margin="376,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="326" Initialized="loadTextboxData" IsReadOnly="True"/>
+        <DataGrid AutoGenerateColumns="False" Name="DataGridas" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="193,219,9.6,10.4" Initialized="DataGridTest_Initialized">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Pardavejas" IsReadOnly="True" Binding="{Binding Path=Seller}" Width="70"></DataGridTextColumn>
+                <DataGridTextColumn Header="Preke" IsReadOnly="True"  Binding="{Binding Path=Name}" Width="300"></DataGridTextColumn>
+                <DataGridTextColumn Header="Kaina" IsReadOnly="True"  Binding="{Binding Path=Price}" Width="100"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Nuoroda">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Background="#FF36B04D" ContentStringFormat="">
+                                <Hyperlink NavigateUri="{Binding Link}">
+                                </Hyperlink>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

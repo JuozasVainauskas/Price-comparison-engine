@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -20,6 +21,19 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for PrekiųLangas.xaml
     /// </summary>
+    /// 
+
+    public class Item
+    {
+        public string Seller { get; set; }
+        public string Price { get; set; }
+
+        public string Name { get; set; }
+
+        public string Link { get; set; }
+
+    }
+
     public partial class PrekiuLangas : Window
     {
         public PrekiuLangas()
@@ -27,10 +41,8 @@ namespace Price_comparison_engine
             InitializeComponent();
         }
 
-
-        private static async void getHtmlAssync(TextBox textbox)
+        private static async void getHtmlAssync(DataGrid dataGridas)
         {
-
 
             var url = "https://avitela.lt/paieska/" + MainWindow.zodis;
             var httpClient = new HttpClient();
@@ -72,67 +84,42 @@ namespace Price_comparison_engine
 
             {
 
-                textbox.AppendText("Avitela:" + '\n');
-                textbox.AppendText("" + '\n');
-
                 var price = ProductListItem.Descendants("div")
                    .Where(node => node.GetAttributeValue("class", "")
                    .Equals("price")).FirstOrDefault().InnerText.Trim();
-
-                textbox.AppendText(price + '\n');
 
                 var name = ProductListItem.Descendants("div")
                    .Where(node => node.GetAttributeValue("class", "")
                    .Equals("name")).FirstOrDefault().InnerText.Trim();
 
-                textbox.AppendText(name + '\n');
-
                 var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
-                textbox.AppendText(link + '\n');
-
-                textbox.AppendText("" + '\n');
-
+                var Itemas = new Item { Seller = "Avitela", Name = name, Price = price, Link = link };
+                dataGridas.Items.Add(Itemas);
             }
 
             foreach (var ProductListItem in ProductListItems2)
             {
 
-                textbox.AppendText("Elektromarkt:" + '\n');
-                textbox.AppendText("" + '\n');
-
                 var name = ProductListItem.Descendants("h2")
                    .Where(node => node.GetAttributeValue("class", "")
                    .Equals("product-name")).FirstOrDefault().InnerText.Trim();
-
-                textbox.AppendText(name + '\n');
 
                 var price = ProductListItem.Descendants("span")
                    .Where(node => node.GetAttributeValue("class", "")
                    .Equals("price")).FirstOrDefault().InnerText.Trim();
 
-                textbox.AppendText(price + '\n');
-
                 var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
-                textbox.AppendText(link + '\n');
-
-                textbox.AppendText("" + '\n');
-
+                var Itemas = new Item { Seller = "Elektromarkt", Name = name, Price = price, Link = link };
+                dataGridas.Items.Add(Itemas);
             }
-        }
-
-
-        private void loadTextboxData(object sender, EventArgs e)
-        {
-            getHtmlAssync(textBoxLangas);
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             RectangleIstempimasAukstis(rectangle1);
             RectangleIstempimasPlotis(rectangle2);
-            TextBoxIstempimasPlotis(textBoxLangas);
         }
 
         private void RectangleIstempimasAukstis(Rectangle plotelis)
@@ -144,9 +131,9 @@ namespace Price_comparison_engine
         {
             plotelis.Width = this.ActualWidth;
         }
-        private void TextBoxIstempimasPlotis(TextBox tekstoBlokas)
+        private void DataGridTest_Initialized(object sender, EventArgs e)
         {
-            tekstoBlokas.Width = this.ActualWidth-400;
+            getHtmlAssync(DataGridas);
         }
     }
 }
