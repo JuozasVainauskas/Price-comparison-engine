@@ -43,8 +43,8 @@ namespace Price_comparison_engine
             {
                 using (SqlConnection sqlRegistruotis = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=DuomenuBaze; Integrated Security=True;"))
                 {
-                    SqlDataAdapter duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM NaudotojoLentele WHERE Email='"+Email.Text.Trim()+"'", sqlRegistruotis);
-                    DataTable duomenuLentele = new DataTable();
+                    var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM NaudotojoLentele WHERE Email='"+Email.Text.Trim()+"'", sqlRegistruotis);
+                    var duomenuLentele = new DataTable();
                     duomenuAdapteris.Fill(duomenuLentele);
                     if (duomenuLentele.Rows.Count >= 1)
                     {
@@ -53,13 +53,13 @@ namespace Price_comparison_engine
                     else
                     {
                         sqlRegistruotis.Open();
-                        SqlCommand sqlKomanda = new SqlCommand("PridetiNaudotoja", sqlRegistruotis);
+                        var sqlKomanda = new SqlCommand("PridetiNaudotoja", sqlRegistruotis);
                         sqlKomanda.CommandType = CommandType.StoredProcedure;
                         sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
                         sqlKomanda.Parameters.AddWithValue("@Slaptazodis", Slaptazodis.Password.Trim());
                         sqlKomanda.ExecuteNonQuery();
 
-                        MainWindowLogedIn mainwindowlogedin = new MainWindowLogedIn();
+                        var mainwindowlogedin = new MainWindowLogedIn();
                         mainwindowlogedin.Show();
                         this.Close();
                         pagrindinisLangas.Close();
