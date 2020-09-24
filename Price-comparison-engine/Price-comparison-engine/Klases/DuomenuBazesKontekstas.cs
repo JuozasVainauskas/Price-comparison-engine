@@ -10,5 +10,10 @@ namespace Price_comparison_engine.Klases
     public class DuomenuBazesKontekstas : DbContext
     {
         public DbSet<DuomenuStruktura> DuomenuStrukturos { get; set; }
+
+        //protected override void OnConfiguring(DbModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //}
     }
 }

@@ -85,6 +85,7 @@
     </ApplicationDefinition>
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
     <Compile Include="Klases\DuomenuStruktura.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PrisijungimoLangas.xaml.cs">
       <DependentUpon>PrisijungimoLangas.xaml</DependentUpon>
     </Compile>
