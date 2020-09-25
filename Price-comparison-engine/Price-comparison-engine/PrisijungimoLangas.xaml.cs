@@ -34,7 +34,7 @@ namespace Price_comparison_engine
         {
 
             //var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
-            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\PCEDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=True;Connect Timeout=30");
             try
             {
                 if (sqlPrisijungti.State == ConnectionState.Closed)
