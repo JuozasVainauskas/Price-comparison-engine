@@ -33,14 +33,14 @@ namespace Price_comparison_engine
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
 
-            var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=DuomenuBaze; Integrated Security=True;");
+            var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
             try
             {
                 if (sqlPrisijungti.State == ConnectionState.Closed)
                 {
                     sqlPrisijungti.Open();
                 }
-                var eile = "SELECT COUNT(1) FROM NaudotojoLentele WHERE Email=@Email AND Slaptazodis=@Slaptazodis";
+                var eile = "SELECT COUNT(1) FROM DuomenuStrukturos WHERE NaudotojoEmail=@Email AND NaudotojoSlaptazodis=@Slaptazodis";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);

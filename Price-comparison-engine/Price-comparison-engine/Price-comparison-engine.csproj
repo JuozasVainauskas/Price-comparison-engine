@@ -85,6 +85,11 @@
     </ApplicationDefinition>
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
     <Compile Include="Klases\DuomenuStruktura.cs" />
+    <Compile Include="Migrations\202009251037472_SukurtiDuomenuStruktura.cs" />
+    <Compile Include="Migrations\202009251037472_SukurtiDuomenuStruktura.designer.cs">
+      <DependentUpon>202009251037472_SukurtiDuomenuStruktura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PrisijungimoLangas.xaml.cs">
       <DependentUpon>PrisijungimoLangas.xaml</DependentUpon>
     </Compile>
@@ -161,6 +166,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202009251037472_SukurtiDuomenuStruktura.resx">
+      <DependentUpon>202009251037472_SukurtiDuomenuStruktura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -208,9 +216,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Resource Include="3.jpg" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
