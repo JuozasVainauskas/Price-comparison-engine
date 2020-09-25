@@ -33,7 +33,8 @@ namespace Price_comparison_engine
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
 
-            var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
+            //var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
+            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\PCEDatabase.mdf;Integrated Security=True;Connect Timeout=30");
             try
             {
                 if (sqlPrisijungti.State == ConnectionState.Closed)
