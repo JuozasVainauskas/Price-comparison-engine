@@ -60,7 +60,7 @@ namespace Price_comparison_engine
                         }
                         var eile = "INSERT INTO DuomenuStrukturos(NaudotojoEmail, NaudotojoSlaptazodis) VALUES (@Email, @Slaptazodis)";
                         var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
-
+                        sqlKomanda.CommandType = CommandType.Text;
                         sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
                         sqlKomanda.Parameters.AddWithValue("@Slaptazodis", Slaptazodis.Password.Trim());
                         sqlKomanda.ExecuteNonQuery();

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("duomenubaze.mdf")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("duomenubaze_log.ldf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pcedatabase.mdf")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("pcedatabase_log.ldf")]
 
 
