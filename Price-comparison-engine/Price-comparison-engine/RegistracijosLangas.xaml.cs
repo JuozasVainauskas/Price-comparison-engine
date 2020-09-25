@@ -42,29 +42,25 @@ namespace Price_comparison_engine
             }
             else
             {
-                //    var dbKontekstas = new DuomenuBazesKontekstas();
-
-                //    var strukt = new DuomenuStruktura
-                //    {
-                //        NaudotojoEmail = Email.Text.Trim(),
-                //        NaudotojoSlaptazodis = Slaptazodis.Password.Trim()
-                //    };
-                //dbKontekstas.DuomenuStrukturos.Add(strukt);
-                //dbKontekstas.SaveChanges();
-                using (SqlConnection sqlRegistruotis = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=DuomenuBaze; Integrated Security=True;"))
+                var sqlRegistruotis = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
+                var duomenuAdapteris = new SqlDataAdapter("SELECT NaudotojoEmail FROM DuomenuStrukturos WHERE NaudotojoEmail='" + Email.Text.Trim() + "'", sqlRegistruotis);
+                var duomenuLentele = new DataTable();
+                duomenuAdapteris.Fill(duomenuLentele);
+                if (duomenuLentele.Rows.Count >= 1)
                 {
-                    var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM NaudotojoLentele WHERE Email='" + Email.Text.Trim() + "'", sqlRegistruotis);
-                    var duomenuLentele = new DataTable();
-                    duomenuAdapteris.Fill(duomenuLentele);
-                    if (duomenuLentele.Rows.Count >= 1)
+                    MessageBox.Show("Toks email jau panaudotas. Pabandykite kitą.");
+                }
+                else
+                {
+                    try
                     {
-                        MessageBox.Show("Toks email jau panaudotas. Pabandykite kitą.");
-                    }
-                    else
-                    {
-                        sqlRegistruotis.Open();
-                        var sqlKomanda = new SqlCommand("PridetiNaudotoja", sqlRegistruotis);
-                        sqlKomanda.CommandType = CommandType.StoredProcedure;
+                        if (sqlRegistruotis.State == ConnectionState.Closed)
+                        {
+                            sqlRegistruotis.Open();
+                        }
+                        var eile = "INSERT INTO DuomenuStrukturos(NaudotojoEmail, NaudotojoSlaptazodis) VALUES (@Email, @Slaptazodis)";
+                        var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
+
                         sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
                         sqlKomanda.Parameters.AddWithValue("@Slaptazodis", Slaptazodis.Password.Trim());
                         sqlKomanda.ExecuteNonQuery();
@@ -73,6 +69,14 @@ namespace Price_comparison_engine
                         mainwindowlogedin.Show();
                         this.Close();
                         pagrindinisLangas.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        sqlRegistruotis.Close();
                     }
                 }
             }
