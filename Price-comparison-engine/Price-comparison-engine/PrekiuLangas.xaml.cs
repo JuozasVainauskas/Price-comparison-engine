@@ -26,6 +26,8 @@ namespace Price_comparison_engine
 
     public class Item
     {
+
+        public BitmapImage nuotrauka { get; set; }
         public string Seller { get; set; }
         public double Pricea { get; set; }
 
@@ -100,12 +102,32 @@ namespace Price_comparison_engine
 
                     var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
-                    price =pasalinimasTarpu(price);
+                string imgLink = ProductListItem.Descendants("img").FirstOrDefault().GetAttributeValue("src", "");
+                
+                /*
+                BitmapImage bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                
+                bitmap.UriSource = new Uri(imgLink, UriKind.Absolute);
+                bitmap.EndInit();
+                Image a = new Image();
+                a.Source = bitmap;
+                */
+                
+                var imgUrl = new Uri(imgLink);
+                var imageData = new System.Net.WebClient().DownloadData(imgUrl);
+
+                var bitmapImage = new BitmapImage { CacheOption = BitmapCacheOption.OnLoad };
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = new System.IO.MemoryStream(imageData);
+                bitmapImage.EndInit();
+
+                price =pasalinimasTarpu(price);
                     var priceAtsarg = price;
                     priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
 
                     double pricea = Double.Parse(priceAtsarg);
-                    var Itemas = new Item { Seller = "Elektromarkt", Name = name, Pricea = pricea,Price=price, Link = link };
+                var Itemas = new Item { nuotrauka = bitmapImage, Seller = "Elektromarkt", Name = name, Pricea = pricea,Price=price, Link = link };
                     prices.Add(Itemas);
                 }
             List<Item> SortedPricesList = prices.OrderBy(o => o.Pricea).ToList();
