@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Security.AccessControl;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -26,6 +27,8 @@ namespace Price_comparison_engine
     public class Item
     {
         public string Seller { get; set; }
+        public double Pricea { get; set; }
+
         public string Price { get; set; }
 
         public string Name { get; set; }
@@ -49,9 +52,71 @@ namespace Price_comparison_engine
             var url = "https://avitela.lt/paieska/" + MainWindow.zodis;
             var httpClient = new HttpClient();
             var html = await httpClient.GetStringAsync(url);
-
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
+            var ProductListItems=ggg(htmlDocument);
+
+            Regex regEx = new Regex(" ");
+            var urlgalas = regEx.Replace(MainWindow.zodis, "+");
+            var url2 = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
+            var httpClient2 = new HttpClient();
+            var html2 = await httpClient2.GetStringAsync(url2);
+            var htmlDocument2 = new HtmlDocument();
+            htmlDocument2.LoadHtml(html2);
+            var ProductListItems2 = ggg2(htmlDocument2);
+
+
+                foreach (var ProductListItem in ProductListItems)
+                {
+                
+                    var price = ProductListItem.Descendants("div")
+                       .Where(node => node.GetAttributeValue("class", "")
+                            .Equals("price")).FirstOrDefault().InnerText.Trim();
+
+                    var name = ProductListItem.Descendants("div")
+                       .Where(node => node.GetAttributeValue("class", "")
+                             .Equals("name")).FirstOrDefault().InnerText.Trim();
+
+                    var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+
+                    price=pasalinimasTrikdanciuSimboliu(price);
+                    var priceAtsarg = price;
+                    priceAtsarg=pasalinimasEuroSimbol(priceAtsarg);
+                    double pricea = Convert.ToDouble(priceAtsarg);
+                    var Itemas = new Item { Seller = "Avitela", Name = name, Pricea = pricea, Price=price, Link = link };
+                    prices.Add(Itemas);
+                }
+
+                foreach (var ProductListItem in ProductListItems2)
+                {
+
+                    var name = ProductListItem.Descendants("h2")
+                       .Where(node => node.GetAttributeValue("class", "")
+                             .Equals("product-name")).FirstOrDefault().InnerText.Trim();
+
+                    var price = ProductListItem.Descendants("span")
+                       .Where(node => node.GetAttributeValue("class", "")
+                             .Equals("price")).FirstOrDefault().InnerText.Trim();
+
+                    var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+
+                    price =pasalinimasTarpu(price);
+                    var priceAtsarg = price;
+                    priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
+
+                    double pricea = Double.Parse(priceAtsarg);
+                    var Itemas = new Item { Seller = "Elektromarkt", Name = name, Pricea = pricea,Price=price, Link = link };
+                    prices.Add(Itemas);
+                }
+            List<Item> SortedPricesList = prices.OrderBy(o => o.Pricea).ToList();
+                foreach (Item item in SortedPricesList)
+                {
+                    dataGridas.Items.Add(item);
+                }
+        }
+        
+        private static List<HtmlNode> ggg(HtmlDocument htmlDocument)
+        {
 
             var ProductsHtml = htmlDocument.DocumentNode.Descendants("div")
                 .Where(node => node.GetAttributeValue("class", "")
@@ -61,15 +126,11 @@ namespace Price_comparison_engine
                 .Where(node => node.GetAttributeValue("class", "")
                 .Contains("col-6 col-md-4 col-lg-4")).ToList();
 
-            Regex regEx = new Regex(" ");
-            var urlgalas = regEx.Replace(MainWindow.zodis, "+");
-
-            var url2 = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
-            var httpClient2 = new HttpClient();
-            var html2 = await httpClient2.GetStringAsync(url2);
-
-            var htmlDocument2 = new HtmlDocument();
-            htmlDocument2.LoadHtml(html2);
+            return ProductListItems;
+        }
+        
+        private static List<HtmlNode> ggg2(HtmlDocument htmlDocument2)
+        {
 
             var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
                .Where(node => node.GetAttributeValue("class", "")
@@ -79,45 +140,46 @@ namespace Price_comparison_engine
                 .Where(node => node.GetAttributeValue("class", "")
                 .Contains("item js-ua-item")).ToList();
 
-            foreach (var ProductListItem in ProductListItems)
-
-            {
-                var price = ProductListItem.Descendants("div")
-                   .Where(node => node.GetAttributeValue("class", "")
-                   .Equals("price")).FirstOrDefault().InnerText.Trim();
-
-                var name = ProductListItem.Descendants("div")
-                   .Where(node => node.GetAttributeValue("class", "")
-                   .Equals("name")).FirstOrDefault().InnerText.Trim();
-
-                var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
-                var Itemas = new Item { Seller = "Avitela", Name = name, Price = price, Link = link };
-                prices.Add(Itemas);
-            }
-
-            foreach (var ProductListItem in ProductListItems2)
-            {
-
-                var name = ProductListItem.Descendants("h2")
-                   .Where(node => node.GetAttributeValue("class", "")
-                   .Equals("product-name")).FirstOrDefault().InnerText.Trim();
-
-                var price = ProductListItem.Descendants("span")
-                   .Where(node => node.GetAttributeValue("class", "")
-                   .Equals("price")).FirstOrDefault().InnerText.Trim();
-
-                var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
-
-                var Itemas = new Item { Seller = "Elektromarkt", Name = name, Price = price, Link = link };
-
-                prices.Add(Itemas);
-            }
-            List<Item> SortedPricesList = prices.OrderBy(o => o.Price).ToList();
-            foreach (Item item in SortedPricesList)
-            {
-                dataGridas.Items.Add(item);
-            }
+            return ProductListItems2;
         }
+
+        public static string pasalinimasEuroSimbol(string priceAtsarg)
+        {
+            var charsToRemove = new string[] { "€" };
+            foreach (var c in charsToRemove)
+            {
+                priceAtsarg = priceAtsarg.Replace(c, string.Empty);
+            }
+
+            return priceAtsarg;
+        }
+
+        public static string pasalinimasTrikdanciuSimboliu(string price)
+        {
+            int index = price.IndexOf("\n");
+            if (index > 0)
+            {
+                price = price.Substring(0, index);
+            }
+
+            var charsToChange = new string[] { "." };
+            foreach (var c in charsToChange)
+            {
+                price = price.Replace(c, ",");
+            }
+            return price;
+        }
+
+        public static string pasalinimasTarpu(string price)
+        {
+            var charsToRemove = new string[] { " " };
+            foreach (var c in charsToRemove)
+            {
+                price = price.Replace(c, string.Empty);
+            }
+            return price;
+        }
+        
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
