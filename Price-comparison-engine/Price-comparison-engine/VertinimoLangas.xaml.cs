@@ -22,42 +22,63 @@ namespace Price_comparison_engine
         public VertinimoLangas()
         {
             InitializeComponent();
+            elektromarktIv.Text = "Įvertinimo dar nėra";
+            avitelaIv.Text = "Įvertinimo dar nėra";
         }
 
-        private void Vertinti_mygtukas(object sender, RoutedEventArgs e)
-        {
+        private static double avitela = 0;
+        private static int avitelaBalsavusiuSk = 1;
 
+        private static double elektromarkt = 0;
+        private static int elektromarktBalsavusiuSk = 1;
+        private void Vertinti_avitela(object sender, RoutedEventArgs e)
+        {
+            var calc = avitela / (3 * avitelaBalsavusiuSk);
+
+            avitelaIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+            avitelaBalsavusiuSk++;
+            avitelaApt.SelectedIndex = -1;
+            avitelaKok.SelectedIndex = -1;
+            avitelaPris.SelectedIndex = -1;
+        }
+        private void Vertinti_elektromarkt(object sender, RoutedEventArgs e)
+        {
+            var calc = elektromarkt / (3 * elektromarktBalsavusiuSk);
+            elektromarktIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+            elektromarktBalsavusiuSk++;
+            elektroApt.SelectedIndex = -1;
+            elektroKok.SelectedIndex = -1;
+            elektroPris.SelectedIndex = -1;
         }
 
         private void Avitela_Aptarnavimas(object sender, SelectionChangedEventArgs e)
         {
-            var item = avitelaApt.SelectedValue;
-            Console.WriteLine(item.ToString());
+            avitela += avitelaApt.SelectedIndex +1;
         }
 
         private void Avitela_Kokybe(object sender, SelectionChangedEventArgs e)
         {
-
+            avitela += avitelaApt.SelectedIndex + 1;
         }
 
         private void Avitela_Pristatymas(object sender, SelectionChangedEventArgs e)
         {
-
+            avitela += avitelaApt.SelectedIndex + 1;
         }
 
         private void Elektromarkt_Aptarnavimas(object sender, SelectionChangedEventArgs e)
         {
-
+            elektromarkt += avitelaApt.SelectedIndex + 1;
         }
 
         private void Elektromarkt_Kokybe(object sender, SelectionChangedEventArgs e)
         {
-
+            elektromarkt += avitelaApt.SelectedIndex + 1;
         }
 
         private void Elektromarkt_Pristatymas(object sender, SelectionChangedEventArgs e)
         {
-
+            elektromarkt += avitelaApt.SelectedIndex + 1;
         }
     }
 }

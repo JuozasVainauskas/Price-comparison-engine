@@ -63,11 +63,11 @@
         <Button Content="Vertinti" HorizontalAlignment="Left" Margin="99,326,0,0" VerticalAlignment="Top" Width="177" Height="39"
             Background="#FF015DFF"
             Foreground="white"
-            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti_mygtukas"/>
+            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti_avitela"/>
         <Button Content="Vertinti" HorizontalAlignment="Left" Margin="506,326,0,0" VerticalAlignment="Top" Width="177" Height="39"
             Background="#FF015DFF"
             Foreground="white"
-            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti_mygtukas"/>
+            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti_elektromarkt"/>
         <Image HorizontalAlignment="Left" Height="100" Margin="138,28,0,0" VerticalAlignment="Top" Width="103" Source="avitela.png"/>
         <Image HorizontalAlignment="Left" Height="152" Margin="506,10,0,0" VerticalAlignment="Top" Width="185" Source="elektromarkt.png"/>
         <TextBlock HorizontalAlignment="Left" Margin="112,177,0,0" TextWrapping="Wrap" Text="Aptarnavimas" VerticalAlignment="Top"/>
@@ -118,6 +118,8 @@
             <ComboBoxItem>4</ComboBoxItem>
             <ComboBoxItem>5</ComboBoxItem>
         </ComboBox>
+        <TextBlock x:Name="avitelaIv" HorizontalAlignment="Left" Margin="164,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBlock x:Name="elektromarktIv" HorizontalAlignment="Left" Margin="571,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
