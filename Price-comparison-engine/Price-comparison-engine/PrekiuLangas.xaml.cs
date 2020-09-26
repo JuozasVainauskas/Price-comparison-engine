@@ -56,7 +56,7 @@ namespace Price_comparison_engine
             var html = await httpClient.GetStringAsync(url);
             var htmlDocument = new HtmlDocument();
             htmlDocument.LoadHtml(html);
-            var ProductListItems=ggg(htmlDocument);
+            var ProductListItems = ggg(htmlDocument);
 
             Regex regEx = new Regex(" ");
             var urlgalas = regEx.Replace(MainWindow.zodis, "+");
@@ -67,10 +67,11 @@ namespace Price_comparison_engine
             htmlDocument2.LoadHtml(html2);
             var ProductListItems2 = ggg2(htmlDocument2);
 
-
+            if (ProductListItems != null)
+            {
                 foreach (var ProductListItem in ProductListItems)
                 {
-                
+
                     var price = ProductListItem.Descendants("div")
                        .Where(node => node.GetAttributeValue("class", "")
                             .Equals("price")).FirstOrDefault().InnerText.Trim();
@@ -81,14 +82,24 @@ namespace Price_comparison_engine
 
                     var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
-                    price=pasalinimasTrikdanciuSimboliu(price);
+                    price = pasalinimasTrikdanciuSimboliu(price);
                     var priceAtsarg = price;
-                    priceAtsarg=pasalinimasEuroSimbol(priceAtsarg);
+                    priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
                     double pricea = Convert.ToDouble(priceAtsarg);
-                    var Itemas = new Item { Seller = "Avitela", Name = name, Pricea = pricea, Price=price, Link = link };
+                    var Itemas = new Item { Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
                     prices.Add(Itemas);
-                }
 
+
+                }
+            }
+            else
+            {
+                var Itemas = new Item { Seller = "Avitela", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(Itemas);
+            }
+
+            if (ProductListItems2 != null)
+            {
                 foreach (var ProductListItem in ProductListItems2)
                 {
 
@@ -102,67 +113,91 @@ namespace Price_comparison_engine
 
                     var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
-                string imgLink = ProductListItem.Descendants("img").FirstOrDefault().GetAttributeValue("src", "");
-                
-                /*
-                BitmapImage bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                
-                bitmap.UriSource = new Uri(imgLink, UriKind.Absolute);
-                bitmap.EndInit();
-                Image a = new Image();
-                a.Source = bitmap;
-                */
-                
-                var imgUrl = new Uri(imgLink);
-                var imageData = new System.Net.WebClient().DownloadData(imgUrl);
+                    string imgLink = ProductListItem.Descendants("img").FirstOrDefault().GetAttributeValue("src", "");
 
-                var bitmapImage = new BitmapImage { CacheOption = BitmapCacheOption.OnLoad };
-                bitmapImage.BeginInit();
-                bitmapImage.StreamSource = new System.IO.MemoryStream(imageData);
-                bitmapImage.EndInit();
+                    /*
+                    BitmapImage bitmap = new BitmapImage();
+                    bitmap.BeginInit();
 
-                price =pasalinimasTarpu(price);
+                    bitmap.UriSource = new Uri(imgLink, UriKind.Absolute);
+                    bitmap.EndInit();
+                    Image a = new Image();
+                    a.Source = bitmap;
+                    */
+
+                    var imgUrl = new Uri(imgLink);
+                    var imageData = new System.Net.WebClient().DownloadData(imgUrl);
+
+                    var bitmapImage = new BitmapImage { CacheOption = BitmapCacheOption.OnLoad };
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = new System.IO.MemoryStream(imageData);
+                    bitmapImage.EndInit();
+
+                    price = pasalinimasTarpu(price);
                     var priceAtsarg = price;
                     priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
 
                     double pricea = Double.Parse(priceAtsarg);
-                var Itemas = new Item { nuotrauka = bitmapImage, Seller = "Elektromarkt", Name = name, Pricea = pricea,Price=price, Link = link };
+                    var Itemas = new Item { nuotrauka = bitmapImage, Seller = "Elektromarkt", Name = name, Pricea = pricea, Price = price, Link = link };
                     prices.Add(Itemas);
+
                 }
+
+            }
+            else
+            {
+                var Itemas = new Item { Seller = "Elektromarkt", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(Itemas);
+            }
+
             List<Item> SortedPricesList = prices.OrderBy(o => o.Pricea).ToList();
-                foreach (Item item in SortedPricesList)
-                {
-                    dataGridas.Items.Add(item);
-                }
+            foreach (Item item in SortedPricesList)
+            {
+                dataGridas.Items.Add(item);
+            }
+            prices.Clear();
+
         }
-        
+
         private static List<HtmlNode> ggg(HtmlDocument htmlDocument)
         {
-
-            var ProductsHtml = htmlDocument.DocumentNode.Descendants("div")
+            try
+            {
+                var ProductsHtml = htmlDocument.DocumentNode.Descendants("div")
                 .Where(node => node.GetAttributeValue("class", "")
                 .Equals("product-grid active")).ToList();
 
-            var ProductListItems = ProductsHtml[0].Descendants("div")
-                .Where(node => node.GetAttributeValue("class", "")
-                .Contains("col-6 col-md-4 col-lg-4")).ToList();
+                var ProductListItems = ProductsHtml[0].Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                    .Contains("col-6 col-md-4 col-lg-4")).ToList();
 
-            return ProductListItems;
+                return ProductListItems;
+            }
+            catch
+            {
+                return null;
+            }
         }
-        
+
         private static List<HtmlNode> ggg2(HtmlDocument htmlDocument2)
         {
 
-            var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
+            try
+            {
+                var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
                .Where(node => node.GetAttributeValue("class", "")
                .Equals("manafilters-category-products category-products")).ToList();
 
-            var ProductListItems2 = ProductsHtml2[0].Descendants("li")
-                .Where(node => node.GetAttributeValue("class", "")
-                .Contains("item js-ua-item")).ToList();
+                var ProductListItems2 = ProductsHtml2[0].Descendants("li")
+                    .Where(node => node.GetAttributeValue("class", "")
+                    .Contains("item js-ua-item")).ToList();
 
-            return ProductListItems2;
+                return ProductListItems2;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         public static string pasalinimasEuroSimbol(string priceAtsarg)
@@ -201,7 +236,7 @@ namespace Price_comparison_engine
             }
             return price;
         }
-        
+
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -237,7 +272,10 @@ namespace Price_comparison_engine
         private void linkButton_Click(object sender, RoutedEventArgs e)
         {
             string link = (((Button)sender).DataContext as Item).Link;
-            System.Diagnostics.Process.Start(link);
+            if (link != null)
+            {
+                System.Diagnostics.Process.Start(link);
+            }
         }
     }
 }
