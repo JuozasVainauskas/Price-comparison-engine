@@ -6,7 +6,7 @@
 - Justas Vitkauskas
 ## About the project (first key tasks)
 **Front-End**
-- [x] Register/login forms -> *Adjust the database to allow remote logins*
+- [x] Register/login forms
 - [x] Search field
 - [x] FAQ
 - [x] Contacts
