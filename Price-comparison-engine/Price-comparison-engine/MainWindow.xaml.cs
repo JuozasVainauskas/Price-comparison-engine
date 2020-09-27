@@ -44,7 +44,6 @@ namespace Price_comparison_engine
             zodis = ieskojimoLaukas.Text;
             PrekiuLangas prekiųLangoAtidarymas = new PrekiuLangas();
             prekiųLangoAtidarymas.Show();
-            this.Close();
         }
 
         private void RegistruotisMygtukas_Click(object sender, RoutedEventArgs e)
