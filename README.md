@@ -10,14 +10,14 @@
 - [x] Search field
 - [x] FAQ
 - [x] Contacts
-- [ ] Review about the page -> *Might be added in the future*
+- [x] Review about the page
 - [ ] Comments under the products -> *Might be added in the future*
 - [ ] Stars/comments under the shops
-- [ ] Searched products' list/Interface
+- [x] Searched products' list/Interface
 - [x] Slideshow
 
 **Back-End**
-- [ ] Gather data from online shop websites
+- [x] Gather data from online shop websites
 - [ ] Store gathered data in the database
 - [ ] Compare the gathered data
 ## Initial goal <!-- this point here is temporarily -->
