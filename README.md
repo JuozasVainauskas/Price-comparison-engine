@@ -11,10 +11,10 @@
 - [x] FAQ
 - [x] Contacts
 - [x] Review about the page
-- [ ] Comments under the products -> *Might be added in the future*
-- [ ] Stars/comments under the shops
 - [x] Searched products' list/Interface
 - [x] Slideshow
+- [ ] Comments under the products -> *Might be added in the future*
+- [ ] Stars/comments under the shops
 
 **Back-End**
 - [x] Gather data from online shop websites
