@@ -13,7 +13,7 @@ namespace Price_comparison_engine.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202009281538387_SukurtiParduotuviuDuomenis"; }
+            get { return "202009281810476_SukurtiParduotuviuDuomenis"; }
         }
         
         string IMigrationMetadata.Source

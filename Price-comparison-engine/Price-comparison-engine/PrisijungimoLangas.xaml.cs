@@ -32,7 +32,7 @@ namespace Price_comparison_engine
 
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
-
+            string SlaptazodzioHash;
             //var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
