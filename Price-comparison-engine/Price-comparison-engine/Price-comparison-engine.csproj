@@ -85,9 +85,9 @@
     </ApplicationDefinition>
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
-    <Compile Include="Migrations\202009281055229_SukurtiNaudotojoDuomenis.cs" />
-    <Compile Include="Migrations\202009281055229_SukurtiNaudotojoDuomenis.designer.cs">
-      <DependentUpon>202009281055229_SukurtiNaudotojoDuomenis.cs</DependentUpon>
+    <Compile Include="Migrations\202009281147063_SukurtiNaudotojoDuomenis.cs" />
+    <Compile Include="Migrations\202009281147063_SukurtiNaudotojoDuomenis.designer.cs">
+      <DependentUpon>202009281147063_SukurtiNaudotojoDuomenis.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PrisijungimoLangas.xaml.cs">
@@ -166,8 +166,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202009281055229_SukurtiNaudotojoDuomenis.resx">
-      <DependentUpon>202009281055229_SukurtiNaudotojoDuomenis.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009281147063_SukurtiNaudotojoDuomenis.resx">
+      <DependentUpon>202009281147063_SukurtiNaudotojoDuomenis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -214,6 +214,15 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PCEDatabase.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PCEDatabase_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>PCEDatabase.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

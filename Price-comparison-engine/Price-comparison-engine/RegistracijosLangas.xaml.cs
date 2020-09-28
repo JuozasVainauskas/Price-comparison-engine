@@ -43,7 +43,7 @@ namespace Price_comparison_engine
             else
             {
                 //var sqlRegistruotis = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
-                var sqlRegistruotis = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=True;Connect Timeout=30");
+                var sqlRegistruotis = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
                 var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM NaudotojoDuomenys WHERE Email='" + Email.Text.Trim() + "'", sqlRegistruotis);
                 var duomenuLentele = new DataTable();
                 duomenuAdapteris.Fill(duomenuLentele);
