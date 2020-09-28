@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,9 +34,23 @@ namespace Price_comparison_engine
 
         private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
         {
+            String salt = GeneruotiHash.SukurtiSalt(10);
+            String slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+            
+            var pattern1 = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
+            var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
+            
             if (Email.Text == "" || Slaptazodis.Password == "" || SlaptazodisPatvirtinti.Password == "")
             {
                 MessageBox.Show("Prašome užpildyti visus laukus.");
+            }
+            else if (!pattern2.IsMatch(Email.Text))
+            {
+                MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
+            }
+            else if (!pattern1.IsMatch(Slaptazodis.Password))
+            {
+                MessageBox.Show("Slaptažodyje turi būti bent trys raidės ir vienas skaičius!!!");
             }
             else if (Slaptazodis.Password != SlaptazodisPatvirtinti.Password)
             {
@@ -63,8 +79,8 @@ namespace Price_comparison_engine
                         var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
                         sqlKomanda.CommandType = CommandType.Text;
                         sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
-                        sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", Slaptazodis.Password.Trim());
-                        sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", Slaptazodis.Password.Trim());
+                        sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
+                        sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
                         sqlKomanda.ExecuteNonQuery();
 
                         var mainwindowlogedin = new MainWindowLogedIn();

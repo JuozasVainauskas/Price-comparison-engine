@@ -83,11 +83,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Klases\AvitelaDuomenys.cs" />
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
+    <Compile Include="Klases\ElektromarktDuomenys.cs" />
+    <Compile Include="Klases\GeneruotiHash.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
-    <Compile Include="Migrations\202009281147063_SukurtiNaudotojoDuomenis.cs" />
-    <Compile Include="Migrations\202009281147063_SukurtiNaudotojoDuomenis.designer.cs">
-      <DependentUpon>202009281147063_SukurtiNaudotojoDuomenis.cs</DependentUpon>
+    <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.cs" />
+    <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.designer.cs">
+      <DependentUpon>202009281809480_SukurtiNaudotojoDuomenis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009281810476_SukurtiParduotuviuDuomenis.cs" />
+    <Compile Include="Migrations\202009281810476_SukurtiParduotuviuDuomenis.designer.cs">
+      <DependentUpon>202009281810476_SukurtiParduotuviuDuomenis.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PrisijungimoLangas.xaml.cs">
@@ -166,8 +173,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202009281147063_SukurtiNaudotojoDuomenis.resx">
-      <DependentUpon>202009281147063_SukurtiNaudotojoDuomenis.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.resx">
+      <DependentUpon>202009281809480_SukurtiNaudotojoDuomenis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009281810476_SukurtiParduotuviuDuomenis.resx">
+      <DependentUpon>202009281810476_SukurtiParduotuviuDuomenis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -217,11 +227,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PCEDatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="PCEDatabase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>PCEDatabase.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
