@@ -210,10 +210,12 @@ namespace Price_comparison_engine
 
                     var link = "https://pigu.lt/"+ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
-                    price = pasalinimasTarpu(price);
+                    price = pasalinimasTarpuPigu(price);
                     var priceAtsarg = price;
+                    price = pasalinimasEuroSimbol(price);
+                    price = price + "€";
                     priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
-
+                    
                     double pricea = Convert.ToDouble(priceAtsarg);
                     var Itemas = new Item { Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
                     prices.Add(Itemas);
@@ -308,6 +310,16 @@ namespace Price_comparison_engine
         private static string pasalinimasTarpu(string price)
         {
             var charsToRemove = new string[] { " " };
+            foreach (var c in charsToRemove)
+            {
+                price = price.Replace(c, string.Empty);
+            }
+            return price;
+        }
+
+        private static string pasalinimasTarpuPigu(string price)
+        {
+            var charsToRemove = new string[] { " " };
             foreach (var c in charsToRemove)
             {
                 price = price.Replace(c, string.Empty);
