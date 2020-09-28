@@ -41,11 +41,11 @@ namespace Price_comparison_engine
                 {
                     sqlPrisijungti.Open();
                 }
-                var eile = "SELECT COUNT(1) FROM DuomenuStrukturos WHERE NaudotojoEmail=@Email AND NaudotojoSlaptazodis=@Slaptazodis";
+                var eile = "SELECT COUNT(1) FROM NaudotojoDuomenys WHERE Email=@Email AND SlaptazodzioHash=@SlaptazodzioHash";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
-                sqlKomanda.Parameters.AddWithValue("@Slaptazodis", Slaptazodis.Password);
+                sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", Slaptazodis.Password); //SlaptazodzioHash with salt
                 int kiekis = Convert.ToInt32(sqlKomanda.ExecuteScalar());
                 if (kiekis == 1)
                 {
