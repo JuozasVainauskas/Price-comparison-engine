@@ -32,30 +32,14 @@ namespace Price_comparison_engine
             this.pagrindinisLangas = pagrindinisLangas;
         }
 
-        private String SukurtiSalt(int dydis)
-        {
-            var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
-            var buferis = new byte[dydis];
-            rng.GetBytes(buferis);
-            return Convert.ToBase64String(buferis);
-        }
-
-        private String GenerateSHA256Hash(String ivedimas, String salt)
-        {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(ivedimas + salt);
-            var sha256hashstring = new System.Security.Cryptography.SHA256Managed();
-            byte[] hash = sha256hashstring.ComputeHash(bytes);
-
-            return BitConverter.ToString(hash).Replace("-", string.Empty);
-        }
-
         private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
         {
-            String salt = SukurtiSalt(10);
-            String slaptazodzioHash = GenerateSHA256Hash(Slaptazodis.Password, salt);
+            String salt = GeneruotiHash.SukurtiSalt(10);
+            String slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
             
             var pattern1 = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
             var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
+            
             if (Email.Text == "" || Slaptazodis.Password == "" || SlaptazodisPatvirtinti.Password == "")
             {
                 MessageBox.Show("Prašome užpildyti visus laukus.");

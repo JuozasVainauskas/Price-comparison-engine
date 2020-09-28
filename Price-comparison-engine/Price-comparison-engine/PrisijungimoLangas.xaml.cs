@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Price_comparison_engine.Klases;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -32,7 +33,6 @@ namespace Price_comparison_engine
 
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
-            string SlaptazodzioHash;
             //var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
@@ -41,11 +41,29 @@ namespace Price_comparison_engine
                 {
                     sqlPrisijungti.Open();
                 }
-                var eile = "SELECT COUNT(1) FROM NaudotojoDuomenys WHERE Email=@Email AND SlaptazodzioHash=@SlaptazodzioHash";
+                var eile = "SELECT SlaptazodzioSalt FROM NaudotojoDuomenys WHERE Email=@Email";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
-                sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", Slaptazodis.Password); //SlaptazodzioHash with salt
+
+                string salt = "";
+                string slaptazodzioHash;
+
+                using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
+                {
+                    if (skaityti.Read())
+                    {
+                        salt = skaityti["SlaptazodzioSalt"].ToString();
+                    }
+                }
+
+                slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+                
+                eile = "SELECT COUNT(1) FROM NaudotojoDuomenys WHERE Email=@Email AND SlaptazodzioHash=@SlaptazodzioHash";
+                sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
+                sqlKomanda.CommandType = CommandType.Text;
+                sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
+                sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash); //SlaptazodzioHash with salt
                 int kiekis = Convert.ToInt32(sqlKomanda.ExecuteScalar());
                 if (kiekis == 1)
                 {

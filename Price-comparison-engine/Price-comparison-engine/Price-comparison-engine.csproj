@@ -86,6 +86,7 @@
     <Compile Include="Klases\AvitelaDuomenys.cs" />
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
     <Compile Include="Klases\ElektromarktDuomenys.cs" />
+    <Compile Include="Klases\GeneruotiHash.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
     <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.cs" />
     <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.designer.cs">
