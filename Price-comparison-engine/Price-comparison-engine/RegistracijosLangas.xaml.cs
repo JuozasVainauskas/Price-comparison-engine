@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,6 +33,8 @@ namespace Price_comparison_engine
 
         private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
         {
+            var pattern1 = new Regex(@"((\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
+            var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
             if (Email.Text == "" || Slaptazodis.Password == "" || SlaptazodisPatvirtinti.Password == "")
             {
                 MessageBox.Show("Prašome užpildyti visus laukus.");
@@ -39,6 +42,10 @@ namespace Price_comparison_engine
             else if (Slaptazodis.Password != SlaptazodisPatvirtinti.Password)
             {
                 MessageBox.Show("Slaptažodžiai nesutampa.");
+            }
+            else if (!pattern2.IsMatch(Email.Text))
+            {
+                MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius ir trys raidės,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
             }
             else
             {
