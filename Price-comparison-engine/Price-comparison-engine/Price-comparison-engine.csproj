@@ -226,10 +226,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PCEDatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="PCEDatabase_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>PCEDatabase.mdf</DependentUpon>
     </Content>
   </ItemGroup>
