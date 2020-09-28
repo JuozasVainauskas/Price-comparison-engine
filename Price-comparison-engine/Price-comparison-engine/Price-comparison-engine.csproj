@@ -83,11 +83,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Klases\AvitelaDuomenys.cs" />
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
+    <Compile Include="Klases\ElektromarktDuomenys.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
     <Compile Include="Migrations\202009281147063_SukurtiNaudotojoDuomenis.cs" />
     <Compile Include="Migrations\202009281147063_SukurtiNaudotojoDuomenis.designer.cs">
       <DependentUpon>202009281147063_SukurtiNaudotojoDuomenis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009281538387_SukurtiParduotuviuDuomenis.cs" />
+    <Compile Include="Migrations\202009281538387_SukurtiParduotuviuDuomenis.designer.cs">
+      <DependentUpon>202009281538387_SukurtiParduotuviuDuomenis.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PrisijungimoLangas.xaml.cs">
@@ -168,6 +174,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202009281147063_SukurtiNaudotojoDuomenis.resx">
       <DependentUpon>202009281147063_SukurtiNaudotojoDuomenis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009281538387_SukurtiParduotuviuDuomenis.resx">
+      <DependentUpon>202009281538387_SukurtiParduotuviuDuomenis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

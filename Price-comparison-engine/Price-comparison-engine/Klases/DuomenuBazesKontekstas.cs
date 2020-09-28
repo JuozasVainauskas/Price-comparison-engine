@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,5 +12,7 @@ namespace Price_comparison_engine.Klases
     public class DuomenuBazesKontekstas : DbContext
     {
         public DbSet<NaudotojoDuomenys> NaudotojoDuomenys { get; set; }
+        public DbSet<AvitelaDuomenys> AvitelaDuomenys { get; set; }
+        public DbSet<ElektromarktDuomenys> ElektromarktDuomenys { get; set; }
     }
 }
