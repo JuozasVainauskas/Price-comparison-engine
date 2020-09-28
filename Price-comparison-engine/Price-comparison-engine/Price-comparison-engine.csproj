@@ -84,10 +84,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
-    <Compile Include="Klases\DuomenuStruktura.cs" />
-    <Compile Include="Migrations\202009251037472_SukurtiDuomenuStruktura.cs" />
-    <Compile Include="Migrations\202009251037472_SukurtiDuomenuStruktura.designer.cs">
-      <DependentUpon>202009251037472_SukurtiDuomenuStruktura.cs</DependentUpon>
+    <Compile Include="Klases\NaudotojoDuomenys.cs" />
+    <Compile Include="Migrations\202009281055229_SukurtiNaudotojoDuomenis.cs" />
+    <Compile Include="Migrations\202009281055229_SukurtiNaudotojoDuomenis.designer.cs">
+      <DependentUpon>202009281055229_SukurtiNaudotojoDuomenis.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PrisijungimoLangas.xaml.cs">
@@ -166,8 +166,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202009251037472_SukurtiDuomenuStruktura.resx">
-      <DependentUpon>202009251037472_SukurtiDuomenuStruktura.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009281055229_SukurtiNaudotojoDuomenis.resx">
+      <DependentUpon>202009281055229_SukurtiNaudotojoDuomenis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
