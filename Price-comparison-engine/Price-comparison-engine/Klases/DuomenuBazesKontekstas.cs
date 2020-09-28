@@ -9,6 +9,6 @@ namespace Price_comparison_engine.Klases
 {
     public class DuomenuBazesKontekstas : DbContext
     {
-        public DbSet<DuomenuStruktura> DuomenuStrukturos { get; set; }
+        public DbSet<NaudotojoDuomenys> NaudotojoDuomenys { get; set; }
     }
 }
