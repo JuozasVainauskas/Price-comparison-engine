@@ -48,15 +48,16 @@ namespace Price_comparison_engine
 
         private static async void getHtmlAssync(DataGrid dataGridas)
         {
-
-            var prices = new List<Item>();
-            var avitelosDaiktai = avitelosPaieska(await avitelosHtmlPaemimas());
-            var elektromarktDaiktai = elektromarktPaieska(await elektromarktHtmlPaemimas());
-
-            surasymasIsAvitelos(avitelosDaiktai, prices);
-            surasymasIsElektromarkt(elektromarktDaiktai,prices);
-
-            surikiavimasIrSurasymas(prices, dataGridas);
+            
+                var prices = new List<Item>(); 
+                var piguDaiktai = piguPaieska(await piguHtmlPaemimas());
+                var avitelosDaiktai = avitelosPaieska(await avitelosHtmlPaemimas());
+                var elektromarktDaiktai = elektromarktPaieska(await elektromarktHtmlPaemimas());
+                surasymasIsAvitelos(avitelosDaiktai, prices);
+                surasymasIsElektromarkt(elektromarktDaiktai, prices);
+                surasymasIsPigu(piguDaiktai, prices);
+                surikiavimasIrSurasymas(prices, dataGridas);
+            
         }
 
         private static async Task<HtmlDocument> avitelosHtmlPaemimas()
@@ -80,6 +81,26 @@ namespace Price_comparison_engine
             htmlDocument2.LoadHtml(html2);
             return htmlDocument2;
         }
+        
+        private static async Task<HtmlDocument> piguHtmlPaemimas()
+        {
+            try
+            {
+                Regex regEx = new Regex(" ");
+                var urlgalas = regEx.Replace(MainWindow.zodis, "+");
+                var url2 = "https://pigu.lt/lt/search?q=" + urlgalas;
+                var httpClient2 = new HttpClient();
+                var html2 = await httpClient2.GetStringAsync(url2);
+                var htmlDocument2 = new HtmlDocument();
+                htmlDocument2.LoadHtml(html2);
+                return htmlDocument2;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         private static List<HtmlNode> avitelosPaieska(HtmlDocument htmlDocument)
         {
             try
@@ -121,6 +142,26 @@ namespace Price_comparison_engine
             }
         }
 
+        private static List<HtmlNode> piguPaieska(HtmlDocument htmlDocument2)
+        {
+
+            try
+            {
+                var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
+               .Where(node => node.GetAttributeValue("class", "")
+               .Equals("main-block fr")).ToList();
+
+                var ProductListItems2 = ProductsHtml2[0].Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                    .Contains("product-list-item")).ToList();
+
+                return ProductListItems2;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         private static void surasymasIsAvitelos(List<HtmlNode> ProductListItems, List<Item> prices)
         {
             if (ProductListItems != null)
@@ -152,7 +193,38 @@ namespace Price_comparison_engine
                 prices.Add(Itemas);
             }
         }
+        private static void surasymasIsPigu(List<HtmlNode> ProductListItems, List<Item> prices)
+        {
+            if (ProductListItems != null)
+            {
+                foreach (var ProductListItem in ProductListItems)
+                {
 
+                    var price = ProductListItem.Descendants("span")
+                       .Where(node => node.GetAttributeValue("class", "")
+                            .Equals("price notranslate")).FirstOrDefault().InnerText.Trim();
+
+                    var name = ProductListItem.Descendants("p")
+                       .Where(node => node.GetAttributeValue("class", "")
+                             .Equals("product-name")).FirstOrDefault().InnerText.Trim();
+
+                    var link = "https://pigu.lt/"+ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+
+                    price = pasalinimasTarpu(price);
+                    var priceAtsarg = price;
+                    priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
+
+                    double pricea = Convert.ToDouble(priceAtsarg);
+                    var Itemas = new Item { Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
+                    prices.Add(Itemas);
+                }
+            }
+            else
+            {
+                var Itemas = new Item { Seller = "Pigu", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(Itemas);
+            }
+        }
         private static void surasymasIsElektromarkt(List<HtmlNode> ProductListItems2, List<Item> prices)
         {
             if (ProductListItems2 != null)
