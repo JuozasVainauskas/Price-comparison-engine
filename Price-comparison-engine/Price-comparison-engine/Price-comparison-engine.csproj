@@ -88,6 +88,7 @@
     <Compile Include="Klases\ElektromarktDuomenys.cs" />
     <Compile Include="Klases\GeneruotiHash.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
+    <Compile Include="Klases\SiustiEmail.cs" />
     <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.cs" />
     <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.designer.cs">
       <DependentUpon>202009281809480_SukurtiNaudotojoDuomenis.cs</DependentUpon>
@@ -97,6 +98,9 @@
       <DependentUpon>202009281810476_SukurtiParduotuviuDuomenis.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PatvirtinimoLangas.xaml.cs">
+      <DependentUpon>PatvirtinimoLangas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PrisijungimoLangas.xaml.cs">
       <DependentUpon>PrisijungimoLangas.xaml</DependentUpon>
     </Compile>
@@ -135,6 +139,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PatvirtinimoLangas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PrekiuLangas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

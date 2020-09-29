@@ -9,7 +9,7 @@
 - [x] Register/login forms
 - [x] Search field
 - [x] FAQ
-- [x] Contacts
+- [x] Contacts -> *Needs an update*
 - [x] Review about the page
 - [x] Searched products' list/Interface
 - [x] Slideshow

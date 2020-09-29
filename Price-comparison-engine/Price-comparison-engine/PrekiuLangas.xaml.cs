@@ -224,7 +224,7 @@ namespace Price_comparison_engine
                     price = pasalinimasEuroSimbol(price);
                     price = price + "€";
                     priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
-                    
+
                     double pricea = Convert.ToDouble(priceAtsarg);
                     var Itemas = new Item { Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
                     prices.Add(Itemas);
