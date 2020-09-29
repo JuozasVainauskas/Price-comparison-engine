@@ -68,6 +68,9 @@ namespace Price_comparison_engine
                     sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
                     sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
                     sqlKomanda.ExecuteNonQuery();
+
+                    MessageBox.Show("Slaptažodis pakeistas sėkmingai.");
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
