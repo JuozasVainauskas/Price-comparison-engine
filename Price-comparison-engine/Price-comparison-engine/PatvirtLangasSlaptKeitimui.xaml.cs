@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,26 +31,39 @@ namespace Price_comparison_engine
 
         private void SiustiMygtukas(object sender, RoutedEventArgs e)
         {
-            email = emailLangelis.Text;
-            kodas = GeneruotiHash.SukurtiSalt(16);
-            kodas = kodas.Remove(kodas.Length - 2);
+            var pattern = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
+            if (emailLangelis.Text == "")
+            {
+                MessageBox.Show("Prašome užpildyti laukelį.");
+            }
+            else if (!pattern.IsMatch(emailLangelis.Text))
+            {
+                MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri sutapti su jūsų naudojamu gmail,\nkitaip negalėsite gauti patvirtinimo kodo,\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
+            }
+            else
+            {
+                email = emailLangelis.Text;
+                kodas = GeneruotiHash.SukurtiSalt(16);
+                kodas = kodas.Remove(kodas.Length - 2);
 
-            new SiustiEmail(kodas, email);
+                new SiustiEmail(kodas, email);
 
-            emailLangelis.Visibility = Visibility.Collapsed;
-            pranesimas1.Visibility = Visibility.Collapsed;
-            siustiKodaMygtukas.Visibility = Visibility.Collapsed;
+                emailLangelis.Visibility = Visibility.Collapsed;
+                pranesimas1.Visibility = Visibility.Collapsed;
+                siustiKodaMygtukas.Visibility = Visibility.Collapsed;
 
-            patvirtinimoLangelis.Visibility = Visibility.Visible;
-            pranesimas2.Visibility = Visibility.Visible;
-            patvirtintiMygtukas.Visibility = Visibility.Visible;
+                patvirtinimoLangelis.Visibility = Visibility.Visible;
+                pranesimas2.Visibility = Visibility.Visible;
+                patvirtintiMygtukas.Visibility = Visibility.Visible;
+
+            }
         }
 
         private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
             if (kodas == patvirtinimoLangelis.Text)
             {
-                var slaptazodzioKeitimoLangas = new SlaptazodzioKeitimoLangas();
+                var slaptazodzioKeitimoLangas = new SlaptazodzioKeitimoLangas(email);
                 slaptazodzioKeitimoLangas.Show();
                 this.Close();
             }

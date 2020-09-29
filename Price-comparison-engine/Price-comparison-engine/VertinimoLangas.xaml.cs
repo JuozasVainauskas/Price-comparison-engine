@@ -150,7 +150,7 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var eile = "UPDATE ParduotuviuDuomenys SET BalsuSuma=@BalsuSuma, BalsavusiuSkaicius=@BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
+                var eile = "UPDATE ParduotuviuDuomenys SET BalsuSuma=@BalsuSuma, BalsavusiuSkaicius=@BalsavusiuSkaicius WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@BalsuSuma", balsuSuma);

@@ -94,9 +94,6 @@ namespace Price_comparison_engine
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    finally
-                    {
-                    }
                 }
             }
         }

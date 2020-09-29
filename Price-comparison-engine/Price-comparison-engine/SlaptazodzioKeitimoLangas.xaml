@@ -60,13 +60,15 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <TextBlock x:Name="pranesimas" HorizontalAlignment="Center" Margin="62,41,65,221" TextWrapping="Wrap" VerticalAlignment="Center" Height="109" Width="467" FontFamily="Cooper Black" FontSize="24" TextAlignment="Center"><Run Text="Patvirtinkite savo email įvesdami kodą"/><Run Text="."/><LineBreak/><Run Text="Kodą rasite savo email pašte."/></TextBlock>
-        <TextBox x:Name="PatvirtinimoLangelis" HorizontalAlignment="Left" Height="34" Margin="53,167,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="487" FontSize="20"/>
-        <TextBox x:Name="PatvirtinimoLangelis_Copy" HorizontalAlignment="Left" Height="34" Margin="53,219,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="487" FontSize="20"/>
-        <Button x:Name="Patvirtinti" Content="Patvirtinti savo email" HorizontalAlignment="Left" Margin="176,278,0,0" VerticalAlignment="Top" Width="222"
+        <TextBlock x:Name="pranesimas" HorizontalAlignment="Center" Margin="53,60,78,272" TextWrapping="Wrap" VerticalAlignment="Center" Height="39" Width="463" FontFamily="Cooper Black" FontSize="24" TextAlignment="Center" Text="Sukurkite savo naują slaptažodį."/>
+        <Button x:Name="pakeistiMygtukas" Content="Pakeisti slaptažodį" HorizontalAlignment="Left" Margin="200,252,0,0" VerticalAlignment="Top" Width="174"
             Background="#FF015DFF"
             Foreground="white"
-            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="PatvirtintiMygtukas" Height="57" RenderTransformOrigin="0.506,1.239"/>
+            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="PakeistiSlaptazodi" Height="51" RenderTransformOrigin="0.506,1.239"/>
+        <PasswordBox x:Name="slaptazodis" HorizontalAlignment="Left" Margin="65,134,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
+        <PasswordBox x:Name="slaptazodisPatvirtinti" HorizontalAlignment="Left" Margin="65,197,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
+        <TextBlock x:Name="pranesimas1" HorizontalAlignment="Center" Margin="78,105,162,236" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="30" Width="354"><Run Text=" "/><Run Text="Sla"/><Run Text="ptažodis"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="pranesimas2" HorizontalAlignment="Center" Margin="78,167,162,174" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="20" Height="30" Width="354"><Run Text=" "/><Run Text="Pakartotinai įveskite savo slaptažodį"/><Run Text=":"/></TextBlock>
 
     </Grid>
 </Window>

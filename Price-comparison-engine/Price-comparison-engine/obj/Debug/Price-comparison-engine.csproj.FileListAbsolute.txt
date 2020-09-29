@@ -131,3 +131,4 @@ C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PatvirtLangasSlaptKeitimui.baml
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\SlaptazodzioKeitimoLangas.baml
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiParduotuviuDuomenis1.resources
+C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csprojAssemblyReference.cache
