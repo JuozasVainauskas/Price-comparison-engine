@@ -12,7 +12,6 @@ namespace Price_comparison_engine.Klases
     public class DuomenuBazesKontekstas : DbContext
     {
         public DbSet<NaudotojoDuomenys> NaudotojoDuomenys { get; set; }
-        public DbSet<AvitelaDuomenys> AvitelaDuomenys { get; set; }
-        public DbSet<ElektromarktDuomenys> ElektromarktDuomenys { get; set; }
+        public DbSet<ParduotuviuDuomenys> ParduotuviuDuomenys { get; set; }
     }
 }

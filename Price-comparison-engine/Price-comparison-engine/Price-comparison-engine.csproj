@@ -83,19 +83,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Klases\AvitelaDuomenys.cs" />
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
-    <Compile Include="Klases\ElektromarktDuomenys.cs" />
     <Compile Include="Klases\GeneruotiHash.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
+    <Compile Include="Klases\ParduotuviuDuomenys.cs" />
     <Compile Include="Klases\SiustiEmail.cs" />
     <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.cs" />
     <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.designer.cs">
       <DependentUpon>202009281809480_SukurtiNaudotojoDuomenis.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009281810476_SukurtiParduotuviuDuomenis.cs" />
-    <Compile Include="Migrations\202009281810476_SukurtiParduotuviuDuomenis.designer.cs">
-      <DependentUpon>202009281810476_SukurtiParduotuviuDuomenis.cs</DependentUpon>
+    <Compile Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.cs" />
+    <Compile Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.designer.cs">
+      <DependentUpon>202009290826175_SukurtiParduotuviuDuomenis.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatvirtinimoLangas.xaml.cs">
@@ -184,8 +183,8 @@
     <EmbeddedResource Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.resx">
       <DependentUpon>202009281809480_SukurtiNaudotojoDuomenis.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009281810476_SukurtiParduotuviuDuomenis.resx">
-      <DependentUpon>202009281810476_SukurtiParduotuviuDuomenis.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.resx">
+      <DependentUpon>202009290826175_SukurtiParduotuviuDuomenis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
