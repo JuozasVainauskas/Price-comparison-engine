@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.ComponentModel;
+using System.Linq.Expressions;
 
 namespace Price_comparison_engine.Klases
 {
@@ -14,7 +15,6 @@ namespace Price_comparison_engine.Klases
     {
         public SiustiEmail(String kodas, String email)
         {
-            kodas = "asdkhaksdhjasdhjkhkjashdkhaskjhdkjakjsdhjkadskjdh";
             SmtpClient Client = new SmtpClient()
             {
                 Host = "smtp.gmail.com",
@@ -33,9 +33,10 @@ namespace Price_comparison_engine.Klases
             Console.WriteLine(email);
             MailMessage Laiskas = new MailMessage()
             {
+                IsBodyHtml = true,
                 From = FromEmail,
                 Subject = "Email patvirtinimas",
-                Body = "Sveiki,\nkad patvirtintumėte, jog tai yra jūsų email adresas, prašome įvesti šį kodą:\n\n" + kodas + "\n\nPasirašo,\nSmart Shop komanda."
+                Body = "Sveiki,<br>kad patvirtintumėte, jog tai yra jūsų email adresas, prašome įvesti šį kodą:<br><br><b>" + kodas + "</b><br><br><img src=\"https://i.pinimg.com/originals/d4/2a/8c/d42a8c4e83f0fb3750af810be2abbb23.png\" alt =\"SmartShop\" width=\"50\" height=\"50\"><br><i>Pasirašo,<br>Smart Shop komanda.</i>"
             };
             Laiskas.To.Add(ToEmail);
             Client.SendCompleted += ClientSendCompleted;
