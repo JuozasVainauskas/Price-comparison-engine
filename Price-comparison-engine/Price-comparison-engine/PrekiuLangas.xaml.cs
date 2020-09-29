@@ -49,22 +49,13 @@ namespace Price_comparison_engine
         private static async void getHtmlAssync(DataGrid dataGridas)
         {
 
-            var prices = new List<Item>();
-                if (MainWindow.zodis != "") 
-                { 
-                    var piguDaiktai = piguPaieska(await piguHtmlPaemimas());
-                    surasymasIsPigu(piguDaiktai, prices);
-                }
-                else
-                {
-                    var Itemas = new Item { Seller = "Pigu", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
-                    prices.Add(Itemas);
-                }
+                var prices = new List<Item>();
+                var piguDaiktai = piguPaieska(await piguHtmlPaemimas());
                 var avitelosDaiktai = avitelosPaieska(await avitelosHtmlPaemimas());
                 var elektromarktDaiktai = elektromarktPaieska(await elektromarktHtmlPaemimas());
                 surasymasIsAvitelos(avitelosDaiktai, prices);
                 surasymasIsElektromarkt(elektromarktDaiktai, prices);
-                
+                surasymasIsPigu(piguDaiktai, prices);
                 surikiavimasIrSurasymas(prices, dataGridas);
             
         }
