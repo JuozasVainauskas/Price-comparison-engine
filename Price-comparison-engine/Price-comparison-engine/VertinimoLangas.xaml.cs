@@ -46,31 +46,34 @@ namespace Price_comparison_engine
             }
         }
 
-        private static double avitela;
-        private static int avitelaBalsavusiuSk;
+        private static double avitela = 0;
+        private static int avitelaBalsavusiuSk = 0;
 
-        private static double elektromarkt;
-        private static int elektromarktBalsavusiuSk;
+        private static double elektromarkt = 0;
+        private static int elektromarktBalsavusiuSk = 0;
         private void Vertinti_avitela(object sender, RoutedEventArgs e)
         {
+            avitelaBalsavusiuSk++;
             var calc = avitela / (3 * avitelaBalsavusiuSk);
+            Rasyti("avitela", avitela, avitelaBalsavusiuSk);
 
             avitelaIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-            avitelaBalsavusiuSk++;
             avitelaApt.SelectedIndex = -1;
             avitelaKok.SelectedIndex = -1;
             avitelaPris.SelectedIndex = -1;
-            Rasyti("Avitela", calc, avitelaBalsavusiuSk);
+            
         }
         private void Vertinti_elektromarkt(object sender, RoutedEventArgs e)
         {
-            var calc = elektromarkt / (3 * elektromarktBalsavusiuSk);
-            elektromarktIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
             elektromarktBalsavusiuSk++;
+            var calc = elektromarkt / (3 * elektromarktBalsavusiuSk);
+            Rasyti("Elektromarkt", elektromarkt, elektromarktBalsavusiuSk);
+
+
+            elektromarktIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
             elektroApt.SelectedIndex = -1;
             elektroKok.SelectedIndex = -1;
             elektroPris.SelectedIndex = -1;
-            Rasyti("Elektromarkt", calc, elektromarktBalsavusiuSk);
         }
 
         private void Avitela_Aptarnavimas(object sender, SelectionChangedEventArgs e)
@@ -147,7 +150,7 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var eile = "UPDATE ParduotuviuDuomenys SET BalsuSkaicius=@BalsuSkaicius, BalsavusiuSkaicius=@BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
+                var eile = "UPDATE ParduotuviuDuomenys SET BalsuSuma=@BalsuSuma, BalsavusiuSkaicius=@BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@BalsuSuma", balsuSuma);

@@ -240,6 +240,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="avitela.png" />
+    <Resource Include="elektromarkt.png" />
     <Content Include="PCEDatabase.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
