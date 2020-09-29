@@ -48,7 +48,7 @@ namespace Price_comparison_engine
             {
                 if (kodas == PatvirtinimoLangelis.Text)
                 {
-                    //sqlKomanda.ExecuteNonQuery();
+                    sqlKomanda.ExecuteNonQuery();
 
                     pagrindinisLangas.Close();
                     registracijosLangas.Close();
