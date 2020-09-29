@@ -39,27 +39,38 @@ namespace Price_comparison_engine
 
         protected override void OnClosed(EventArgs e)
         {
-            MessageBox.Show("Nepavyko priregistruoti/prijungti (naujo) vartotojo.");
+            //MessageBox.Show("Nepavyko priregistruoti/prijungti (naujo) vartotojo.");
         }
 
         private void patvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            if (kodas == PatvirtinimoLangelis.Text)
+            try
             {
-                sqlKomanda.ExecuteNonQuery();
-                sqlRegistruotis.Close();
+                if (kodas == PatvirtinimoLangelis.Text)
+                {
+                    //sqlKomanda.ExecuteNonQuery();
 
-                pagrindinisLangas.Close();
-                registracijosLangas.Close();
-                MessageBox.Show("Sėkmingai prisiregistravote.");
-                this.Close();
+                    pagrindinisLangas.Close();
+                    registracijosLangas.Close();
+                    MessageBox.Show("Sėkmingai prisiregistravote.");
+                    this.Close();
 
-                MainWindowLogedIn mainwindowlogedin = new MainWindowLogedIn();
-                mainwindowlogedin.Show();
+                    MainWindowLoggedIn mainwindowloggedin = new MainWindowLoggedIn();
+                    mainwindowloggedin.Show();
+
+                }
+                else
+                {
+                    MessageBox.Show("Blogai įvestas kodas.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Blogai įvestas kodas.");
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlRegistruotis.Close();
             }
         }
     }

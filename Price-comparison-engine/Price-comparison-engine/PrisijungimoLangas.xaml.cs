@@ -69,7 +69,7 @@ namespace Price_comparison_engine
                 int kiekis = Convert.ToInt32(sqlKomanda.ExecuteScalar());
                 if (kiekis == 1)
                 {
-                    var mainwindowlogedin = new MainWindowLogedIn();
+                    var mainwindowlogedin = new MainWindowLoggedIn();
                     mainwindowlogedin.Show();
                     this.Close();
                     pagrindinisLangas.Close();
