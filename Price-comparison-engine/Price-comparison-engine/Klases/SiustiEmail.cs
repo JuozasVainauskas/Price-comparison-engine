@@ -29,13 +29,13 @@ namespace Price_comparison_engine.Klases
                 }
             };
             MailAddress FromEmail = new MailAddress("smartshopautobot@gmail.com", "Smart Shop");
-            MailAddress ToEmail = new MailAddress("ernestas20111@gmail.com", "Email patvirtinimas");
+            MailAddress ToEmail = new MailAddress("ernestas20111@gmail.com", "Naudotojas");//reiks pakeisti į email
             Console.WriteLine(email);
             MailMessage Laiskas = new MailMessage()
             {
                 From = FromEmail,
                 Subject = "Email patvirtinimas",
-                Body = "Sveiki,\nkad patvirtintumėte, jog tai yra jūsų email adresas, prašome įvesti šį kodą:\n" + kodas + "\nPasirašo,\nSmart Shop komanda."
+                Body = "Sveiki,\nkad patvirtintumėte, jog tai yra jūsų email adresas, prašome įvesti šį kodą:\n\n" + kodas + "\n\nPasirašo,\nSmart Shop komanda."
             };
             Laiskas.To.Add(ToEmail);
             Client.SendCompleted += ClientSendCompleted;

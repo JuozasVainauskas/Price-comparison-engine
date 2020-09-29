@@ -85,7 +85,7 @@ namespace Price_comparison_engine
                         sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
 
                         //this.Close();
-                        String kodas = GeneruotiHash.GenerateSHA256Hash(GeneruotiHash.SukurtiSalt(4), GeneruotiHash.SukurtiSalt(4));
+                        String kodas = GeneruotiHash.GenerateSHA256Hash(salt, GeneruotiHash.SukurtiSalt(4));
                         var patvirtinimoLangas = new PatvirtinimoLangas(pagrindinisLangas, this, sqlKomanda, kodas, Email.Text.Trim());
                         patvirtinimoLangas.Show();
 
