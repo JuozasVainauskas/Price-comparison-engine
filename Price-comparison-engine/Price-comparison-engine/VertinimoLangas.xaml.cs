@@ -55,7 +55,7 @@ namespace Price_comparison_engine
 
         private void Avitela_Aptarnavimas(object sender, SelectionChangedEventArgs e)
         {
-            avitela += avitelaApt.SelectedIndex +1;
+            avitela += avitelaApt.SelectedIndex + 1;
         }
 
         private void Avitela_Kokybe(object sender, SelectionChangedEventArgs e)
@@ -83,41 +83,64 @@ namespace Price_comparison_engine
             elektromarkt += avitelaApt.SelectedIndex + 1;
         }
 
-        private void Rasyti()
+        //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
+        private void Skaityti(string parduotuvesPavadinimas, ref int balsuSuma, ref int balsavusiuSkaicius)
         {
-            //Prisijungimas prie duomenu bazes
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-            //Tikrinam ar svaru
             try
             {
-                //Jei sql busena buvo uzdaryta, tai prisijungiam
                 if (sqlPrisijungti.State == ConnectionState.Closed)
                 {
                     sqlPrisijungti.Open();
                 }
-                //Query
+
                 var eile = "SELECT BalsuSkaicius, BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
-                sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", "Avitela");
+                sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
                 using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
                 {
                     if (skaityti.Read())
                     {
-                        kažkokiareiksme1 = skaityti["BalsuSuma"].ToString();
-                        kažkokiareiksme = skaityti["BalsavusiuSkaicius"].ToString();
+                        balsuSuma = Convert.ToInt32(skaityti["BalsuSuma"].ToString());
+                        balsavusiuSkaicius = Convert.ToInt32(skaityti["BalsavusiuSkaicius"].ToString());
                     }
                 }
-                sqlKomanda.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-                //Jei klaida, ismesti
                 MessageBox.Show(ex.Message);
             }
             finally
             {
-                //Atsijungti
+                sqlPrisijungti.Close();
+            }
+        }
+
+        private void Rasyti(string parduotuvesPavadinimas, int balsuSuma, int balsavusiuSkaicius)
+        {
+            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
+            try
+            {
+                if (sqlPrisijungti.State == ConnectionState.Closed)
+                {
+                    sqlPrisijungti.Open();
+                }
+
+                var eile = "UPDATE ParduotuviuDuomenys SET BalsuSkaicius=@BalsuSkaicius, BalsavusiuSkaicius=@BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
+                var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
+                sqlKomanda.CommandType = CommandType.Text;
+                sqlKomanda.Parameters.AddWithValue("@BalsuSkaicius", balsuSuma);
+                sqlKomanda.Parameters.AddWithValue("@BalsavusiuSkaicius", balsavusiuSkaicius);
+                sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
+                sqlKomanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
                 sqlPrisijungti.Close();
             }
         }
