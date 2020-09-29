@@ -83,27 +83,27 @@ namespace Price_comparison_engine
 
         private void Avitela_Kokybe(object sender, SelectionChangedEventArgs e)
         {
-            avitela += avitelaApt.SelectedIndex + 1;
+            avitela += avitelaKok.SelectedIndex + 1;
         }
 
         private void Avitela_Pristatymas(object sender, SelectionChangedEventArgs e)
         {
-            avitela += avitelaApt.SelectedIndex + 1;
+            avitela += avitelaPris.SelectedIndex + 1;
         }
 
         private void Elektromarkt_Aptarnavimas(object sender, SelectionChangedEventArgs e)
         {
-            elektromarkt += avitelaApt.SelectedIndex + 1;
+            elektromarkt += elektroApt.SelectedIndex + 1;
         }
 
         private void Elektromarkt_Kokybe(object sender, SelectionChangedEventArgs e)
         {
-            elektromarkt += avitelaApt.SelectedIndex + 1;
+            elektromarkt += elektroKok.SelectedIndex + 1;
         }
 
         private void Elektromarkt_Pristatymas(object sender, SelectionChangedEventArgs e)
         {
-            elektromarkt += avitelaApt.SelectedIndex + 1;
+            elektromarkt += elektroPris.SelectedIndex + 1;
         }
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
