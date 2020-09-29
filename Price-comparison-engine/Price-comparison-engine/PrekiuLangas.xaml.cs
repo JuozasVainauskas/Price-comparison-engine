@@ -109,15 +109,20 @@ namespace Price_comparison_engine
                 .Where(node => node.GetAttributeValue("class", "")
                 .Equals("product-grid active")).ToList();
 
+           /* catch()
+            {
+                return null;
+            }*/
+           
                 var ProductListItems = ProductsHtml[0].Descendants("div")
                     .Where(node => node.GetAttributeValue("class", "")
                     .Contains("col-6 col-md-4 col-lg-4")).ToList();
-
-                return ProductListItems;
-            }
+            return ProductListItems;
+           
+        }
             catch
             {
-                return null;
+               return null;
             }
         }
 
@@ -136,7 +141,7 @@ namespace Price_comparison_engine
 
                 return ProductListItems2;
             }
-            catch
+            catch 
             {
                 return null;
             }
@@ -145,22 +150,22 @@ namespace Price_comparison_engine
         private static List<HtmlNode> piguPaieska(HtmlDocument htmlDocument2)
         {
 
-            try
-            {
-                var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
-               .Where(node => node.GetAttributeValue("class", "")
-               .Equals("main-block fr")).ToList();
-
-                var ProductListItems2 = ProductsHtml2[0].Descendants("div")
+            
+                if (htmlDocument2 != null)
+                {
+                    var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
                     .Where(node => node.GetAttributeValue("class", "")
-                    .Contains("product-list-item")).ToList();
+                    .Equals("main-block fr")).ToList();
 
-                return ProductListItems2;
-            }
-            catch
-            {
-                return null;
-            }
+                    var ProductListItems2 = ProductsHtml2[0].Descendants("div")
+                        .Where(node => node.GetAttributeValue("class", "")
+                        .Contains("product-list-item")).ToList();
+
+                    return ProductListItems2;
+                }
+                else
+                    return null;
+          
         }
         private static void surasymasIsAvitelos(List<HtmlNode> ProductListItems, List<Item> prices)
         {
