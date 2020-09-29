@@ -10,16 +10,16 @@
 - [x] Search field
 - [x] FAQ
 - [x] Contacts -> *Needs an update*
-- [x] Review about the page
 - [x] Searched products' list/Interface
 - [x] Slideshow
+- [x] Stars/comments under the shops
 - [ ] Comments under the products -> *Might be added in the future*
-- [ ] Stars/comments under the shops
+- [ ] Review about the page -> *Will be added in the future*
 
 **Back-End**
 - [x] Gather data from online shop websites
 - [x] Store gathered data in the database
-- [ ] Compare the gathered data
+- [x] Compare the gathered data
 - [x] Password hashing/encryption
 - [x] Register and login forms' error catching
 - [x] Email confirm and password reset -> *Password reset - to be done*
