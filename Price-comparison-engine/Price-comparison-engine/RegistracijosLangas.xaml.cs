@@ -47,7 +47,7 @@ namespace Price_comparison_engine
             }
             else if (!pattern2.IsMatch(Email.Text))
             {
-                MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
+                MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri sutapti su jūsų naudojamu gmail,\nkitaip negalėsite patvirtinti registracijos,\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
             }
             else if (!pattern1.IsMatch(Slaptazodis.Password))
             {
