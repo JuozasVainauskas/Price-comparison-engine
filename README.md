@@ -12,16 +12,17 @@
 - [x] Contacts -> *Needs an update*
 - [x] Searched products' list/Interface
 - [x] Slideshow
-- [x] Stars/comments under the shops
+- [ ] Stars/comments under the shops
 - [ ] Comments under the products -> *Might be added in the future*
 - [ ] Review about the page -> *Will be added in the future*
 
 **Back-End**
 - [x] Gather data from online shop websites
-- [x] Store gathered data in the database
 - [x] Compare the gathered data
 - [x] Password hashing/encryption
 - [x] Register and login forms' error catching
 - [x] Email confirm and password reset -> *Password reset - to be done*
+- [ ] Store gathered data in the database
+- [ ] Slideshow
 ## Initial goal <!-- this point here is temporarily -->
 Create a program/website/app which takes the data of the prices from different shopping websites and provides a comparison in a visual manner
