@@ -37,12 +37,7 @@ namespace Price_comparison_engine
             this.kodas = kodas;
         }
 
-        protected override void OnClosed(EventArgs e)
-        {
-            //MessageBox.Show("Nepavyko priregistruoti/prijungti (naujo) vartotojo.");
-        }
-
-        private void patvirtintiMygtukas(object sender, RoutedEventArgs e)
+        private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -57,7 +52,6 @@ namespace Price_comparison_engine
                     var mainWindowLoggedIn = new MainWindowLoggedIn();
                     mainWindowLoggedIn.Show();
                     this.Close();
-
                 }
                 else
                 {
