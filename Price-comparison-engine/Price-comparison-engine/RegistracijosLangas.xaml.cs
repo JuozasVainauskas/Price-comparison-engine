@@ -1,5 +1,6 @@
 ﻿using Price_comparison_engine.Klases;
 using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -75,18 +76,25 @@ namespace Price_comparison_engine
                         {
                             sqlRegistruotis.Open();
                         }
+
                         var eile = "INSERT INTO NaudotojoDuomenys(Email, SlaptazodzioHash, SlaptazodzioSalt) VALUES (@Email, @SlaptazodzioHash, @SlaptazodzioSalt)";
                         var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
                         sqlKomanda.CommandType = CommandType.Text;
                         sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
                         sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
                         sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
-                        sqlKomanda.ExecuteNonQuery();
 
-                        var mainwindowlogedin = new MainWindowLogedIn();
-                        mainwindowlogedin.Show();
-                        this.Close();
-                        pagrindinisLangas.Close();
+                        //this.Close();
+                        String kodas = GeneruotiHash.GenerateSHA256Hash(GeneruotiHash.SukurtiSalt(4), GeneruotiHash.SukurtiSalt(4));
+                        var patvirtinimoLangas = new PatvirtinimoLangas(pagrindinisLangas, this, sqlKomanda, kodas);
+
+
+                        //sqlKomanda.ExecuteNonQuery();
+
+                    }
+                    catch (TaskCanceledException ex)
+                    {
+                        MessageBox.Show("Norint prisiregistruoti turite patvirtinti savo el. paštą.");
                     }
                     catch (Exception ex)
                     {

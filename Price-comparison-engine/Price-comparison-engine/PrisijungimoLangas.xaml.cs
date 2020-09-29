@@ -1,5 +1,7 @@
 ﻿using Price_comparison_engine.Klases;
 using System;
+using System.Net;
+using System.Net.Mail;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
