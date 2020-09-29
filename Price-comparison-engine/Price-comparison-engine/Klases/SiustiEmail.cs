@@ -13,7 +13,7 @@ namespace Price_comparison_engine.Klases
 {
     class SiustiEmail
     {
-        public SiustiEmail(String kodas, String email)
+        public SiustiEmail(string kodas, string email)
         {
             SmtpClient Client = new SmtpClient()
             {
