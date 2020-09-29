@@ -4,7 +4,7 @@
 - Ernestas Ščevinskas
 - Aivaras Rinkevičius
 - Justas Vitkauskas
-## About the project (first key tasks)
+## About the project (key tasks)
 **Front-End**
 - [x] Register/login forms
 - [x] Search field
