@@ -96,6 +96,10 @@
     <Compile Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.designer.cs">
       <DependentUpon>202009290826175_SukurtiParduotuviuDuomenis.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.cs" />
+    <Compile Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.designer.cs">
+      <DependentUpon>202009291048511_SukurtiParduotuviuDuomenis1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatvirtinimoLangas.xaml.cs">
       <DependentUpon>PatvirtinimoLangas.xaml</DependentUpon>
@@ -185,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.resx">
       <DependentUpon>202009290826175_SukurtiParduotuviuDuomenis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.resx">
+      <DependentUpon>202009291048511_SukurtiParduotuviuDuomenis1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
