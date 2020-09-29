@@ -24,15 +24,33 @@ namespace Price_comparison_engine
         public VertinimoLangas()
         {
             InitializeComponent();
-            elektromarktIv.Text = "Įvertinimo dar nėra";
-            avitelaIv.Text = "Įvertinimo dar nėra";
+            Skaityti("Avitela", ref avitela, ref avitelaBalsavusiuSk);
+            Skaityti("Elektromarkt", ref elektromarkt, ref elektromarktBalsavusiuSk);
+            if (avitelaBalsavusiuSk != 0)
+            {
+                var calc = avitela / (3 * avitelaBalsavusiuSk);
+                avitelaIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+            }
+            else
+            {
+                avitelaIv.Text = "Parduotuvė neįvertinta";
+            }
+            if (elektromarktBalsavusiuSk != 0)
+            {
+                var calc = elektromarkt / (3 * elektromarktBalsavusiuSk);
+                elektromarktIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+            }
+            else
+            {
+                elektromarktIv.Text = "Parduotuvė neįvertinta";
+            }
         }
 
-        private static double avitela = 0;
-        private static int avitelaBalsavusiuSk = 1;
+        private static double avitela;
+        private static int avitelaBalsavusiuSk;
 
-        private static double elektromarkt = 0;
-        private static int elektromarktBalsavusiuSk = 1;
+        private static double elektromarkt;
+        private static int elektromarktBalsavusiuSk;
         private void Vertinti_avitela(object sender, RoutedEventArgs e)
         {
             var calc = avitela / (3 * avitelaBalsavusiuSk);
@@ -42,6 +60,7 @@ namespace Price_comparison_engine
             avitelaApt.SelectedIndex = -1;
             avitelaKok.SelectedIndex = -1;
             avitelaPris.SelectedIndex = -1;
+            Rasyti("Avitela", calc, avitelaBalsavusiuSk);
         }
         private void Vertinti_elektromarkt(object sender, RoutedEventArgs e)
         {
@@ -51,6 +70,7 @@ namespace Price_comparison_engine
             elektroApt.SelectedIndex = -1;
             elektroKok.SelectedIndex = -1;
             elektroPris.SelectedIndex = -1;
+            Rasyti("Elektromarkt", calc, elektromarktBalsavusiuSk);
         }
 
         private void Avitela_Aptarnavimas(object sender, SelectionChangedEventArgs e)
@@ -84,7 +104,7 @@ namespace Price_comparison_engine
         }
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
-        private void Skaityti(string parduotuvesPavadinimas, ref int balsuSuma, ref int balsavusiuSkaicius)
+        private void Skaityti(string parduotuvesPavadinimas, ref double balsuSuma, ref int balsavusiuSkaicius)
         {
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
@@ -94,7 +114,7 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var eile = "SELECT BalsuSkaicius, BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
+                var eile = "SELECT BalsuSuma, BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
@@ -102,7 +122,7 @@ namespace Price_comparison_engine
                 {
                     if (skaityti.Read())
                     {
-                        balsuSuma = Convert.ToInt32(skaityti["BalsuSuma"].ToString());
+                        balsuSuma = Convert.ToDouble(skaityti["BalsuSuma"].ToString());
                         balsavusiuSkaicius = Convert.ToInt32(skaityti["BalsavusiuSkaicius"].ToString());
                     }
                 }
@@ -117,7 +137,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Rasyti(string parduotuvesPavadinimas, int balsuSuma, int balsavusiuSkaicius)
+        private void Rasyti(string parduotuvesPavadinimas, double balsuSuma, int balsavusiuSkaicius)
         {
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
@@ -130,7 +150,7 @@ namespace Price_comparison_engine
                 var eile = "UPDATE ParduotuviuDuomenys SET BalsuSkaicius=@BalsuSkaicius, BalsavusiuSkaicius=@BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
-                sqlKomanda.Parameters.AddWithValue("@BalsuSkaicius", balsuSuma);
+                sqlKomanda.Parameters.AddWithValue("@BalsuSuma", balsuSuma);
                 sqlKomanda.Parameters.AddWithValue("@BalsavusiuSkaicius", balsavusiuSkaicius);
                 sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
                 sqlKomanda.ExecuteNonQuery();
