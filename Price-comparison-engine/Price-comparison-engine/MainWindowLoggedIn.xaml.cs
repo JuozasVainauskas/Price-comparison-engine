@@ -17,9 +17,9 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class MainWindowLogedIn : Window
+    public partial class MainWindowLoggedIn : Window
     {
-        public MainWindowLogedIn()
+        public MainWindowLoggedIn()
         {
             InitializeComponent();
         }

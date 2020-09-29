@@ -23,36 +23,54 @@ namespace Price_comparison_engine
     {
         readonly MainWindow pagrindinisLangas;
         readonly RegistracijosLangas registracijosLangas;
+        private SqlConnection sqlRegistruotis;
         private SqlCommand sqlKomanda;
-        private String kodas;
-        public PatvirtinimoLangas(MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas,  SqlCommand sqlKomanda, String kodas, String email)
+        private string kodas;
+        public PatvirtinimoLangas(SqlConnection sqlRegistruotis, SqlCommand sqlKomanda, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
         {
             InitializeComponent();
             new SiustiEmail(kodas, email);
             this.pagrindinisLangas = pagrindinisLangas;
             this.registracijosLangas = registracijosLangas;
+            this.sqlRegistruotis = sqlRegistruotis;
             this.sqlKomanda = sqlKomanda;
+            this.kodas = kodas;
         }
 
         protected override void OnClosed(EventArgs e)
         {
-            MessageBox.Show("Nepavyko priregistruoti/prijungti (naujo) vartotojo.");
+            //MessageBox.Show("Nepavyko priregistruoti/prijungti (naujo) vartotojo.");
         }
 
         private void patvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            if (kodas == PatvirtinimoLangelis.Text)
+            try
             {
-                sqlKomanda.ExecuteNonQuery();
-                pagrindinisLangas.Close();
-                registracijosLangas.Close();
-                this.Close();
-                var mainwindowlogedin = new MainWindowLogedIn();
-                mainwindowlogedin.Show();
+                if (kodas == PatvirtinimoLangelis.Text)
+                {
+                    sqlKomanda.ExecuteNonQuery();
+
+                    pagrindinisLangas.Close();
+                    registracijosLangas.Close();
+                    MessageBox.Show("Sėkmingai prisiregistravote.");
+
+                    var mainWindowLoggedIn = new MainWindowLoggedIn();
+                    mainWindowLoggedIn.Show();
+                    this.Close();
+
+                }
+                else
+                {
+                    MessageBox.Show("Blogai įvestas kodas.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Blogai įvestas kodas.");
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlRegistruotis.Close();
             }
         }
     }

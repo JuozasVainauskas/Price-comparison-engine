@@ -47,7 +47,7 @@ namespace Price_comparison_engine
             }
             else if (!pattern2.IsMatch(Email.Text))
             {
-                MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
+                MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri sutapti su jūsų naudojamu gmail,\nkitaip negalėsite patvirtinti registracijos,\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
             }
             else if (!pattern1.IsMatch(Slaptazodis.Password))
             {
@@ -84,13 +84,10 @@ namespace Price_comparison_engine
                         sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
                         sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
 
-                        //this.Close();
-                        String kodas = GeneruotiHash.GenerateSHA256Hash(salt, GeneruotiHash.SukurtiSalt(4));
-                        var patvirtinimoLangas = new PatvirtinimoLangas(pagrindinisLangas, this, sqlKomanda, kodas, Email.Text.Trim());
+                        string kodas = GeneruotiHash.SukurtiSalt(16);
+                        kodas = kodas.Remove(kodas.Length - 2);
+                        var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegistruotis, sqlKomanda, pagrindinisLangas, this, kodas, Email.Text.Trim());
                         patvirtinimoLangas.Show();
-
-
-                        //sqlKomanda.ExecuteNonQuery();
 
                     }
                     catch (Exception ex)
@@ -99,7 +96,6 @@ namespace Price_comparison_engine
                     }
                     finally
                     {
-                        sqlRegistruotis.Close();
                     }
                 }
             }
