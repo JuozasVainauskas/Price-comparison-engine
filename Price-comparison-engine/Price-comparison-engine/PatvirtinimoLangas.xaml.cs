@@ -26,7 +26,7 @@ namespace Price_comparison_engine
         private SqlConnection sqlRegistruotis;
         private SqlCommand sqlKomanda;
         private string kodas;
-        public PatvirtinimoLangas(SqlConnection sqlRegistruotis, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas,  SqlCommand sqlKomanda, string kodas, string email)
+        public PatvirtinimoLangas(SqlConnection sqlRegistruotis, SqlCommand sqlKomanda, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
         {
             InitializeComponent();
             new SiustiEmail(kodas, email);
@@ -53,10 +53,10 @@ namespace Price_comparison_engine
                     pagrindinisLangas.Close();
                     registracijosLangas.Close();
                     MessageBox.Show("Sėkmingai prisiregistravote.");
-                    this.Close();
 
-                    MainWindowLoggedIn mainwindowloggedin = new MainWindowLoggedIn();
-                    mainwindowloggedin.Show();
+                    var mainWindowLoggedIn = new MainWindowLoggedIn();
+                    mainWindowLoggedIn.Show();
+                    this.Close();
 
                 }
                 else

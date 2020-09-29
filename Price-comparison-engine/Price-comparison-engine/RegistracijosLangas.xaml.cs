@@ -86,7 +86,7 @@ namespace Price_comparison_engine
 
                         string kodas = GeneruotiHash.SukurtiSalt(16);
                         kodas = kodas.Remove(kodas.Length - 2);
-                        var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegistruotis, pagrindinisLangas, this, sqlKomanda, kodas, Email.Text.Trim());
+                        var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegistruotis, sqlKomanda, pagrindinisLangas, this, kodas, Email.Text.Trim());
                         patvirtinimoLangas.Show();
 
                     }
