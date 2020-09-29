@@ -91,7 +91,8 @@ namespace Price_comparison_engine
 
         private void Sukurti_nauja_slaptazodi_mygtukas(object sender, RoutedEventArgs e)
         {
-
+            var patvirtLangasSlaptKeitimui = new PatvirtLangasSlaptKeitimui();
+            patvirtLangasSlaptKeitimui.Show();
         }
     }
 }

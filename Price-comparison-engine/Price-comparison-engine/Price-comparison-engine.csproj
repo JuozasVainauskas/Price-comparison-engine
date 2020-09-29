@@ -83,6 +83,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
+      <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
     <Compile Include="Klases\GeneruotiHash.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
@@ -113,10 +116,17 @@
     <Compile Include="MainWindowLoggedIn.xaml.cs">
       <DependentUpon>MainWindowLoggedIn.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SlaptazodzioKeitimoLangas.xaml.cs">
+      <DependentUpon>SlaptazodzioKeitimoLangas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VertinimoLangas.xaml.cs">
       <DependentUpon>VertinimoLangas.xaml</DependentUpon>
     </Compile>
     <Page Include="DUK_Langas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PatvirtLangasSlaptKeitimui.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindowLoggedIn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SlaptazodzioKeitimoLangas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -21,8 +21,8 @@
 - [x] Compare the gathered data
 - [x] Password hashing/encryption
 - [x] Register and login forms' error catching
-- [x] Email confirm and password reset -> *Password reset - to be done*
+- [x] Email confirm and password reset
 - [ ] Store gathered data in the database
 - [ ] Slideshow
-## Initial goal <!-- this point here is temporarily -->
+## Initial goal
 Create a program/website/app which takes the data of the prices from different shopping websites and provides a comparison in a visual manner
