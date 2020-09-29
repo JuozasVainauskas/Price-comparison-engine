@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +81,45 @@ namespace Price_comparison_engine
         private void Elektromarkt_Pristatymas(object sender, SelectionChangedEventArgs e)
         {
             elektromarkt += avitelaApt.SelectedIndex + 1;
+        }
+
+        private void Rasyti()
+        {
+            //Prisijungimas prie duomenu bazes
+            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
+            //Tikrinam ar svaru
+            try
+            {
+                //Jei sql busena buvo uzdaryta, tai prisijungiam
+                if (sqlPrisijungti.State == ConnectionState.Closed)
+                {
+                    sqlPrisijungti.Open();
+                }
+                //Query
+                var eile = "SELECT BalsuSkaicius, BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
+                var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
+                sqlKomanda.CommandType = CommandType.Text;
+                sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", "Avitela");
+                using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
+                {
+                    if (skaityti.Read())
+                    {
+                        kažkokiareiksme1 = skaityti["BalsuSuma"].ToString();
+                        kažkokiareiksme = skaityti["BalsavusiuSkaicius"].ToString();
+                    }
+                }
+                sqlKomanda.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                //Jei klaida, ismesti
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //Atsijungti
+                sqlPrisijungti.Close();
+            }
         }
     }
 }
