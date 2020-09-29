@@ -12,7 +12,7 @@ namespace Price_comparison_engine.Klases
 {
     class SiustiEmail
     {
-        public SiustiEmail(string kodas, string email)
+        public SiustiEmail(String kodas, String email)
         {
             kodas = "asdkhaksdhjasdhjkhkjashdkhaskjhdkjakjsdhjkadskjdh";
             SmtpClient Client = new SmtpClient()
@@ -30,6 +30,7 @@ namespace Price_comparison_engine.Klases
             };
             MailAddress FromEmail = new MailAddress("smartshopautobot@gmail.com", "Smart Shop");
             MailAddress ToEmail = new MailAddress("ernestas20111@gmail.com", "Email patvirtinimas");
+            Console.WriteLine(email);
             MailMessage Laiskas = new MailMessage()
             {
                 From = FromEmail,
@@ -39,15 +40,6 @@ namespace Price_comparison_engine.Klases
             Laiskas.To.Add(ToEmail);
             Client.SendCompleted += ClientSendCompleted;
             Client.SendMailAsync(Laiskas);
-
-            try
-            {
-                Client.Send(Laiskas);
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Atsiprašome, įvyko klaida.", "Klaida.");
-            }
         }
 
         private void ClientSendCompleted(object sender, AsyncCompletedEventArgs e)

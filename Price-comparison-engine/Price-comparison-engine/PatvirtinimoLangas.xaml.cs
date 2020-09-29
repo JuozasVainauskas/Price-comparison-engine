@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Price_comparison_engine.Klases;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -23,9 +24,11 @@ namespace Price_comparison_engine
         readonly MainWindow pagrindinisLangas;
         readonly RegistracijosLangas registracijosLangas;
         private SqlCommand sqlKomanda;
-        public PatvirtinimoLangas(MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas,  SqlCommand sqlKomanda, String kodas)
+        private String kodas;
+        public PatvirtinimoLangas(MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas,  SqlCommand sqlKomanda, String kodas, String email)
         {
             InitializeComponent();
+            new SiustiEmail(kodas, email);
             this.pagrindinisLangas = pagrindinisLangas;
             this.registracijosLangas = registracijosLangas;
             this.sqlKomanda = sqlKomanda;
@@ -38,12 +41,19 @@ namespace Price_comparison_engine
 
         private void patvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            sqlKomanda.ExecuteNonQuery();
-            pagrindinisLangas.Close();
-            registracijosLangas.Close();
-            this.Close();
-            var mainwindowlogedin = new MainWindowLogedIn();
-            mainwindowlogedin.Show();
+            if (kodas == PatvirtinimoLangelis.Text)
+            {
+                sqlKomanda.ExecuteNonQuery();
+                pagrindinisLangas.Close();
+                registracijosLangas.Close();
+                this.Close();
+                var mainwindowlogedin = new MainWindowLogedIn();
+                mainwindowlogedin.Show();
+            }
+            else
+            {
+                MessageBox.Show("Blogai įvestas kodas.");
+            }
         }
     }
 }
