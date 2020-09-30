@@ -1,4 +1,6 @@
 ﻿using HtmlAgilityPack;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+
 
 namespace Price_comparison_engine
 {
@@ -47,16 +50,35 @@ namespace Price_comparison_engine
         }
 
         private static async void getHtmlAssync(DataGrid dataGridas)
-        {
+        {  
+            var prices = new List<Item>();
 
-                var prices = new List<Item>();
-                var piguDaiktai = piguPaieska(await piguHtmlPaemimas());
-                var avitelosDaiktai = avitelosPaieska(await avitelosHtmlPaemimas());
-                var elektromarktDaiktai = elektromarktPaieska(await elektromarktHtmlPaemimas());
-                surasymasIsAvitelos(avitelosDaiktai, prices);
-                surasymasIsElektromarkt(elektromarktDaiktai, prices);
-                surasymasIsPigu(piguDaiktai, prices);
-                surikiavimasIrSurasymas(prices, dataGridas);
+            var chromeOptions = new ChromeOptions();
+            //var user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
+            //chromeOptions.AddArgument("f'user-agent="+user_agent);
+            //chromeOptions.AddArgument("headless");
+            //chromeOptions.AddArgument("window-size=1920,1080");
+            //chromeOptions.AddArgument("log-level=3");
+            IWebDriver driver = new ChromeDriver(chromeOptions);
+            driver.Manage().Window.Maximize();
+            driver.Navigate().GoToUrl("https://www.topocentras.lt/");
+            var element = driver.FindElement(By.XPath("/html/body/div[1]/header[1]/div[1]/div[2]/div[1]/div[1]/input"));
+            element.SendKeys(MainWindow.zodis);
+            driver.FindElement(By.XPath("/html/body/div[1]/header[1]/div[1]/div[2]/div[1]/div[1]/button")).Click();
+            var prekes = driver.FindElements(By.ClassName("ProductGrid-productName-1JN"));
+            foreach(var preke in prekes)
+            {
+                var Itemas = new Item { Seller = "Topo  Centras", Name = preke.Text};
+                prices.Add(Itemas);
+            }
+
+            var piguDaiktai = piguPaieska(await piguHtmlPaemimas());
+            var avitelosDaiktai = avitelosPaieska(await avitelosHtmlPaemimas());
+            var elektromarktDaiktai = elektromarktPaieska(await elektromarktHtmlPaemimas());
+           // surasymasIsAvitelos(avitelosDaiktai, prices);
+           // surasymasIsElektromarkt(elektromarktDaiktai, prices);
+          //  surasymasIsPigu(piguDaiktai, prices);
+           surikiavimasIrSurasymas(prices, dataGridas);
             
         }
 
