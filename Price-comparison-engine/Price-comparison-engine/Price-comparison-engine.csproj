@@ -83,6 +83,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Klases\PuslapiuDuomenys.cs" />
+    <Compile Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.cs" />
+    <Compile Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.designer.cs">
+      <DependentUpon>202009301256108_SukurtiPuslapiuDuomenis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.cs" />
+    <Compile Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.designer.cs">
+      <DependentUpon>202009301256479_SukurtiPuslapiuDuomenis1.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
@@ -206,6 +215,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.resx">
       <DependentUpon>202009291048511_SukurtiParduotuviuDuomenis1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.resx">
+      <DependentUpon>202009301256108_SukurtiPuslapiuDuomenis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.resx">
+      <DependentUpon>202009301256479_SukurtiPuslapiuDuomenis1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

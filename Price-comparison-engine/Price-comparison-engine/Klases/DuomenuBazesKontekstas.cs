@@ -13,5 +13,6 @@ namespace Price_comparison_engine.Klases
     {
         public DbSet<NaudotojoDuomenys> NaudotojoDuomenys { get; set; }
         public DbSet<ParduotuviuDuomenys> ParduotuviuDuomenys { get; set; }
+        public DbSet<PuslapiuDuomenys> PuslapiuDuomenys { get; set; }
     }
 }
