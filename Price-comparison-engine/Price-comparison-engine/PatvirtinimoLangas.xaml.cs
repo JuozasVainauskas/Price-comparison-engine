@@ -51,6 +51,7 @@ namespace Price_comparison_engine
 
                     var mainWindowLoggedIn = new MainWindowLoggedIn();
                     mainWindowLoggedIn.Show();
+                    sqlRegistruotis.Close();
                     this.Close();
                 }
                 else
@@ -61,10 +62,6 @@ namespace Price_comparison_engine
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlRegistruotis.Close();
             }
         }
     }
