@@ -74,14 +74,26 @@ namespace Price_comparison_engine
                 prices.Add(Itemas);
             }
             */
+            var BarboraItems = BarboraSearch(await BarboraHtml());
             var piguDaiktai = piguPaieska(await piguHtmlPaemimas());
             var avitelosDaiktai = avitelosPaieska(await avitelosHtmlPaemimas());
             var elektromarktDaiktai = elektromarktPaieska(await elektromarktHtmlPaemimas());
+            writeDataFromBarbora(BarboraItems, prices);
             surasymasIsAvitelos(avitelosDaiktai, prices);
             surasymasIsElektromarkt(elektromarktDaiktai, prices);
             surasymasIsPigu(piguDaiktai, prices);
             surikiavimasIrSurasymas(prices, dataGridas);
 
+        }
+
+        private static async Task<HtmlDocument> BarboraHtml()
+        {
+            var url = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
+            var httpClient = new HttpClient();
+            var html = await httpClient.GetStringAsync(url);
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(html);
+            return htmlDocument;
         }
 
         private static async Task<HtmlDocument> avitelosHtmlPaemimas()
@@ -170,6 +182,25 @@ namespace Price_comparison_engine
                 return null;
             }
         }
+        private static List<HtmlNode> BarboraSearch(HtmlDocument htmlDocument2)
+        {
+            try
+            {
+                var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
+               .Where(node => node.GetAttributeValue("class", "")
+               .Equals("b-page-specific-content")).ToList();
+
+                var ProductListItems2 = ProductsHtml2[0].Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                    .Contains("b-product--wrap2 b-product--desktop-grid")).ToList();
+
+                return ProductListItems2;
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         private static List<HtmlNode> piguPaieska(HtmlDocument htmlDocument2)
         {
@@ -224,6 +255,44 @@ namespace Price_comparison_engine
                 prices.Add(Itemas);
             }
         }
+        private static void writeDataFromBarbora(List<HtmlNode> ProductListItems, List<Item> prices)
+        {
+            if (ProductListItems != null)
+            {
+                foreach (var ProductListItem in ProductListItems)
+                {
+
+                    var price = ProductListItem.Descendants("span")
+                       .Where(node => node.GetAttributeValue("class", "")
+                            .Equals("b-product-price-current-number")).FirstOrDefault().InnerText.Trim();
+
+                    var name = ProductListItem.Descendants("span")
+                       .Where(node => node.GetAttributeValue("itemprop", "")
+                             .Equals("name")).FirstOrDefault().InnerText.Trim();
+
+                    var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+                    
+                    string imgLink = ProductListItem.Descendants("img")
+                      .Where(node => node.GetAttributeValue("itemprop", "")
+                            .Contains("image")).FirstOrDefault().GetAttributeValue("src", "");
+
+                    if (price != "")
+                    {
+                        price = pasalinimasTrikdanciuSimboliu(price);
+                        var priceAtsarg = price;
+                        priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
+                        double pricea = Convert.ToDouble(priceAtsarg);
+                        var Itemas = new Item { nuotrauka = "https://pagrindinis.barbora.lt/" + imgLink, Seller = "Barbora", Name = name, Pricea = pricea, Price = price, Link = "https://pagrindinis.barbora.lt/"+link };
+                        prices.Add(Itemas);
+                    }
+                }
+            }
+            else
+            {
+                var Itemas = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(Itemas);
+            }
+        }
         private static void surasymasIsPigu(List<HtmlNode> ProductListItems, List<Item> prices)
         {
             if (ProductListItems != null)
@@ -251,6 +320,8 @@ namespace Price_comparison_engine
                     price = pasalinimasEuroSimbol(price);
                     price = price + "€";
                     priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
+
+
 
                     double pricea = Convert.ToDouble(priceAtsarg);
                     var Itemas = new Item { nuotrauka = imgLink, Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
