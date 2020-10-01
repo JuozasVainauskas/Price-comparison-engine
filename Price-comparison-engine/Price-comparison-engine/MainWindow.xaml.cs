@@ -36,7 +36,9 @@ namespace Price_comparison_engine
             InitializeComponent();
             DataDirectoryInitialize();
             Skaityti(ref PuslapioURL, ref ImgURL);
-            Console.WriteLine(PuslapioURL.Count);
+            img1.Source = new BitmapImage(new Uri(ImgURL[0], UriKind.Absolute));
+            img2.Source = new BitmapImage(new Uri(ImgURL[1], UriKind.Absolute));
+            img3.Source = new BitmapImage(new Uri(ImgURL[2], UriKind.Absolute));
 
         }
 
@@ -131,8 +133,8 @@ namespace Price_comparison_engine
         private static List<String> PuslapioURL = new List<string>();
         private static List<String> ImgURL = new List<string>();
 
-        public static int slideCounter = 1;
-        public static int slideCounter2 = 3;
+        public static int indexFront = 3;
+        public static int indexBack = 0;
 
         public static String link1 = "http://www.google.com";
         public static String link2 = "http://www.facebook.com";
@@ -140,40 +142,20 @@ namespace Price_comparison_engine
 
         private void Slider_Back(object sender, MouseButtonEventArgs e)
         {
-            if (slideCounter > 3)
-            {
-                slideCounter = 1;
-            }
-            string temporary;
-            temporary = link1;
-
-            img1.Source = img2.Source;
-            link1 = link2;
-            img2.Source = img3.Source;
-            link2 = link3;
-            img3.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
-            link3 = temporary;
-            slideCounter2 = slideCounter;
-            slideCounter++;
+            img1.Source = new BitmapImage(new Uri(ImgURL[indexBack], UriKind.Absolute));
+            img2.Source = new BitmapImage(new Uri(ImgURL[indexBack + 1], UriKind.Absolute));
+            img3.Source = new BitmapImage(new Uri(ImgURL[indexBack + 2], UriKind.Absolute));
+            indexBack--;
+            indexFront--;
         }
 
         private void Slider_Front(object sender, MouseButtonEventArgs e)
         {
-            if (slideCounter2 <= 0)
-            {
-                slideCounter2 = 3;
-            }
-            string temporary;
-            temporary = link3;
-
-            img3.Source = img2.Source;
-            link3 = link2;
-            img2.Source = img1.Source;
-            link2 = link1;
-            img1.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter2 + ".jpg", UriKind.RelativeOrAbsolute));
-            link1 = temporary;
-            slideCounter = slideCounter2;
-            slideCounter2--;
+            img1.Source = new BitmapImage(new Uri(ImgURL[indexFront-2], UriKind.Absolute));
+            img2.Source = new BitmapImage(new Uri(ImgURL[indexFront-1], UriKind.Absolute));
+            img3.Source = new BitmapImage(new Uri(ImgURL[indexFront], UriKind.Absolute));
+            indexFront++;
+            indexBack++;
         }
 
         private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
