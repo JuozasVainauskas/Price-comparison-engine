@@ -23,20 +23,20 @@ namespace Price_comparison_engine
     partial class Item
     {
 
-    public String nuotraukaa { get; set; }
-    public string Sellerr { get; set; }
-    public double Priceaa { get; set; }
+        public String nuotraukaa { get; set; }
+        public string Sellerr { get; set; }
+        public double Priceaa { get; set; }
 
-    public string Pricee { get; set; }
+        public string Pricee { get; set; }
 
-    public string Namee { get; set; }
+        public string Namee { get; set; }
 
-    public string Linkk { get; set; }
+        public string Linkk { get; set; }
 
     }
-public partial class KonkretiPreke : Window
-{
-    public static string pav;
+    public partial class KonkretiPreke : Window
+    {
+        public static string pav;
         public KonkretiPreke(string pavadinimas)
         {
             pav = pavadinimas;
@@ -300,7 +300,7 @@ public partial class KonkretiPreke : Window
 
         private static string pasalinimasTarpu(string price)
         {
-            var charsToRemove = new string[] { " " };
+            var charsToRemove = new string[] { " " };
             foreach (var c in charsToRemove)
             {
                 price = price.Replace(c, string.Empty);
