@@ -117,16 +117,16 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var eile = "SELECT BalsuSuma, BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
+                var eile = "SELECT VotesCount, VotersNumber FROM ParduotuviuDuomenys WHERE ShopName=@ShopName";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
-                sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
+                sqlKomanda.Parameters.AddWithValue("@ShopName", parduotuvesPavadinimas);
                 using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
                 {
                     if (skaityti.Read())
                     {
-                        balsuSuma = Convert.ToDouble(skaityti["BalsuSuma"].ToString());
-                        balsavusiuSkaicius = Convert.ToInt32(skaityti["BalsavusiuSkaicius"].ToString());
+                        balsuSuma = Convert.ToDouble(skaityti["VotesCount"].ToString());
+                        balsavusiuSkaicius = Convert.ToInt32(skaityti["VotersNumber"].ToString());
                     }
                 }
             }
@@ -150,12 +150,12 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var eile = "UPDATE ParduotuviuDuomenys SET BalsuSuma=@BalsuSuma, BalsavusiuSkaicius=@BalsavusiuSkaicius WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
+                var eile = "UPDATE ParduotuviuDuomenys SET VotesCount=@VotesCount, VotersNumber=@VotersNumber WHERE ShopName=@ShopName";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
-                sqlKomanda.Parameters.AddWithValue("@BalsuSuma", balsuSuma);
-                sqlKomanda.Parameters.AddWithValue("@BalsavusiuSkaicius", balsavusiuSkaicius);
-                sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
+                sqlKomanda.Parameters.AddWithValue("@VotesCount", balsuSuma);
+                sqlKomanda.Parameters.AddWithValue("@VotersNumber", balsavusiuSkaicius);
+                sqlKomanda.Parameters.AddWithValue("@ShopName", parduotuvesPavadinimas);
                 sqlKomanda.ExecuteNonQuery();
             }
             catch (Exception ex)

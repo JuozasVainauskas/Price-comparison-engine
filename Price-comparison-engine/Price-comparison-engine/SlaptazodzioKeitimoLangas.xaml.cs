@@ -58,15 +58,15 @@ namespace Price_comparison_engine
                         sqlPrisijungti.Open();
                     }
 
-                    String salt = GeneruotiHash.SukurtiSalt(10);
-                    String slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, salt);
+                    String salt = GenerateHash.SukurtiSalt(10);
+                    String slaptazodzioHash = GenerateHash.GenerateSHA256Hash(slaptazodis.Password, salt);
 
-                    var eile = "UPDATE NaudotojoDuomenys SET SlaptazodzioHash=@SlaptazodzioHash, SlaptazodzioSalt=@SlaptazodzioSalt WHERE Email=@Email";
+                    var eile = "UPDATE NaudotojoDuomenys SET PasswordHash=@PasswordHash, PasswordSalt=@PasswordSalt WHERE Email=@Email";
                     var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                     sqlKomanda.CommandType = CommandType.Text;
                     sqlKomanda.Parameters.AddWithValue("@Email", email);
-                    sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
-                    sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
+                    sqlKomanda.Parameters.AddWithValue("@PasswordHash", slaptazodzioHash);
+                    sqlKomanda.Parameters.AddWithValue("@PasswordSalt", salt);
                     sqlKomanda.ExecuteNonQuery();
 
                     MessageBox.Show("Slaptažodis pakeistas sėkmingai.");

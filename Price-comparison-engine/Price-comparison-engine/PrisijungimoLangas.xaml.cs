@@ -43,7 +43,7 @@ namespace Price_comparison_engine
                 {
                     sqlPrisijungti.Open();
                 }
-                var eile = "SELECT SlaptazodzioSalt FROM NaudotojoDuomenys WHERE Email=@Email";
+                var eile = "SELECT PasswordSalt FROM NaudotojoDuomenys WHERE Email=@Email";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
@@ -55,17 +55,17 @@ namespace Price_comparison_engine
                 {
                     if (skaityti.Read())
                     {
-                        salt = skaityti["SlaptazodzioSalt"].ToString();
+                        salt = skaityti["PasswordSalt"].ToString();
                     }
                 }
 
-                slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+                slaptazodzioHash = GenerateHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
                 
-                eile = "SELECT COUNT(1) FROM NaudotojoDuomenys WHERE Email=@Email AND SlaptazodzioHash=@SlaptazodzioHash";
+                eile = "SELECT COUNT(1) FROM NaudotojoDuomenys WHERE Email=@Email AND PasswordHash=@PasswordHash";
                 sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
-                sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash); //SlaptazodzioHash with salt
+                sqlKomanda.Parameters.AddWithValue("@PasswordHash", slaptazodzioHash); //PasswordHash with salt
                 int kiekis = Convert.ToInt32(sqlKomanda.ExecuteScalar());
                 if (kiekis == 1)
                 {

@@ -29,7 +29,7 @@ namespace Price_comparison_engine
         public PatvirtinimoLangas(SqlConnection sqlRegistruotis, SqlCommand sqlKomanda, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
         {
             InitializeComponent();
-            new SiustiEmail(kodas, email);
+            new SendEmail(kodas, email);
             this.pagrindinisLangas = pagrindinisLangas;
             this.registracijosLangas = registracijosLangas;
             this.sqlRegistruotis = sqlRegistruotis;

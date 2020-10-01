@@ -35,8 +35,8 @@ namespace Price_comparison_engine
 
         private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
         {
-            String salt = GeneruotiHash.SukurtiSalt(10);
-            String slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+            String salt = GenerateHash.SukurtiSalt(10);
+            String slaptazodzioHash = GenerateHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
             
             var pattern1 = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
             var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
@@ -77,14 +77,14 @@ namespace Price_comparison_engine
                             sqlRegistruotis.Open();
                         }
 
-                        var eile = "INSERT INTO NaudotojoDuomenys(Email, SlaptazodzioHash, SlaptazodzioSalt) VALUES (@Email, @SlaptazodzioHash, @SlaptazodzioSalt)";
+                        var eile = "INSERT INTO NaudotojoDuomenys(Email, PasswordHash, PasswordSalt) VALUES (@Email, @PasswordHash, @PasswordSalt)";
                         var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
                         sqlKomanda.CommandType = CommandType.Text;
                         sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
-                        sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
-                        sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
+                        sqlKomanda.Parameters.AddWithValue("@PasswordHash", slaptazodzioHash);
+                        sqlKomanda.Parameters.AddWithValue("@PasswordSalt", salt);
 
-                        string kodas = GeneruotiHash.SukurtiSalt(16);
+                        string kodas = GenerateHash.SukurtiSalt(16);
                         kodas = kodas.Remove(kodas.Length - 2);
                         var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegistruotis, sqlKomanda, pagrindinisLangas, this, kodas, Email.Text.Trim());
                         patvirtinimoLangas.Show();

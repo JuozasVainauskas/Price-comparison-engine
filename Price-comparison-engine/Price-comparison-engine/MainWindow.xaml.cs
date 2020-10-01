@@ -183,14 +183,14 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var eile = "SELECT PuslapioURL, ImgURL FROM PuslapiuDuomenys";
+                var eile = "SELECT PageURL, ImgURL FROM PuslapiuDuomenys";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
                 {
                     while (skaityti.Read())
                     {
-                        PuslapioURL.Add(skaityti["PuslapioURL"].ToString());
+                        PuslapioURL.Add(skaityti["PageURL"].ToString());
                         ImgURL.Add(skaityti["ImgURL"].ToString());
                     }
                 }

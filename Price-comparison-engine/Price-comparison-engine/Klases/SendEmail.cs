@@ -11,9 +11,9 @@ using System.Linq.Expressions;
 
 namespace Price_comparison_engine.Klases
 {
-    class SiustiEmail
+    class SendEmail
     {
-        public SiustiEmail(string kodas, string email)
+        public SendEmail(string kodas, string email)
         {
             SmtpClient Client = new SmtpClient()
             {

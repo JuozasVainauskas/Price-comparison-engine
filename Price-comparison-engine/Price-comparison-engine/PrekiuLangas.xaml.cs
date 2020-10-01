@@ -473,7 +473,7 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var duomenuAdapteris = new SqlDataAdapter("SELECT PuslapioURL, ImgURL FROM PuslapiuDuomenys WHERE PuslapioURL ='" + puslapioURL + "' AND ImgURL ='" + imgURL + "' ", sqlPrisijungti);
+                var duomenuAdapteris = new SqlDataAdapter("SELECT PageURL, ImgURL FROM PuslapiuDuomenys WHERE PageURL ='" + puslapioURL + "' AND ImgURL ='" + imgURL + "' ", sqlPrisijungti);
                 var duomenuLentele = new DataTable();
                 duomenuAdapteris.Fill(duomenuLentele);
                 if (duomenuLentele.Rows.Count == 0)
@@ -490,10 +490,10 @@ namespace Price_comparison_engine
                         MessageBox.Show(ex.Message);
                     }
 
-                    var eile = "INSERT INTO PuslapiuDuomenys(PuslapioURL,ImgURL) VALUES (@PuslapioURL, @ImgURL)";
+                    var eile = "INSERT INTO PuslapiuDuomenys(PageURL,ImgURL) VALUES (@PageURL, @ImgURL)";
                     var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                     sqlKomanda.CommandType = CommandType.Text;
-                    sqlKomanda.Parameters.AddWithValue("@PuslapioURL", puslapioURL);
+                    sqlKomanda.Parameters.AddWithValue("@PageURL", puslapioURL);
                     sqlKomanda.Parameters.AddWithValue("@ImgURL", imgURL);
                     sqlKomanda.ExecuteNonQuery();
                 }

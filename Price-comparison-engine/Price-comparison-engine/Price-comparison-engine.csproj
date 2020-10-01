@@ -91,35 +91,14 @@
     <Compile Include="KonkretiPreke.xaml.cs">
       <DependentUpon>KonkretiPreke.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.cs" />
-    <Compile Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.designer.cs">
-      <DependentUpon>202009301256108_SukurtiPuslapiuDuomenis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.cs" />
-    <Compile Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.designer.cs">
-      <DependentUpon>202009301256479_SukurtiPuslapiuDuomenis1.cs</DependentUpon>
-    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
-    <Compile Include="Klases\GeneruotiHash.cs" />
+    <Compile Include="Klases\GenerateHash.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
     <Compile Include="Klases\ParduotuviuDuomenys.cs" />
-    <Compile Include="Klases\SiustiEmail.cs" />
-    <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.cs" />
-    <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.designer.cs">
-      <DependentUpon>202009281809480_SukurtiNaudotojoDuomenis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.cs" />
-    <Compile Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.designer.cs">
-      <DependentUpon>202009290826175_SukurtiParduotuviuDuomenis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.cs" />
-    <Compile Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.designer.cs">
-      <DependentUpon>202009291048511_SukurtiParduotuviuDuomenis1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Klases\SendEmail.cs" />
     <Compile Include="PatvirtinimoLangas.xaml.cs">
       <DependentUpon>PatvirtinimoLangas.xaml</DependentUpon>
     </Compile>
@@ -218,21 +197,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.resx">
-      <DependentUpon>202009281809480_SukurtiNaudotojoDuomenis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.resx">
-      <DependentUpon>202009290826175_SukurtiParduotuviuDuomenis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.resx">
-      <DependentUpon>202009291048511_SukurtiParduotuviuDuomenis1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.resx">
-      <DependentUpon>202009301256108_SukurtiPuslapiuDuomenis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.resx">
-      <DependentUpon>202009301256479_SukurtiPuslapiuDuomenis1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

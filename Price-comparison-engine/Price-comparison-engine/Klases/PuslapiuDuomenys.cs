@@ -12,8 +12,8 @@ namespace Price_comparison_engine.Klases
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int PuslapioID { get; set; }
-        public string PuslapioURL { get; set; }
+        public int PageID { get; set; }
+        public string PageURL { get; set; }
         public string ImgURL { get; set; }
     }
 }

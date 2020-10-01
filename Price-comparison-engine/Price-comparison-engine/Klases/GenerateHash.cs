@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Price_comparison_engine.Klases
 {
-    class GeneruotiHash
+    class GenerateHash
     {
         public static String SukurtiSalt(int dydis)
         {

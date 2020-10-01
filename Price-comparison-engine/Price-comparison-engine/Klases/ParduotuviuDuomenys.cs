@@ -13,9 +13,9 @@ namespace Price_comparison_engine.Klases
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ParduotuvesID { get; set; }
-        public string ParduotuvesPavadinimas { get; set; }
-        public double BalsuSuma { get; set; }
-        public double BalsavusiuSkaicius { get; set; }
+        public int ShopID { get; set; }
+        public string ShopName { get; set; }
+        public double VotesCount { get; set; }
+        public double VotersNumber { get; set; }
     }
 }
