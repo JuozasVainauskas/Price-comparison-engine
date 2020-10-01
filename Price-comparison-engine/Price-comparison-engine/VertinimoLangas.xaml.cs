@@ -24,8 +24,8 @@ namespace Price_comparison_engine
         public VertinimoLangas()
         {
             InitializeComponent();
-            Skaityti("Avitela", ref avitela, ref avitelaBalsavusiuSk);
-            Skaityti("Elektromarkt", ref elektromarkt, ref elektromarktBalsavusiuSk);
+            Read("Avitela", ref avitela, ref avitelaBalsavusiuSk);
+            Read("Elektromarkt", ref elektromarkt, ref elektromarktBalsavusiuSk);
             if (avitelaBalsavusiuSk != 0)
             {
                 var calc = avitela / (3 * avitelaBalsavusiuSk);
@@ -55,7 +55,7 @@ namespace Price_comparison_engine
         {
             avitelaBalsavusiuSk++;
             var calc = avitela / (3 * avitelaBalsavusiuSk);
-            Rasyti("avitela", avitela, avitelaBalsavusiuSk);
+            Write("avitela", avitela, avitelaBalsavusiuSk);
 
             avitelaIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
             avitelaApt.SelectedIndex = -1;
@@ -67,7 +67,7 @@ namespace Price_comparison_engine
         {
             elektromarktBalsavusiuSk++;
             var calc = elektromarkt / (3 * elektromarktBalsavusiuSk);
-            Rasyti("Elektromarkt", elektromarkt, elektromarktBalsavusiuSk);
+            Write("Elektromarkt", elektromarkt, elektromarktBalsavusiuSk);
 
 
             elektromarktIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
@@ -106,8 +106,8 @@ namespace Price_comparison_engine
             elektromarkt += elektroPris.SelectedIndex + 1;
         }
 
-        //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
-        private void Skaityti(string parduotuvesPavadinimas, ref double balsuSuma, ref int balsavusiuSkaicius)
+        //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Read(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
+        private void Read(string parduotuvesPavadinimas, ref double balsuSuma, ref int balsavusiuSkaicius)
         {
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
@@ -140,7 +140,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Rasyti(string parduotuvesPavadinimas, double balsuSuma, int balsavusiuSkaicius)
+        private void Write(string parduotuvesPavadinimas, double balsuSuma, int balsavusiuSkaicius)
         {
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try

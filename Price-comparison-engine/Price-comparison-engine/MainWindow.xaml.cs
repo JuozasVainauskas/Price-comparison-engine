@@ -35,7 +35,7 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
             DataDirectoryInitialize();
-            Skaityti(ref PuslapioURL, ref ImgURL);
+            Read(ref PuslapioURL, ref ImgURL);
             img1.Source = new BitmapImage(new Uri(ImgURL[0], UriKind.Absolute));
             img2.Source = new BitmapImage(new Uri(ImgURL[1], UriKind.Absolute));
             img3.Source = new BitmapImage(new Uri(ImgURL[2], UriKind.Absolute));
@@ -44,13 +44,13 @@ namespace Price_comparison_engine
 
         private void DUKMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            DUK_Langas dukLangoAtidarymas = new DUK_Langas();
-            dukLangoAtidarymas.Show();
+            DUK_Window dukWindowOpener = new DUK_Window();
+            dukWindowOpener.Show();
         }
 
         private void KontaktaiMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            KontaktuLangas kontaktuLangoAtidarymas = new KontaktuLangas();
+            ContactsWindow kontaktuLangoAtidarymas = new ContactsWindow();
             kontaktuLangoAtidarymas.Show();
         }
 
@@ -173,7 +173,7 @@ namespace Price_comparison_engine
             System.Diagnostics.Process.Start(link3);
         }
 
-        private static void Skaityti(ref List<String> PuslapioURL, ref List<String> ImgURL)
+        private static void Read(ref List<String> PuslapioURL, ref List<String> ImgURL)
         {
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
@@ -183,7 +183,7 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var eile = "SELECT PageURL, ImgURL FROM PuslapiuDuomenys";
+                var eile = "SELECT PageURL, ImgURL FROM PageData";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())

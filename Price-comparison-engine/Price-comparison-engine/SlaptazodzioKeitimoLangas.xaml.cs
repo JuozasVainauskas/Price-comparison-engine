@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -58,7 +58,7 @@ namespace Price_comparison_engine
                         sqlPrisijungti.Open();
                     }
 
-                    String salt = GenerateHash.SukurtiSalt(10);
+                    String salt = GenerateHash.CreateSalt(10);
                     String slaptazodzioHash = GenerateHash.GenerateSHA256Hash(slaptazodis.Password, salt);
 
                     var eile = "UPDATE NaudotojoDuomenys SET PasswordHash=@PasswordHash, PasswordSalt=@PasswordSalt WHERE Email=@Email";

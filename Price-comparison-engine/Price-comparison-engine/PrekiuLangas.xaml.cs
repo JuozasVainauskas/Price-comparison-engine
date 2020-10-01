@@ -326,7 +326,7 @@ namespace Price_comparison_engine
                     double pricea = Convert.ToDouble(priceAtsarg);
                     var Itemas = new Item { nuotrauka = imgLink, Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
                     prices.Add(Itemas);
-                    RasytiData(link, imgLink);
+                    WriteData(link, imgLink);
                 }
             }
             else
@@ -361,7 +361,7 @@ namespace Price_comparison_engine
                     double pricea = Double.Parse(priceAtsarg);
                     var Itemas = new Item { nuotrauka = imgLink, Seller = "Elektromarkt", Name = name, Pricea = pricea, Price = price, Link = link };
                     prices.Add(Itemas);
-                    RasytiData(link, imgLink);
+                    WriteData(link, imgLink);
 
                 }
             }
@@ -463,7 +463,7 @@ namespace Price_comparison_engine
                 System.Diagnostics.Process.Start(link);
             }
         }
-        private static void RasytiData(string puslapioURL, string imgURL)
+        private static void WriteData(string puslapioURL, string imgURL)
         {
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try

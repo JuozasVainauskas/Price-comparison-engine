@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Net;
 using System.Net.Mail;

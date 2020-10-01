@@ -87,18 +87,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Klases\PuslapiuDuomenys.cs" />
+    <Compile Include="Classes\PageData.cs" />
     <Compile Include="KonkretiPreke.xaml.cs">
       <DependentUpon>KonkretiPreke.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010011954214_NewDatabase.cs" />
+    <Compile Include="Migrations\202010011954214_NewDatabase.designer.cs">
+      <DependentUpon>202010011954214_NewDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
-    <Compile Include="Klases\GenerateHash.cs" />
-    <Compile Include="Klases\NaudotojoDuomenys.cs" />
-    <Compile Include="Klases\ParduotuviuDuomenys.cs" />
-    <Compile Include="Klases\SendEmail.cs" />
+    <Compile Include="Classes\DatabaseContext.cs" />
+    <Compile Include="Classes\GenerateHash.cs" />
+    <Compile Include="Classes\UserData.cs" />
+    <Compile Include="Classes\ShopRatingData.cs" />
+    <Compile Include="Classes\SendEmail.cs" />
     <Compile Include="PatvirtinimoLangas.xaml.cs">
       <DependentUpon>PatvirtinimoLangas.xaml</DependentUpon>
     </Compile>
@@ -117,7 +122,7 @@
     <Compile Include="VertinimoLangas.xaml.cs">
       <DependentUpon>VertinimoLangas.xaml</DependentUpon>
     </Compile>
-    <Page Include="DUK_Langas.xaml">
+    <Page Include="DUK_Window.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,7 +134,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="KontaktuLangas.xaml">
+    <Page Include="ContactsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,11 +146,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUK_Langas.xaml.cs">
-      <DependentUpon>DUK_Langas.xaml</DependentUpon>
+    <Compile Include="DUK_Window.xaml.cs">
+      <DependentUpon>DUK_Window.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KontaktuLangas.xaml.cs">
-      <DependentUpon>KontaktuLangas.xaml</DependentUpon>
+    <Compile Include="ContactsWindow.xaml.cs">
+      <DependentUpon>ContactsWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -197,6 +202,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202010011954214_NewDatabase.resx">
+      <DependentUpon>202010011954214_NewDatabase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -211,25 +219,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuotraukos\logo.png" />
+    <Resource Include="Pictures\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuotraukos\user.jpg" />
+    <Resource Include="Pictures\user.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuotraukos\1.jpg" />
+    <Resource Include="Pictures\1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuotraukos\2.jpg" />
+    <Resource Include="Pictures\2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuotraukos\3.jpg" />
+    <Resource Include="Pictures\3.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuotraukos\back.png" />
+    <Resource Include="Pictures\back.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuotraukos\next.png" />
+    <Resource Include="Pictures\next.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -244,8 +252,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="avitela.png" />
-    <Resource Include="elektromarkt.png" />
+    <Resource Include="Pictures\avitela.png" />
+    <Resource Include="Pictures\elektromarkt.png" />
     <Content Include="PCEDatabase.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

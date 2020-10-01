@@ -92,7 +92,7 @@ namespace Price_comparison_engine
             }
             img1.Source = img2.Source;
             img2.Source = img3.Source;
-            img3.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
+            img3.Source = new BitmapImage(new Uri("Pictures/" + slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
             slideCounter2 = slideCounter;
             slideCounter++;
         }
@@ -105,7 +105,7 @@ namespace Price_comparison_engine
             }
             img3.Source = img2.Source;
             img2.Source = img1.Source;
-            img1.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter2 + ".jpg", UriKind.RelativeOrAbsolute));
+            img1.Source = new BitmapImage(new Uri("Pictures/" + slideCounter2 + ".jpg", UriKind.RelativeOrAbsolute));
             slideCounter = slideCounter2;
             slideCounter2--;
         }
@@ -119,7 +119,7 @@ namespace Price_comparison_engine
             }
             img1_2.Source = img2_2.Source;
             img2_2.Source = img3_2.Source;
-            img3_2.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter_2 + ".jpg", UriKind.RelativeOrAbsolute));
+            img3_2.Source = new BitmapImage(new Uri("Pictures/" + slideCounter_2 + ".jpg", UriKind.RelativeOrAbsolute));
             slideCounter2_2 = slideCounter_2;
             slideCounter_2++;
         }
@@ -133,7 +133,7 @@ namespace Price_comparison_engine
             }
             img3_2.Source = img2_2.Source;
             img2_2.Source = img1_2.Source;
-            img1_2.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter2_2 + ".jpg", UriKind.RelativeOrAbsolute));
+            img1_2.Source = new BitmapImage(new Uri("Pictures/" + slideCounter2_2 + ".jpg", UriKind.RelativeOrAbsolute));
             slideCounter_2 = slideCounter2_2;
             slideCounter2_2--;
         }

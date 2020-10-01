@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Net;
 using System.Collections.Generic;
@@ -35,8 +35,8 @@ namespace Price_comparison_engine
 
         private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
         {
-            String salt = GenerateHash.SukurtiSalt(10);
-            String slaptazodzioHash = GenerateHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+            String salt = GenerateHash.CreateSalt(10);
+            String passwordHash = GenerateHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
             
             var pattern1 = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
             var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
@@ -81,10 +81,10 @@ namespace Price_comparison_engine
                         var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
                         sqlKomanda.CommandType = CommandType.Text;
                         sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
-                        sqlKomanda.Parameters.AddWithValue("@PasswordHash", slaptazodzioHash);
+                        sqlKomanda.Parameters.AddWithValue("@PasswordHash", passwordHash);
                         sqlKomanda.Parameters.AddWithValue("@PasswordSalt", salt);
 
-                        string kodas = GenerateHash.SukurtiSalt(16);
+                        string kodas = GenerateHash.CreateSalt(16);
                         kodas = kodas.Remove(kodas.Length - 2);
                         var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegistruotis, sqlKomanda, pagrindinisLangas, this, kodas, Email.Text.Trim());
                         patvirtinimoLangas.Show();

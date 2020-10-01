@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
