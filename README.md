@@ -22,7 +22,11 @@
 - [x] Password hashing/encryption
 - [x] Register and login forms' error catching
 - [x] Email confirm and password reset
-- [ ] Store gathered data in the database
+- [x] Store gathered data in the database
 - [ ] Slideshow
+
+**Things to be done shortly**
+- Code refactoring
+- Adapting entity framework for managing database
 ## Initial goal
 Create a program/website/app which takes the data of the prices from different shopping websites and provides a comparison in a visual manner

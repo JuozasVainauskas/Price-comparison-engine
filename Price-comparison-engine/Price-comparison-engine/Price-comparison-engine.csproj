@@ -88,6 +88,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Klases\PuslapiuDuomenys.cs" />
+    <Compile Include="KonkretiPreke.xaml.cs">
+      <DependentUpon>KonkretiPreke.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.cs" />
     <Compile Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.designer.cs">
       <DependentUpon>202009301256108_SukurtiPuslapiuDuomenis.cs</DependentUpon>
@@ -138,6 +141,10 @@
     <Page Include="DUK_Langas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KonkretiPreke.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="PatvirtLangasSlaptKeitimui.xaml">
       <SubType>Designer</SubType>
