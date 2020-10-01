@@ -402,7 +402,7 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var duomenuAdapteris = new SqlDataAdapter("SELECT PuslapioURL, ImgURL FROM PuslapiuDuomenys WHERE PuslapioURL =' " + puslapioURL + " ' AND ImgURL ='" + imgURL + "' ", sqlPrisijungti);
+                var duomenuAdapteris = new SqlDataAdapter("SELECT PuslapioURL, ImgURL FROM PuslapiuDuomenys WHERE PuslapioURL ='" + puslapioURL + "' AND ImgURL ='" + imgURL + "' ", sqlPrisijungti);
                 var duomenuLentele = new DataTable();
                 duomenuAdapteris.Fill(duomenuLentele);
                 if (duomenuLentele.Rows.Count == 0)
