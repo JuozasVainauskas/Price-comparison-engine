@@ -21,13 +21,13 @@ using System.Windows.Shapes;
 namespace Price_comparison_engine
 {
     /// <summary>
-    /// Interaction logic for RegistracijosLangas.xaml
+    /// Interaction logic for RegisterWindow.xaml
     /// </summary>
-    public partial class RegistracijosLangas : Window
+    public partial class RegisterWindow : Window
     {
         readonly MainWindow mainWindow;
 
-        public RegistracijosLangas(MainWindow mainWindow)
+        public RegisterWindow(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
@@ -59,9 +59,8 @@ namespace Price_comparison_engine
             }
             else
             {
-                //var sqlRegistruotis = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
-                var sqlRegistruotis = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-                var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM UserData WHERE Email='" + Email.Text.Trim() + "'", sqlRegistruotis);
+                var sqlRegister = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
+                var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM UserData WHERE Email='" + Email.Text.Trim() + "'", sqlRegister);
                 var duomenuLentele = new DataTable();
                 duomenuAdapteris.Fill(duomenuLentele);
                 if (duomenuLentele.Rows.Count >= 1)
@@ -72,21 +71,21 @@ namespace Price_comparison_engine
                 {
                     try
                     {
-                        if (sqlRegistruotis.State == ConnectionState.Closed)
+                        if (sqlRegister.State == ConnectionState.Closed)
                         {
-                            sqlRegistruotis.Open();
+                            sqlRegister.Open();
                         }
 
                         var queue = "INSERT INTO UserData(Email, PasswordHash, PasswordSalt) VALUES (@Email, @PasswordHash, @PasswordSalt)";
-                        var sqlCommand = new SqlCommand(queue, sqlRegistruotis);
+                        var sqlCommand = new SqlCommand(queue, sqlRegister);
                         sqlCommand.CommandType = CommandType.Text;
                         sqlCommand.Parameters.AddWithValue("@Email", Email.Text.Trim());
                         sqlCommand.Parameters.AddWithValue("@PasswordHash", passwordHash);
                         sqlCommand.Parameters.AddWithValue("@PasswordSalt", salt);
 
-                        string kodas = GenerateHash.CreateSalt(16);
-                        kodas = kodas.Remove(kodas.Length - 2);
-                        var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegistruotis, sqlCommand, mainWindow, this, kodas, Email.Text.Trim());
+                        string code = GenerateHash.CreateSalt(16);
+                        code = code.Remove(code.Length - 2);
+                        var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegister, sqlCommand, mainWindow, this, code, Email.Text.Trim());
                         patvirtinimoLangas.Show();
 
                     }

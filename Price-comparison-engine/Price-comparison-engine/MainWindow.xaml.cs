@@ -42,37 +42,37 @@ namespace Price_comparison_engine
 
         }
 
-        private void DUKMygtukas_Click(object sender, RoutedEventArgs e)
+        private void DUKButton_Click(object sender, RoutedEventArgs e)
         {
             DUK_Window dukWindowOpener = new DUK_Window();
             dukWindowOpener.Show();
         }
 
-        private void KontaktaiMygtukas_Click(object sender, RoutedEventArgs e)
+        private void ContactsButton_Click(object sender, RoutedEventArgs e)
         {
-            ContactsWindow kontaktuLangoAtidarymas = new ContactsWindow();
-            kontaktuLangoAtidarymas.Show();
+            ContactsWindow contactsWindowOpener = new ContactsWindow();
+            contactsWindowOpener.Show();
         }
 
         public  static String zodis;
 
-        private void Ieškoti_Click(object sender, RoutedEventArgs e)
+        private void Search_Button(object sender, RoutedEventArgs e)
         {
-            zodis = ieskojimoLaukas.Text;
+            zodis = searchField.Text;
             PrekiuLangas prekiųLangoAtidarymas = new PrekiuLangas();
             prekiųLangoAtidarymas.Show();
         }
 
-        private void RegistruotisMygtukas_Click(object sender, RoutedEventArgs e)
+        private void Register_Button(object sender, RoutedEventArgs e)
         {
-            RegistracijosLangas registracijosLangoAtidarymas = new RegistracijosLangas(this);
-            registracijosLangoAtidarymas.Show();
+            RegisterWindow registerWindowOpener = new RegisterWindow(this);
+            registerWindowOpener.Show();
         }
 
-        private void PrisijungtiMygtukas_Click(object sender, RoutedEventArgs e)
+        private void Login_Button(object sender, RoutedEventArgs e)
         {
-            LoginWindow prisijungimoLangoAtidarymas = new LoginWindow(this);
-            prisijungimoLangoAtidarymas.Show();
+            LoginWindow loginWindowOpener = new LoginWindow(this);
+            loginWindowOpener.Show();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -82,12 +82,12 @@ namespace Price_comparison_engine
             double skirtumasPlocioBlokeliui = this.ActualHeight / 1.7;
             double skirtumasPlocioNuotraukai = this.ActualWidth / 1.4;
             double skirtumasIlgioNuotraukai = this.ActualHeight / 1.4;
-            MygtukoResize(prisijungimosMygtukas, skirtumasPlocio, skirtumasIlgio);
-            MygtukoResize(registracijosMygtukas, skirtumasPlocio, skirtumasIlgio);
-            MygtukoResize(DUKMygtukas, skirtumasPlocio, skirtumasIlgio);
-            MygtukoResize(kontaktuMygtukas, skirtumasPlocio, skirtumasIlgio);
-            MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
-            TextBoxResize(ieskojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
+            ButtonResize(loginButton, skirtumasPlocio, skirtumasIlgio);
+            ButtonResize(registerButton, skirtumasPlocio, skirtumasIlgio);
+            ButtonResize(DUKButton, skirtumasPlocio, skirtumasIlgio);
+            ButtonResize(contactsButton, skirtumasPlocio, skirtumasIlgio);
+            ButtonResize(searchButton, skirtumasPlocio, skirtumasIlgio);
+            TextBoxResize(searchField, skirtumasPlocio / 3, skirtumasIlgio);
             RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
             RectangleIštempimas(viršutinėLinija);
             RectangleIštempimas(vidurinėLinija);
@@ -99,35 +99,35 @@ namespace Price_comparison_engine
             SlideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
         }
 
-        private void MygtukoResize(Button mygtukas, double plotis, double ilgis)
+        private void ButtonResize(Button button, double width, double length)
         {
-            mygtukas.Width = this.ActualWidth - plotis;
-            mygtukas.Height = this.ActualHeight - ilgis;
+            button.Width = this.ActualWidth - width;
+            button.Height = this.ActualHeight - length;
         }
 
-        private void TextBlockResize(TextBlock tekstoBlokas, double plotis, double ilgis)
+        private void TextBlockResize(TextBlock textBlock, double width, double length)
         {
-            tekstoBlokas.Width = this.ActualWidth - plotis;
-            tekstoBlokas.Height = this.ActualHeight - ilgis;
+            textBlock.Width = this.ActualWidth - width;
+            textBlock.Height = this.ActualHeight - length;
         }
 
-        private void TextBoxResize(TextBox tekstBoksas, double plotis, double ilgis)
+        private void TextBoxResize(TextBox textBox, double width, double length)
         {
-            tekstBoksas.Width = this.ActualWidth - plotis;
-            tekstBoksas.Height = this.ActualHeight - ilgis;
+            textBox.Width = this.ActualWidth - width;
+            textBox.Height = this.ActualHeight - length;
         }
-        private void RectangleResize(Rectangle plotelis, double ilgis)
+        private void RectangleResize(Rectangle plotelis, double length)
         {
-            plotelis.Height = this.ActualHeight - ilgis;
+            plotelis.Height = this.ActualHeight - length;
         }
         private void RectangleIštempimas(Rectangle plotelis)
         {
             plotelis.Width = this.ActualWidth;
         }
-        private void SlideShowResize(Image nuotrauka,double plotis, double ilgis)
+        private void SlideShowResize(Image nuotrauka,double width, double length)
         {
-            nuotrauka.Width = this.ActualWidth-plotis;
-            nuotrauka.Height = this.ActualHeight-ilgis;
+            nuotrauka.Width = this.ActualWidth-width;
+            nuotrauka.Height = this.ActualHeight-length;
         }
 
         private static List<String> PuslapioURL = new List<string>();

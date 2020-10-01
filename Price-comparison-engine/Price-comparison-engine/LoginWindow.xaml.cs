@@ -33,7 +33,7 @@ namespace Price_comparison_engine
             this.mainWindow = mainWindow;
         }
 
-        private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
+        private void Login_button(object sender, RoutedEventArgs e)
         {
             //var sqlLogin = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
             var sqlLogin = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");

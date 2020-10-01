@@ -114,8 +114,8 @@
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistracijosLangas.xaml.cs">
-      <DependentUpon>RegistracijosLangas.xaml</DependentUpon>
+    <Compile Include="RegisterWindow.xaml.cs">
+      <DependentUpon>RegisterWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindowLoggedIn.xaml.cs">
       <DependentUpon>MainWindowLoggedIn.xaml</DependentUpon>
@@ -172,7 +172,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegistracijosLangas.xaml">
+    <Page Include="RegisterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

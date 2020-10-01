@@ -22,26 +22,26 @@ namespace Price_comparison_engine
     public partial class PatvirtinimoLangas : Window
     {
         readonly MainWindow pagrindinisLangas;
-        readonly RegistracijosLangas registracijosLangas;
-        private SqlConnection sqlRegistruotis;
+        readonly RegisterWindow registracijosLangas;
+        private SqlConnection sqlRegister;
         private SqlCommand sqlCommand;
-        private string kodas;
-        public PatvirtinimoLangas(SqlConnection sqlRegistruotis, SqlCommand sqlCommand, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
+        private string code;
+        public PatvirtinimoLangas(SqlConnection sqlRegister, SqlCommand sqlCommand, MainWindow pagrindinisLangas, RegisterWindow registracijosLangas, string code, string email)
         {
             InitializeComponent();
-            new SendEmail(kodas, email);
+            new SendEmail(code, email);
             this.pagrindinisLangas = pagrindinisLangas;
             this.registracijosLangas = registracijosLangas;
-            this.sqlRegistruotis = sqlRegistruotis;
+            this.sqlRegister = sqlRegister;
             this.sqlCommand = sqlCommand;
-            this.kodas = kodas;
+            this.code = code;
         }
 
         private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (kodas == PatvirtinimoLangelis.Text)
+                if (code == PatvirtinimoLangelis.Text)
                 {
                     sqlCommand.ExecuteNonQuery();
 
@@ -51,7 +51,7 @@ namespace Price_comparison_engine
 
                     var mainWindowLoggedIn = new MainWindowLoggedIn();
                     mainWindowLoggedIn.Show();
-                    sqlRegistruotis.Close();
+                    sqlRegister.Close();
                     this.Close();
                 }
                 else
