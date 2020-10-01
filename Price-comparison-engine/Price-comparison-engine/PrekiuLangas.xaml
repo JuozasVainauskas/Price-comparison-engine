@@ -15,7 +15,7 @@
  IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding nuotrauka}" />
+                            <Image Source="{Binding nuotrauka}" Height="100"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

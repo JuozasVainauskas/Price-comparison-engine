@@ -52,7 +52,7 @@ namespace Price_comparison_engine
         private static async void getHtmlAssync(DataGrid dataGridas)
         {  
             var prices = new List<Item>();
-
+            /*
             var chromeOptions = new ChromeOptions();
             //var user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
             //chromeOptions.AddArgument("f'user-agent="+user_agent);
@@ -71,13 +71,13 @@ namespace Price_comparison_engine
                 var Itemas = new Item { Seller = "Topo  Centras", Name = preke.Text};
                 prices.Add(Itemas);
             }
-
+            */
             var piguDaiktai = piguPaieska(await piguHtmlPaemimas());
             var avitelosDaiktai = avitelosPaieska(await avitelosHtmlPaemimas());
             var elektromarktDaiktai = elektromarktPaieska(await elektromarktHtmlPaemimas());
-           // surasymasIsAvitelos(avitelosDaiktai, prices);
+            surasymasIsAvitelos(avitelosDaiktai, prices);
            surasymasIsElektromarkt(elektromarktDaiktai, prices);
-          //  surasymasIsPigu(piguDaiktai, prices);
+            surasymasIsPigu(piguDaiktai, prices);
            surikiavimasIrSurasymas(prices, dataGridas);
             
         }
@@ -205,13 +205,15 @@ namespace Price_comparison_engine
                              .Equals("name")).FirstOrDefault().InnerText.Trim();
                     
                     var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
-
-                    price = pasalinimasTrikdanciuSimboliu(price);
-                    var priceAtsarg = price;
-                    priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
-                    double pricea = Convert.ToDouble(priceAtsarg);
-                    var Itemas = new Item { Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
-                    prices.Add(Itemas);
+                    if (price != "")
+                    {
+                        price = pasalinimasTrikdanciuSimboliu(price);
+                        var priceAtsarg = price;
+                        priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
+                        double pricea = Convert.ToDouble(priceAtsarg);
+                        var Itemas = new Item { Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
+                        prices.Add(Itemas);
+                    }
                 }
             }
             else
@@ -237,6 +239,11 @@ namespace Price_comparison_engine
 
                     var link = "https://pigu.lt/"+ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
+                    string imgLink = ProductListItem.Descendants("img")
+                       .Where(node => node.GetAttributeValue("src", "")
+                             .Contains("jpg")).FirstOrDefault().GetAttributeValue("src", "");
+
+                    Console.WriteLine(imgLink);
                     price = pasalinimasTarpuPigu(price);
                     var priceAtsarg = price;
                     price = pasalinimasEuroSimbol(price);
@@ -244,7 +251,7 @@ namespace Price_comparison_engine
                     priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
 
                     double pricea = Convert.ToDouble(priceAtsarg);
-                    var Itemas = new Item { Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
+                    var Itemas = new Item {nuotrauka=imgLink, Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
                     prices.Add(Itemas);
                 }
             }
