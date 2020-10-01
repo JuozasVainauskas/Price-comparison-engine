@@ -319,7 +319,7 @@ namespace Price_comparison_engine
 
         private static void surikiavimasIrSurasymas(List<Item> prices, DataGrid dataGridas2)
         {
-            List<Item> SortedPricesList = prices.OrderBy(o => o.Pricea).ToList();
+            List<Item> SortedPricesList = prices.OrderBy(o => o.Priceaa).ToList();
             foreach (Item item in SortedPricesList)
             {
                 dataGridas2.Items.Add(item);

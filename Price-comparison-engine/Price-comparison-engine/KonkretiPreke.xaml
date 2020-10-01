@@ -6,12 +6,8 @@
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
         Title="KonkretiPreke" Height="600" Width="800" MinWidth="800" MinHeight="600">
-    <Grid Width="800" Height="600" MinWidth="800" MinHeight="600" Margin="0,-23,-8,-8">
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="7*"/>
-        </Grid.RowDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="dataGridas2" CanUserAddRows="True" ItemsSource="{Binding Path= TestBinding}" Margin="10,29,22,22" Initialized="DataGridTest_Initialized" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.RowSpan="2">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" x:Name="dataGridas2" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="10" Initialized="DataGridTest_Initialized">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Image" Width="SizeToCells"
  IsReadOnly="True">
@@ -36,5 +32,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <WrapPanel x:Name="wrapPanel1" HorizontalAlignment="Left" Height="100" Margin="207,88,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>
