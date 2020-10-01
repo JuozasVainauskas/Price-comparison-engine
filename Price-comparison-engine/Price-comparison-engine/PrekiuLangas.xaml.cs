@@ -451,8 +451,8 @@ namespace Price_comparison_engine
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            VertinimoLangas vertinimoLangoAtidarymas = new VertinimoLangas();
-            vertinimoLangoAtidarymas.Show();
+            RatingWindow ratingWindowOpener = new RatingWindow();
+            ratingWindowOpener.Show();
         }
 
         private void linkButton_Click(object sender, RoutedEventArgs e)
@@ -465,24 +465,24 @@ namespace Price_comparison_engine
         }
         private static void WriteData(string puslapioURL, string imgURL)
         {
-            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
+            var sqlLogin = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
             {
-                if (sqlPrisijungti.State == ConnectionState.Closed)
+                if (sqlLogin.State == ConnectionState.Closed)
                 {
-                    sqlPrisijungti.Open();
+                    sqlLogin.Open();
                 }
 
-                var duomenuAdapteris = new SqlDataAdapter("SELECT PageURL, ImgURL FROM PuslapiuDuomenys WHERE PageURL ='" + puslapioURL + "' AND ImgURL ='" + imgURL + "' ", sqlPrisijungti);
+                var duomenuAdapteris = new SqlDataAdapter("SELECT PageURL, ImgURL FROM PageData WHERE PageURL ='" + puslapioURL + "' AND ImgURL ='" + imgURL + "' ", sqlLogin);
                 var duomenuLentele = new DataTable();
                 duomenuAdapteris.Fill(duomenuLentele);
                 if (duomenuLentele.Rows.Count == 0)
                 {
                     try
                     {
-                        if (sqlPrisijungti.State == ConnectionState.Closed)
+                        if (sqlLogin.State == ConnectionState.Closed)
                         {
-                            sqlPrisijungti.Open();
+                            sqlLogin.Open();
                         }
                     }
                     catch (Exception ex)
@@ -490,12 +490,12 @@ namespace Price_comparison_engine
                         MessageBox.Show(ex.Message);
                     }
 
-                    var eile = "INSERT INTO PuslapiuDuomenys(PageURL,ImgURL) VALUES (@PageURL, @ImgURL)";
-                    var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                    sqlKomanda.CommandType = CommandType.Text;
-                    sqlKomanda.Parameters.AddWithValue("@PageURL", puslapioURL);
-                    sqlKomanda.Parameters.AddWithValue("@ImgURL", imgURL);
-                    sqlKomanda.ExecuteNonQuery();
+                    var queue = "INSERT INTO PageData(PageURL,ImgURL) VALUES (@PageURL, @ImgURL)";
+                    var sqlCommand = new SqlCommand(queue, sqlLogin);
+                    sqlCommand.CommandType = CommandType.Text;
+                    sqlCommand.Parameters.AddWithValue("@PageURL", puslapioURL);
+                    sqlCommand.Parameters.AddWithValue("@ImgURL", imgURL);
+                    sqlCommand.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -504,7 +504,7 @@ namespace Price_comparison_engine
             }
             finally
             {
-                sqlPrisijungti.Close();
+                sqlLogin.Close();
             }
         }
 

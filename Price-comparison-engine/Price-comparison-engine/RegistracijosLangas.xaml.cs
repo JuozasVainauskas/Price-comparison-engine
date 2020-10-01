@@ -25,23 +25,23 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class RegistracijosLangas : Window
     {
-        readonly MainWindow pagrindinisLangas;
+        readonly MainWindow mainWindow;
 
-        public RegistracijosLangas(MainWindow pagrindinisLangas)
+        public RegistracijosLangas(MainWindow mainWindow)
         {
             InitializeComponent();
-            this.pagrindinisLangas = pagrindinisLangas;
+            this.mainWindow = mainWindow;
         }
 
-        private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
+        private void Register_Button(object sender, RoutedEventArgs e)
         {
             String salt = GenerateHash.CreateSalt(10);
-            String passwordHash = GenerateHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+            String passwordHash = GenerateHash.GenerateSHA256Hash(PasswordField.Password, salt);
             
             var pattern1 = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
             var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
             
-            if (Email.Text == "" || Slaptazodis.Password == "" || SlaptazodisPatvirtinti.Password == "")
+            if (Email.Text == "" || PasswordField.Password == "" || PasswordConfirmField.Password == "")
             {
                 MessageBox.Show("Prašome užpildyti visus laukus.");
             }
@@ -49,11 +49,11 @@ namespace Price_comparison_engine
             {
                 MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri sutapti su jūsų naudojamu gmail,\nkitaip negalėsite patvirtinti registracijos,\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
             }
-            else if (!pattern1.IsMatch(Slaptazodis.Password))
+            else if (!pattern1.IsMatch(PasswordField.Password))
             {
                 MessageBox.Show("Slaptažodyje turi būti bent trys raidės ir vienas skaičius!!!");
             }
-            else if (Slaptazodis.Password != SlaptazodisPatvirtinti.Password)
+            else if (PasswordField.Password != PasswordConfirmField.Password)
             {
                 MessageBox.Show("Slaptažodžiai nesutampa.");
             }
@@ -61,7 +61,7 @@ namespace Price_comparison_engine
             {
                 //var sqlRegistruotis = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
                 var sqlRegistruotis = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-                var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM NaudotojoDuomenys WHERE Email='" + Email.Text.Trim() + "'", sqlRegistruotis);
+                var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM UserData WHERE Email='" + Email.Text.Trim() + "'", sqlRegistruotis);
                 var duomenuLentele = new DataTable();
                 duomenuAdapteris.Fill(duomenuLentele);
                 if (duomenuLentele.Rows.Count >= 1)
@@ -77,16 +77,16 @@ namespace Price_comparison_engine
                             sqlRegistruotis.Open();
                         }
 
-                        var eile = "INSERT INTO NaudotojoDuomenys(Email, PasswordHash, PasswordSalt) VALUES (@Email, @PasswordHash, @PasswordSalt)";
-                        var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
-                        sqlKomanda.CommandType = CommandType.Text;
-                        sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
-                        sqlKomanda.Parameters.AddWithValue("@PasswordHash", passwordHash);
-                        sqlKomanda.Parameters.AddWithValue("@PasswordSalt", salt);
+                        var queue = "INSERT INTO UserData(Email, PasswordHash, PasswordSalt) VALUES (@Email, @PasswordHash, @PasswordSalt)";
+                        var sqlCommand = new SqlCommand(queue, sqlRegistruotis);
+                        sqlCommand.CommandType = CommandType.Text;
+                        sqlCommand.Parameters.AddWithValue("@Email", Email.Text.Trim());
+                        sqlCommand.Parameters.AddWithValue("@PasswordHash", passwordHash);
+                        sqlCommand.Parameters.AddWithValue("@PasswordSalt", salt);
 
                         string kodas = GenerateHash.CreateSalt(16);
                         kodas = kodas.Remove(kodas.Length - 2);
-                        var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegistruotis, sqlKomanda, pagrindinisLangas, this, kodas, Email.Text.Trim());
+                        var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegistruotis, sqlCommand, mainWindow, this, kodas, Email.Text.Trim());
                         patvirtinimoLangas.Show();
 
                     }

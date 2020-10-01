@@ -24,16 +24,16 @@ namespace Price_comparison_engine
         readonly MainWindow pagrindinisLangas;
         readonly RegistracijosLangas registracijosLangas;
         private SqlConnection sqlRegistruotis;
-        private SqlCommand sqlKomanda;
+        private SqlCommand sqlCommand;
         private string kodas;
-        public PatvirtinimoLangas(SqlConnection sqlRegistruotis, SqlCommand sqlKomanda, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
+        public PatvirtinimoLangas(SqlConnection sqlRegistruotis, SqlCommand sqlCommand, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
         {
             InitializeComponent();
             new SendEmail(kodas, email);
             this.pagrindinisLangas = pagrindinisLangas;
             this.registracijosLangas = registracijosLangas;
             this.sqlRegistruotis = sqlRegistruotis;
-            this.sqlKomanda = sqlKomanda;
+            this.sqlCommand = sqlCommand;
             this.kodas = kodas;
         }
 
@@ -43,7 +43,7 @@ namespace Price_comparison_engine
             {
                 if (kodas == PatvirtinimoLangelis.Text)
                 {
-                    sqlKomanda.ExecuteNonQuery();
+                    sqlCommand.ExecuteNonQuery();
 
                     pagrindinisLangas.Close();
                     registracijosLangas.Close();

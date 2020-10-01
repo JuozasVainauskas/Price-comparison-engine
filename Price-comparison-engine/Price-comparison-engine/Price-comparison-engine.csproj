@@ -95,6 +95,10 @@
     <Compile Include="Migrations\202010011954214_NewDatabase.designer.cs">
       <DependentUpon>202010011954214_NewDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010012059009_NewDatabase1.cs" />
+    <Compile Include="Migrations\202010012059009_NewDatabase1.designer.cs">
+      <DependentUpon>202010012059009_NewDatabase1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
@@ -107,8 +111,8 @@
     <Compile Include="PatvirtinimoLangas.xaml.cs">
       <DependentUpon>PatvirtinimoLangas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PrisijungimoLangas.xaml.cs">
-      <DependentUpon>PrisijungimoLangas.xaml</DependentUpon>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistracijosLangas.xaml.cs">
       <DependentUpon>RegistracijosLangas.xaml</DependentUpon>
@@ -119,8 +123,8 @@
     <Compile Include="SlaptazodzioKeitimoLangas.xaml.cs">
       <DependentUpon>SlaptazodzioKeitimoLangas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VertinimoLangas.xaml.cs">
-      <DependentUpon>VertinimoLangas.xaml</DependentUpon>
+    <Compile Include="RatingWindow.xaml.cs">
+      <DependentUpon>RatingWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="DUK_Window.xaml">
       <SubType>Designer</SubType>
@@ -164,7 +168,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PrisijungimoLangas.xaml">
+    <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,7 +184,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VertinimoLangas.xaml">
+    <Page Include="RatingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -204,6 +208,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202010011954214_NewDatabase.resx">
       <DependentUpon>202010011954214_NewDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010012059009_NewDatabase1.resx">
+      <DependentUpon>202010012059009_NewDatabase1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

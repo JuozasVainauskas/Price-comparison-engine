@@ -50,24 +50,24 @@ namespace Price_comparison_engine
             }
             else
             {
-                var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
+                var sqlLogin = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
                 try
                 {
-                    if (sqlPrisijungti.State == ConnectionState.Closed)
+                    if (sqlLogin.State == ConnectionState.Closed)
                     {
-                        sqlPrisijungti.Open();
+                        sqlLogin.Open();
                     }
 
                     String salt = GenerateHash.CreateSalt(10);
                     String slaptazodzioHash = GenerateHash.GenerateSHA256Hash(slaptazodis.Password, salt);
 
-                    var eile = "UPDATE NaudotojoDuomenys SET PasswordHash=@PasswordHash, PasswordSalt=@PasswordSalt WHERE Email=@Email";
-                    var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                    sqlKomanda.CommandType = CommandType.Text;
-                    sqlKomanda.Parameters.AddWithValue("@Email", email);
-                    sqlKomanda.Parameters.AddWithValue("@PasswordHash", slaptazodzioHash);
-                    sqlKomanda.Parameters.AddWithValue("@PasswordSalt", salt);
-                    sqlKomanda.ExecuteNonQuery();
+                    var queue = "UPDATE UserData SET PasswordHash=@PasswordHash, PasswordSalt=@PasswordSalt WHERE Email=@Email";
+                    var sqlCommand = new SqlCommand(queue, sqlLogin);
+                    sqlCommand.CommandType = CommandType.Text;
+                    sqlCommand.Parameters.AddWithValue("@Email", email);
+                    sqlCommand.Parameters.AddWithValue("@PasswordHash", slaptazodzioHash);
+                    sqlCommand.Parameters.AddWithValue("@PasswordSalt", salt);
+                    sqlCommand.ExecuteNonQuery();
 
                     MessageBox.Show("Slaptažodis pakeistas sėkmingai.");
                     this.Close();
@@ -78,7 +78,7 @@ namespace Price_comparison_engine
                 }
                 finally
                 {
-                    sqlPrisijungti.Close();
+                    sqlLogin.Close();
                 }
             }
         }

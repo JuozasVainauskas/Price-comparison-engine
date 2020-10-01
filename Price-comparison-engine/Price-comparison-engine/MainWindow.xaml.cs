@@ -71,7 +71,7 @@ namespace Price_comparison_engine
 
         private void PrisijungtiMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            PrisijungimoLangas prisijungimoLangoAtidarymas = new PrisijungimoLangas(this);
+            LoginWindow prisijungimoLangoAtidarymas = new LoginWindow(this);
             prisijungimoLangoAtidarymas.Show();
         }
 
@@ -175,23 +175,23 @@ namespace Price_comparison_engine
 
         private static void Read(ref List<String> PuslapioURL, ref List<String> ImgURL)
         {
-            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
+            var sqlLogin = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
             {
-                if (sqlPrisijungti.State == ConnectionState.Closed)
+                if (sqlLogin.State == ConnectionState.Closed)
                 {
-                    sqlPrisijungti.Open();
+                    sqlLogin.Open();
                 }
 
-                var eile = "SELECT PageURL, ImgURL FROM PageData";
-                var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                sqlKomanda.CommandType = CommandType.Text;
-                using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
+                var queue = "SELECT PageURL, ImgURL FROM PageData";
+                var sqlCommand = new SqlCommand(queue, sqlLogin);
+                sqlCommand.CommandType = CommandType.Text;
+                using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader())
                 {
-                    while (skaityti.Read())
+                    while (sqlDataReader.Read())
                     {
-                        PuslapioURL.Add(skaityti["PageURL"].ToString());
-                        ImgURL.Add(skaityti["ImgURL"].ToString());
+                        PuslapioURL.Add(sqlDataReader["PageURL"].ToString());
+                        ImgURL.Add(sqlDataReader["ImgURL"].ToString());
                     }
                 }
             }
@@ -201,7 +201,7 @@ namespace Price_comparison_engine
             }
             finally
             {
-                sqlPrisijungti.Close();
+                sqlLogin.Close();
             }
         }
     }
