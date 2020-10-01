@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -33,6 +35,9 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
             DataDirectoryInitialize();
+            Skaityti(ref PuslapioURL, ref ImgURL);
+            Console.WriteLine(PuslapioURL.Count);
+
         }
 
         private void DUKMygtukas_Click(object sender, RoutedEventArgs e)
@@ -123,6 +128,9 @@ namespace Price_comparison_engine
             nuotrauka.Height = this.ActualHeight-ilgis;
         }
 
+        private static List<String> PuslapioURL = new List<string>();
+        private static List<String> ImgURL = new List<string>();
+
         public static int slideCounter = 1;
         public static int slideCounter2 = 3;
 
@@ -181,6 +189,38 @@ namespace Price_comparison_engine
         private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
             System.Diagnostics.Process.Start(link3);
+        }
+
+        private static void Skaityti(ref List<String> PuslapioURL, ref List<String> ImgURL)
+        {
+            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
+            try
+            {
+                if (sqlPrisijungti.State == ConnectionState.Closed)
+                {
+                    sqlPrisijungti.Open();
+                }
+
+                var eile = "SELECT PuslapioURL, ImgURL FROM PuslapiuDuomenys";
+                var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
+                sqlKomanda.CommandType = CommandType.Text;
+                using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
+                {
+                    while (skaityti.Read())
+                    {
+                        PuslapioURL.Add(skaityti["PuslapioURL"].ToString());
+                        ImgURL.Add(skaityti["ImgURL"].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                sqlPrisijungti.Close();
+            }
         }
     }
 }
