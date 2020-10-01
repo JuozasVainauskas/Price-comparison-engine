@@ -144,6 +144,13 @@ namespace Price_comparison_engine
             pagrindinisLangas.Show();
             this.Close();
         }
+
+        private void Ieškoti_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.zodis = ieškojimoLaukas.Text;
+            PrekiuLangas prekiųLangoAtidarymas = new PrekiuLangas();
+            prekiųLangoAtidarymas.Show();
+        }
     }
 }
     

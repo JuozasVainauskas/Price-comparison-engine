@@ -72,7 +72,7 @@
         <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,100,33,0" VerticalAlignment="Top" Width="144" Height="56"
             Background="#FF0FA943"
             Foreground="#e6f3ff"
-            FontFamily="Cooper Black" Style="{DynamicResource ButtonRounded}" FontSize="24"
+            FontFamily="Cooper Black" Style="{DynamicResource ButtonRounded}" FontSize="24" Click="Ieškoti_Click"
                 />
         <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False"/>
         <Image x:Name="iKairePuse" HorizontalAlignment="Left" Height="54" Margin="83,280,0,235" VerticalAlignment="Top" Width="55" Source="Nuotraukos/back.png" MouseDown="Slider_Back" RenderTransformOrigin="0.518,-0.309"/>
