@@ -5,30 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="KonkretiPreke" Height="600" Width="800" MinWidth="800" MinHeight="600" SizeChanged="konkretiPrekeLangas_SizeChanged">
-    <Grid Width="800" Height="600" MinWidth="800" MinHeight="600">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="571*"/>
-            <ColumnDefinition Width="229*"/>
-        </Grid.ColumnDefinitions>
-        <DataGrid AutoGenerateColumns="False" x:Name="DataGridass" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="10,10,22,38" Initialized="DataGridTest_Initialized" Grid.ColumnSpan="2">
+        Title="KonkretiPreke" Height="600" Width="800" MinWidth="800" MinHeight="600">
+    <Grid Width="800" Height="600" MinWidth="800" MinHeight="600" Margin="0,-23,-8,-8">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <DataGrid AutoGenerateColumns="False" x:Name="dataGridas2" CanUserAddRows="True" ItemsSource="{Binding Path= TestBinding}" Margin="10,29,22,22" Initialized="DataGridTest_Initialized" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Grid.RowSpan="2">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Image" Width="SizeToCells"
  IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding nuotrauka}" Height="100" Name="imageClick" MouseLeftButtonDown="imageClick_MouseLeftButtonDown"/>
+                            <Image Source="{Binding nuotraukaa}" Height="100" Name="imageClick" MouseLeftButtonDown="imageClick_MouseLeftButtonDown"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Pardavejas" IsReadOnly="True" Binding="{Binding Path=Seller}" Width="70"></DataGridTextColumn>
-                <DataGridTextColumn Header="Preke" IsReadOnly="True"  Binding="{Binding Path=Name}" Width="300"></DataGridTextColumn>
-                <DataGridTextColumn Header="Kaina" IsReadOnly="True"  Binding="{Binding Path=Price}" Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pardavejas" IsReadOnly="True" Binding="{Binding Path=Sellerr}" Width="70"></DataGridTextColumn>
+                <DataGridTextColumn Header="Preke" IsReadOnly="True"  Binding="{Binding Path=Namee}" Width="300"></DataGridTextColumn>
+                <DataGridTextColumn Header="Kaina" IsReadOnly="True"  Binding="{Binding Path=Pricee}" Width="100"></DataGridTextColumn>
                 <DataGridTemplateColumn Header="Nuoroda">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button x:Name="linkButton" Background="#FF36B04D" ContentStringFormat="" Click="linkButton_Click">
-                                <Hyperlink NavigateUri="{Binding Link}">
+                                <Hyperlink NavigateUri="{Binding Linkk}">
                                 </Hyperlink>
                             </Button>
                         </DataTemplate>
@@ -36,6 +36,5 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <WrapPanel x:Name="wrapPanel1" HorizontalAlignment="Left" Height="100" Margin="207,88,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

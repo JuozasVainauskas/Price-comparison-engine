@@ -44,7 +44,7 @@ namespace Price_comparison_engine
             InitializeComponent();
         }
 
-        private static async void getHtmlAssync(DataGrid dataGridas)
+        private static async void getHtmlAssync(DataGrid dataGridas2)
         {
             var prices = new List<Item>();
             var piguDaiktai = piguPaieska(await piguHtmlPaemimas());
@@ -53,8 +53,7 @@ namespace Price_comparison_engine
             surasymasIsAvitelos(avitelosDaiktai, prices);
             surasymasIsElektromarkt(elektromarktDaiktai, prices);
             surasymasIsPigu(piguDaiktai, prices);
-            surikiavimasIrSurasymas(prices, dataGridas);
-
+            surikiavimasIrSurasymas(prices, dataGridas2);
         }
 
         private static async Task<HtmlDocument> avitelosHtmlPaemimas()
@@ -318,19 +317,19 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static void surikiavimasIrSurasymas(List<Item> prices, DataGrid dataGridas)
+        private static void surikiavimasIrSurasymas(List<Item> prices, DataGrid dataGridas2)
         {
             List<Item> SortedPricesList = prices.OrderBy(o => o.Pricea).ToList();
             foreach (Item item in SortedPricesList)
             {
-                dataGridas.Items.Add(item);
+                dataGridas2.Items.Add(item);
             }
             prices.Clear();
         }
 
         private void DataGridTest_Initialized(object sender, EventArgs e)
         {
-            getHtmlAssync(DataGridass);
+            getHtmlAssync(dataGridas2);
         }
 
         private void imageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -343,10 +342,5 @@ namespace Price_comparison_engine
             throw new NotImplementedException();
         }
 
-        private void konkretiPrekeLangas_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            DataGridass.Width = this.ActualWidth;
-            DataGridass.Width = this.ActualHeight;
-        }
     }
 }
