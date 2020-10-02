@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="VertinimoLangas" Height="450" Width="800">
+        Title="Vertinimas" Height="450" Width="378" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -63,63 +63,39 @@
         <Button Content="Vertinti" HorizontalAlignment="Left" Margin="99,326,0,0" VerticalAlignment="Top" Width="177" Height="39"
             Background="#FF015DFF"
             Foreground="white"
-            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti_avitela"/>
-        <Button Content="Vertinti" HorizontalAlignment="Left" Margin="506,326,0,0" VerticalAlignment="Top" Width="177" Height="39"
-            Background="#FF015DFF"
-            Foreground="white"
-            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti_elektromarkt"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="138,28,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/avitela.png"/>
-        <Image HorizontalAlignment="Left" Height="152" Margin="506,10,0,0" VerticalAlignment="Top" Width="185" Source="Nuotraukos/elektromarkt.png"/>
-        <TextBlock HorizontalAlignment="Left" Margin="112,177,0,0" TextWrapping="Wrap" Text="Aptarnavimas" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="112,208,0,0" TextWrapping="Wrap" Text="Prekių kokybė" VerticalAlignment="Top" Width="76" Height="15"/>
-        <TextBlock HorizontalAlignment="Left" Margin="112,237,0,0" TextWrapping="Wrap" Text="Pristatymas" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="528,177,0,0" TextWrapping="Wrap" Text="Aptarnavimas" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="528,208,0,0" TextWrapping="Wrap" Text="Prekių kokybė" VerticalAlignment="Top" Width="76"/>
-        <TextBlock HorizontalAlignment="Left" Margin="528,234,0,0" TextWrapping="Wrap" Text="Pristatymas" VerticalAlignment="Top" Height="16"/>
-        <ComboBox x:Name="avitelaApt" HorizontalAlignment="Left" Margin="204,171,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Avitela_Aptarnavimas">
+            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti"/>
+        <Image x:Name="ParduotuvesImg" HorizontalAlignment="Left" Height="100" Margin="138,28,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/avitela.png"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,201,0,0" TextWrapping="Wrap" Text="Aptarnavimas" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,235,0,0" TextWrapping="Wrap" Text="Prekių kokybė" VerticalAlignment="Top" Width="76" Height="15"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,267,0,0" TextWrapping="Wrap" Text="Pristatymas" VerticalAlignment="Top"/>
+        <ComboBox x:Name="aptarnavimas" HorizontalAlignment="Left" Margin="204,193,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Aptarnavimas">
             <ComboBoxItem>1</ComboBoxItem>
             <ComboBoxItem>2</ComboBoxItem>
             <ComboBoxItem>3</ComboBoxItem>
             <ComboBoxItem>4</ComboBoxItem>
             <ComboBoxItem>5</ComboBoxItem>
         </ComboBox>
-        <ComboBox x:Name="avitelaKok" HorizontalAlignment="Left" Margin="204,203,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Avitela_Kokybe">
-        <ComboBoxItem>1</ComboBoxItem>
-        <ComboBoxItem>2</ComboBoxItem>
-        <ComboBoxItem>3</ComboBoxItem>
-        <ComboBoxItem>4</ComboBoxItem>
-        <ComboBoxItem>5</ComboBoxItem>
-        </ComboBox>
-        <ComboBox x:Name="avitelaPris" HorizontalAlignment="Left" Margin="204,234,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Avitela_Pristatymas">
-        <ComboBoxItem>1</ComboBoxItem>
-        <ComboBoxItem>2</ComboBoxItem>
-        <ComboBoxItem>3</ComboBoxItem>
-        <ComboBoxItem>4</ComboBoxItem>
-        <ComboBoxItem>5</ComboBoxItem>
-        </ComboBox>
-        <ComboBox x:Name="elektroApt" HorizontalAlignment="Left" Margin="624,171,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Elektromarkt_Aptarnavimas">
-        <ComboBoxItem>1</ComboBoxItem>
-        <ComboBoxItem>2</ComboBoxItem>
-        <ComboBoxItem>3</ComboBoxItem>
-        <ComboBoxItem>4</ComboBoxItem>
-        <ComboBoxItem>5</ComboBoxItem>
-        </ComboBox>
-        <ComboBox x:Name="elektroKok" HorizontalAlignment="Left" Margin="624,203,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Elektromarkt_Kokybe">
-        <ComboBoxItem>1</ComboBoxItem>
-        <ComboBoxItem>2</ComboBoxItem>
-        <ComboBoxItem>3</ComboBoxItem>
-        <ComboBoxItem>4</ComboBoxItem>
-        <ComboBoxItem>5</ComboBoxItem>
-        </ComboBox>
-        <ComboBox x:Name="elektroPris" HorizontalAlignment="Left" Margin="624,234,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Elektromarkt_Pristatymas">
+        <ComboBox x:Name="kokybe" HorizontalAlignment="Left" Margin="204,228,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Kokybe">
             <ComboBoxItem>1</ComboBoxItem>
             <ComboBoxItem>2</ComboBoxItem>
             <ComboBoxItem>3</ComboBoxItem>
             <ComboBoxItem>4</ComboBoxItem>
             <ComboBoxItem>5</ComboBoxItem>
         </ComboBox>
-        <TextBlock x:Name="avitelaIv" HorizontalAlignment="Left" Margin="164,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBlock x:Name="elektromarktIv" HorizontalAlignment="Left" Margin="571,136,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ComboBox x:Name="pristatymas" HorizontalAlignment="Left" Margin="204,263,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Pristatymas">
+            <ComboBoxItem>1</ComboBoxItem>
+            <ComboBoxItem>2</ComboBoxItem>
+            <ComboBoxItem>3</ComboBoxItem>
+            <ComboBoxItem>4</ComboBoxItem>
+            <ComboBoxItem>5</ComboBoxItem>
+        </ComboBox>
+        <TextBlock x:Name="ivertinimas" HorizontalAlignment="Left" Margin="138,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
+        <TextBlock HorizontalAlignment="Left" Margin="112,164,0,0" TextWrapping="Wrap" Text="Parduotuvė" VerticalAlignment="Top"/>
+        <ComboBox x:Name="parduotuve" HorizontalAlignment="Left" Margin="204,157,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Parduotuve">
+            <ComboBoxItem Content="Avitela"/>
+            <ComboBoxItem Content="Elektromarkt"/>
+        </ComboBox>
+        <Image x:Name="ivertinimoImg" HorizontalAlignment="Left" Height="13" Margin="138,133,0,0" VerticalAlignment="Top" Width="100" Source="Nuotraukos/0.png"/>
 
     </Grid>
 </Window>
