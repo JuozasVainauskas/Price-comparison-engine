@@ -89,12 +89,13 @@
             <ComboBoxItem>4</ComboBoxItem>
             <ComboBoxItem>5</ComboBoxItem>
         </ComboBox>
-        <TextBlock x:Name="ivertinimas" HorizontalAlignment="Left" Margin="138,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
+        <TextBlock x:Name="ivertinimas" HorizontalAlignment="Left" Margin="138,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
         <TextBlock HorizontalAlignment="Left" Margin="112,164,0,0" TextWrapping="Wrap" Text="Parduotuvė" VerticalAlignment="Top"/>
         <ComboBox x:Name="parduotuve" HorizontalAlignment="Left" Margin="204,157,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Parduotuve">
             <ComboBoxItem Content="Avitela"/>
             <ComboBoxItem Content="Elektromarkt"/>
         </ComboBox>
+        <Image x:Name="ivertinimoImg" HorizontalAlignment="Left" Height="13" Margin="138,133,0,0" VerticalAlignment="Top" Width="100" Source="Nuotraukos/0.png"/>
 
     </Grid>
 </Window>

@@ -42,7 +42,9 @@ namespace Price_comparison_engine
                 Skaityti("Avitela", ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
+                keistiImg(calc);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+
                 parduotuve.IsEnabled = false;
             }
             if (parduotuve.SelectedIndex == 1)
@@ -53,6 +55,7 @@ namespace Price_comparison_engine
                 Skaityti("Elektromarkt", ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
+                keistiImg(calc);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
             }
@@ -88,6 +91,7 @@ namespace Price_comparison_engine
             }
 
             ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+            keistiImg(calc);
             aptarnavimas.IsEnabled = true;
             pristatymas.IsEnabled = true;
             kokybe.IsEnabled = true;
@@ -157,6 +161,34 @@ namespace Price_comparison_engine
             finally
             {
                 sqlPrisijungti.Close();
+            }
+        }
+
+        private void keistiImg(double calc)
+        {
+            if (calc < 0.5)
+            {
+                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/0.png", UriKind.Relative));
+            }
+            else if (calc < 1.5)
+            {
+                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/11.png", UriKind.Relative));
+            }
+            else if (calc < 2.5)
+            {
+                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/22.png", UriKind.Relative));
+            }
+            else if (calc < 3.5)
+            {
+                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/33.png", UriKind.Relative));
+            }
+            else if (calc < 4.5)
+            {
+                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/4.png", UriKind.Relative));
+            }
+            else
+            {
+                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/5.png", UriKind.RelativeOrAbsolute));
             }
         }
     }
