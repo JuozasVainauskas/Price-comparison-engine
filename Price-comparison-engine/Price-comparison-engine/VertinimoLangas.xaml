@@ -68,8 +68,8 @@
             Background="#FF015DFF"
             Foreground="white"
             FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti_elektromarkt"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="138,28,0,0" VerticalAlignment="Top" Width="103" Source="avitela.png"/>
-        <Image HorizontalAlignment="Left" Height="152" Margin="506,10,0,0" VerticalAlignment="Top" Width="185" Source="elektromarkt.png"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="138,28,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/avitela.png"/>
+        <Image HorizontalAlignment="Left" Height="152" Margin="506,10,0,0" VerticalAlignment="Top" Width="185" Source="Nuotraukos/elektromarkt.png"/>
         <TextBlock HorizontalAlignment="Left" Margin="112,177,0,0" TextWrapping="Wrap" Text="Aptarnavimas" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="112,208,0,0" TextWrapping="Wrap" Text="Prekių kokybė" VerticalAlignment="Top" Width="76" Height="15"/>
         <TextBlock HorizontalAlignment="Left" Margin="112,237,0,0" TextWrapping="Wrap" Text="Pristatymas" VerticalAlignment="Top"/>

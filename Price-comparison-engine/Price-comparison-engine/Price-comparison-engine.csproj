@@ -280,14 +280,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="avitela.png" />
-    <Resource Include="elektromarkt.png" />
+    <Resource Include="Nuotraukos\avitela.png" />
+    <Resource Include="Nuotraukos\elektromarkt.png" />
     <Content Include="PCEDatabase.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="PCEDatabase_log.ldf">
       <DependentUpon>PCEDatabase.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
