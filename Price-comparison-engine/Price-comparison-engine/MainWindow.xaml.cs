@@ -36,10 +36,12 @@ namespace Price_comparison_engine
             InitializeComponent();
             DataDirectoryInitialize();
             Skaityti(ref PuslapioURL, ref ImgURL);
-            img1.Source = new BitmapImage(new Uri(ImgURL[0], UriKind.Absolute));
-            img2.Source = new BitmapImage(new Uri(ImgURL[1], UriKind.Absolute));
-            img3.Source = new BitmapImage(new Uri(ImgURL[2], UriKind.Absolute));
-
+            if (PuslapioURL.Count >= 3 && ImgURL.Count >= 3)
+            {
+                img1.Source = new BitmapImage(new Uri(ImgURL[0], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(ImgURL[1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(ImgURL[2], UriKind.Absolute));
+            }
         }
 
         private void DUKMygtukas_Click(object sender, RoutedEventArgs e)
@@ -135,42 +137,56 @@ namespace Price_comparison_engine
 
         public static int indexFront = 3;
         public static int indexBack = 0;
-
-        public static String link1 = "http://www.google.com";
-        public static String link2 = "http://www.facebook.com";
-        public static String link3 = "http://www.gmail.com";
+        public static int urlIndex = 0;
 
         private void Slider_Back(object sender, MouseButtonEventArgs e)
         {
-            img1.Source = new BitmapImage(new Uri(ImgURL[indexBack], UriKind.Absolute));
-            img2.Source = new BitmapImage(new Uri(ImgURL[indexBack + 1], UriKind.Absolute));
-            img3.Source = new BitmapImage(new Uri(ImgURL[indexBack + 2], UriKind.Absolute));
-            indexBack--;
-            indexFront--;
+            if (indexBack > 0)
+            {
+                urlIndex--;
+                indexBack--;
+                indexFront--;
+                img1.Source = new BitmapImage(new Uri(ImgURL[indexBack], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(ImgURL[indexBack + 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(ImgURL[indexBack + 2], UriKind.Absolute));
+            }
         }
 
         private void Slider_Front(object sender, MouseButtonEventArgs e)
         {
-            img1.Source = new BitmapImage(new Uri(ImgURL[indexFront-2], UriKind.Absolute));
-            img2.Source = new BitmapImage(new Uri(ImgURL[indexFront-1], UriKind.Absolute));
-            img3.Source = new BitmapImage(new Uri(ImgURL[indexFront], UriKind.Absolute));
-            indexFront++;
-            indexBack++;
+            if (indexFront < PuslapioURL.Count - 1)
+            {
+                urlIndex++;
+                img1.Source = new BitmapImage(new Uri(ImgURL[indexFront - 2], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(ImgURL[indexFront - 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(ImgURL[indexFront], UriKind.Absolute));
+                indexFront++;
+                indexBack++;
+            }
         }
 
         private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start(link1);
+            if (PuslapioURL.Count >= 3)
+            {
+                System.Diagnostics.Process.Start(PuslapioURL[urlIndex]);
+            }
         }
 
         private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start(link2);
+            if (PuslapioURL.Count >= 3)
+            {
+                System.Diagnostics.Process.Start(PuslapioURL[urlIndex + 1]);
+            }
         }
 
         private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start(link3);
+            if (PuslapioURL.Count >= 3)
+            {
+                System.Diagnostics.Process.Start(PuslapioURL[urlIndex + 2]);
+            }
         }
 
         private static void Skaityti(ref List<String> PuslapioURL, ref List<String> ImgURL)
