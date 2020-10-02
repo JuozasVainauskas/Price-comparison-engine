@@ -36,9 +36,12 @@ namespace Price_comparison_engine
             InitializeComponent();
             DataDirectoryInitialize();
             Skaityti(ref PuslapioURL, ref ImgURL);
-            img1.Source = new BitmapImage(new Uri(ImgURL[0], UriKind.Absolute));
-            img2.Source = new BitmapImage(new Uri(ImgURL[1], UriKind.Absolute));
-            img3.Source = new BitmapImage(new Uri(ImgURL[2], UriKind.Absolute));
+            if (PuslapioURL.Count >= 3 && ImgURL.Count >= 3)
+            {
+                img1.Source = new BitmapImage(new Uri(ImgURL[0], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(ImgURL[1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(ImgURL[2], UriKind.Absolute));
+            }
         }
 
         private void DUKMygtukas_Click(object sender, RoutedEventArgs e)
@@ -164,17 +167,26 @@ namespace Price_comparison_engine
 
         private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start(PuslapioURL[urlIndex]);
+            if (PuslapioURL.Count >= 3)
+            {
+                System.Diagnostics.Process.Start(PuslapioURL[urlIndex]);
+            }
         }
 
         private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start(PuslapioURL[urlIndex + 1]);
+            if (PuslapioURL.Count >= 3)
+            {
+                System.Diagnostics.Process.Start(PuslapioURL[urlIndex + 1]);
+            }
         }
 
         private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            System.Diagnostics.Process.Start(PuslapioURL[urlIndex + 2]);
+            if (PuslapioURL.Count >= 3)
+            {
+                System.Diagnostics.Process.Start(PuslapioURL[urlIndex + 2]);
+            }
         }
 
         private static void Skaityti(ref List<String> PuslapioURL, ref List<String> ImgURL)
