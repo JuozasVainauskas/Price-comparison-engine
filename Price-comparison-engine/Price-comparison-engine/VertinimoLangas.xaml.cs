@@ -24,86 +24,78 @@ namespace Price_comparison_engine
         public VertinimoLangas()
         {
             InitializeComponent();
-            Skaityti("Avitela", ref avitela, ref avitelaBalsavusiuSk);
-            Skaityti("Elektromarkt", ref elektromarkt, ref elektromarktBalsavusiuSk);
-            if (avitelaBalsavusiuSk != 0)
+            aptarnavimas.IsEnabled = false;
+            pristatymas.IsEnabled = false;
+            kokybe.IsEnabled = false;
+        }
+
+        private static double balsai = 0;
+        private static int balsavusiuSk = 0;
+
+        private void Parduotuve(object sender, SelectionChangedEventArgs e)
+        {
+            if(parduotuve.SelectedIndex == 0)
             {
-                var calc = avitela / (3 * avitelaBalsavusiuSk);
-                avitelaIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                aptarnavimas.IsEnabled = true;
+                pristatymas.IsEnabled = true;
+                kokybe.IsEnabled = true;
+                Skaityti("Avitela", ref balsai, ref balsavusiuSk);
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
+                var calc = balsai / (3 * balsavusiuSk);
+                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                parduotuve.IsEnabled = false;
             }
-            else
+            if (parduotuve.SelectedIndex == 1)
             {
-                avitelaIv.Text = "Parduotuvė neįvertinta";
+                aptarnavimas.IsEnabled = true;
+                pristatymas.IsEnabled = true;
+                kokybe.IsEnabled = true;
+                Skaityti("Elektromarkt", ref balsai, ref balsavusiuSk);
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
+                var calc = balsai / (3 * balsavusiuSk);
+                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                parduotuve.IsEnabled = false;
             }
-            if (elektromarktBalsavusiuSk != 0)
+        }
+        private void Aptarnavimas(object sender, SelectionChangedEventArgs e)
+        {
+           balsai += aptarnavimas.SelectedIndex + 1;
+            aptarnavimas.IsEnabled = false;
+        }
+
+        private void Kokybe(object sender, SelectionChangedEventArgs e)
+        {
+            balsai += kokybe.SelectedIndex + 1;
+            kokybe.IsEnabled = false;
+        }
+
+        private void Pristatymas(object sender, SelectionChangedEventArgs e)
+        {
+            balsai += pristatymas.SelectedIndex + 1;
+            pristatymas.IsEnabled = false;
+        }
+        private void Vertinti(object sender, RoutedEventArgs e)
+        {
+            balsavusiuSk++;
+            var calc = balsai / (3 * balsavusiuSk);
+            if(parduotuve.SelectedIndex == 0)
             {
-                var calc = elektromarkt / (3 * elektromarktBalsavusiuSk);
-                elektromarktIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                Rasyti("Avitela", balsai, balsavusiuSk);
             }
-            else
+            if (parduotuve.SelectedIndex == 1)
             {
-                elektromarktIv.Text = "Parduotuvė neįvertinta";
+                Rasyti("Elektromarkt", balsai, balsavusiuSk);
             }
-        }
 
-        private static double avitela = 0;
-        private static int avitelaBalsavusiuSk = 0;
-
-        private static double elektromarkt = 0;
-        private static int elektromarktBalsavusiuSk = 0;
-        private void Vertinti_avitela(object sender, RoutedEventArgs e)
-        {
-            avitelaBalsavusiuSk++;
-            var calc = avitela / (3 * avitelaBalsavusiuSk);
-            Rasyti("avitela", avitela, avitelaBalsavusiuSk);
-
-            avitelaIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-            avitelaApt.SelectedIndex = -1;
-            avitelaKok.SelectedIndex = -1;
-            avitelaPris.SelectedIndex = -1;
-            
-        }
-        private void Vertinti_elektromarkt(object sender, RoutedEventArgs e)
-        {
-            elektromarktBalsavusiuSk++;
-            var calc = elektromarkt / (3 * elektromarktBalsavusiuSk);
-            Rasyti("Elektromarkt", elektromarkt, elektromarktBalsavusiuSk);
-
-
-            elektromarktIv.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-            elektroApt.SelectedIndex = -1;
-            elektroKok.SelectedIndex = -1;
-            elektroPris.SelectedIndex = -1;
-        }
-
-        private void Avitela_Aptarnavimas(object sender, SelectionChangedEventArgs e)
-        {
-            avitela += avitelaApt.SelectedIndex + 1;
-        }
-
-        private void Avitela_Kokybe(object sender, SelectionChangedEventArgs e)
-        {
-            avitela += avitelaKok.SelectedIndex + 1;
-        }
-
-        private void Avitela_Pristatymas(object sender, SelectionChangedEventArgs e)
-        {
-            avitela += avitelaPris.SelectedIndex + 1;
-        }
-
-        private void Elektromarkt_Aptarnavimas(object sender, SelectionChangedEventArgs e)
-        {
-            elektromarkt += elektroApt.SelectedIndex + 1;
-        }
-
-        private void Elektromarkt_Kokybe(object sender, SelectionChangedEventArgs e)
-        {
-            elektromarkt += elektroKok.SelectedIndex + 1;
-        }
-
-        private void Elektromarkt_Pristatymas(object sender, SelectionChangedEventArgs e)
-        {
-            elektromarkt += elektroPris.SelectedIndex + 1;
+            ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+            aptarnavimas.IsEnabled = true;
+            pristatymas.IsEnabled = true;
+            kokybe.IsEnabled = true;
+            parduotuve.IsEnabled = true;
+            aptarnavimas.SelectedIndex = -1;
+            kokybe.SelectedIndex = -1;
+            pristatymas.SelectedIndex = -1;
+            parduotuve.SelectedIndex = -1;
         }
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
