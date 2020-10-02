@@ -44,19 +44,19 @@ namespace Price_comparison_engine
             InitializeComponent();
         }
 
-        private static async void getHtmlAssync(DataGrid dataGridas2)
+        private static async void GetHtmlAssync(DataGrid dataGridas2)
         {
             var prices = new List<Item>();
-            var piguDaiktai = piguPaieska(await piguHtmlPaemimas());
-            var avitelosDaiktai = avitelosPaieska(await avitelosHtmlPaemimas());
-            var elektromarktDaiktai = elektromarktPaieska(await elektromarktHtmlPaemimas());
-            surasymasIsAvitelos(avitelosDaiktai, prices);
-            surasymasIsElektromarkt(elektromarktDaiktai, prices);
-            surasymasIsPigu(piguDaiktai, prices);
-            surikiavimasIrSurasymas(prices, dataGridas2);
+            var piguDaiktai = PiguPaieska(await PiguHtmlPaemimas());
+            var avitelosDaiktai = AvitelosPaieska(await AvitelosHtmlPaemimas());
+            var elektromarktDaiktai = ElektromarktPaieska(await ElektromarktHtmlPaemimas());
+            SurasymasIsAvitelos(avitelosDaiktai, prices);
+            SurasymasIsElektromarkt(elektromarktDaiktai, prices);
+            SurasymasIsPigu(piguDaiktai, prices);
+            SurikiavimasIrSurasymas(prices, dataGridas2);
         }
 
-        private static async Task<HtmlDocument> avitelosHtmlPaemimas()
+        private static async Task<HtmlDocument> AvitelosHtmlPaemimas()
         {
             var url = "https://avitela.lt/paieska/" + pav;
             var httpClient = new HttpClient();
@@ -66,7 +66,7 @@ namespace Price_comparison_engine
             return htmlDocument;
         }
 
-        private static async Task<HtmlDocument> elektromarktHtmlPaemimas()
+        private static async Task<HtmlDocument> ElektromarktHtmlPaemimas()
         {
             Regex regEx = new Regex(" ");
             var urlgalas = regEx.Replace(pav, "+");
@@ -78,7 +78,7 @@ namespace Price_comparison_engine
             return htmlDocument2;
         }
 
-        private static async Task<HtmlDocument> piguHtmlPaemimas()
+        private static async Task<HtmlDocument> PiguHtmlPaemimas()
         {
             try
             {
@@ -97,18 +97,13 @@ namespace Price_comparison_engine
             }
         }
 
-        private static List<HtmlNode> avitelosPaieska(HtmlDocument htmlDocument)
+        private static List<HtmlNode> AvitelosPaieska(HtmlDocument htmlDocument)
         {
             try
             {
                 var ProductsHtml = htmlDocument.DocumentNode.Descendants("div")
                 .Where(node => node.GetAttributeValue("class", "")
                 .Equals("product-grid active")).ToList();
-
-                /* catch()
-                 {
-                     return null;
-                 }*/
 
                 var ProductListItems = ProductsHtml[0].Descendants("div")
                     .Where(node => node.GetAttributeValue("class", "")
@@ -122,7 +117,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static List<HtmlNode> elektromarktPaieska(HtmlDocument htmlDocument2)
+        private static List<HtmlNode> ElektromarktPaieska(HtmlDocument htmlDocument2)
         {
 
             try
@@ -143,7 +138,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static List<HtmlNode> piguPaieska(HtmlDocument htmlDocument2)
+        private static List<HtmlNode> PiguPaieska(HtmlDocument htmlDocument2)
         {
 
 
@@ -163,7 +158,7 @@ namespace Price_comparison_engine
                 return null;
 
         }
-        private static void surasymasIsAvitelos(List<HtmlNode> ProductListItems, List<Item> prices)
+        private static void SurasymasIsAvitelos(List<HtmlNode> ProductListItems, List<Item> prices)
         {
             if (ProductListItems != null)
             {
@@ -181,9 +176,9 @@ namespace Price_comparison_engine
                     var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
                     if (price != "")
                     {
-                        price = pasalinimasTrikdanciuSimboliu(price);
+                        price = PasalinimasTrikdanciuSimboliu(price);
                         var priceAtsarg = price;
-                        priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
+                        priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
                         double pricea = Convert.ToDouble(priceAtsarg);
                         var Itemas = new Item { Sellerr = "Avitela", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link };
                         prices.Add(Itemas);
@@ -196,7 +191,7 @@ namespace Price_comparison_engine
                 prices.Add(Itemas);
             }
         }
-        private static void surasymasIsPigu(List<HtmlNode> ProductListItems, List<Item> prices)
+        private static void SurasymasIsPigu(List<HtmlNode> ProductListItems, List<Item> prices)
         {
             if (ProductListItems != null)
             {
@@ -218,11 +213,11 @@ namespace Price_comparison_engine
                              .Contains("jpg")).FirstOrDefault().GetAttributeValue("src", "");
 
                     Console.WriteLine(imgLink);
-                    price = pasalinimasTarpuPigu(price);
+                    price = PasalinimasTarpuPigu(price);
                     var priceAtsarg = price;
-                    price = pasalinimasEuroSimbol(price);
+                    price = PasalinimasEuroSimbol(price);
                     price = price + "€";
-                    priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
+                    priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
 
                     double pricea = Convert.ToDouble(priceAtsarg);
                     var Itemas = new Item { nuotraukaa = imgLink, Sellerr = "Pigu", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link };
@@ -235,7 +230,7 @@ namespace Price_comparison_engine
                 prices.Add(Itemas);
             }
         }
-        private static void surasymasIsElektromarkt(List<HtmlNode> ProductListItems2, List<Item> prices)
+        private static void SurasymasIsElektromarkt(List<HtmlNode> ProductListItems2, List<Item> prices)
         {
             if (ProductListItems2 != null)
             {
@@ -254,9 +249,9 @@ namespace Price_comparison_engine
 
                     string imgLink = ProductListItem.Descendants("img").FirstOrDefault().GetAttributeValue("src", "");
 
-                    price = pasalinimasTarpu(price);
+                    price = PasalinimasTarpu(price);
                     var priceAtsarg = price;
-                    priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
+                    priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
 
                     double pricea = Double.Parse(priceAtsarg);
                     var Itemas = new Item { nuotraukaa = imgLink, Sellerr = "Elektromarkt", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link };
@@ -270,7 +265,7 @@ namespace Price_comparison_engine
                 prices.Add(Itemas);
             }
         }
-        private static string pasalinimasEuroSimbol(string priceAtsarg)
+        private static string PasalinimasEuroSimbol(string priceAtsarg)
         {
             var charsToRemove = new string[] { "€" };
             foreach (var c in charsToRemove)
@@ -281,7 +276,7 @@ namespace Price_comparison_engine
             return priceAtsarg;
         }
 
-        private static string pasalinimasTrikdanciuSimboliu(string price)
+        private static string PasalinimasTrikdanciuSimboliu(string price)
         {
             int index = price.IndexOf("\n");
             if (index > 0)
@@ -297,7 +292,7 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static string pasalinimasTarpu(string price)
+        private static string PasalinimasTarpu(string price)
         {
             var charsToRemove = new string[] { " " };
             foreach (var c in charsToRemove)
@@ -307,7 +302,7 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static string pasalinimasTarpuPigu(string price)
+        private static string PasalinimasTarpuPigu(string price)
         {
             var charsToRemove = new string[] { " " };
             foreach (var c in charsToRemove)
@@ -317,7 +312,7 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static void surikiavimasIrSurasymas(List<Item> prices, DataGrid dataGridas2)
+        private static void SurikiavimasIrSurasymas(List<Item> prices, DataGrid dataGridas2)
         {
             List<Item> SortedPricesList = prices.OrderBy(o => o.Priceaa).ToList();
             foreach (Item item in SortedPricesList)
@@ -329,17 +324,25 @@ namespace Price_comparison_engine
 
         private void DataGridTest_Initialized(object sender, EventArgs e)
         {
-            getHtmlAssync(dataGridas2);
+            GetHtmlAssync(dataGridas2);
         }
 
-        private void imageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ImageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            throw new NotImplementedException();
+            string link = (((Image)sender).DataContext as Item).Linkk;
+            if (link != null)
+            {
+                System.Diagnostics.Process.Start(link);
+            }
         }
 
-        private void linkButton_Click(object sender, RoutedEventArgs e)
+        private void LinkButton_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            string link = (((Button)sender).DataContext as Item).Linkk;
+            if (link != null)
+            {
+                System.Diagnostics.Process.Start(link);
+            }
         }
 
     }

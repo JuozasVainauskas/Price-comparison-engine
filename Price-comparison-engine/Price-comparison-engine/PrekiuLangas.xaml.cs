@@ -585,15 +585,8 @@ namespace Price_comparison_engine
             }
         }
 
-        private void imageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ImageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            /*
-            string link = (((Image)sender).DataContext as Item).Link;
-            if (link != null)
-            {
-                System.Diagnostics.Process.Start(link);
-            }
-            */
             string name= (((Image)sender).DataContext as Item).Name;
             KonkretiPreke langas = new KonkretiPreke(name);
             langas.Show();
