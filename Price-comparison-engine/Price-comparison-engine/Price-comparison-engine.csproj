@@ -99,6 +99,10 @@
     <Compile Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.designer.cs">
       <DependentUpon>202009301256479_SukurtiPuslapiuDuomenis1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.cs" />
+    <Compile Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.designer.cs">
+      <DependentUpon>202010031026457_NaudotojoDuomenuUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
@@ -233,6 +237,9 @@
     <EmbeddedResource Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.resx">
       <DependentUpon>202009301256479_SukurtiPuslapiuDuomenis1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.resx">
+      <DependentUpon>202010031026457_NaudotojoDuomenuUpdate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -283,11 +290,11 @@
     <Resource Include="Nuotraukos\avitela.png" />
     <Resource Include="Nuotraukos\elektromarkt.png" />
     <Content Include="PCEDatabase.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="PCEDatabase_log.ldf">
       <DependentUpon>PCEDatabase.mdf</DependentUpon>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

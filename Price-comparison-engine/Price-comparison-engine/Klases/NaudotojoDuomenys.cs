@@ -16,5 +16,7 @@ namespace Price_comparison_engine.Klases
         public string Email { get; set; }
         public string SlaptazodzioHash { get; set; }
         public string SlaptazodzioSalt { get; set; }
+        public int ArBalsavo { get; set; }
+        public int Role { get; set; }
     }
 }
