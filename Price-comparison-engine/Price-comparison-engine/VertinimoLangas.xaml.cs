@@ -99,7 +99,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                MessageBox.Show("Jau balsavote už šią parduotuvę!");
+                MessageBox.Show("Jau balsavote už šią parduotuvę!" + balsuIndex);
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
@@ -134,6 +134,17 @@ namespace Price_comparison_engine
                     {
                         balsuSuma = Convert.ToDouble(skaityti["BalsuSuma"].ToString());
                         balsavusiuSkaicius = Convert.ToInt32(skaityti["BalsavusiuSkaicius"].ToString());
+                    }
+                }
+
+                var kitaEile = "SELECT ArBalsavo FROM NaudotojoDuomenys WHERE Email=@Email";
+                var kitaSqlKomanda = new SqlCommand(kitaEile, sqlPrisijungti);
+                kitaSqlKomanda.CommandType = CommandType.Text;
+                kitaSqlKomanda.Parameters.AddWithValue("@Email", email);
+                using (SqlDataReader skaityti = kitaSqlKomanda.ExecuteReader())
+                {
+                    if (skaityti.Read())
+                    {
                         balsuIndex = skaityti["ArBalsavo"].ToString();
                     }
                 }
