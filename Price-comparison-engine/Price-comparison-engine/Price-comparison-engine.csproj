@@ -103,6 +103,10 @@
     <Compile Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.designer.cs">
       <DependentUpon>202010031026457_NaudotojoDuomenuUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010041043495_naujas.cs" />
+    <Compile Include="Migrations\202010041043495_naujas.designer.cs">
+      <DependentUpon>202010041043495_naujas.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
@@ -239,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.resx">
       <DependentUpon>202010031026457_NaudotojoDuomenuUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010041043495_naujas.resx">
+      <DependentUpon>202010041043495_naujas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
