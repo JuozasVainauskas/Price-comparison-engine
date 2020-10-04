@@ -281,14 +281,26 @@ namespace Price_comparison_engine
                              .Equals("name")).FirstOrDefault().InnerText.Trim();
 
                     var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+
+                    var imgLink = ProductListItem.Descendants("img").FirstOrDefault().GetAttributeValue("data-echo", "");
+                   
                     if (price != "")
                     {
                         price = pasalinimasTrikdanciuSimboliu(price);
                         var priceAtsarg = price;
                         priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
                         double pricea = Convert.ToDouble(priceAtsarg);
-                        var Itemas = new Item { Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
-                        prices.Add(Itemas);
+                        if (imgLink.Contains(".jpg"))
+                            {
+                            var Itemas = new Item { nuotrauka = imgLink, Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
+                            prices.Add(Itemas);
+                            }
+                        else
+                            {
+                            var Itemas = new Item { nuotrauka = "https://avitela.lt/image/no_image.jpg", Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
+                            prices.Add(Itemas);
+                        }
+                        
                     }
                 }
             }
@@ -319,6 +331,7 @@ namespace Price_comparison_engine
                     string imgLink = ProductListItem.Descendants("img")
                       .Where(node => node.GetAttributeValue("class", "")
                             .Contains("replace-2x img-responsive")).FirstOrDefault().GetAttributeValue("src", "");
+
                    
                     if (price != "")
                     {
