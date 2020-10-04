@@ -31,6 +31,7 @@ namespace Price_comparison_engine
 
         private static double balsai = 0;
         private static int balsavusiuSk = 0;
+        private static string balsuIndex = "";
 
         private void Parduotuve(object sender, SelectionChangedEventArgs e)
         {
@@ -39,7 +40,7 @@ namespace Price_comparison_engine
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
-                Skaityti("Avitela", ref balsai, ref balsavusiuSk);
+                Skaityti("Avitela", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
                 keistiImg(calc);
@@ -52,7 +53,7 @@ namespace Price_comparison_engine
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
-                Skaityti("Elektromarkt", ref balsai, ref balsavusiuSk);
+                Skaityti("Elektromarkt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
                 keistiImg(calc);
@@ -79,31 +80,40 @@ namespace Price_comparison_engine
         }
         private void Vertinti(object sender, RoutedEventArgs e)
         {
-            balsavusiuSk++;
-            var calc = balsai / (3 * balsavusiuSk);
-            if(parduotuve.SelectedIndex == 0)
+            if(parduotuve.SelectedIndex == 0 && !balsuIndex.Contains("0"))
             {
-                Rasyti("Avitela", balsai, balsavusiuSk);
+                MessageBox.Show(balsuIndex);
+                balsavusiuSk++;
+                var calc = balsai / (3 * balsavusiuSk);
+                balsuIndex += "0";
+                Rasyti("Avitela",balsuIndex,PrisijungimoLangas.email, balsai, balsavusiuSk);
+                Atstatyti(calc);
             }
-            if (parduotuve.SelectedIndex == 1)
+            else if (parduotuve.SelectedIndex == 1 && !balsuIndex.Contains("1"))
             {
-                Rasyti("Elektromarkt", balsai, balsavusiuSk);
+                balsavusiuSk++;
+                var calc = balsai / (3 * balsavusiuSk);
+                balsuIndex += "1";
+               Rasyti("Elektromarkt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
+                Atstatyti(calc);
             }
-
-            ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-            keistiImg(calc);
-            aptarnavimas.IsEnabled = true;
-            pristatymas.IsEnabled = true;
-            kokybe.IsEnabled = true;
-            parduotuve.IsEnabled = true;
-            aptarnavimas.SelectedIndex = -1;
-            kokybe.SelectedIndex = -1;
-            pristatymas.SelectedIndex = -1;
-            parduotuve.SelectedIndex = -1;
+            else
+            {
+                MessageBox.Show("Jau balsavote už šią parduotuvę!" + balsuIndex);
+                aptarnavimas.IsEnabled = true;
+                pristatymas.IsEnabled = true;
+                kokybe.IsEnabled = true;
+                parduotuve.IsEnabled = true;
+                aptarnavimas.SelectedIndex = -1;
+                kokybe.SelectedIndex = -1;
+                pristatymas.SelectedIndex = -1;
+                parduotuve.SelectedIndex = -1;
+                return;
+            }
         }
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
-        private void Skaityti(string parduotuvesPavadinimas, ref double balsuSuma, ref int balsavusiuSkaicius)
+        private void Skaityti(string parduotuvesPavadinimas, string email, ref string balsuIndex , ref double balsuSuma, ref int balsavusiuSkaicius)
         {
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
@@ -113,16 +123,29 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var eile = "SELECT BalsuSuma, BalsavusiuSkaicius FROM ParduotuviuDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
+                var eile = "SELECT BalsuSuma, BalsavusiuSkaicius, ArBalsavo FROM ParduotuviuDuomenys, NaudotojoDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas OR Email=@Email";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
+                sqlKomanda.Parameters.AddWithValue("@Email", email);
                 using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
                 {
                     if (skaityti.Read())
                     {
                         balsuSuma = Convert.ToDouble(skaityti["BalsuSuma"].ToString());
                         balsavusiuSkaicius = Convert.ToInt32(skaityti["BalsavusiuSkaicius"].ToString());
+                    }
+                }
+
+                var kitaEile = "SELECT ArBalsavo FROM NaudotojoDuomenys WHERE Email=@Email";
+                var kitaSqlKomanda = new SqlCommand(kitaEile, sqlPrisijungti);
+                kitaSqlKomanda.CommandType = CommandType.Text;
+                kitaSqlKomanda.Parameters.AddWithValue("@Email", email);
+                using (SqlDataReader skaityti = kitaSqlKomanda.ExecuteReader())
+                {
+                    if (skaityti.Read())
+                    {
+                        balsuIndex = skaityti["ArBalsavo"].ToString();
                     }
                 }
             }
@@ -136,7 +159,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Rasyti(string parduotuvesPavadinimas, double balsuSuma, int balsavusiuSkaicius)
+        private void Rasyti(string parduotuvesPavadinimas,string balsuIndex,string email, double balsuSuma, int balsavusiuSkaicius)
         {
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
@@ -153,6 +176,13 @@ namespace Price_comparison_engine
                 sqlKomanda.Parameters.AddWithValue("@BalsavusiuSkaicius", balsavusiuSkaicius);
                 sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
                 sqlKomanda.ExecuteNonQuery();
+
+                var kitaEile = "UPDATE NaudotojoDuomenys SET ArBalsavo=@balsuIndex WHERE Email=@Email";
+                var kitaSqlKomanda = new SqlCommand(kitaEile, sqlPrisijungti);
+                kitaSqlKomanda.CommandType = CommandType.Text;
+                kitaSqlKomanda.Parameters.AddWithValue("@Email", email);
+                kitaSqlKomanda.Parameters.AddWithValue("@balsuIndex", balsuIndex);
+                kitaSqlKomanda.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -190,6 +220,19 @@ namespace Price_comparison_engine
             {
                 ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/5.png", UriKind.RelativeOrAbsolute));
             }
+        }
+        private void Atstatyti(double calc)
+        {
+            ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+            keistiImg(calc);
+            aptarnavimas.IsEnabled = true;
+            pristatymas.IsEnabled = true;
+            kokybe.IsEnabled = true;
+            parduotuve.IsEnabled = true;
+            aptarnavimas.SelectedIndex = -1;
+            kokybe.SelectedIndex = -1;
+            pristatymas.SelectedIndex = -1;
+            parduotuve.SelectedIndex = -1;
         }
     }
 }
