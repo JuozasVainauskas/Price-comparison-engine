@@ -14,6 +14,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using HtmlAgilityPack;
+using LiveCharts;
+using LiveCharts.Defaults;
+using LiveCharts.Wpf;
+using LiveCharts.Wpf.Charts.Base;
 
 namespace Price_comparison_engine
 {
@@ -34,8 +38,10 @@ namespace Price_comparison_engine
         public string Linkk { get; set; }
 
     }
+
     public partial class KonkretiPreke : Window
     {
+        public static CartesianChart cartesianChart;
         public static string pav;
         public KonkretiPreke(string pavadinimas)
         {
@@ -44,6 +50,7 @@ namespace Price_comparison_engine
             string Items = pavArray[0] + ' ' + pavArray[1]; ;
             pav = Items;
             InitializeComponent();
+            cartesianChart = cartesianChart1;
         }
 
         private static async void GetHtmlAssync(DataGrid dataGridas2)
@@ -432,7 +439,47 @@ namespace Price_comparison_engine
 
         private static void SurikiavimasIrSurasymas(List<Item> prices, DataGrid dataGridas2)
         {
+            
             List<Item> SortedPricesList = prices.OrderBy(o => o.Priceaa).ToList();
+            int a = 0;
+            /*
+             foreach (Item item in SortedPricesList)
+            {
+                double kaina = item.Priceaa;
+                cartesianChart.Series = new SeriesCollection
+                    {
+                        new LineSeries
+                        {
+                            Values = new ChartValues<ObservablePoint>()
+                            {
+                                new ObservablePoint(0,kaina)
+                            }
+                        }
+                    };
+                    //a=a+5;
+            }
+            */
+            ChartValues<ObservablePoint> List1Points = new ChartValues<ObservablePoint>();
+
+            foreach (Item item in SortedPricesList)
+            {
+                
+                List1Points.Add(new ObservablePoint
+                {
+                    X = a,
+                    Y = item.Priceaa
+                });
+                a=a+5;
+            }
+            cartesianChart.Series = new SeriesCollection
+            {
+                new LineSeries
+                {
+                    Values = List1Points
+                }
+            };
+
+
             foreach (Item item in SortedPricesList)
             {
                 dataGridas2.Items.Add(item);
@@ -462,6 +509,5 @@ namespace Price_comparison_engine
                 System.Diagnostics.Process.Start(link);
             }
         }
-
     }
 }
