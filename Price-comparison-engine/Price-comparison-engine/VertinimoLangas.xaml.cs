@@ -40,7 +40,7 @@ namespace Price_comparison_engine
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
-                Skaityti("Avitela", ref balsuIndex, ref balsai, ref balsavusiuSk);
+                Skaityti("Avitela", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
                 keistiImg(calc);
@@ -53,7 +53,7 @@ namespace Price_comparison_engine
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
-                Skaityti("Elektromarkt", ref balsuIndex, ref balsai, ref balsavusiuSk);
+                Skaityti("Elektromarkt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
                 keistiImg(calc);
@@ -113,7 +113,7 @@ namespace Price_comparison_engine
         }
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
-        private void Skaityti(string parduotuvesPavadinimas, ref string balsuIndex , ref double balsuSuma, ref int balsavusiuSkaicius)
+        private void Skaityti(string parduotuvesPavadinimas, string email, ref string balsuIndex , ref double balsuSuma, ref int balsavusiuSkaicius)
         {
             var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
             try
@@ -123,10 +123,11 @@ namespace Price_comparison_engine
                     sqlPrisijungti.Open();
                 }
 
-                var eile = "SELECT BalsuSuma, BalsavusiuSkaicius, ArBalsavo FROM ParduotuviuDuomenys, NaudotojoDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
+                var eile = "SELECT BalsuSuma, BalsavusiuSkaicius, ArBalsavo FROM ParduotuviuDuomenys, NaudotojoDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas OR Email=@Email";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
+                sqlKomanda.Parameters.AddWithValue("@Email", email);
                 using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
                 {
                     if (skaityti.Read())

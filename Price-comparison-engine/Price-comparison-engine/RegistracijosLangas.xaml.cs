@@ -77,13 +77,14 @@ namespace Price_comparison_engine
                             sqlRegistruotis.Open();
                         }
 
-                        var eile = "INSERT INTO NaudotojoDuomenys(Email, SlaptazodzioHash, SlaptazodzioSalt, Role) VALUES (@Email, @SlaptazodzioHash, @SlaptazodzioSalt, @Role)";
+                        var eile = "INSERT INTO NaudotojoDuomenys(Email, SlaptazodzioHash, SlaptazodzioSalt, ArBalsavo, Role) VALUES (@Email, @SlaptazodzioHash, @SlaptazodzioSalt, @ArBalsavo, @Role)";
                         var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
                         sqlKomanda.CommandType = CommandType.Text;
                         sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
                         sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
                         sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
                         sqlKomanda.Parameters.AddWithValue("@Role", 0);
+                        sqlKomanda.Parameters.AddWithValue("@ArBalsavo", "0");
 
                         string kodas = GeneruotiHash.SukurtiSalt(16);
                         kodas = kodas.Remove(kodas.Length - 2);
