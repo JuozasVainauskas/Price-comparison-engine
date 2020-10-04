@@ -33,6 +33,7 @@ namespace Price_comparison_engine
             this.pagrindinisLangas = pagrindinisLangas;
         }
         public static int Role { get; private set; } = 0;
+        public static String email { get; private set; } = "";
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
             //var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
@@ -50,6 +51,7 @@ namespace Price_comparison_engine
 
                 String salt = "";
                 String slaptazodzioHash;
+                email = Email.Text;
 
                 using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
                 {
@@ -57,6 +59,7 @@ namespace Price_comparison_engine
                     {
                         salt = skaityti["SlaptazodzioSalt"].ToString();
                         Role = Convert.ToInt32(skaityti["Role"]);
+
                     }
                 }
 
