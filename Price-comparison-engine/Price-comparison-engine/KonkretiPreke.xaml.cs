@@ -40,7 +40,9 @@ namespace Price_comparison_engine
         public KonkretiPreke(string pavadinimas)
         {
             pav = pavadinimas;
-            Console.WriteLine(pav);
+            var pavArray=pav.Split();
+            string Items = pavArray[0] + ' ' + pavArray[1]; ;
+            pav = Items;
             InitializeComponent();
         }
 
@@ -221,8 +223,17 @@ namespace Price_comparison_engine
                         price = price + "€";
                         priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
                         double pricea = Convert.ToDouble(priceAtsarg);
-                        var Itemas = new Item { nuotraukaa = imgLink, Sellerr = "BigBox", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link };
-                        prices.Add(Itemas);
+                        var pavArray = name.Split();
+                        string a = pavArray[0] + ' ' + pavArray[1]; ;
+                        if (a == pav)
+                        {
+                            var Itemas = new Item
+                            {
+                                nuotraukaa = imgLink, Sellerr = "BigBox", Namee = name, Priceaa = pricea,
+                                Pricee = price, Linkk = link
+                            };
+                            prices.Add(Itemas);
+                        }
                     }
                 }
             }
@@ -254,8 +265,14 @@ namespace Price_comparison_engine
                         var priceAtsarg = price;
                         priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
                         double pricea = Convert.ToDouble(priceAtsarg);
-                        var Itemas = new Item { Sellerr = "Avitela", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link };
-                        prices.Add(Itemas);
+                        var pavArray = name.Split();
+                        string a = pavArray[0] + ' ' + pavArray[1]; ;
+                        if (a == pav)
+                        {
+                            var Itemas = new Item
+                                {Sellerr = "Avitela", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link};
+                            prices.Add(Itemas);
+                        }
                     }
                 }
             }
@@ -271,7 +288,6 @@ namespace Price_comparison_engine
             {
                 foreach (var ProductListItem in ProductListItems)
                 {
-
                     var price = ProductListItem.Descendants("span")
                        .Where(node => node.GetAttributeValue("class", "")
                             .Equals("price notranslate")).FirstOrDefault().InnerText.Trim();
@@ -286,7 +302,6 @@ namespace Price_comparison_engine
                        .Where(node => node.GetAttributeValue("src", "")
                              .Contains("jpg")).FirstOrDefault().GetAttributeValue("src", "");
 
-                    Console.WriteLine(imgLink);
                     price = PasalinimasTarpuPigu(price);
                     var priceAtsarg = price;
                     price = PasalinimasEuroSimbol(price);
@@ -294,8 +309,17 @@ namespace Price_comparison_engine
                     priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
 
                     double pricea = Convert.ToDouble(priceAtsarg);
-                    var Itemas = new Item { nuotraukaa = imgLink, Sellerr = "Pigu", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link };
-                    prices.Add(Itemas);
+                    var pavArray = name.Split();
+                    string a = pavArray[0] + ' ' + pavArray[1]; ;
+                    if (a == pav)
+                    {
+                        var Itemas = new Item
+                        {
+                            nuotraukaa = imgLink, Sellerr = "Pigu", Namee = name, Priceaa = pricea, Pricee = price,
+                            Linkk = link
+                        };
+                        prices.Add(Itemas);
+                    }
                 }
             }
             else
@@ -324,12 +348,22 @@ namespace Price_comparison_engine
                     string imgLink = ProductListItem.Descendants("img").FirstOrDefault().GetAttributeValue("src", "");
 
                     price = PasalinimasTarpu(price);
+                    price = PasalinimasTarpuElektromarkt(price);
                     var priceAtsarg = price;
                     priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
 
                     double pricea = Double.Parse(priceAtsarg);
-                    var Itemas = new Item { nuotraukaa = imgLink, Sellerr = "Elektromarkt", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link };
-                    prices.Add(Itemas);
+                    var pavArray = name.Split();
+                    string a = pavArray[0] + ' ' + pavArray[1]; ;
+                    if (a == pav)
+                    {
+                        var Itemas = new Item
+                        {
+                            nuotraukaa = imgLink, Sellerr = "Elektromarkt", Namee = name, Priceaa = pricea,
+                            Pricee = price, Linkk = link
+                        };
+                        prices.Add(Itemas);
+                    }
 
                 }
             }
@@ -369,6 +403,16 @@ namespace Price_comparison_engine
         private static string PasalinimasTarpu(string price)
         {
             var charsToRemove = new string[] { " " };
+            foreach (var c in charsToRemove)
+            {
+                price = price.Replace(c, string.Empty);
+            }
+            return price;
+        }
+
+        private static string PasalinimasTarpuElektromarkt(string price)
+        {
+            var charsToRemove = new string[] {" "};
             foreach (var c in charsToRemove)
             {
                 price = price.Replace(c, string.Empty);
