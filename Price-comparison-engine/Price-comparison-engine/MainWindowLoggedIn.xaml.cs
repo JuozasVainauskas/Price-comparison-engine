@@ -22,7 +22,13 @@ namespace Price_comparison_engine
         public MainWindowLoggedIn()
         {
             InitializeComponent();
+            if(vartotojoRole == 1)
+            {
+                administravimas.Visibility = Visibility.Visible;
+            }
         }
+
+        private static int vartotojoRole = PrisijungimoLangas.Role;
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -150,6 +156,12 @@ namespace Price_comparison_engine
             MainWindow.zodis = ieškojimoLaukas.Text;
             PrekiuLangas prekiųLangoAtidarymas = new PrekiuLangas();
             prekiųLangoAtidarymas.Show();
+        }
+
+        private void AdminPrisijungimas(object sender, RoutedEventArgs e)
+        {
+                Admin adminLangoAtidarymas = new Admin();
+                adminLangoAtidarymas.Show();
         }
     }
 }

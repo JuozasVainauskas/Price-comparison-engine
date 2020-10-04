@@ -29,7 +29,7 @@ namespace Price_comparison_engine.Klases
                 }
             };
             MailAddress FromEmail = new MailAddress("smartshopautobot@gmail.com", "Smart Shop");
-            MailAddress ToEmail = new MailAddress("ernestas20111@gmail.com", "Naudotojas");//reiks pakeisti į email
+            MailAddress ToEmail = new MailAddress("vitkauskas.j@gmail.com", "Naudotojas");//reiks pakeisti į email
             MailMessage Laiskas = new MailMessage()
             {
                 IsBodyHtml = true,

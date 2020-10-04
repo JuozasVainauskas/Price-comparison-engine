@@ -32,7 +32,7 @@ namespace Price_comparison_engine
             InitializeComponent();
             this.pagrindinisLangas = pagrindinisLangas;
         }
-
+        public static int Role { get; private set; } = 0;
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
             //var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
@@ -43,7 +43,7 @@ namespace Price_comparison_engine
                 {
                     sqlPrisijungti.Open();
                 }
-                var eile = "SELECT SlaptazodzioSalt FROM NaudotojoDuomenys WHERE Email=@Email";
+                var eile = "SELECT SlaptazodzioSalt,Role FROM NaudotojoDuomenys WHERE Email=@Email";
                 var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
                 sqlKomanda.CommandType = CommandType.Text;
                 sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
@@ -56,6 +56,7 @@ namespace Price_comparison_engine
                     if (skaityti.Read())
                     {
                         salt = skaityti["SlaptazodzioSalt"].ToString();
+                        Role = Convert.ToInt32(skaityti["Role"]);
                     }
                 }
 

@@ -90,6 +90,11 @@
             Foreground="White"
             FontFamily="Arial" Style="{DynamicResource ButtonRounded}"
                 />
+        <Button x:Name="administravimas" Content="Administravimas" HorizontalAlignment="Right" Height="40" Margin="0,7,632.6,0" VerticalAlignment="Top" Width="144" Click="AdminPrisijungimas" Visibility="Hidden"
+            Background="#E81034"
+            Foreground="White"
+            FontFamily="Arial" Style="{DynamicResource ButtonRounded}"
+                />
 
     </Grid>
 </Window>
