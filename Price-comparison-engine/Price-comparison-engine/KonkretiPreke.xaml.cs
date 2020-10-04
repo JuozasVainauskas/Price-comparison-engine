@@ -47,13 +47,27 @@ namespace Price_comparison_engine
         private static async void GetHtmlAssync(DataGrid dataGridas2)
         {
             var prices = new List<Item>();
+            var bigBoxDaiktai = BigBoxSearch(await BigBoxHtmlPaemimas());
             var piguDaiktai = PiguPaieska(await PiguHtmlPaemimas());
             var avitelosDaiktai = AvitelosPaieska(await AvitelosHtmlPaemimas());
             var elektromarktDaiktai = ElektromarktPaieska(await ElektromarktHtmlPaemimas());
             SurasymasIsAvitelos(avitelosDaiktai, prices);
             SurasymasIsElektromarkt(elektromarktDaiktai, prices);
             SurasymasIsPigu(piguDaiktai, prices);
+            SurasymasIsBigBox(bigBoxDaiktai, prices);
             SurikiavimasIrSurasymas(prices, dataGridas2);
+        }
+
+        private static async Task<HtmlDocument> BigBoxHtmlPaemimas()
+        {
+            Regex regEx = new Regex(" ");
+            var urlgalas = regEx.Replace(MainWindow.zodis, "+");
+            var url = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
+            var httpClient = new HttpClient();
+            var html = await httpClient.GetStringAsync(url);
+            var htmlDocument = new HtmlDocument();
+            htmlDocument.LoadHtml(html);
+            return htmlDocument;
         }
 
         private static async Task<HtmlDocument> AvitelosHtmlPaemimas()
@@ -97,6 +111,25 @@ namespace Price_comparison_engine
             }
         }
 
+        private static List<HtmlNode> BigBoxSearch(HtmlDocument htmlDocument)
+        {
+            try
+            {
+                var ProductsHtml = htmlDocument.DocumentNode.Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                        .Equals("col-lg-9 col-md-8")).ToList();
+
+                var ProductListItems = ProductsHtml[0].Descendants("li")
+                    .Where(node => node.GetAttributeValue("class", "")
+                        .StartsWith("category-item ajax_block_product col-xs-12 col-sm-6 col-md-4 col-lg-3")).ToList();
+                return ProductListItems;
+
+            }
+            catch
+            {
+                return null;
+            }
+        }
         private static List<HtmlNode> AvitelosPaieska(HtmlDocument htmlDocument)
         {
             try
@@ -157,6 +190,47 @@ namespace Price_comparison_engine
             else
                 return null;
 
+        }
+
+        private static void SurasymasIsBigBox(List<HtmlNode> ProductListItems, List<Item> prices)
+        {
+            if (ProductListItems != null)
+            {
+                foreach (var ProductListItem in ProductListItems)
+                {
+
+                    var price = ProductListItem.Descendants("span")
+                       .Where(node => node.GetAttributeValue("class", "")
+                            .Equals("price product-price")).FirstOrDefault().InnerText.Trim();
+
+                    var name = ProductListItem.Descendants("a")
+                       .Where(node => node.GetAttributeValue("class", "")
+                             .Equals("product-name")).FirstOrDefault().InnerText.Trim();
+
+                    var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+
+                    string imgLink = ProductListItem.Descendants("img")
+                      .Where(node => node.GetAttributeValue("class", "")
+                            .Contains("replace-2x img-responsive")).FirstOrDefault().GetAttributeValue("src", "");
+
+                    if (price != "")
+                    {
+                        price = PasalinimasTarpuPigu(price);
+                        var priceAtsarg = price;
+                        price = PasalinimasEuroSimbol(price);
+                        price = price + "€";
+                        priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
+                        double pricea = Convert.ToDouble(priceAtsarg);
+                        var Itemas = new Item { nuotraukaa = imgLink, Sellerr = "BigBox", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link };
+                        prices.Add(Itemas);
+                    }
+                }
+            }
+            else
+            {
+                var Itemas = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(Itemas);
+            }
         }
         private static void SurasymasIsAvitelos(List<HtmlNode> ProductListItems, List<Item> prices)
         {
