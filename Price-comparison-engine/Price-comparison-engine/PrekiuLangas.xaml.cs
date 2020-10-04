@@ -159,11 +159,6 @@ namespace Price_comparison_engine
                 .Where(node => node.GetAttributeValue("class", "")
                 .Equals("product-grid active")).ToList();
 
-                /* catch()
-                 {
-                     return null;
-                 }*/
-
                 var ProductListItems = ProductsHtml[0].Descendants("div")
                     .Where(node => node.GetAttributeValue("class", "")
                     .Contains("col-6 col-md-4 col-lg-4")).ToList();
@@ -234,23 +229,29 @@ namespace Price_comparison_engine
                 return null;
             }
         }
-
+        public static int soldOut = 0;
         private static List<HtmlNode> PiguSearch(HtmlDocument htmlDocument2)
         {
 
-
-            if (htmlDocument2 != null)
+            if (htmlDocument2 != null )
             {
                 var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
                 .Where(node => node.GetAttributeValue("class", "")
                 .Equals("main-block fr")).ToList();
-
+               
                 var ProductListItems2 = ProductsHtml2[0].Descendants("div")
                     .Where(node => node.GetAttributeValue("class", "")
                     .Contains("product-list-item")).ToList();
-
+                var ProductListItemsSoldOut = ProductsHtml2[0].Descendants("span")
+                    .Where(node => node.GetAttributeValue("class", "")
+                    .Contains("label-soldout")).ToList();
+                foreach (var ProductListItemsSold in ProductListItemsSoldOut)
+                 {
+                    soldOut++;
+                 }
                 return ProductListItems2;
             }
+            
             else
                 return null;
 
@@ -374,36 +375,41 @@ namespace Price_comparison_engine
         {
             if (ProductListItems != null)
             {
-                foreach (var ProductListItem in ProductListItems)
-                {
+                int countItems = ProductListItems.Count - soldOut;
+               
+                    foreach (var ProductListItem in ProductListItems)
+                    {
+                    if (countItems != 0)
+                    {
+                        var price = ProductListItem.Descendants("span")
+                           .Where(node => node.GetAttributeValue("class", "")
+                                .Equals("price notranslate")).FirstOrDefault().InnerText.Trim();
+                        var name = ProductListItem.Descendants("p")
+                           .Where(node => node.GetAttributeValue("class", "")
+                                 .Equals("product-name")).FirstOrDefault().InnerText.Trim();
 
-                    var price = ProductListItem.Descendants("span")
-                       .Where(node => node.GetAttributeValue("class", "")
-                            .Equals("price notranslate")).FirstOrDefault().InnerText.Trim();
+                        var link = "https://pigu.lt/" + ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
-                    var name = ProductListItem.Descendants("p")
-                       .Where(node => node.GetAttributeValue("class", "")
-                             .Equals("product-name")).FirstOrDefault().InnerText.Trim();
+                        string imgLink = ProductListItem.Descendants("img")
+                           .Where(node => node.GetAttributeValue("src", "")
+                                 .Contains("jpg")).FirstOrDefault().GetAttributeValue("src", "");
 
-                    var link = "https://pigu.lt/" + ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
-
-                    string imgLink = ProductListItem.Descendants("img")
-                       .Where(node => node.GetAttributeValue("src", "")
-                             .Contains("jpg")).FirstOrDefault().GetAttributeValue("src", "");
-
-                    Console.WriteLine(imgLink);
-                    price = pasalinimasTarpuPigu(price);
-                    var priceAtsarg = price;
-                    price = pasalinimasEuroSimbol(price);
-                    price = price + "€";
-                    priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
+                        Console.WriteLine(imgLink);
+                        price = pasalinimasTarpuPigu(price);
+                        var priceAtsarg = price;
+                        price = pasalinimasEuroSimbol(price);
+                        price = price + "€";
+                        priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
 
 
 
-                    double pricea = Convert.ToDouble(priceAtsarg);
-                    var Itemas = new Item { nuotrauka = imgLink, Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
-                    prices.Add(Itemas);
-                    RasytiData(link, imgLink);
+                        double pricea = Convert.ToDouble(priceAtsarg);
+                        var Itemas = new Item { nuotrauka = imgLink, Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
+                        prices.Add(Itemas);
+                        RasytiData(link, imgLink);
+                        countItems--;
+                   }
+                   
                 }
             }
             else
