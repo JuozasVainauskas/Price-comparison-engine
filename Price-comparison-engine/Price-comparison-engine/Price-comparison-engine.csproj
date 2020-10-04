@@ -87,6 +87,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Admin.xaml.cs">
+      <DependentUpon>Admin.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Klases\PuslapiuDuomenys.cs" />
     <Compile Include="KonkretiPreke.xaml.cs">
       <DependentUpon>KonkretiPreke.xaml</DependentUpon>
@@ -102,10 +105,6 @@
     <Compile Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.cs" />
     <Compile Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.designer.cs">
       <DependentUpon>202010031026457_NaudotojoDuomenuUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010041043495_naujas.cs" />
-    <Compile Include="Migrations\202010041043495_naujas.designer.cs">
-      <DependentUpon>202010041043495_naujas.cs</DependentUpon>
     </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
@@ -146,6 +145,10 @@
     <Compile Include="VertinimoLangas.xaml.cs">
       <DependentUpon>VertinimoLangas.xaml</DependentUpon>
     </Compile>
+    <Page Include="Admin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DUK_Langas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -243,9 +246,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.resx">
       <DependentUpon>202010031026457_NaudotojoDuomenuUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010041043495_naujas.resx">
-      <DependentUpon>202010041043495_naujas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
