@@ -442,23 +442,6 @@ namespace Price_comparison_engine
             
             List<Item> SortedPricesList = prices.OrderBy(o => o.Priceaa).ToList();
             int a = 0;
-            /*
-             foreach (Item item in SortedPricesList)
-            {
-                double kaina = item.Priceaa;
-                cartesianChart.Series = new SeriesCollection
-                    {
-                        new LineSeries
-                        {
-                            Values = new ChartValues<ObservablePoint>()
-                            {
-                                new ObservablePoint(0,kaina)
-                            }
-                        }
-                    };
-                    //a=a+5;
-            }
-            */
             ChartValues<ObservablePoint> List1Points = new ChartValues<ObservablePoint>();
 
             foreach (Item item in SortedPricesList)
