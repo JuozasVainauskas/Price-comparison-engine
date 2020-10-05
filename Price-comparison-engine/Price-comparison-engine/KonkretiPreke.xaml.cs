@@ -60,11 +60,32 @@ namespace Price_comparison_engine
             var piguDaiktai = PiguPaieska(await PiguHtmlPaemimas());
             var avitelosDaiktai = AvitelosPaieska(await AvitelosHtmlPaemimas());
             var elektromarktDaiktai = ElektromarktPaieska(await ElektromarktHtmlPaemimas());
+            var RdeItems = RdeSearch(await RdeHtml());
+            SurasymasIsRde(RdeItems, prices);
             SurasymasIsAvitelos(avitelosDaiktai, prices);
             SurasymasIsElektromarkt(elektromarktDaiktai, prices);
             SurasymasIsPigu(piguDaiktai, prices);
             SurasymasIsBigBox(bigBoxDaiktai, prices);
             SurikiavimasIrSurasymas(prices, dataGridas2);
+        }
+
+        private static async Task<HtmlDocument> RdeHtml()
+        {
+            try
+            {
+                Regex regEx = new Regex(" ");
+                var urlgalas = regEx.Replace(MainWindow.zodis, "+");
+                var url = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
+                var httpClient = new HttpClient();
+                var html = await httpClient.GetStringAsync(url);
+                var htmlDocument = new HtmlDocument();
+                htmlDocument.LoadHtml(html);
+                return htmlDocument;
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         private static async Task<HtmlDocument> BigBoxHtmlPaemimas()
@@ -118,6 +139,23 @@ namespace Price_comparison_engine
             {
                 return null;
             }
+        }
+
+        private static List<HtmlNode> RdeSearch(HtmlDocument htmlDocument)
+        {
+            if (htmlDocument != null)
+            {
+                var ProductsHtml = htmlDocument.DocumentNode.Descendants("div")
+                    .Where(node => node.GetAttributeValue("id", "")
+                        .Equals("body_div")).ToList();
+
+                var ProductListItems = ProductsHtml[0].Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                        .Contains("product_box_div")).ToList();
+                return ProductListItems;
+            }
+            else
+                return null;
         }
 
         private static List<HtmlNode> BigBoxSearch(HtmlDocument htmlDocument)
@@ -199,6 +237,60 @@ namespace Price_comparison_engine
             else
                 return null;
 
+        }
+
+        private static void SurasymasIsRde(List<HtmlNode> ProductListItems, List<Item> prices)
+        {
+            if (ProductListItems != null)
+            {
+                foreach (var ProductListItem in ProductListItems)
+                {
+
+                    var price = ProductListItem.Descendants("div")
+                       .Where(node => node.GetAttributeValue("class", "")
+                            .Equals("product_price_wo_discount_listing")).FirstOrDefault().InnerText.Trim();
+
+                    var name = ProductListItem.Descendants("div")
+                       .Where(node => node.GetAttributeValue("class", "")
+                             .Equals("product_name")).FirstOrDefault().InnerText.Trim();
+
+                    var link = ProductListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+
+                    var ProductListItems2 = ProductListItem.Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                    .Contains("photo_box")).ToList();
+                    foreach (var ProductListItem2 in ProductListItems2)
+                    {
+                        var imgLink = ProductListItem2.Descendants("img").FirstOrDefault().GetAttributeValue("src", "");
+
+                        if (price != "")
+                        {
+                            price = PasalinimasTrikdanciuSimboliu2(price);
+                            var priceAtsarg = price;
+                            priceAtsarg = PasalinimasTrikdanciuSimboliu2(priceAtsarg);
+                            priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
+                            double pricea = Convert.ToDouble(priceAtsarg);
+                            var pavArray = name.Split();
+                            string a = pavArray[0] + ' ' + pavArray[1]; ;
+                            if (a == pav)
+                            {
+                                var Itemas = new Item
+                                {
+                                    nuotraukaa = "https://www.rde.lt/" + imgLink, Sellerr = "Rde", Namee = name,
+                                    Priceaa = pricea, Pricee = price, Linkk = "https://www.rde.lt/" + link
+                                };
+                                prices.Add(Itemas);
+                            }
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                var Itemas = new Item { Seller = "Rde", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(Itemas);
+            }
         }
 
         private static void SurasymasIsBigBox(List<HtmlNode> ProductListItems, List<Item> prices)
@@ -285,7 +377,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var Itemas = new Item { Seller = "Avitela", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var Itemas = new Item { nuotraukaa = "https://avitela.lt/image/no_image.jpg",Seller = "Avitela", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
                 prices.Add(Itemas);
             }
         }
@@ -407,6 +499,33 @@ namespace Price_comparison_engine
             return price;
         }
 
+        private static string PasalinimasTrikdanciuSimboliu2(string price)
+        {
+            int index = price.IndexOf("\n");
+            if (index > 0)
+            {
+                price = price.Substring(0, index);
+            }
+
+            var charsToChange = new string[] { "." };
+            foreach (var c in charsToChange)
+            {
+                price = price.Replace(c, ",");
+            }
+            var charsToChange2 = new string[] { "&nbsp;" };
+            foreach (var c in charsToChange2)
+            {
+                price = price.Replace(c, "");
+            }
+            var charsToChange3 = new string[] { "Kaina: " };
+            foreach (var c in charsToChange3)
+            {
+                price = price.Replace(c, "");
+            }
+
+            return price;
+        }
+
         private static string PasalinimasTarpu(string price)
         {
             var charsToRemove = new string[] { " " };
@@ -461,7 +580,6 @@ namespace Price_comparison_engine
                     Values = List1Points
                 }
             };
-
 
             foreach (Item item in SortedPricesList)
             {
