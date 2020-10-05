@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Price_comparison_engine.Klases;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -30,28 +31,18 @@ namespace Price_comparison_engine
         private static int role = 0;
         private void SkirtiRole(string email,int role)
         {
-            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-            try
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                if (sqlPrisijungti.State == ConnectionState.Closed)
+                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                if (rezultatas != null)
                 {
-                    sqlPrisijungti.Open();
+                    rezultatas.Role = role;
+                    kontekstas.SaveChanges();
                 }
-
-                var eile = "UPDATE NaudotojoDuomenys SET Role = @Role WHERE Email=@Email";
-                var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                sqlKomanda.CommandType = CommandType.Text;
-                sqlKomanda.Parameters.AddWithValue("@Role", role);
-                sqlKomanda.Parameters.AddWithValue("@Email", email);
-                sqlKomanda.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlPrisijungti.Close();
+                else
+                {
+                    MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
+                }
             }
         }
 
