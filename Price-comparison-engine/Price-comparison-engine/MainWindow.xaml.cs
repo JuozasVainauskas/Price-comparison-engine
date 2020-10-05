@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Price_comparison_engine.Klases;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -191,33 +192,16 @@ namespace Price_comparison_engine
 
         private static void Skaityti(ref List<String> PuslapioURL, ref List<String> ImgURL)
         {
-            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-            try
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                if (sqlPrisijungti.State == ConnectionState.Closed)
-                {
-                    sqlPrisijungti.Open();
-                }
+                var tempPuslapioUrl = kontekstas.PuslapiuDuomenys.Select(column => column.PuslapioURL).ToList();
+                var tempImgUrl = kontekstas.PuslapiuDuomenys.Select(column => column.ImgURL).ToList();
 
-                var eile = "SELECT PuslapioURL, ImgURL FROM PuslapiuDuomenys";
-                var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                sqlKomanda.CommandType = CommandType.Text;
-                using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
+                if (tempPuslapioUrl != null && tempImgUrl != null)
                 {
-                    while (skaityti.Read())
-                    {
-                        PuslapioURL.Add(skaityti["PuslapioURL"].ToString());
-                        ImgURL.Add(skaityti["ImgURL"].ToString());
-                    }
+                    PuslapioURL = tempPuslapioUrl;
+                    ImgURL = tempImgUrl;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlPrisijungti.Close();
             }
         }
     }
