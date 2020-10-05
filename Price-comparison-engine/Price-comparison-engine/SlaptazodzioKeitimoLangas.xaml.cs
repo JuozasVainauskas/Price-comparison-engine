@@ -61,11 +61,15 @@ namespace Price_comparison_engine
                         slaptazodis.SlaptazodzioHash = slaptazodzioHash;
                         slaptazodis.SlaptazodzioSalt = salt;
                         kontekstas.SaveChanges();
+
+                        MessageBox.Show("Slaptažodis pakeistas sėkmingai.");
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
                     }
                 }
-
-                MessageBox.Show("Slaptažodis pakeistas sėkmingai.");
-                this.Close();
             }
         }
     }

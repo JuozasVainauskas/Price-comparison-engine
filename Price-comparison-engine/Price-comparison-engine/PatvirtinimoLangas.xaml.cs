@@ -39,7 +39,6 @@ namespace Price_comparison_engine
         {
             if (kodas == PatvirtinimoLangelis.Text)
             {
-
                 kontekstas.SaveChanges();
 
                 pagrindinisLangas.Close();
