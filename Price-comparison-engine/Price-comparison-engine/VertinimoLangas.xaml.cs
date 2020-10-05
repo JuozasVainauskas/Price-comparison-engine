@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Price_comparison_engine.Klases;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -115,82 +116,49 @@ namespace Price_comparison_engine
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
         private void Skaityti(string parduotuvesPavadinimas, string email, ref string balsuIndex , ref double balsuSuma, ref int balsavusiuSkaicius)
         {
-            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-            try
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                if (sqlPrisijungti.State == ConnectionState.Closed)
-                {
-                    sqlPrisijungti.Open();
-                }
+                var rezultatas = kontekstas.ParduotuviuDuomenys.SingleOrDefault(c => c.ParduotuvesPavadinimas == parduotuvesPavadinimas);
 
-                var eile = "SELECT BalsuSuma, BalsavusiuSkaicius, ArBalsavo FROM ParduotuviuDuomenys, NaudotojoDuomenys WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas OR Email=@Email";
-                var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                sqlKomanda.CommandType = CommandType.Text;
-                sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
-                sqlKomanda.Parameters.AddWithValue("@Email", email);
-                using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
+                if (rezultatas != null)
                 {
-                    if (skaityti.Read())
-                    {
-                        balsuSuma = Convert.ToDouble(skaityti["BalsuSuma"].ToString());
-                        balsavusiuSkaicius = Convert.ToInt32(skaityti["BalsavusiuSkaicius"].ToString());
-                    }
-                }
-
-                var kitaEile = "SELECT ArBalsavo FROM NaudotojoDuomenys WHERE Email=@Email";
-                var kitaSqlKomanda = new SqlCommand(kitaEile, sqlPrisijungti);
-                kitaSqlKomanda.CommandType = CommandType.Text;
-                kitaSqlKomanda.Parameters.AddWithValue("@Email", email);
-                using (SqlDataReader skaityti = kitaSqlKomanda.ExecuteReader())
-                {
-                    if (skaityti.Read())
-                    {
-                        balsuIndex = skaityti["ArBalsavo"].ToString();
-                    }
+                    balsuSuma = rezultatas.BalsuSuma;
+                    balsavusiuSkaicius = Convert.ToInt32(rezultatas.BalsavusiuSkaicius);
                 }
             }
-            catch (Exception ex)
+
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlPrisijungti.Close();
+                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == email);
+
+                if (rezultatas != null)
+                {
+                    balsuIndex = rezultatas.ArBalsavo;
+                }
             }
         }
 
         private void Rasyti(string parduotuvesPavadinimas,string balsuIndex,string email, double balsuSuma, int balsavusiuSkaicius)
         {
-            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-            try
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                if (sqlPrisijungti.State == ConnectionState.Closed)
+                var rezultatas = kontekstas.ParduotuviuDuomenys.SingleOrDefault(b => b.ParduotuvesPavadinimas== parduotuvesPavadinimas);
+                if (rezultatas != null)
                 {
-                    sqlPrisijungti.Open();
+                    rezultatas.BalsavusiuSkaicius = balsavusiuSkaicius;
+                    rezultatas.BalsuSuma = balsuSuma;
+                    kontekstas.SaveChanges();
                 }
-
-                var eile = "UPDATE ParduotuviuDuomenys SET BalsuSuma=@BalsuSuma, BalsavusiuSkaicius=@BalsavusiuSkaicius WHERE ParduotuvesPavadinimas=@ParduotuvesPavadinimas";
-                var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                sqlKomanda.CommandType = CommandType.Text;
-                sqlKomanda.Parameters.AddWithValue("@BalsuSuma", balsuSuma);
-                sqlKomanda.Parameters.AddWithValue("@BalsavusiuSkaicius", balsavusiuSkaicius);
-                sqlKomanda.Parameters.AddWithValue("@ParduotuvesPavadinimas", parduotuvesPavadinimas);
-                sqlKomanda.ExecuteNonQuery();
-
-                var kitaEile = "UPDATE NaudotojoDuomenys SET ArBalsavo=@balsuIndex WHERE Email=@Email";
-                var kitaSqlKomanda = new SqlCommand(kitaEile, sqlPrisijungti);
-                kitaSqlKomanda.CommandType = CommandType.Text;
-                kitaSqlKomanda.Parameters.AddWithValue("@Email", email);
-                kitaSqlKomanda.Parameters.AddWithValue("@balsuIndex", balsuIndex);
-                kitaSqlKomanda.ExecuteNonQuery();
             }
-            catch (Exception ex)
+
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlPrisijungti.Close();
+                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                if (rezultatas != null)
+                {
+                    rezultatas.ArBalsavo = balsuIndex;
+                    kontekstas.SaveChanges();
+                }
             }
         }
 

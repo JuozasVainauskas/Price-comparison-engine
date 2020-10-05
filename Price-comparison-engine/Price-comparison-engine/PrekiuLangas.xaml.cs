@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using Price_comparison_engine.Klases;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -572,46 +573,21 @@ namespace Price_comparison_engine
         }
         private static void RasytiData(string siteURL, string imgURL)
         {
-            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-            try
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                if (sqlPrisijungti.State == ConnectionState.Closed)
-                {
-                    sqlPrisijungti.Open();
-                }
+                var rezultatas = kontekstas.PuslapiuDuomenys.SingleOrDefault(c => c.PuslapioURL == siteURL && c.ImgURL == imgURL);
 
-                var duomenuAdapteris = new SqlDataAdapter("SELECT PuslapioURL, ImgURL FROM PuslapiuDuomenys WHERE PuslapioURL ='" + siteURL + "' AND ImgURL ='" + imgURL + "' ", sqlPrisijungti);
-                var duomenuLentele = new DataTable();
-                duomenuAdapteris.Fill(duomenuLentele);
-                if (duomenuLentele.Rows.Count == 0)
+                if (rezultatas == null)
                 {
-                    try
+                    var puslapiuDuomenys = new PuslapiuDuomenys()
                     {
-                        if (sqlPrisijungti.State == ConnectionState.Closed)
-                        {
-                            sqlPrisijungti.Open();
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                        PuslapioURL = siteURL,
+                        ImgURL = imgURL
+                    };
+                    kontekstas.PuslapiuDuomenys.Add(puslapiuDuomenys);
+                    kontekstas.SaveChanges();
 
-                    var eile = "INSERT INTO PuslapiuDuomenys(PuslapioURL,ImgURL) VALUES (@PuslapioURL, @ImgURL)";
-                    var sqlCommand = new SqlCommand(eile, sqlPrisijungti);
-                    sqlCommand.CommandType = CommandType.Text;
-                    sqlCommand.Parameters.AddWithValue("@PuslapioURL", siteURL);
-                    sqlCommand.Parameters.AddWithValue("@ImgURL", imgURL);
-                    sqlCommand.ExecuteNonQuery();
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlPrisijungti.Close();
             }
         }
 

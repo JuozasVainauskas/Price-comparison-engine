@@ -36,60 +36,38 @@ namespace Price_comparison_engine
         public static String email { get; private set; } = "";
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
-            //var sqlPrisijungti = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
-            var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-            try
+            String salt = "";
+            String slaptazodzioHash;
+            email = Email.Text;
+
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                if (sqlPrisijungti.State == ConnectionState.Closed)
-                {
-                    sqlPrisijungti.Open();
-                }
-                var eile = "SELECT SlaptazodzioSalt,Role FROM NaudotojoDuomenys WHERE Email=@Email";
-                var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                sqlKomanda.CommandType = CommandType.Text;
-                sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
-
-                String salt = "";
-                String slaptazodzioHash;
-                email = Email.Text;
-
-                using (SqlDataReader skaityti = sqlKomanda.ExecuteReader())
-                {
-                    if (skaityti.Read())
-                    {
-                        salt = skaityti["SlaptazodzioSalt"].ToString();
-                        Role = Convert.ToInt32(skaityti["Role"]);
-
-                    }
-                }
-
-                slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == Email.Text);
                 
-                eile = "SELECT COUNT(1) FROM NaudotojoDuomenys WHERE Email=@Email AND SlaptazodzioHash=@SlaptazodzioHash";
-                sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                sqlKomanda.CommandType = CommandType.Text;
-                sqlKomanda.Parameters.AddWithValue("@Email", Email.Text);
-                sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash); //SlaptazodzioHash with salt
-                int kiekis = Convert.ToInt32(sqlKomanda.ExecuteScalar());
-                if (kiekis == 1)
+                if (rezultatas != null)
                 {
-                    var mainWindowLoggedIn = new MainWindowLoggedIn();
-                    mainWindowLoggedIn.Show();
-                    this.Close();
-                    pagrindinisLangas.Close();
+                    salt = rezultatas.SlaptazodzioSalt;
+                    slaptazodzioHash = rezultatas.SlaptazodzioHash;
+                    Role = rezultatas.Role;
+
+                    String naudotojoIvestasSlaptazodis = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+
+                    if (slaptazodzioHash.Equals(naudotojoIvestasSlaptazodis))
+                    {
+                        var mainWindowLoggedIn = new MainWindowLoggedIn();
+                        mainWindowLoggedIn.Show();
+                        this.Close();
+                        pagrindinisLangas.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Blogai įvestas slaptažodis!");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Blogai įvestas email arba slaptažodis!");
+                    MessageBox.Show("Toks email nerastas arba įvestas blogai!");
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                sqlPrisijungti.Close();
             }
         }
 

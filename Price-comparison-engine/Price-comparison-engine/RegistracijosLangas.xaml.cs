@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace Price_comparison_engine
 {
@@ -59,43 +60,49 @@ namespace Price_comparison_engine
             }
             else
             {
-                //var sqlRegistruotis = new SqlConnection(@"Data Source=localhost\sqlexpress; Initial Catalog=PCEDatabase; Integrated Security=True;");
-                var sqlRegistruotis = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-                var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM NaudotojoDuomenys WHERE Email='" + Email.Text.Trim() + "'", sqlRegistruotis);
-                var duomenuLentele = new DataTable();
-                duomenuAdapteris.Fill(duomenuLentele);
-                if (duomenuLentele.Rows.Count >= 1)
-                {
+                var kontekstas = new DuomenuBazesKontekstas();
+                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == Email.Text);
+                if (rezultatas != null)
+                { 
                     MessageBox.Show("Toks email jau panaudotas. Pabandykite kitą.");
                 }
                 else
                 {
-                    try
+                    /*new DuomenuBazesKontekstas().ExecuteStoreCommand(@"UPDATE Users SET lname = @lname WHERE Id = @id", new SqlParameter("lname", lname), new SqlParameter("id", id));*/
+
+                    //using (var kontekstas = new DuomenuBazesKontekstas())
+                    //{
+                    //    using (var dbKontekstoPervedimas = kontekstas.Database.BeginTransaction())
+                    //    {
+                    //        var naudotojoDuomenys = new NaudotojoDuomenys()
+                    //        {
+                    //            Email = Email.Text,
+                    //            SlaptazodzioHash = slaptazodzioHash,
+                    //            SlaptazodzioSalt = salt,
+                    //            ArBalsavo = "0",
+                    //            Role = 0
+                    //        };
+                    //        kontekstas.NaudotojoDuomenys.Add(naudotojoDuomenys);
+                    //        kontekstas.SaveChanges();
+
+                    //        dbKontekstoPervedimas.Commit();
+                    //    }
+                    //}
+
+                    var naudotojoDuomenys = new NaudotojoDuomenys()
                     {
-                        if (sqlRegistruotis.State == ConnectionState.Closed)
-                        {
-                            sqlRegistruotis.Open();
-                        }
+                        Email = Email.Text,
+                        SlaptazodzioHash = slaptazodzioHash,
+                        SlaptazodzioSalt = salt,
+                        ArBalsavo = "0",
+                        Role = 0
+                    };
+                    kontekstas.NaudotojoDuomenys.Add(naudotojoDuomenys);
 
-                        var eile = "INSERT INTO NaudotojoDuomenys(Email, SlaptazodzioHash, SlaptazodzioSalt, ArBalsavo, Role) VALUES (@Email, @SlaptazodzioHash, @SlaptazodzioSalt, @ArBalsavo, @Role)";
-                        var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
-                        sqlKomanda.CommandType = CommandType.Text;
-                        sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
-                        sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
-                        sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
-                        sqlKomanda.Parameters.AddWithValue("@Role", 0);
-                        sqlKomanda.Parameters.AddWithValue("@ArBalsavo", "0");
-
-                        string kodas = GeneruotiHash.SukurtiSalt(16);
-                        kodas = kodas.Remove(kodas.Length - 2);
-                        var patvirtinimoLangas = new PatvirtinimoLangas(sqlRegistruotis, sqlKomanda, pagrindinisLangas, this, kodas, Email.Text.Trim());
-                        patvirtinimoLangas.Show();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    string kodas = GeneruotiHash.SukurtiSalt(16);
+                    kodas = kodas.Remove(kodas.Length - 2);
+                    var patvirtinimoLangas = new PatvirtinimoLangas(kontekstas, pagrindinisLangas, this, kodas, Email.Text.Trim());
+                    patvirtinimoLangas.Show();
                 }
             }
         }

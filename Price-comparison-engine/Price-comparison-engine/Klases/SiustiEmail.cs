@@ -29,7 +29,7 @@ namespace Price_comparison_engine.Klases
                 }
             };
             MailAddress FromEmail = new MailAddress("smartshopautobot@gmail.com", "Smart Shop");
-            MailAddress ToEmail = new MailAddress(email, "Naudotojas");
+            MailAddress ToEmail = new MailAddress("ernestas20111@gmail.com", "Naudotojas");
             MailMessage Laiskas = new MailMessage()
             {
                 IsBodyHtml = true,

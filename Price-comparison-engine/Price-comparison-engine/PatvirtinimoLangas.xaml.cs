@@ -23,45 +23,35 @@ namespace Price_comparison_engine
     {
         readonly MainWindow pagrindinisLangas;
         readonly RegistracijosLangas registracijosLangas;
-        private SqlConnection sqlRegistruotis;
-        private SqlCommand sqlKomanda;
+        readonly DuomenuBazesKontekstas kontekstas;
         private string kodas;
-        public PatvirtinimoLangas(SqlConnection sqlRegistruotis, SqlCommand sqlKomanda, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
+        public PatvirtinimoLangas(DuomenuBazesKontekstas kontekstas, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
         {
             InitializeComponent();
             new SiustiEmail(kodas, email);
             this.pagrindinisLangas = pagrindinisLangas;
             this.registracijosLangas = registracijosLangas;
-            this.sqlRegistruotis = sqlRegistruotis;
-            this.sqlKomanda = sqlKomanda;
+            this.kontekstas = kontekstas;
             this.kodas = kodas;
         }
 
         private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            try
+            if (kodas == PatvirtinimoLangelis.Text)
             {
-                if (kodas == PatvirtinimoLangelis.Text)
-                {
-                    sqlKomanda.ExecuteNonQuery();
+                kontekstas.SaveChanges();
 
-                    pagrindinisLangas.Close();
-                    registracijosLangas.Close();
-                    MessageBox.Show("Sėkmingai prisiregistravote.");
+                pagrindinisLangas.Close();
+                registracijosLangas.Close();
+                MessageBox.Show("Sėkmingai prisiregistravote.");
 
-                    var mainWindowLoggedIn = new MainWindowLoggedIn();
-                    mainWindowLoggedIn.Show();
-                    sqlRegistruotis.Close();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Blogai įvestas kodas.");
-                }
+                var mainWindowLoggedIn = new MainWindowLoggedIn();
+                mainWindowLoggedIn.Show();
+                this.Close();
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Blogai įvestas kodas.");
             }
         }
     }
