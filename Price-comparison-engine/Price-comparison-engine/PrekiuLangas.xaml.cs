@@ -290,7 +290,7 @@ namespace Price_comparison_engine
                         var priceAtsarg = price;
                         priceAtsarg = pasalinimasEuroSimbol(priceAtsarg);
                         double pricea = Convert.ToDouble(priceAtsarg);
-                        if (imgLink.Contains(".jpg"))
+                        if (imgLink!=(""))
                             {
                             var Itemas = new Item { nuotrauka = imgLink, Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
                             prices.Add(Itemas);
@@ -317,7 +317,6 @@ namespace Price_comparison_engine
             {
                 foreach (var ProductListItem in ProductListItems)
                 {
-
                     var price = ProductListItem.Descendants("span")
                        .Where(node => node.GetAttributeValue("class", "")
                             .Equals("price product-price")).FirstOrDefault().InnerText.Trim();
@@ -332,7 +331,6 @@ namespace Price_comparison_engine
                       .Where(node => node.GetAttributeValue("class", "")
                             .Contains("replace-2x img-responsive")).FirstOrDefault().GetAttributeValue("src", "");
 
-                   
                     if (price != "")
                     {
                         price = pasalinimasTarpuPigu(price);
@@ -343,14 +341,13 @@ namespace Price_comparison_engine
                         double pricea = Convert.ToDouble(priceAtsarg);
                          var Itemas = new Item { nuotrauka = imgLink, Seller = "BigBox", Name = name, Pricea = pricea, Price = price, Link =link };
 
-
                         prices.Add(Itemas);
                     }
                 }
             }
-            else
+             else
             {
-                var Itemas = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var Itemas = new Item { Seller = "BigBox", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
                 prices.Add(Itemas);
             }
         }
@@ -393,7 +390,7 @@ namespace Price_comparison_engine
                     }
                 }
             }
-            else
+            else 
             {
                 var Itemas = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
                 prices.Add(Itemas);
