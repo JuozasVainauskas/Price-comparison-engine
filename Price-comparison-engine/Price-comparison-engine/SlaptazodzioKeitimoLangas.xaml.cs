@@ -50,36 +50,22 @@ namespace Price_comparison_engine
             }
             else
             {
-                var sqlPrisijungti = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-                try
+                String salt = GeneruotiHash.SukurtiSalt(10);
+                String slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, salt);
+
+                using (var kontekstas = new DuomenuBazesKontekstas())
                 {
-                    if (sqlPrisijungti.State == ConnectionState.Closed)
+                    var slaptazodis = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                    if (slaptazodis != null)
                     {
-                        sqlPrisijungti.Open();
+                        slaptazodis.SlaptazodzioHash = slaptazodzioHash;
+                        slaptazodis.SlaptazodzioSalt = salt;
+                        kontekstas.SaveChanges();
                     }
-
-                    String salt = GeneruotiHash.SukurtiSalt(10);
-                    String slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, salt);
-
-                    var eile = "UPDATE NaudotojoDuomenys SET SlaptazodzioHash=@SlaptazodzioHash, SlaptazodzioSalt=@SlaptazodzioSalt WHERE Email=@Email";
-                    var sqlKomanda = new SqlCommand(eile, sqlPrisijungti);
-                    sqlKomanda.CommandType = CommandType.Text;
-                    sqlKomanda.Parameters.AddWithValue("@Email", email);
-                    sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
-                    sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
-                    sqlKomanda.ExecuteNonQuery();
-
-                    MessageBox.Show("Slaptažodis pakeistas sėkmingai.");
-                    this.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    sqlPrisijungti.Close();
-                }
+
+                MessageBox.Show("Slaptažodis pakeistas sėkmingai.");
+                this.Close();
             }
         }
     }

@@ -61,7 +61,7 @@ namespace Price_comparison_engine
             else
             {
                 /*
-                  new AdventureEntities().ExecuteStoreCommand(@"UPDATE Users SET lname = @lname WHERE Id = @id", new SqlParameter("lname", lname), new SqlParameter("id", id));
+                  new DuomenuBazesKontekstas().ExecuteStoreCommand(@"UPDATE Users SET lname = @lname WHERE Id = @id", new SqlParameter("lname", lname), new SqlParameter("id", id));
                 */
                 var sqlRegistruotis = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
                 var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM NaudotojoDuomenys WHERE Email='" + Email.Text.Trim() + "'", sqlRegistruotis);
@@ -73,15 +73,6 @@ namespace Price_comparison_engine
                 }
                 else
                 {
-                    //var eile = "INSERT INTO NaudotojoDuomenys(Email, SlaptazodzioHash, SlaptazodzioSalt, ArBalsavo, Role) VALUES (@Email, @SlaptazodzioHash, @SlaptazodzioSalt, @ArBalsavo, @Role)";
-                    //var sqlKomanda = new SqlCommand(eile, sqlRegistruotis);
-                    //sqlKomanda.CommandType = CommandType.Text;
-                    //sqlKomanda.Parameters.AddWithValue("@Email", Email.Text.Trim());
-                    //sqlKomanda.Parameters.AddWithValue("@SlaptazodzioHash", slaptazodzioHash);
-                    //sqlKomanda.Parameters.AddWithValue("@SlaptazodzioSalt", salt);
-                    //sqlKomanda.Parameters.AddWithValue("@Role", 0);
-                    //sqlKomanda.Parameters.AddWithValue("@ArBalsavo", "0");
-
                     //using (var kontekstas = new DuomenuBazesKontekstas())
                     //{
                     //    using (var dbKontekstoPervedimas = kontekstas.Database.BeginTransaction())
