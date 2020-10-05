@@ -60,19 +60,16 @@ namespace Price_comparison_engine
             }
             else
             {
-                /*
-                  new DuomenuBazesKontekstas().ExecuteStoreCommand(@"UPDATE Users SET lname = @lname WHERE Id = @id", new SqlParameter("lname", lname), new SqlParameter("id", id));
-                */
-                var sqlRegistruotis = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PCEDatabase.mdf;Integrated Security=SSPI;Connect Timeout=30");
-                var duomenuAdapteris = new SqlDataAdapter("SELECT Email FROM NaudotojoDuomenys WHERE Email='" + Email.Text.Trim() + "'", sqlRegistruotis);
-                var duomenuLentele = new DataTable();
-                duomenuAdapteris.Fill(duomenuLentele);
-                if (duomenuLentele.Rows.Count >= 1)
-                {
+                var kontekstas = new DuomenuBazesKontekstas();
+                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == Email.Text);
+                if (rezultatas != null)
+                { 
                     MessageBox.Show("Toks email jau panaudotas. Pabandykite kitą.");
                 }
                 else
                 {
+                    /*new DuomenuBazesKontekstas().ExecuteStoreCommand(@"UPDATE Users SET lname = @lname WHERE Id = @id", new SqlParameter("lname", lname), new SqlParameter("id", id));*/
+
                     //using (var kontekstas = new DuomenuBazesKontekstas())
                     //{
                     //    using (var dbKontekstoPervedimas = kontekstas.Database.BeginTransaction())
@@ -92,7 +89,6 @@ namespace Price_comparison_engine
                     //    }
                     //}
 
-                    var kontekstas = new DuomenuBazesKontekstas();
                     var naudotojoDuomenys = new NaudotojoDuomenys()
                     {
                         Email = Email.Text,
