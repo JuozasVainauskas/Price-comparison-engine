@@ -18,5 +18,6 @@ namespace Price_comparison_engine.Klases
         public string ParduotuvesVardas { get; set; }
         public string PrekesVardas { get; set; }
         public string PrekesKaina { get; set; }
+        public string RaktinisZodis { get; set; }
     }
 }

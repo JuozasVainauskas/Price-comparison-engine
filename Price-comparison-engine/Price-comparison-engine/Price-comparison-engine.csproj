@@ -117,6 +117,10 @@
     <Compile Include="Migrations\202010061127433_SukurtiNaujaLentele.designer.cs">
       <DependentUpon>202010061127433_SukurtiNaujaLentele.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010061143547_AtnaujintiPrekiuLentele.cs" />
+    <Compile Include="Migrations\202010061143547_AtnaujintiPrekiuLentele.designer.cs">
+      <DependentUpon>202010061143547_AtnaujintiPrekiuLentele.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
@@ -260,6 +264,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010061127433_SukurtiNaujaLentele.resx">
       <DependentUpon>202010061127433_SukurtiNaujaLentele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010061143547_AtnaujintiPrekiuLentele.resx">
+      <DependentUpon>202010061143547_AtnaujintiPrekiuLentele.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
