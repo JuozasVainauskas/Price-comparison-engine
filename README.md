@@ -27,9 +27,9 @@
 - [ ] Stars/comments under the shops
 - [ ] Comments under the products
 - [ ] Review about the page
+- [ ] Products' list cash
 
 **Things to be done shortly**
 - Code refactoring
-- Adapting entity framework for managing database
 ## Initial goal
 Create a program/website/app which takes the data of the prices from different shopping websites and provides a comparison in a visual manner
