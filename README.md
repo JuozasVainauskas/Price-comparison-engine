@@ -27,7 +27,7 @@
 - [ ] Stars/comments under the shops
 - [ ] Comments under the products
 - [ ] Review about the page
-- [ ] Products' list cash
+- [ ] Products' list cashing
 
 **Things to be done shortly**
 - Code refactoring
