@@ -37,7 +37,7 @@ namespace Price_comparison_engine
 
         private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            if (kodas == PatvirtinimoLangelis.Text)
+            if (kodas.Equals(PatvirtinimoLangelis.Text))
             {
                 kontekstas.SaveChanges();
 
