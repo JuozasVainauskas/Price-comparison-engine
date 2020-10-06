@@ -712,6 +712,22 @@ namespace Price_comparison_engine
                 }
             }
         }
+        private static void SkaitytiPrekes(ref string siteURL, ref string imgURL, ref string parduotuvesVardas, ref string prekesVardas, ref string prekesKaina, string raktinisZodis)
+        {
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var rezultatas = kontekstas.PrekiuDuomenys.SingleOrDefault(c => c.RaktinisZodis == raktinisZodis);
+
+                if (rezultatas == null)
+                {
+                    siteURL = rezultatas.PuslapioURL;
+                    imgURL = rezultatas.ImgURL;
+                    parduotuvesVardas = rezultatas.ParduotuvesVardas;
+                    prekesVardas = rezultatas.PrekesVardas;
+                    prekesKaina = rezultatas.PrekesKaina;
+                }
+            }
+        }
 
         private static void RasytiData(string siteURL, string imgURL)
         {
