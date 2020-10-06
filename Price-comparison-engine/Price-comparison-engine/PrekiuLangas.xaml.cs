@@ -649,10 +649,10 @@ namespace Price_comparison_engine
             foreach (Item item in SortedPricesList)
             {
                 dataGridas.Items.Add(item);
+                RasytiPrekes(item.Link, item.nuotrauka, item.Seller, item.Name, item.Price, MainWindow.zodis);
             }
             prices.Clear();
         }
-
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
