@@ -12,9 +12,9 @@
 - [x] Contacts -> *Needs an update*
 - [x] Searched products' list/Interface
 - [x] Slideshow
-- [ ] Stars/comments under the shops
-- [ ] Comments under the products -> *Might be added in the future*
-- [ ] Review about the page -> *Will be added in the future*
+- [x] Stars/comments under the shops
+- [ ] Comments under the products
+- [ ] Review about the page
 
 **Back-End**
 - [x] Gather data from online shop websites
@@ -23,7 +23,10 @@
 - [x] Register and login forms' error catching
 - [x] Email confirm and password reset
 - [x] Store gathered data in the database
-- [ ] Slideshow
+- [x] Slideshow
+- [ ] Stars/comments under the shops
+- [ ] Comments under the products
+- [ ] Review about the page
 
 **Things to be done shortly**
 - Code refactoring
