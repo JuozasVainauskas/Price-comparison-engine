@@ -649,10 +649,10 @@ namespace Price_comparison_engine
             foreach (Item item in SortedPricesList)
             {
                 dataGridas.Items.Add(item);
-                RasytiPrekes(item.Link, item.nuotrauka, item.Seller, item.Name, item.Price, MainWindow.zodis);
             }
             prices.Clear();
         }
+
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -712,21 +712,36 @@ namespace Price_comparison_engine
                 }
             }
         }
-        private static void SkaitytiPrekes(ref string siteURL, ref string imgURL, ref string parduotuvesVardas, ref string prekesVardas, ref string prekesKaina, string raktinisZodis)
+
+        private static List<Item> SkaitytiPrekes(string raktinisZodis)
         {
+            List<Item> item = new List<Item>();
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.PrekiuDuomenys.SingleOrDefault(c => c.RaktinisZodis == raktinisZodis);
+                var tempSiteUrl = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.PuslapioURL).ToList();
+                var tempImgUrl = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.ImgURL).ToList();
+                var tempParduotuvesVardas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.ParduotuvesVardas).ToList();
+                var tempPrekesVardas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.PrekesVardas).ToList();
+                var tempPrekesKaina = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.PrekesKaina).ToList();
 
-                if (rezultatas == null)
+                if (tempSiteUrl != null && tempImgUrl != null && tempParduotuvesVardas != null && tempPrekesVardas != null && tempPrekesKaina != null)
                 {
-                    siteURL = rezultatas.PuslapioURL;
-                    imgURL = rezultatas.ImgURL;
-                    parduotuvesVardas = rezultatas.ParduotuvesVardas;
-                    prekesVardas = rezultatas.PrekesVardas;
-                    prekesKaina = rezultatas.PrekesKaina;
+                    for (int i = 0; i < tempSiteUrl.Count; i++)
+                    {
+                        var Itemas = new Item()
+                        {
+                            Link = tempSiteUrl.ElementAt(i),
+                            nuotrauka = tempImgUrl.ElementAt(i),
+                            Seller = tempParduotuvesVardas.ElementAt(i),
+                            Name = tempPrekesVardas.ElementAt(i),
+                            Price = tempPrekesKaina.ElementAt(i)
+                        };
+                        item.Add(Itemas);
+                    }
                 }
             }
+            return item;
+
         }
 
         private static void RasytiData(string siteURL, string imgURL)
