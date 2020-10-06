@@ -300,8 +300,8 @@ namespace Price_comparison_engine
             if (htmlDocument2 != null)
             {
                 var ProductsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
-                .Where(node => node.GetAttributeValue("class", "")
-                .Equals("main-block fr")).ToList();
+                .Where(node => node.GetAttributeValue("widget-old", "")
+                .Equals("ContentLoader")).ToList();
 
                 var ProductListItems2 = ProductsHtml2[0].Descendants("div")
                     .Where(node => node.GetAttributeValue("class", "")
