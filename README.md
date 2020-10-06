@@ -12,9 +12,9 @@
 - [x] Contacts -> *Needs an update*
 - [x] Searched products' list/Interface
 - [x] Slideshow
-- [ ] Stars/comments under the shops
-- [ ] Comments under the products -> *Might be added in the future*
-- [ ] Review about the page -> *Will be added in the future*
+- [x] Stars/comments under the shops
+- [ ] Comments under the products
+- [ ] Review about the page
 
 **Back-End**
 - [x] Gather data from online shop websites
@@ -23,10 +23,13 @@
 - [x] Register and login forms' error catching
 - [x] Email confirm and password reset
 - [x] Store gathered data in the database
-- [ ] Slideshow
+- [x] Slideshow
+- [ ] Stars/comments under the shops
+- [ ] Comments under the products
+- [ ] Review about the page
+- [ ] Products' list cash
 
 **Things to be done shortly**
 - Code refactoring
-- Adapting entity framework for managing database
 ## Initial goal
 Create a program/website/app which takes the data of the prices from different shopping websites and provides a comparison in a visual manner

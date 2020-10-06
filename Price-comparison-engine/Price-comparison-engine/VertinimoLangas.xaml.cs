@@ -100,7 +100,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                MessageBox.Show("Jau balsavote už šią parduotuvę!" + balsuIndex);
+                MessageBox.Show("Jau balsavote už šią parduotuvę!");
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
@@ -123,7 +123,7 @@ namespace Price_comparison_engine
                 if (rezultatas != null)
                 {
                     balsuSuma = rezultatas.BalsuSuma;
-                    balsavusiuSkaicius = Convert.ToInt32(rezultatas.BalsavusiuSkaicius);
+                    balsavusiuSkaicius = rezultatas.BalsavusiuSkaicius;
                 }
             }
 

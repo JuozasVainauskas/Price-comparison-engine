@@ -16,6 +16,6 @@ namespace Price_comparison_engine.Klases
         public int ParduotuvesID { get; set; }
         public string ParduotuvesPavadinimas { get; set; }
         public double BalsuSuma { get; set; }
-        public double BalsavusiuSkaicius { get; set; }
+        public int BalsavusiuSkaicius { get; set; }
     }
 }

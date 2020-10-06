@@ -649,10 +649,10 @@ namespace Price_comparison_engine
             foreach (Item item in SortedPricesList)
             {
                 dataGridas.Items.Add(item);
+                RasytiPrekes(item.Link, item.nuotrauka, item.Seller, item.Name, item.Price, MainWindow.zodis);
             }
             prices.Clear();
         }
-
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -688,6 +688,31 @@ namespace Price_comparison_engine
                 System.Diagnostics.Process.Start(link);
             }
         }
+
+        private static void RasytiPrekes(string siteURL, string imgURL, string parduotuvesVardas, string prekesVardas, string prekesKaina, string raktinisZodis)
+        {
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var rezultatas = kontekstas.PrekiuDuomenys.SingleOrDefault(c => c.PuslapioURL == siteURL && c.ImgURL == imgURL && c.ParduotuvesVardas == parduotuvesVardas && c.PrekesVardas == prekesVardas && c.PrekesKaina == prekesKaina && c.RaktinisZodis == raktinisZodis);
+
+                if (rezultatas == null)
+                {
+                    var prekiuDuomenys = new PrekiuDuomenys()
+                    {
+                        PuslapioURL = siteURL,
+                        ImgURL = imgURL,
+                        ParduotuvesVardas = parduotuvesVardas,
+                        PrekesVardas = prekesVardas,
+                        PrekesKaina = prekesKaina,
+                        RaktinisZodis = raktinisZodis
+                    };
+                    kontekstas.PrekiuDuomenys.Add(prekiuDuomenys);
+                    kontekstas.SaveChanges();
+
+                }
+            }
+        }
+
         private static void RasytiData(string siteURL, string imgURL)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
