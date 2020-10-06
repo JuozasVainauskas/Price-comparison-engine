@@ -75,25 +75,36 @@ namespace Price_comparison_engine
                 prices.Add(Itemas);
             }
             */
-            var BigBoxItem = BigBoxSearch(await BigBoxHtml());
-            var BarboraItems = BarboraSearch(await BarboraHtml());
-            var PiguItems = PiguSearch(await piguHtml());
-            var AvitelaItems = AvitelaSearch(await avitelosHtml());
-            var ElektromarktItems = ElektromarktSearch(await elektromarktHtml());
-          //  if (RdeHtml() != null)
-           // {
+            if (SkaitytiPrekes(MainWindow.zodis).Any())
+            {
+
+                foreach (Item item in SkaitytiPrekes(MainWindow.zodis))
+                {
+                    dataGrid.Items.Add(item);
+                }
+
+            }
+            else
+            {
+                var BigBoxItem = BigBoxSearch(await BigBoxHtml());
+                var BarboraItems = BarboraSearch(await BarboraHtml());
+                var PiguItems = PiguSearch(await piguHtml());
+                var AvitelaItems = AvitelaSearch(await avitelosHtml());
+                var ElektromarktItems = ElektromarktSearch(await elektromarktHtml());
+                //  if (RdeHtml() != null)
+                // {
                 var RdeItems = RdeSearch(await RdeHtml());
                 WriteDataFromRde(RdeItems, prices);
-            //}
-            WriteDataFromBarbora(BarboraItems, prices);
-            WriteDataFromBigBox(BigBoxItem, prices);
-            WriteDataFromAvitela(AvitelaItems, prices);
-            WriteDataFromElektromarkt(ElektromarktItems, prices);
-            WriteDataFromPigu(PiguItems, prices);
-            
+                //}
+                WriteDataFromBarbora(BarboraItems, prices);
+                WriteDataFromBigBox(BigBoxItem, prices);
+                WriteDataFromAvitela(AvitelaItems, prices);
+                WriteDataFromElektromarkt(ElektromarktItems, prices);
+                WriteDataFromPigu(PiguItems, prices);
 
-            SortAndInsert(prices, dataGrid);
 
+                SortAndInsert(prices, dataGrid);
+            }
         }
 
         private static async Task<HtmlDocument> RdeHtml()
@@ -649,6 +660,7 @@ namespace Price_comparison_engine
             foreach (Item item in SortedPricesList)
             {
                 dataGridas.Items.Add(item);
+                RasytiPrekes(item.Link, item.nuotrauka, item.Seller, item.Name, item.Price, MainWindow.zodis);
             }
             prices.Clear();
         }
