@@ -75,25 +75,36 @@ namespace Price_comparison_engine
                 prices.Add(Itemas);
             }
             */
-            var BigBoxItem = BigBoxSearch(await BigBoxHtml());
-            var BarboraItems = BarboraSearch(await BarboraHtml());
-            var PiguItems = PiguSearch(await piguHtml());
-            var AvitelaItems = AvitelaSearch(await avitelosHtml());
-            var ElektromarktItems = ElektromarktSearch(await elektromarktHtml());
-          //  if (RdeHtml() != null)
-           // {
+            if (SkaitytiPrekes(MainWindow.zodis).Any())
+            {
+
+                foreach (Item item in SkaitytiPrekes(MainWindow.zodis))
+                {
+                    dataGrid.Items.Add(item);
+                }
+
+            }
+            else
+            {
+                var BigBoxItem = BigBoxSearch(await BigBoxHtml());
+                var BarboraItems = BarboraSearch(await BarboraHtml());
+                var PiguItems = PiguSearch(await piguHtml());
+                var AvitelaItems = AvitelaSearch(await avitelosHtml());
+                var ElektromarktItems = ElektromarktSearch(await elektromarktHtml());
+                //  if (RdeHtml() != null)
+                // {
                 var RdeItems = RdeSearch(await RdeHtml());
                 WriteDataFromRde(RdeItems, prices);
-            //}
-            WriteDataFromBarbora(BarboraItems, prices);
-            WriteDataFromBigBox(BigBoxItem, prices);
-            WriteDataFromAvitela(AvitelaItems, prices);
-            WriteDataFromElektromarkt(ElektromarktItems, prices);
-            WriteDataFromPigu(PiguItems, prices);
-            
+                //}
+                WriteDataFromBarbora(BarboraItems, prices);
+                WriteDataFromBigBox(BigBoxItem, prices);
+                WriteDataFromAvitela(AvitelaItems, prices);
+                WriteDataFromElektromarkt(ElektromarktItems, prices);
+                WriteDataFromPigu(PiguItems, prices);
 
-            SortAndInsert(prices, dataGrid);
 
+                SortAndInsert(prices, dataGrid);
+            }
         }
 
         private static async Task<HtmlDocument> RdeHtml()
@@ -654,6 +665,7 @@ namespace Price_comparison_engine
             prices.Clear();
         }
 
+
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             RectangleIstempimasAukstis(rectangle1);
@@ -711,6 +723,37 @@ namespace Price_comparison_engine
 
                 }
             }
+        }
+
+        private static List<Item> SkaitytiPrekes(string raktinisZodis)
+        {
+            List<Item> item = new List<Item>();
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var tempSiteUrl = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.PuslapioURL).ToList();
+                var tempImgUrl = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.ImgURL).ToList();
+                var tempParduotuvesVardas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.ParduotuvesVardas).ToList();
+                var tempPrekesVardas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.PrekesVardas).ToList();
+                var tempPrekesKaina = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.PrekesKaina).ToList();
+
+                if (tempSiteUrl != null && tempImgUrl != null && tempParduotuvesVardas != null && tempPrekesVardas != null && tempPrekesKaina != null)
+                {
+                    for (int i = 0; i < tempSiteUrl.Count; i++)
+                    {
+                        var Itemas = new Item()
+                        {
+                            Link = tempSiteUrl.ElementAt(i),
+                            nuotrauka = tempImgUrl.ElementAt(i),
+                            Seller = tempParduotuvesVardas.ElementAt(i),
+                            Name = tempPrekesVardas.ElementAt(i),
+                            Price = tempPrekesKaina.ElementAt(i)
+                        };
+                        item.Add(Itemas);
+                    }
+                }
+            }
+            return item;
+
         }
 
         private static void RasytiData(string siteURL, string imgURL)

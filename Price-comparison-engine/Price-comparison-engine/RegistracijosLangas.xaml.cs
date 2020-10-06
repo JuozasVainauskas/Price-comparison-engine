@@ -42,7 +42,7 @@ namespace Price_comparison_engine
             var pattern1 = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
             var pattern2 = new Regex(@"([a-zA-Z0-9._-]*[a-zA-Z0-9][a-zA-Z0-9._-]*)(@gmail.com)$", RegexOptions.Compiled);
             
-            if (Email.Text == "" || Slaptazodis.Password == "" || SlaptazodisPatvirtinti.Password == "")
+            if (String.IsNullOrWhiteSpace(Email.Text) || String.IsNullOrWhiteSpace(Slaptazodis.Password) || String.IsNullOrWhiteSpace(SlaptazodisPatvirtinti.Password))
             {
                 MessageBox.Show("Prašome užpildyti visus laukus.");
             }
@@ -54,7 +54,7 @@ namespace Price_comparison_engine
             {
                 MessageBox.Show("Slaptažodyje turi būti bent trys raidės ir vienas skaičius!!!");
             }
-            else if (Slaptazodis.Password != SlaptazodisPatvirtinti.Password)
+            else if (!Slaptazodis.Password.Equals(SlaptazodisPatvirtinti.Password))
             {
                 MessageBox.Show("Slaptažodžiai nesutampa.");
             }

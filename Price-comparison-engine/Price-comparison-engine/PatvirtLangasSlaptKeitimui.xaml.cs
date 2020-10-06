@@ -32,7 +32,7 @@ namespace Price_comparison_engine
         private void SiustiMygtukas(object sender, RoutedEventArgs e)
         {
             var pattern = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
-            if (emailLangelis.Text == "")
+            if (String.IsNullOrWhiteSpace(emailLangelis.Text))
             {
                 MessageBox.Show("Prašome užpildyti laukelį.");
             }
@@ -61,7 +61,7 @@ namespace Price_comparison_engine
 
         private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            if (kodas == patvirtinimoLangelis.Text)
+            if (kodas.Equals(patvirtinimoLangelis.Text))
             {
                 var slaptazodzioKeitimoLangas = new SlaptazodzioKeitimoLangas(email);
                 slaptazodzioKeitimoLangas.Show();
