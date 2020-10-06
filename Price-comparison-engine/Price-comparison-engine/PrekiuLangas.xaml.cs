@@ -458,7 +458,7 @@ namespace Price_comparison_engine
         {
             if (ProductListItems != null)
             {
-                int countItems = ProductListItems.Count - soldOut;
+                int countItems = ProductListItems.Count - soldOutBarbora;
 
                 foreach (var ProductListItem in ProductListItems)
                 {
