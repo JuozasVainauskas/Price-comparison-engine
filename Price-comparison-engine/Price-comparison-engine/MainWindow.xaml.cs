@@ -28,7 +28,7 @@ namespace Price_comparison_engine
         public void DataDirectoryInitialize()
         {
             var enviroment = System.Environment.CurrentDirectory;
-            var projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
+            string projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
             AppDomain.CurrentDomain.SetData("DataDirectory", projectDirectory);
         }
 
@@ -36,55 +36,55 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
             DataDirectoryInitialize();
-            Skaityti(ref puslapioUrl, ref imgUrl);
-            if (puslapioUrl.Count >= 3 && imgUrl.Count >= 3)
+            Skaityti(ref PuslapioURL, ref ImgURL);
+            if (PuslapioURL.Count >= 3 && ImgURL.Count >= 3)
             {
-                img1.Source = new BitmapImage(new Uri(imgUrl[0], UriKind.Absolute));
-                img2.Source = new BitmapImage(new Uri(imgUrl[1], UriKind.Absolute));
-                img3.Source = new BitmapImage(new Uri(imgUrl[2], UriKind.Absolute));
+                img1.Source = new BitmapImage(new Uri(ImgURL[0], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(ImgURL[1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(ImgURL[2], UriKind.Absolute));
             }
         }
 
         private void DUKMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var dukLangoAtidarymas = new DUK_Langas();
+            DUK_Langas dukLangoAtidarymas = new DUK_Langas();
             dukLangoAtidarymas.Show();
         }
 
         private void KontaktaiMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var kontaktuLangoAtidarymas = new KontaktuLangas();
+            KontaktuLangas kontaktuLangoAtidarymas = new KontaktuLangas();
             kontaktuLangoAtidarymas.Show();
         }
 
-        public  static string zodis;
+        public  static String zodis;
 
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
             zodis = ieskojimoLaukas.Text;
-            var prekiųLangoAtidarymas = new PrekiuLangas();
+            PrekiuLangas prekiųLangoAtidarymas = new PrekiuLangas();
             prekiųLangoAtidarymas.Show();
         }
 
         private void RegistruotisMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var registracijosLangoAtidarymas = new RegistracijosLangas(this);
+            RegistracijosLangas registracijosLangoAtidarymas = new RegistracijosLangas(this);
             registracijosLangoAtidarymas.Show();
         }
 
         private void PrisijungtiMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var prisijungimoLangoAtidarymas = new PrisijungimoLangas(this);
+            PrisijungimoLangas prisijungimoLangoAtidarymas = new PrisijungimoLangas(this);
             prisijungimoLangoAtidarymas.Show();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var skirtumasPlocio = this.ActualWidth / 1.2;
-            var skirtumasIlgio = this.ActualHeight / 1.1;
-            var skirtumasPlocioBlokeliui = this.ActualHeight / 1.7;
-            var skirtumasPlocioNuotraukai = this.ActualWidth / 1.4;
-            var skirtumasIlgioNuotraukai = this.ActualHeight / 1.4;
+            double skirtumasPlocio = this.ActualWidth / 1.2;
+            double skirtumasIlgio = this.ActualHeight / 1.1;
+            double skirtumasPlocioBlokeliui = this.ActualHeight / 1.7;
+            double skirtumasPlocioNuotraukai = this.ActualWidth / 1.4;
+            double skirtumasIlgioNuotraukai = this.ActualHeight / 1.4;
             MygtukoResize(prisijungimosMygtukas, skirtumasPlocio, skirtumasIlgio);
             MygtukoResize(registracijosMygtukas, skirtumasPlocio, skirtumasIlgio);
             MygtukoResize(DUKMygtukas, skirtumasPlocio, skirtumasIlgio);
@@ -133,8 +133,8 @@ namespace Price_comparison_engine
             nuotrauka.Height = this.ActualHeight-ilgis;
         }
 
-        private static List<string> puslapioUrl = new List<string>();
-        private static List<string> imgUrl = new List<string>();
+        private static List<String> PuslapioURL = new List<string>();
+        private static List<String> ImgURL = new List<string>();
 
         public static int indexFront = 3;
         public static int indexBack = 0;
@@ -147,20 +147,20 @@ namespace Price_comparison_engine
                 urlIndex--;
                 indexBack--;
                 indexFront--;
-                img1.Source = new BitmapImage(new Uri(imgUrl[indexBack], UriKind.Absolute));
-                img2.Source = new BitmapImage(new Uri(imgUrl[indexBack + 1], UriKind.Absolute));
-                img3.Source = new BitmapImage(new Uri(imgUrl[indexBack + 2], UriKind.Absolute));
+                img1.Source = new BitmapImage(new Uri(ImgURL[indexBack], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(ImgURL[indexBack + 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(ImgURL[indexBack + 2], UriKind.Absolute));
             }
         }
 
         private void Slider_Front(object sender, MouseButtonEventArgs e)
         {
-            if (indexFront < puslapioUrl.Count - 1)
+            if (indexFront < PuslapioURL.Count - 1)
             {
                 urlIndex++;
-                img1.Source = new BitmapImage(new Uri(imgUrl[indexFront - 2], UriKind.Absolute));
-                img2.Source = new BitmapImage(new Uri(imgUrl[indexFront - 1], UriKind.Absolute));
-                img3.Source = new BitmapImage(new Uri(imgUrl[indexFront], UriKind.Absolute));
+                img1.Source = new BitmapImage(new Uri(ImgURL[indexFront - 2], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(ImgURL[indexFront - 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(ImgURL[indexFront], UriKind.Absolute));
                 indexFront++;
                 indexBack++;
             }
@@ -168,29 +168,29 @@ namespace Price_comparison_engine
 
         private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (puslapioUrl.Count >= 3)
+            if (PuslapioURL.Count >= 3)
             {
-                System.Diagnostics.Process.Start(puslapioUrl[urlIndex]);
+                System.Diagnostics.Process.Start(PuslapioURL[urlIndex]);
             }
         }
 
         private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (puslapioUrl.Count >= 3)
+            if (PuslapioURL.Count >= 3)
             {
-                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 1]);
+                System.Diagnostics.Process.Start(PuslapioURL[urlIndex + 1]);
             }
         }
 
         private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (puslapioUrl.Count >= 3)
+            if (PuslapioURL.Count >= 3)
             {
-                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 2]);
+                System.Diagnostics.Process.Start(PuslapioURL[urlIndex + 2]);
             }
         }
 
-        private static void Skaityti(ref List<string> puslapioUrl, ref List<string> imgUrl)
+        private static void Skaityti(ref List<String> PuslapioURL, ref List<String> ImgURL)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
@@ -199,8 +199,8 @@ namespace Price_comparison_engine
 
                 if (tempPuslapioUrl != null && tempImgUrl != null)
                 {
-                    puslapioUrl = tempPuslapioUrl;
-                    imgUrl = tempImgUrl;
+                    PuslapioURL = tempPuslapioUrl;
+                    ImgURL = tempImgUrl;
                 }
             }
         }

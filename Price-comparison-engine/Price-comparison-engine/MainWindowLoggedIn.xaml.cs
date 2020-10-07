@@ -28,15 +28,15 @@ namespace Price_comparison_engine
             }
         }
 
-        private static readonly int vartotojoRole = PrisijungimoLangas.Role;
+        private static int vartotojoRole = PrisijungimoLangas.Role;
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var skirtumasPlocio = this.ActualWidth / 1.2;
-            var skirtumasIlgio = this.ActualHeight / 1.1;
-            var skirtumasPlocioBlokeliui = this.ActualHeight / 1.05;
-            var skirtumasPlocioNuotraukai = this.ActualWidth / 1.2;
-            var skirtumasIlgioNuotraukai = this.ActualHeight / 1.2;
+            double skirtumasPlocio = this.ActualWidth / 1.2;
+            double skirtumasIlgio = this.ActualHeight / 1.1;
+            double skirtumasPlocioBlokeliui = this.ActualHeight / 1.05;
+            double skirtumasPlocioNuotraukai = this.ActualWidth / 1.2;
+            double skirtumasIlgioNuotraukai = this.ActualHeight / 1.2;
             MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
             TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
             RectangleIštempimas(viršutinėlinija);
@@ -45,16 +45,16 @@ namespace Price_comparison_engine
             RectangleIštempimas(vidurinėLinija2);
             //RectangleResize(vidurinėLinija2, skirtumasPlocioBlokeliui);
             RectangleIštempimas(apatinėLinija);
-            SlideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(img1_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(img2_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(img3_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(iKairePuse, skirtumasIlgio, skirtumasIlgio);
-            SlideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
-            SlideShowResize(iKairePuse1, skirtumasIlgio, skirtumasIlgio);
-            SlideShowResize(iDesinePuse1, skirtumasIlgio, skirtumasIlgio);
+            slideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img1_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img2_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(img3_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            slideShowResize(iKairePuse, skirtumasIlgio, skirtumasIlgio);
+            slideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
+            slideShowResize(iKairePuse1, skirtumasIlgio, skirtumasIlgio);
+            slideShowResize(iDesinePuse1, skirtumasIlgio, skirtumasIlgio);
         }
 
         private void RectangleResize(Rectangle plotelis, double ilgis)
@@ -79,7 +79,7 @@ namespace Price_comparison_engine
             plotelis.Width = this.ActualWidth;
         }
 
-        private void SlideShowResize(Image nuotrauka, double plotis, double ilgis)
+        private void slideShowResize(Image nuotrauka, double plotis, double ilgis)
         {
             nuotrauka.Width = this.ActualWidth - plotis;
             nuotrauka.Height = this.ActualHeight - ilgis;
@@ -146,7 +146,7 @@ namespace Price_comparison_engine
 
         private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var pagrindinisLangas = new MainWindow();
+            MainWindow pagrindinisLangas = new MainWindow();
             pagrindinisLangas.Show();
             this.Close();
         }
@@ -154,13 +154,13 @@ namespace Price_comparison_engine
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.zodis = ieškojimoLaukas.Text;
-            var prekiųLangoAtidarymas = new PrekiuLangas();
+            PrekiuLangas prekiųLangoAtidarymas = new PrekiuLangas();
             prekiųLangoAtidarymas.Show();
         }
 
         private void AdminPrisijungimas(object sender, RoutedEventArgs e)
         {
-                var adminLangoAtidarymas = new Admin();
+                Admin adminLangoAtidarymas = new Admin();
                 adminLangoAtidarymas.Show();
         }
     }

@@ -23,12 +23,12 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
         }
-        private void TbReferAFriend_MouseDown(object sender, MouseButtonEventArgs e)
+        private void tbReferAFriend_MouseDown(object sender, MouseButtonEventArgs e)
         {
             try
             {
 
-                LaunchEmailClientByShellExecute();
+                launchEmailClientByShellExecute();
             }
             catch (Exception ex)
             {
@@ -40,7 +40,7 @@ namespace Price_comparison_engine
         public static extern IntPtr ShellExecute(IntPtr hwnd, string lpOperation,
                     string lpFile, string lpParameters, string lpDirectory, int nShowCmd);
 
-        private static void LaunchEmailClientByShellExecute()
+        private void launchEmailClientByShellExecute()
         {
             ShellExecute(IntPtr.Zero, "open", "mailto:vitkauskas.j@gmail.com?subject=Read%20This&body=message%20contents", "", "", 4/* sw_shownoactivate */);
         }

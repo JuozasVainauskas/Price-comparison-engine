@@ -36,13 +36,13 @@ namespace Price_comparison_engine
 
         private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
         {
-            var salt = GeneruotiHash.SukurtiSalt(10);
-            var slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+            String salt = GeneruotiHash.SukurtiSalt(10);
+            String slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
             
             var pattern1 = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
             var pattern2 = new Regex(@"([a-zA-Z0-9._-]*[a-zA-Z0-9][a-zA-Z0-9._-]*)(@gmail.com)$", RegexOptions.Compiled);
             
-            if (string.IsNullOrWhiteSpace(Email.Text) || string.IsNullOrWhiteSpace(Slaptazodis.Password) || string.IsNullOrWhiteSpace(SlaptazodisPatvirtinti.Password))
+            if (String.IsNullOrWhiteSpace(Email.Text) || String.IsNullOrWhiteSpace(Slaptazodis.Password) || String.IsNullOrWhiteSpace(SlaptazodisPatvirtinti.Password))
             {
                 MessageBox.Show("Prašome užpildyti visus laukus.");
             }
@@ -99,7 +99,7 @@ namespace Price_comparison_engine
                     };
                     kontekstas.NaudotojoDuomenys.Add(naudotojoDuomenys);
 
-                    var kodas = GeneruotiHash.SukurtiSalt(16);
+                    string kodas = GeneruotiHash.SukurtiSalt(16);
                     kodas = kodas.Remove(kodas.Length - 2);
                     var patvirtinimoLangas = new PatvirtinimoLangas(kontekstas, pagrindinisLangas, this, kodas, Email.Text.Trim());
                     patvirtinimoLangas.Show();

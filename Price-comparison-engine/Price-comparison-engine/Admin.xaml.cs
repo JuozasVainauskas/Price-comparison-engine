@@ -29,7 +29,7 @@ namespace Price_comparison_engine
         }
 
         private static int role = 0;
-        private static void SkirtiRole(string email,int role)
+        private void SkirtiRole(string email,int role)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
