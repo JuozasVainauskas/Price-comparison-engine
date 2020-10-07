@@ -8,7 +8,7 @@ namespace Price_comparison_engine.Klases
 {
     class GeneruotiHash
     {
-        public static String SukurtiSalt(int dydis)
+        public static string SukurtiSalt(int dydis)
         {
             var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
             var buferis = new byte[dydis];
@@ -16,7 +16,7 @@ namespace Price_comparison_engine.Klases
             return Convert.ToBase64String(buferis);
         }
 
-        public static String GenerateSHA256Hash(String ivedimas, String salt)
+        public static string GenerateSHA256Hash(string ivedimas, string salt)
         {
             byte[] bytes = System.Text.Encoding.UTF8.GetBytes(ivedimas + salt);
             var sha256hashstring = new System.Security.Cryptography.SHA256Managed();
