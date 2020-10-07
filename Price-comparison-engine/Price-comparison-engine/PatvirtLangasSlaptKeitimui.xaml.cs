@@ -32,7 +32,7 @@ namespace Price_comparison_engine
         private void SiustiMygtukas(object sender, RoutedEventArgs e)
         {
             var pattern = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
-            if (String.IsNullOrWhiteSpace(emailLangelis.Text))
+            if (string.IsNullOrWhiteSpace(emailLangelis.Text))
             {
                 MessageBox.Show("Prašome užpildyti laukelį.");
             }

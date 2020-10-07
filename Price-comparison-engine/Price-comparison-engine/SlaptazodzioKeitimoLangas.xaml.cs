@@ -50,8 +50,8 @@ namespace Price_comparison_engine
             }
             else
             {
-                String salt = GeneruotiHash.SukurtiSalt(10);
-                String slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, salt);
+                var salt = GeneruotiHash.SukurtiSalt(10);
+                var slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, salt);
 
                 using (var kontekstas = new DuomenuBazesKontekstas())
                 {
