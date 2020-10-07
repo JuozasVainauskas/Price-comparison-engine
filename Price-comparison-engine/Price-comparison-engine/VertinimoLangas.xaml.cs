@@ -44,7 +44,7 @@ namespace Price_comparison_engine
                 Skaityti("Avitela", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
-                keistiImg(calc);
+                KeistiImg(calc);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
 
                 parduotuve.IsEnabled = false;
@@ -57,7 +57,7 @@ namespace Price_comparison_engine
                 Skaityti("Elektromarkt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
-                keistiImg(calc);
+                KeistiImg(calc);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
             }
@@ -114,7 +114,7 @@ namespace Price_comparison_engine
         }
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
-        private void Skaityti(string parduotuvesPavadinimas, string email, ref string balsuIndex , ref double balsuSuma, ref int balsavusiuSkaicius)
+        private static void Skaityti(string parduotuvesPavadinimas, string email, ref string balsuIndex , ref double balsuSuma, ref int balsavusiuSkaicius)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
@@ -138,7 +138,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Rasyti(string parduotuvesPavadinimas,string balsuIndex,string email, double balsuSuma, int balsavusiuSkaicius)
+        private static void Rasyti(string parduotuvesPavadinimas,string balsuIndex,string email, double balsuSuma, int balsavusiuSkaicius)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
@@ -162,7 +162,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private void keistiImg(double calc)
+        private void KeistiImg(double calc)
         {
             if (calc < 0.5)
             {
@@ -192,7 +192,7 @@ namespace Price_comparison_engine
         private void Atstatyti(double calc)
         {
             ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-            keistiImg(calc);
+            KeistiImg(calc);
             aptarnavimas.IsEnabled = true;
             pristatymas.IsEnabled = true;
             kokybe.IsEnabled = true;

@@ -33,11 +33,9 @@ namespace Price_comparison_engine
             this.pagrindinisLangas = pagrindinisLangas;
         }
         public static int Role { get; private set; } = 0;
-        public static String email { get; private set; } = "";
+        public static string email { get; private set; } = "";
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
-            String salt = "";
-            String slaptazodzioHash;
             email = Email.Text;
 
             using (var kontekstas = new DuomenuBazesKontekstas())
@@ -46,11 +44,11 @@ namespace Price_comparison_engine
                 
                 if (rezultatas != null)
                 {
-                    salt = rezultatas.SlaptazodzioSalt;
-                    slaptazodzioHash = rezultatas.SlaptazodzioHash;
+                    var salt = rezultatas.SlaptazodzioSalt;
+                    var slaptazodzioHash = rezultatas.SlaptazodzioHash;
                     Role = rezultatas.Role;
 
-                    String naudotojoIvestasSlaptazodis = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+                    var naudotojoIvestasSlaptazodis = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
 
                     if (slaptazodzioHash.Equals(naudotojoIvestasSlaptazodis))
                     {
