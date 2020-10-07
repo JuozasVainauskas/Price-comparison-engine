@@ -86,102 +86,41 @@ namespace Price_comparison_engine
             }
             else
             {
-                var bigBoxItem = BigBoxSearch(await BigBoxHtml());
-                var barboraItems = BarboraSearch(await BarboraHtml());
-                var piguItems = PiguSearch(await piguHtml());
-                var avitelaItems = AvitelaSearch(await avitelosHtml());
-                var elektromarktItems = ElektromarktSearch(await elektromarktHtml());
-                //  if (RdeHtml() != null)
-                // {
-                var rdeItems = RdeSearch(await RdeHtml());
+                var httpClient = new HttpClient();
+                var regEx = new Regex(" ");
+                var urlgalas = regEx.Replace(MainWindow.zodis, "+");
+                var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
+                var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
+                var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
+                var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
+                var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
+                var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
+                var rdeItems = RdeSearch(await Html(httpClient, urlRde));
                 WriteDataFromRde(rdeItems, prices);
-                //}
+                var barboraItems = BarboraSearch(await Html(httpClient, urlBarbora));
                 WriteDataFromBarbora(barboraItems, prices);
-                WriteDataFromBigBox(bigBoxItem, prices);
-                WriteDataFromAvitela(avitelaItems, prices);
-                WriteDataFromElektromarkt(elektromarktItems, prices);
+                var piguItems = PiguSearch(await Html(httpClient, urlPigu));
                 WriteDataFromPigu(piguItems, prices);
-
-
+                var bigBoxItem = BigBoxSearch(await Html(httpClient, urlBigBox));
+                WriteDataFromBigBox(bigBoxItem, prices);
+                var avitelaItems = AvitelaSearch(await Html(httpClient, urlAvitela));
+                WriteDataFromAvitela(avitelaItems, prices);
+                var elektromarktItems = ElektromarktSearch(await Html(httpClient, urlElektromarkt));
+                WriteDataFromElektromarkt(elektromarktItems, prices);
+             
                 SortAndInsert(prices, dataGrid);
             }
         }
 
-        private static async Task<HtmlDocument> RdeHtml()
+        private static async Task<HtmlDocument> Html(HttpClient httpClient, string urlget)
         {
             try
             {
-                var regEx = new Regex(" ");
-                var urlgalas = regEx.Replace(MainWindow.zodis, "+");
-                var url = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
-                var httpClient = new HttpClient();
+                var url = urlget;
                 var html = await httpClient.GetStringAsync(url);
                 var htmlDocument = new HtmlDocument();
                 htmlDocument.LoadHtml(html);
                 return htmlDocument;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private static async Task<HtmlDocument> BarboraHtml()
-        {
-            var url = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
-            var httpClient = new HttpClient();
-            var html = await httpClient.GetStringAsync(url);
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(html);
-            return htmlDocument;
-        }
-
-        private static async Task<HtmlDocument> BigBoxHtml()
-        {
-            var regEx = new Regex(" ");
-            var urlgalas = regEx.Replace(MainWindow.zodis, "+");
-            var url = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
-            var httpClient = new HttpClient();
-            var html = await httpClient.GetStringAsync(url);
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(html);
-            return htmlDocument;
-        }
-
-        private static async Task<HtmlDocument> avitelosHtml()
-        {
-            var url = "https://avitela.lt/paieska/" + MainWindow.zodis;
-            var httpClient = new HttpClient();
-            var html = await httpClient.GetStringAsync(url);
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(html);
-            return htmlDocument;
-        }
-
-        private static async Task<HtmlDocument> elektromarktHtml()
-        {
-            var regEx = new Regex(" ");
-            var urllast = regEx.Replace(MainWindow.zodis, "+");
-            var url2 = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urllast;
-            var httpClient2 = new HttpClient();
-            var html2 = await httpClient2.GetStringAsync(url2);
-            var htmlDocument2 = new HtmlDocument();
-            htmlDocument2.LoadHtml(html2);
-            return htmlDocument2;
-        }
-
-        private static async Task<HtmlDocument> piguHtml()
-        {
-            try
-            {
-                var regEx = new Regex(" ");
-                var urlgalas = regEx.Replace(MainWindow.zodis, "+");
-                var url2 = "https://pigu.lt/lt/search?q=" + urlgalas;
-                var httpClient2 = new HttpClient();
-                var html2 = await httpClient2.GetStringAsync(url2);
-                var htmlDocument2 = new HtmlDocument();
-                htmlDocument2.LoadHtml(html2);
-                return htmlDocument2;
             }
             catch
             {
