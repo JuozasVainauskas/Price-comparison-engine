@@ -43,10 +43,12 @@ namespace Price_comparison_engine
     {
         public static CartesianChart cartesianChart;
         public static string pav;
+        public static string[] isskaidyta; 
         public KonkretiPreke(string pavadinimas)
         {
             pav = pavadinimas;
             var pavArray=pav.Split();
+            isskaidyta = pav.Split();
             var items = pavArray[0] + ' ' + pavArray[1]; ;
             pav = items;
             InitializeComponent();
@@ -271,8 +273,20 @@ namespace Price_comparison_engine
                             priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
                             double pricea = Convert.ToDouble(priceAtsarg);
                             var pavArray = name.Split();
-                            string a = pavArray[0] + ' ' + pavArray[1]; ;
-                            if (a == pav)
+                            int kiekSutiko=0;
+                            for(int i=0;i<pavArray.Length;i++)
+                            {
+                                for (int z = 0; z < isskaidyta.Length; z++)
+                                {
+                                    if (pavArray[i] == isskaidyta[z])
+                                    {
+                                        kiekSutiko++;
+                                    }
+                                }
+                            }
+                            string a = pavArray[0] + ' ' + pavArray[1];
+                            //if (a == pav)
+                            if (kiekSutiko >= isskaidyta.Length / 2)
                             {
                                 var Itemas = new Item
                                 {
@@ -323,8 +337,20 @@ namespace Price_comparison_engine
                         priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
                         var pricea = Convert.ToDouble(priceAtsarg);
                         var pavArray = name.Split();
+                        int kiekSutiko = 0;
+                        for (int i = 0; i < pavArray.Length; i++)
+                        {
+                            for (int z = 0; z < isskaidyta.Length; z++)
+                            {
+                                if (pavArray[i] == isskaidyta[z])
+                                {
+                                    kiekSutiko++;
+                                }
+                            }
+                        }
                         var a = pavArray[0] + ' ' + pavArray[1]; ;
-                        if (a == pav)
+                        //if (a == pav)
+                        if (kiekSutiko >= isskaidyta.Length/2)
                         {
                             var itemas = new Item
                             {
@@ -365,8 +391,20 @@ namespace Price_comparison_engine
                         priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
                         var pricea = Convert.ToDouble(priceAtsarg);
                         var pavArray = name.Split();
+                        int kiekSutiko = 0;
+                        for (int i = 0; i < pavArray.Length; i++)
+                        {
+                            for (int z = 0; z < isskaidyta.Length; z++)
+                            {
+                                if (pavArray[i] == isskaidyta[z])
+                                {
+                                    kiekSutiko++;
+                                }
+                            }
+                        }
                         var a = pavArray[0] + ' ' + pavArray[1]; ;
-                        if (a == pav)
+                        //if (a == pav)
+                        if (kiekSutiko >= isskaidyta.Length/2)
                         {
                             var itemas = new Item
                                 {Sellerr = "Avitela", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link};
@@ -409,8 +447,20 @@ namespace Price_comparison_engine
 
                     var pricea = Convert.ToDouble(priceAtsarg);
                     var pavArray = name.Split();
+                    int kiekSutiko = 0;
+                    for (int i = 0; i < pavArray.Length; i++)
+                    {
+                        for (int z = 0; z < isskaidyta.Length; z++)
+                        {
+                            if (pavArray[i] == isskaidyta[z])
+                            {
+                                kiekSutiko++;
+                            }
+                        }
+                    }
                     var a = pavArray[0] + ' ' + pavArray[1]; ;
-                    if (a == pav)
+                    //if (a == pav)
+                    if (kiekSutiko >= isskaidyta.Length/2)
                     {
                         var itemas = new Item
                         {
@@ -453,8 +503,20 @@ namespace Price_comparison_engine
 
                     var pricea = Double.Parse(priceAtsarg);
                     var pavArray = name.Split();
+                    int kiekSutiko = 0;
+                    for (int i = 0; i < pavArray.Length; i++)
+                    {
+                        for (int z = 0; z < isskaidyta.Length; z++)
+                        {
+                            if (pavArray[i] == isskaidyta[z])
+                            {
+                                kiekSutiko++;
+                            }
+                        }
+                    }
                     string a = pavArray[0] + ' ' + pavArray[1]; ;
-                    if (a == pav)
+                    //if (a == pav)
+                    if (kiekSutiko >= isskaidyta.Length/2)
                     {
                         var itemas = new Item
                         {
