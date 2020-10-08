@@ -43,8 +43,8 @@ namespace Price_comparison_engine
 
         private static Dictionary<string, double> vertinimai = new Dictionary<string, double>()
         {
-            {"Elektromarkt", 0},
             {"Avitela", 0},
+            {"Elektromarkt", 0},
             {"Pigu.lt", 0}
         };
 
@@ -81,7 +81,7 @@ namespace Price_comparison_engine
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
                 Skaityti("Pigu.lt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
-                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
                 KeistiImg(calc);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
@@ -90,18 +90,27 @@ namespace Price_comparison_engine
         }
         private void Aptarnavimas(object sender, SelectionChangedEventArgs e)
         {
-           balsai += aptarnavimas.SelectedIndex + 1;
+            vertinimai["Avitela"] += aptarnavimas.SelectedIndex + 1;
+            vertinimai["Elektromarkt"] += aptarnavimas.SelectedIndex + 1;
+            vertinimai["Pigu.lt"] += aptarnavimas.SelectedIndex + 1;
+            balsai += aptarnavimas.SelectedIndex + 1;
             aptarnavimas.IsEnabled = false;
         }
 
         private void Kokybe(object sender, SelectionChangedEventArgs e)
         {
+            vertinimai["Avitela"] += kokybe.SelectedIndex + 1;
+            vertinimai["Elektromarkt"] += kokybe.SelectedIndex + 1;
+            vertinimai["Pigu.lt"] += kokybe.SelectedIndex + 1;
             balsai += kokybe.SelectedIndex + 1;
             kokybe.IsEnabled = false;
         }
 
         private void Pristatymas(object sender, SelectionChangedEventArgs e)
         {
+            vertinimai["Avitela"] += pristatymas.SelectedIndex + 1;
+            vertinimai["Elektromarkt"] += pristatymas.SelectedIndex + 1;
+            vertinimai["Pigu.lt"] += pristatymas.SelectedIndex + 1;
             balsai += pristatymas.SelectedIndex + 1;
             pristatymas.IsEnabled = false;
         }
@@ -148,17 +157,41 @@ namespace Price_comparison_engine
 
         private void Siusti(object sender, RoutedEventArgs e)
         {
-            if (parduotuve.SelectedIndex == 0 && balsuIndex.Contains("_0"))
+            if (parduotuve.SelectedIndex == 0)
             {
-                RasytiKomentarus(PrisijungimoLangas.email, 0, 0, KomentaruLangelis.Text);
+                if (balsuIndex.Contains("_0"))
+                {
+                    RasytiKomentarus(PrisijungimoLangas.email, 0, vertinimai["Avitela"]/3, KomentaruLangelis.Text);
+                    KomentaruLangelis.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Pirmiausiai, turite įvertinti parduotuvę.");
+                }
             }
-            else if (parduotuve.SelectedIndex == 1 && balsuIndex.Contains("_1"))
+            else if (parduotuve.SelectedIndex == 1)
             {
-                RasytiKomentarus(PrisijungimoLangas.email, 1, 0, KomentaruLangelis.Text);
+                if (balsuIndex.Contains("_1"))
+                {
+                    RasytiKomentarus(PrisijungimoLangas.email, 1, vertinimai["Elektromarkt"]/3, KomentaruLangelis.Text);
+                    KomentaruLangelis.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Pirmiausiai, turite įvertinti parduotuvę.");
+                }
             }
-            else if (parduotuve.SelectedIndex == 2 && balsuIndex.Contains("_2"))
+            else if (parduotuve.SelectedIndex == 2)
             {
-                RasytiKomentarus(PrisijungimoLangas.email, 2, 0, KomentaruLangelis.Text);
+                if (balsuIndex.Contains("_2"))
+                {
+                    RasytiKomentarus(PrisijungimoLangas.email, 2, vertinimai["Pigu.lt"]/3, KomentaruLangelis.Text);
+                    KomentaruLangelis.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Pirmiausiai, turite įvertinti parduotuvę.");
+                }
             }
             else
             {
@@ -189,7 +222,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static void tvarkytiDuomenis(int index, ListView lv ,List<string>email, List<string>komentarai)
+        private static void tvarkytiDuomenis(int index, ListView lv ,List<string> email, List<string>komentarai)
         {
             foreach(var element in komentarai)
             {
@@ -239,7 +272,6 @@ namespace Price_comparison_engine
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
                 var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == email);
-                var tempKomentaras = kontekstas.NaudotojoDuomenys.Select(column => column.Komentaras).ToList();
 
                 if (rezultatas != null)
                 {
