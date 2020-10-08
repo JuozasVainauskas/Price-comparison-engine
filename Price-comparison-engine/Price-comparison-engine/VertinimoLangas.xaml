@@ -98,6 +98,7 @@
         <ComboBox x:Name="parduotuve" HorizontalAlignment="Left" Margin="148,157,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Parduotuve">
             <ComboBoxItem Content="Avitela"/>
             <ComboBoxItem Content="Elektromarkt"/>
+            <ComboBoxItem Content="Pigu.lt"/>
         </ComboBox>
         <Image x:Name="ivertinimoImg" HorizontalAlignment="Left" Height="13" Margin="138,133,0,0" VerticalAlignment="Top" Width="100" Source="0.png"/>
         <ListView HorizontalAlignment="Left" Height="257" Margin="271,28,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2">
@@ -107,11 +108,11 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox HorizontalAlignment="Left" Height="29" Margin="271,80,0,0" TextWrapping="Wrap" Text="Komentuokite" VerticalAlignment="Top" Width="376" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" Height="41" Margin="271,80,0,0" TextWrapping="Wrap" Text="Komentuokite" VerticalAlignment="Top" Width="388" Grid.Row="1"/>
         <Button Content="Siųsti" HorizontalAlignment="Left" Margin="688,80,0,0" VerticalAlignment="Top" Width="86" Height="35"
             Background="#E30000"
             Foreground="white"
-            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti" Grid.Row="1" RenderTransformOrigin="1.386,0.657"/>
+            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Siusti" Grid.Row="1" RenderTransformOrigin="1.386,0.657"/>
 
     </Grid>
 </Window>

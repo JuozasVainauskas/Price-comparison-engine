@@ -61,6 +61,18 @@ namespace Price_comparison_engine
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
             }
+            if (parduotuve.SelectedIndex == 2)
+            {
+                aptarnavimas.IsEnabled = true;
+                pristatymas.IsEnabled = true;
+                kokybe.IsEnabled = true;
+                Skaityti("Pigu.lt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
+                var calc = balsai / (3 * balsavusiuSk);
+                KeistiImg(calc);
+                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                parduotuve.IsEnabled = false;
+            }
         }
         private void Aptarnavimas(object sender, SelectionChangedEventArgs e)
         {
@@ -98,6 +110,14 @@ namespace Price_comparison_engine
                Rasyti("Elektromarkt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
                 Atstatyti(calc);
             }
+            else if (parduotuve.SelectedIndex == 1 && !balsuIndex.Contains("_2"))
+            {
+                balsavusiuSk++;
+                var calc = balsai / (3 * balsavusiuSk);
+                balsuIndex += "_2";
+                Rasyti("Pigu.lt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
+                Atstatyti(calc);
+            }
             else
             {
                 MessageBox.Show("Jau balsavote už šią parduotuvę!");
@@ -111,6 +131,11 @@ namespace Price_comparison_engine
                 parduotuve.SelectedIndex = -1;
                 return;
             }
+        }
+
+        private void Siusti(object sender, RoutedEventArgs e)
+        {
+
         }
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
