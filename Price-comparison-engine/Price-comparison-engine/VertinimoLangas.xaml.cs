@@ -81,20 +81,20 @@ namespace Price_comparison_engine
         }
         private void Vertinti(object sender, RoutedEventArgs e)
         {
-            if(parduotuve.SelectedIndex == 0 && !balsuIndex.Contains("0"))
+            if(parduotuve.SelectedIndex == 0 && !balsuIndex.Contains("_0"))
             {
                 MessageBox.Show(balsuIndex);
                 balsavusiuSk++;
                 var calc = balsai / (3 * balsavusiuSk);
-                balsuIndex += "0";
+                balsuIndex += "_0";
                 Rasyti("Avitela",balsuIndex,PrisijungimoLangas.email, balsai, balsavusiuSk);
                 Atstatyti(calc);
             }
-            else if (parduotuve.SelectedIndex == 1 && !balsuIndex.Contains("1"))
+            else if (parduotuve.SelectedIndex == 1 && !balsuIndex.Contains("_1"))
             {
                 balsavusiuSk++;
                 var calc = balsai / (3 * balsavusiuSk);
-                balsuIndex += "1";
+                balsuIndex += "_1";
                Rasyti("Elektromarkt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
                 Atstatyti(calc);
             }
