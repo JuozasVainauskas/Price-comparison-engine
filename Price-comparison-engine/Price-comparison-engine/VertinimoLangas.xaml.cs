@@ -25,6 +25,7 @@ namespace Price_comparison_engine
         public VertinimoLangas()
         {
             InitializeComponent();
+            SkaitytiKomentaruDuomenis(ref email, ref komentarai);
             aptarnavimas.IsEnabled = false;
             pristatymas.IsEnabled = false;
             kokybe.IsEnabled = false;
@@ -33,6 +34,9 @@ namespace Price_comparison_engine
         private static double balsai = 0;
         private static int balsavusiuSk = 0;
         private static string balsuIndex = "";
+        private static List<String> komentarai;
+        private static List<String> email;
+
 
         private void Parduotuve(object sender, SelectionChangedEventArgs e)
         {
@@ -137,6 +141,41 @@ namespace Price_comparison_engine
         {
 
         }
+        private static void SkaitytiKomentaruDuomenis(ref List<string> email, ref List<string> komentarai)
+        {
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var tempEmail = kontekstas.NaudotojoDuomenys.Select(column => column.Email).ToList();
+                var tempKomentarai = kontekstas.NaudotojoDuomenys.Select(column => column.Komentaras).ToList();
+
+                if (tempEmail != null && tempKomentarai != null)
+                {
+                    email = tempEmail;
+                    komentarai = tempKomentarai;
+                }
+            }
+        }
+
+        private static void tvarkytiDuomenis(int index, List<String>email, List<String>komentarai)
+        {
+            foreach(string element in komentarai)
+            {
+                if(element.Contains("_" + index + "_"))
+                {
+                    string[] tempString;
+                    tempString = element.Split(';');
+
+                    foreach(string stringElement in tempString)
+                    {
+                        if(element.Contains("_" + index + "_"))
+                        {
+                            //TODO
+                        }
+                    }
+                }
+
+            }
+        }
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
         private static void Skaityti(string parduotuvesPavadinimas, string email, ref string balsuIndex , ref double balsuSuma, ref int balsavusiuSkaicius)
@@ -155,6 +194,7 @@ namespace Price_comparison_engine
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
                 var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == email);
+                var tempKomentaras = kontekstas.NaudotojoDuomenys.Select(column => column.Komentaras).ToList();
 
                 if (rezultatas != null)
                 {
