@@ -101,10 +101,10 @@
             <ComboBoxItem Content="Pigu.lt"/>
         </ComboBox>
         <Image x:Name="ivertinimoImg" HorizontalAlignment="Left" Height="13" Margin="138,133,0,0" VerticalAlignment="Top" Width="100" Source="0.png"/>
-        <ListView HorizontalAlignment="Left" Height="257" Margin="271,28,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2">
+        <ListView Name="listViewas" HorizontalAlignment="Left" Height="257" Margin="271,28,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2" Loaded="listViewas_Loaded">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="" DisplayMemberBinding="{Binding Text}" Width="503"/>
+                    <GridViewColumn Header="" DisplayMemberBinding="{Binding Tekstas}" Width="503"/>
                 </GridView>
             </ListView.View>
         </ListView>
