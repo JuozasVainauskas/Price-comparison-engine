@@ -64,7 +64,7 @@
             <RowDefinition Height="22*"/>
             <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
-        <Button x:Name="VertintiMygtukas" Content="Vertinti" HorizontalAlignment="Left" Margin="52,86,0,0" VerticalAlignment="Top" Width="145" Height="35"
+        <Button Content="Vertinti" HorizontalAlignment="Left" Margin="52,86,0,0" VerticalAlignment="Top" Width="145" Height="35"
             Background="#FF015DFF"
             Foreground="white"
             FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti" Grid.Row="1"/>
@@ -109,7 +109,7 @@
             </ListView.View>
         </ListView>
         <TextBox x:Name="KomentaruLangelis"  HorizontalAlignment="Left" Height="41" Margin="271,80,0,0" TextWrapping="Wrap" Text="Komentuokite" VerticalAlignment="Top" Width="388" Grid.Row="1"/>
-        <Button x:Name="SiustiMygtukas" Content="Siųsti" HorizontalAlignment="Left" Margin="688,80,0,0" VerticalAlignment="Top" Width="86" Height="35"
+        <Button Content="Siųsti" HorizontalAlignment="Left" Margin="688,80,0,0" VerticalAlignment="Top" Width="86" Height="35"
             Background="#E30000"
             Foreground="white"
             FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Siusti" Grid.Row="1" RenderTransformOrigin="1.386,0.657"/>

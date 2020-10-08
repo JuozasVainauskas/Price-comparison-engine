@@ -28,24 +28,6 @@ namespace Price_comparison_engine
             aptarnavimas.IsEnabled = false;
             pristatymas.IsEnabled = false;
             kokybe.IsEnabled = false;
-            if (!string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
-            {
-                SiustiMygtukas.IsEnabled = true;
-                SiustiMygtukas.Background = new SolidColorBrush(Color.FromArgb(255, 227, 0, 0));
-                SiustiMygtukas.Foreground = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
-            }
-            else
-            {
-                SiustiMygtukas.IsEnabled = false;
-                SiustiMygtukas.Background = new SolidColorBrush(Color.FromArgb(255, 145, 0, 0));
-                SiustiMygtukas.Foreground = new SolidColorBrush(Color.FromArgb(128, 255, 255, 255));
-                VertintiMygtukas.IsEnabled = false;
-                VertintiMygtukas.Background = new SolidColorBrush(Color.FromArgb(255, 0, 55, 150));
-                VertintiMygtukas.Foreground = new SolidColorBrush(Color.FromArgb(128, 255, 255, 255));
-                aptarnavimas.IsEnabled = false;
-                pristatymas.IsEnabled = false;
-                kokybe.IsEnabled = false;
-            }
         }
 
         class Komentaras
@@ -68,7 +50,7 @@ namespace Price_comparison_engine
 
         private void Parduotuve(object sender, SelectionChangedEventArgs e)
         {
-            if (parduotuve.SelectedIndex == 0)
+            if(parduotuve.SelectedIndex == 0)
             {
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
@@ -257,6 +239,7 @@ namespace Price_comparison_engine
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
                 var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == email);
+                var tempKomentaras = kontekstas.NaudotojoDuomenys.Select(column => column.Komentaras).ToList();
 
                 if (rezultatas != null)
                 {
