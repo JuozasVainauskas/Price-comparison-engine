@@ -33,9 +33,15 @@ namespace Price_comparison_engine
         private static double balsai = 0;
         private static int balsavusiuSk = 0;
         private static string balsuIndex = "";
-        private static List<String> komentarai = new List<string>();
-        private static List<String> email;
+        private static List<string> komentarai = new List<string>();
+        private static List<string> email;
 
+        private static Dictionary<string, double> vertinimai = new Dictionary<string, double>()
+        {
+            {"Elektromarkt", 0},
+            {"Avitela", 0},
+            {"Pigu.lt", 0}
+        };
 
         private void Parduotuve(object sender, SelectionChangedEventArgs e)
         {
@@ -184,14 +190,14 @@ namespace Price_comparison_engine
 
         private static void tvarkytiDuomenis(int index, List<string>email, List<string>komentarai)
         {
-            foreach(string element in komentarai)
+            foreach(var element in komentarai)
             {
                 if(element.Contains("_" + index + "_"))
                 {
                     string[] tempString;
                     tempString = element.Split(';');
 
-                    foreach(string stringElement in tempString)
+                    foreach(var stringElement in tempString)
                     {
                         if(stringElement.Contains("_" + index + "_"))
                         {
@@ -206,7 +212,7 @@ namespace Price_comparison_engine
         }
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
-        private static void Skaityti(string parduotuvesPavadinimas, string email, ref string balsuIndex , ref double balsuSuma, ref int balsavusiuSkaicius)
+        private static void Skaityti(string parduotuvesPavadinimas, string email, ref string balsuIndex, ref double balsuSuma, ref int balsavusiuSkaicius)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
@@ -252,7 +258,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static void Rasyti(string parduotuvesPavadinimas,string balsuIndex,string email, double balsuSuma, int balsavusiuSkaicius)
+        private static void Rasyti(string parduotuvesPavadinimas, string balsuIndex, string email, double balsuSuma, int balsavusiuSkaicius)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
