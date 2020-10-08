@@ -336,7 +336,7 @@ namespace Price_comparison_engine
 
         private void listViewas_Loaded(object sender, RoutedEventArgs e)
         {
-            komentarai.Add("_0_Data_vertinimas_Komentaras;_0_Data_vertinimas_Komentaras;");
+            SkaitytiKomentaruDuomenis(ref email, ref komentarai);
             tvarkytiDuomenis(0, listViewas ,email, komentarai);
         }
     }
