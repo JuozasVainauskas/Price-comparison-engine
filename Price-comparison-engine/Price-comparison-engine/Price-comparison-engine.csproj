@@ -121,6 +121,14 @@
     <Compile Include="Migrations\202010061143547_AtnaujintiPrekiuLentele.designer.cs">
       <DependentUpon>202010061143547_AtnaujintiPrekiuLentele.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010080930126_SukurtiKomentaruStulpeli.cs" />
+    <Compile Include="Migrations\202010080930126_SukurtiKomentaruStulpeli.designer.cs">
+      <DependentUpon>202010080930126_SukurtiKomentaruStulpeli.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010080936285_SukurtiKomentaruStulpeli1.cs" />
+    <Compile Include="Migrations\202010080936285_SukurtiKomentaruStulpeli1.designer.cs">
+      <DependentUpon>202010080936285_SukurtiKomentaruStulpeli1.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
@@ -267,6 +275,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010061143547_AtnaujintiPrekiuLentele.resx">
       <DependentUpon>202010061143547_AtnaujintiPrekiuLentele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010080930126_SukurtiKomentaruStulpeli.resx">
+      <DependentUpon>202010080930126_SukurtiKomentaruStulpeli.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010080936285_SukurtiKomentaruStulpeli1.resx">
+      <DependentUpon>202010080936285_SukurtiKomentaruStulpeli1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
