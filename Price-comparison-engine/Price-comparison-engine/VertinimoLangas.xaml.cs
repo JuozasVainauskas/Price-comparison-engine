@@ -103,7 +103,7 @@ namespace Price_comparison_engine
         private void Vertinti(object sender, RoutedEventArgs e)
         {
 
-            komentarai.Add("_0_Data_vertinimas_Komentaras;");
+            komentarai.Add("_0_Data_vertinimas_Komentaras;_0_Data_vertinimas_Komentaras;");
             tvarkytiDuomenis(0, email, komentarai);
 
             if (parduotuve.SelectedIndex == 0 && !balsuIndex.Contains("_0"))
@@ -194,16 +194,22 @@ namespace Price_comparison_engine
             {
                 if(element.Contains("_" + index + "_"))
                 {
+                    Console.WriteLine("#1:" + element);
                     string[] tempString;
                     tempString = element.Split(';');
 
                     foreach(var stringElement in tempString)
                     {
+                        Console.WriteLine(stringElement);
                         if(stringElement.Contains("_" + index + "_"))
                         {
+                            Console.WriteLine("#2:" + stringElement);
                             string[] anotherTempString;
                             anotherTempString = stringElement.Split('_');
-                            Console.WriteLine(anotherTempString[0]);
+                            Console.WriteLine(anotherTempString[1]); // INDEKSAS
+                            Console.WriteLine(anotherTempString[2]); // DATA
+                            Console.WriteLine(anotherTempString[3]); // VERTINIMAS
+                            Console.WriteLine(anotherTempString[4]); // KOMENTARAS
                         }
                     }
                 }
