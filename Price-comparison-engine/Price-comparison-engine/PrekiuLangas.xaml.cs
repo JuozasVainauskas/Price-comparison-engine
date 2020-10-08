@@ -380,9 +380,9 @@ namespace Price_comparison_engine
                         price = price + "€";
                         priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
                         var pricea = Convert.ToDouble(priceAtsarg);
-                        var Itemas = new Item { Nuotrauka = imgLink, Seller = "BigBox", Name = name, Pricea = pricea, Price = price, Link = link };
+                        var itemas = new Item { Nuotrauka = imgLink, Seller = "BigBox", Name = name, Pricea = pricea, Price = price, Link = link };
 
-                        prices.Add(Itemas);
+                        prices.Add(itemas);
                     }
                 }
             }
@@ -413,7 +413,7 @@ namespace Price_comparison_engine
 
                         var link = productListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
 
-                        string imgLink = productListItem
+                        var imgLink = productListItem
                             .Descendants("img").FirstOrDefault(node => node.GetAttributeValue("itemprop", "")
                                 .Contains("image")).GetAttributeValue("src", "");
 
