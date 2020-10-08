@@ -25,7 +25,6 @@ namespace Price_comparison_engine
         public VertinimoLangas()
         {
             InitializeComponent();
-            SkaitytiKomentaruDuomenis(ref email, ref komentarai);
             aptarnavimas.IsEnabled = false;
             pristatymas.IsEnabled = false;
             kokybe.IsEnabled = false;
@@ -34,7 +33,7 @@ namespace Price_comparison_engine
         private static double balsai = 0;
         private static int balsavusiuSk = 0;
         private static string balsuIndex = "";
-        private static List<String> komentarai;
+        private static List<String> komentarai = new List<string>();
         private static List<String> email;
 
 
@@ -97,7 +96,11 @@ namespace Price_comparison_engine
         }
         private void Vertinti(object sender, RoutedEventArgs e)
         {
-            if(parduotuve.SelectedIndex == 0 && !balsuIndex.Contains("_0"))
+
+            komentarai.Add("_0_Data_vertinimas_Komentaras;");
+            tvarkytiDuomenis(0, email, komentarai);
+
+            if (parduotuve.SelectedIndex == 0 && !balsuIndex.Contains("_0"))
             {
                 balsavusiuSk++;
                 var calc = balsai / (3 * balsavusiuSk);
@@ -190,9 +193,11 @@ namespace Price_comparison_engine
 
                     foreach(string stringElement in tempString)
                     {
-                        if(element.Contains("_" + index + "_"))
+                        if(stringElement.Contains("_" + index + "_"))
                         {
-                            //TODO
+                            string[] anotherTempString;
+                            anotherTempString = stringElement.Split('_');
+                            Console.WriteLine(anotherTempString[0]);
                         }
                     }
                 }
