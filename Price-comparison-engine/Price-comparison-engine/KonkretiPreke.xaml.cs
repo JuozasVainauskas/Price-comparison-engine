@@ -608,5 +608,10 @@ namespace Price_comparison_engine
                 System.Diagnostics.Process.Start(link);
             }
         }
+
+        private void konkretiPrekeLangas_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            CartesianChart.Width = this.ActualWidth-50;
+        }
     }
 }
