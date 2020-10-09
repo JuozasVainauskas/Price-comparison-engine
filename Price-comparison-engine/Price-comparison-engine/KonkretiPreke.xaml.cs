@@ -37,7 +37,7 @@ namespace Price_comparison_engine
         public static CartesianChart CartesianChart;
         public static string Pav;
         public static string[] Isskaidyta;
-        static readonly string[] PrekesPraleidimui = { "Šaldytuvas", "Išmanusis", "telefonas", "Kompiuteris" };
+        static readonly string[] PrekesPraleidimui = { "Šaldytuvas", "Išmanusis", "telefonas", "Kompiuteris","mobilusis","apsauginis","stiklas" };
         public KonkretiPreke(string pavadinimas)
         {
             Pav = pavadinimas;
@@ -448,14 +448,19 @@ namespace Price_comparison_engine
             {
                 foreach (var t1 in Isskaidyta)
                 {
-                    if (t == t1)
+                    if (t.Equals(t1, StringComparison.CurrentCultureIgnoreCase))
                     {
+                        int arIrasyti = 1;
                         foreach (var t2 in PrekesPraleidimui)
                         {
-                            if (t != t2)
+                            if (t.Equals(t2, StringComparison.CurrentCultureIgnoreCase))
                             {
-                                kiekSutiko++;
+                                arIrasyti = 0;
                             }
+                        }
+                        if (arIrasyti == 1)
+                        {
+                            kiekSutiko++;
                         }
                     }
                 }
