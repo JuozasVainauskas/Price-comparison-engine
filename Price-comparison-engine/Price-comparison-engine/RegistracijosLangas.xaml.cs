@@ -94,7 +94,8 @@ namespace Price_comparison_engine
                         Email = Email.Text,
                         SlaptazodzioHash = slaptazodzioHash,
                         SlaptazodzioSalt = salt,
-                        ArBalsavo = "0",
+                        ArBalsavo = "",
+                        Komentaras = "",
                         Role = 0
                     };
                     kontekstas.NaudotojoDuomenys.Add(naudotojoDuomenys);

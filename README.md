@@ -24,10 +24,10 @@
 - [x] Email confirm and password reset
 - [x] Store gathered data in the database
 - [x] Slideshow
-- [ ] Stars/comments under the shops
+- [x] Products' list cashing
+- [x] Stars/comments under the shops
 - [ ] Comments under the products
 - [ ] Review about the page
-- [ ] Products' list cashing
 
 **Things to be done shortly**
 - Code refactoring

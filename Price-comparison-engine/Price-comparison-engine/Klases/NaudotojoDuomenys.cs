@@ -17,6 +17,7 @@ namespace Price_comparison_engine.Klases
         public string SlaptazodzioHash { get; set; }
         public string SlaptazodzioSalt { get; set; }
         public string ArBalsavo { get; set; }
+        public string Komentaras { get; set; } //ShopId, Data, IvertinimVid., Komentaras
         public int Role { get; set; }
     }
 }
