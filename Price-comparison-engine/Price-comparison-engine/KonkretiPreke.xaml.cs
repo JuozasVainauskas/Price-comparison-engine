@@ -50,105 +50,38 @@ namespace Price_comparison_engine
         private static async void GetHtmlAssync(DataGrid dataGridas2)
         {
             var prices = new List<Item>();
-            var bigBoxDaiktai = BigBoxSearch(await BigBoxHtmlPaemimas());
-            var piguDaiktai = PiguPaieska(await PiguHtmlPaemimas());
-            var avitelosDaiktai = AvitelosPaieska(await AvitelosHtmlPaemimas());
-            var elektromarktDaiktai = ElektromarktPaieska(await ElektromarktHtmlPaemimas());
-            var rdeItems = RdeSearch(await RdeHtml());
-            SurasymasIsRde(rdeItems, prices);
-            SurasymasIsAvitelos(avitelosDaiktai, prices);
-            SurasymasIsElektromarkt(elektromarktDaiktai, prices);
-            SurasymasIsPigu(piguDaiktai, prices);
-            SurasymasIsBigBox(bigBoxDaiktai, prices);
+            var httpClient = new HttpClient();
+            var regEx = new Regex(" ");
+            var urlgalas = regEx.Replace(MainWindow.zodis, "+");
+            var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
+            var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
+            var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
+            var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
+            var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
+
+            var rdeItems = RdeSearch(await Html(httpClient, urlRde));
+            WriteDataFromRde(rdeItems, prices);
+            var piguItems = PiguSearch(await Html(httpClient, urlPigu));
+            WriteDataFromPigu(piguItems, prices);
+            var bigBoxItem = BigBoxSearch(await Html(httpClient, urlBigBox));
+            WriteDataFromBigBox(bigBoxItem, prices);
+            var avitelaItems = AvitelaSearch(await Html(httpClient, urlAvitela));
+            WriteDataFromAvitela(avitelaItems, prices);
+            var elektromarktItems = ElektromarktSearch(await Html(httpClient, urlElektromarkt));
+            WriteDataFromElektromarkt(elektromarktItems, prices);
+
             SurikiavimasIrSurasymas(prices, dataGridas2);
         }
 
-        private static async Task<HtmlDocument> RdeHtml()
+        private static async Task<HtmlDocument> Html(HttpClient httpClient, string urlget)
         {
             try
             {
-                Regex regEx = new Regex(" ");
-                var urlgalas = regEx.Replace(MainWindow.zodis, "+");
-                var url = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
-                var httpClient = new HttpClient();
+                var url = urlget;
                 var html = await httpClient.GetStringAsync(url);
                 var htmlDocument = new HtmlDocument();
                 htmlDocument.LoadHtml(html);
                 return htmlDocument;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private static async Task<HtmlDocument> BigBoxHtmlPaemimas()
-        {
-            try
-            { 
-                var regEx = new Regex(" ");
-            var urlgalas = regEx.Replace(MainWindow.zodis, "+");
-            var url = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
-            var httpClient = new HttpClient();
-            var html = await httpClient.GetStringAsync(url);
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(html);
-            return htmlDocument;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private static async Task<HtmlDocument> AvitelosHtmlPaemimas()
-        {
-            try
-            {
-                var url = "https://avitela.lt/paieska/" + Pav;
-            var httpClient = new HttpClient();
-            var html = await httpClient.GetStringAsync(url);
-            var htmlDocument = new HtmlDocument();
-            htmlDocument.LoadHtml(html);
-            return htmlDocument;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private static async Task<HtmlDocument> ElektromarktHtmlPaemimas()
-        {
-            try
-            {
-                var regEx = new Regex(" ");
-            var urlgalas = regEx.Replace(Pav, "+");
-            var url2 = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
-            var httpClient2 = new HttpClient();
-            var html2 = await httpClient2.GetStringAsync(url2);
-            var htmlDocument2 = new HtmlDocument();
-            htmlDocument2.LoadHtml(html2);
-            return htmlDocument2;
-            }
-            catch
-            {
-                return null;
-            }
-        }
-
-        private static async Task<HtmlDocument> PiguHtmlPaemimas()
-        {
-            try
-            {
-                var regEx = new Regex(" ");
-                var urlgalas = regEx.Replace(Pav, "+");
-                var url2 = "https://pigu.lt/lt/search?q=" + urlgalas;
-                var httpClient2 = new HttpClient();
-                var html2 = await httpClient2.GetStringAsync(url2);
-                var htmlDocument2 = new HtmlDocument();
-                htmlDocument2.LoadHtml(html2);
-                return htmlDocument2;
             }
             catch
             {
@@ -192,7 +125,7 @@ namespace Price_comparison_engine
                 return null;
             }
         }
-        private static List<HtmlNode> AvitelosPaieska(HtmlDocument htmlDocument)
+        private static List<HtmlNode> AvitelaSearch(HtmlDocument htmlDocument)
         {
             try
             {
@@ -212,7 +145,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static List<HtmlNode> ElektromarktPaieska(HtmlDocument htmlDocument2)
+        private static List<HtmlNode> ElektromarktSearch(HtmlDocument htmlDocument2)
         {
 
             try
@@ -233,7 +166,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static List<HtmlNode> PiguPaieska(HtmlDocument htmlDocument2)
+        private static List<HtmlNode> PiguSearch(HtmlDocument htmlDocument2)
         {
 
 
@@ -254,7 +187,7 @@ namespace Price_comparison_engine
 
         }
 
-        private static void SurasymasIsRde(List<HtmlNode> productListItems, List<Item> prices)
+        private static void WriteDataFromRde(List<HtmlNode> productListItems, List<Item> prices)
         {
             if (productListItems != null)
             {
@@ -307,8 +240,6 @@ namespace Price_comparison_engine
                                         }
                                     }
                                 }
-
-                                //if (a == pav)
                                 if (kiekSutiko >= Isskaidyta.Length / 2)
                                 {
                                     var itemas = new Item
@@ -319,6 +250,7 @@ namespace Price_comparison_engine
                                     prices.Add(itemas);
                                 }
                             }
+                        
                         }
                     }
                 }
@@ -330,7 +262,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static void SurasymasIsBigBox(List<HtmlNode> productListItems, List<Item> prices)
+        private static void WriteDataFromBigBox(List<HtmlNode> productListItems, List<Item> prices)
         {
             if (productListItems != null)
             {
@@ -398,7 +330,7 @@ namespace Price_comparison_engine
                 prices.Add(itemas);
             }
         }
-        private static void SurasymasIsAvitelos(List<HtmlNode> productListItems, List<Item> prices)
+        private static void WriteDataFromAvitela(List<HtmlNode> productListItems, List<Item> prices)
         {
             if (productListItems != null)
             {
@@ -459,7 +391,7 @@ namespace Price_comparison_engine
                 prices.Add(itemas);
             }
         }
-        private static void SurasymasIsPigu(List<HtmlNode> productListItems, List<Item> prices)
+        private static void WriteDataFromPigu(List<HtmlNode> productListItems, List<Item> prices)
         {
             if (productListItems != null)
             {
@@ -528,7 +460,7 @@ namespace Price_comparison_engine
                 prices.Add(itemas);
             }
         }
-        private static void SurasymasIsElektromarkt(List<HtmlNode> productListItems2, List<Item> prices)
+        private static void WriteDataFromElektromarkt(List<HtmlNode> productListItems2, List<Item> prices)
         {
             if (productListItems2 != null)
             {
