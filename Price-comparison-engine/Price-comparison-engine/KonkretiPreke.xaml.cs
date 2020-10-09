@@ -224,7 +224,7 @@ namespace Price_comparison_engine
                             {
                                 var pavArray = name.Split();
                                 int kiekSutiko=algoritmasKiekZodziuSutinka(pavArray);
-                                if (kiekSutiko >= Isskaidyta.Length / 2)
+                                if (kiekSutiko >= (Isskaidyta.Length / 2)+1)
                                 {
                                     var itemas = new Item
                                     {
@@ -279,7 +279,7 @@ namespace Price_comparison_engine
                         var pricea = Convert.ToDouble(priceAtsarg);
                         var pavArray = name.Split();
                         int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                        if (kiekSutiko >= Isskaidyta.Length/2)
+                        if (kiekSutiko >= (Isskaidyta.Length/2)+1)
                         {
                             var itemas = new Item
                             {
@@ -325,7 +325,7 @@ namespace Price_comparison_engine
                         {
                             var pavArray = name.Split();
                             int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                            if (kiekSutiko >= Isskaidyta.Length/2)
+                            if (kiekSutiko >= (Isskaidyta.Length/2)+1)
                             {
                                 var itemas = new Item
                                     {Sellerr = "Avitela", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link};
@@ -375,7 +375,7 @@ namespace Price_comparison_engine
                     {
                         var pavArray = name.Split();
                         int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                        if (kiekSutiko >= Isskaidyta.Length/2)
+                        if (kiekSutiko >= (Isskaidyta.Length/2)+1)
                         {
                             var itemas = new Item
                             {
@@ -422,7 +422,7 @@ namespace Price_comparison_engine
                     var pricea = Double.Parse(priceAtsarg);
                     var pavArray = name.Split();
                     int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                    if (kiekSutiko >= Isskaidyta.Length/2)
+                    if (kiekSutiko >= (Isskaidyta.Length/2)+1)
                     {
                         var itemas = new Item
                         {
@@ -574,6 +574,7 @@ namespace Price_comparison_engine
             {
                 new LineSeries
                 {
+                    Name="Prekė",
                     Values = list1Points
                 }
             };
