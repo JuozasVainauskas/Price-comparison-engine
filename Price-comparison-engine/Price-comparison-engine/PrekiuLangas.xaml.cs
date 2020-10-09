@@ -67,8 +67,8 @@ namespace Price_comparison_engine
         private static async void GetHtmlAssync(DataGrid dataGrid)
         {
             var prices = new List<Item>();
-            /*
-            var chromeOptions = new ChromeOptions();
+            
+           /* var chromeOptions = new ChromeOptions();
             //var user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
             //chromeOptions.AddArgument("f'user-agent="+user_agent);
             //chromeOptions.AddArgument("headless");
@@ -85,9 +85,11 @@ namespace Price_comparison_engine
             {
                 var Itemas = new Item { Seller = "Topo  Centras", Name = preke.Text};
                 prices.Add(Itemas);
-            }
-            */
-            if (SkaitytiPrekes(MainWindow.zodis).Any())
+                Console.WriteLine(preke.Text);
+                dataGrid.Items.Add(Itemas);
+            }*/
+            
+           if (SkaitytiPrekes(MainWindow.zodis).Any())
             {
 
                 foreach (var item in SkaitytiPrekes(MainWindow.zodis))
@@ -107,6 +109,7 @@ namespace Price_comparison_engine
                 var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
                 var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
                 var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
+                var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q="+ MainWindow.zodis + "%5D&sid=false&isc=true&orderBy=0";
                 var rdeItems = RdeSearch(await Html(httpClient, urlRde));
                 WriteDataFromRde(rdeItems, prices);
                 var barboraItems = BarboraSearch(await Html(httpClient, urlBarbora));
@@ -119,7 +122,9 @@ namespace Price_comparison_engine
                 WriteDataFromAvitela(avitelaItems, prices);
                 var elektromarktItems = ElektromarktSearch(await Html(httpClient, urlElektromarkt));
                 WriteDataFromElektromarkt(elektromarktItems, prices);
-             
+                var gintarineVaistineItems = gintarineVaistineSearch(await Html(httpClient, urlGintarineVaistine));
+                WriteDataFromgintarineVaistine(gintarineVaistineItems, prices);
+
                 SortAndInsert(prices, dataGrid);
             }
         }
@@ -158,7 +163,25 @@ namespace Price_comparison_engine
                 return null;
             }
         }
+        
+        private static List<HtmlNode> gintarineVaistineSearch(HtmlDocument htmlDocument)
+        {
+            try
+            {
+                var productsHtml = htmlDocument.DocumentNode.Descendants("div")
+                .Where(node => node.GetAttributeValue("class", "")
+                .Equals("item-grid")).ToList();
 
+                var productListItems = productsHtml[0].Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                    .Contains("item-box")).ToList();
+                return productListItems;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         private static List<HtmlNode> RdeSearch(HtmlDocument htmlDocument)
         {
                 if (htmlDocument != null)
@@ -272,7 +295,43 @@ namespace Price_comparison_engine
 
         }
 
-        private static void WriteDataFromRde(List<HtmlNode> productListItems, List<Item> prices)
+        private static void WriteDataFromgintarineVaistine(List<HtmlNode> productListItems, List<Item> prices)
+        {
+            if (productListItems != null)
+            {
+                foreach (var productListItem in productListItems)
+                {
+
+                    var price = productListItem
+                        .Descendants("span").FirstOrDefault(node => node.GetAttributeValue("class", "")
+                            .Equals("price actual-price")).InnerText.Trim();
+
+                    var name = productListItem.Descendants("input").FirstOrDefault().GetAttributeValue("value", "");
+
+                    var link = productListItem.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
+                    var imgLink = productListItem.Descendants("img").FirstOrDefault().GetAttributeValue("data-lazyloadsrc", "");
+
+                    if (price != "")
+                    {
+                        var regex = Regex.Match(price, @"[0-9]+\,[0-9][0-9]");
+                            price = Convert.ToString(regex);                     
+                        var priceAtsarg = price;
+                        var pricea = Convert.ToDouble(price);
+
+                        var itemas = new Item { Nuotrauka = imgLink, Seller = "Gintarine vaistine", Name = name, Pricea = pricea, Price = price +'€', Link = "https://www.gintarine.lt/" + link };
+                            prices.Add(itemas);
+                    }
+                }
+            }
+            else
+            {
+                var itemas = new Item { Seller = "Gintarine vaistine", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(itemas);
+            }
+        }
+
+
+            private static void WriteDataFromRde(List<HtmlNode> productListItems, List<Item> prices)
         {
             if (productListItems != null)
             {
@@ -306,8 +365,6 @@ namespace Price_comparison_engine
 
                             var itemas = new Item { Nuotrauka = "https://www.rde.lt/" + imgLink, Seller = "Rde", Name = name, Pricea = pricea, Price = price, Link = "https://www.rde.lt/" + link };
                             prices.Add(itemas);
-
-
                         }
                     }
                 }
