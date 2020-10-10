@@ -35,7 +35,7 @@
         <PasswordBox HorizontalAlignment="Left" Margin="207,318,0,0" VerticalAlignment="Top" Width="131" Height="23"/>
         <Button Content="Sukurti" HorizontalAlignment="Left" Margin="373,322,0,0" VerticalAlignment="Top" Width="75" Click="Priskirti"/>
         <TextBox x:Name="email_Copy1" HorizontalAlignment="Left" Height="23" Margin="123,378,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.33,-0.383"/>
-        <Button Content="Ištrinti" HorizontalAlignment="Left" Margin="309,383,0,0" VerticalAlignment="Top" Width="75" Click="Priskirti"/>
+        <Button Content="Ištrinti" HorizontalAlignment="Left" Margin="309,383,0,0" VerticalAlignment="Top" Width="75" Click="Istrinti"/>
         <TextBlock HorizontalAlignment="Left" Margin="194,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="144" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"><Run Text="Suteikti rolę"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="176,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="179" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E" Text="Sukurti vartotoją"/>
         <TextBlock HorizontalAlignment="Left" Margin="178,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="179" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"><Run Text="Ištrinti"/><Run Text=" vartotoją"/></TextBlock>

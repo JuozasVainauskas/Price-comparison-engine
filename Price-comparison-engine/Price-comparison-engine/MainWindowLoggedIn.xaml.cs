@@ -22,13 +22,13 @@ namespace Price_comparison_engine
         public MainWindowLoggedIn()
         {
             InitializeComponent();
-            if(vartotojoRole == 1)
+            if(vartotojoRole.Equals("1"))
             {
                 administravimas.Visibility = Visibility.Visible;
             }
         }
 
-        private static readonly int vartotojoRole = PrisijungimoLangas.Role;
+        private static readonly string vartotojoRole = PrisijungimoLangas.Role;
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {

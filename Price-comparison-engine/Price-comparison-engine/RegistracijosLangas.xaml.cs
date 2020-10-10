@@ -96,7 +96,7 @@ namespace Price_comparison_engine
                         SlaptazodzioSalt = salt,
                         ArBalsavo = "",
                         Komentaras = "",
-                        Role = 0
+                        Role = "0"
                     };
                     kontekstas.NaudotojoDuomenys.Add(naudotojoDuomenys);
 
