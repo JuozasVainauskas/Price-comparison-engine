@@ -45,8 +45,8 @@ namespace Price_comparison_engine
 
             if (string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
             {
-                VertinimoMygtukas.IsEnabled = false;
-                VertinimoMygtukas.Visibility = Visibility.Collapsed;
+                //VertinimoMygtukas.IsEnabled = false;
+                //VertinimoMygtukas.Visibility = Visibility.Collapsed;
             }
             else
             {

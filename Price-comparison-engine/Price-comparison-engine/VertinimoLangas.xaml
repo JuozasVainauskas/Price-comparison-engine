@@ -69,70 +69,105 @@
             Foreground="white"
             FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti" Grid.Row="1"/>
         <Image x:Name="ParduotuvesImg" HorizontalAlignment="Left" Height="100" Margin="77,28,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/avitela.png"/>
-        <Button Content="Aptarnavmas0" Height="16" Width="18" Margin="125,201,652,3">
+        <Button Content="Aptarnavmas1" Height="16" Width="18" HorizontalAlignment="Left" Margin="125,201,0,0" VerticalAlignment="Top" Click="AptarnavimasStar1">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="Aptarnavmas1" Height="16" Width="18" Margin="150,201,624,3">
+        <Button Content="Aptarnavmas2" Height="16" Width="18" HorizontalAlignment="Left" Margin="150,201,0,0" VerticalAlignment="Top" Click="AptarnavimasStar2">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="Aptarnavmas2" Height="16" Width="18" Margin="175,201,602,3">
+        <Button Content="Aptarnavmas3" Height="16" Width="18" HorizontalAlignment="Left" Margin="175,201,0,0" VerticalAlignment="Top" Click="AptarnavimasStar3">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="Aptarnavmas3" Height="16" Width="18" Margin="200,201,574,3">
+        <Button Content="Aptarnavmas4" Height="16" Width="18" HorizontalAlignment="Left" Margin="200,201,0,0" VerticalAlignment="Top" Click="AptarnavimasStar4">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="Aptarnavmas4" Height="16" Width="18" Margin="225,201,548,3">
+        <Button Content="Aptarnavmas5" Height="16" Width="18" HorizontalAlignment="Left" Margin="225,201,0,0" VerticalAlignment="Top" Click="AptarnavimasStar5">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="PrekiuKokybe0" Height="16" Width="18" Margin="125,14,651,321" Grid.Row="1">
+        <Button Content="PrekiuKokybe1" Height="16" Width="18" HorizontalAlignment="Left" Margin="125,14,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar1" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="PrekiuKokybe1" Height="16" Width="18" Margin="150,14,625,321" Grid.Row="1">
+        <Button Content="PrekiuKokybe2" Height="16" Width="18" HorizontalAlignment="Left" Margin="150,14,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar2" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="PrekiuKokybe2" Height="16" Width="18" Margin="175,14,601,321" Grid.Row="1">
+        <Button Content="PrekiuKokybe3" Height="16" Width="18" HorizontalAlignment="Left" Margin="175,14,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar3" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="PrekiuKokybe3" Height="16" Width="18" Margin="200,14,575,321" Grid.Row="1">
+        <Button Content="PrekiuKokybe4" Height="16" Width="18" HorizontalAlignment="Left" Margin="200,14,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar4" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button Content="PrekiuKokybe4" Height="16" Width="18" Margin="225,14,550,321" Grid.Row="1">
+        <Button Content="PrekiuKokybe5" Height="16" Width="18" HorizontalAlignment="Left" Margin="225,14,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar5" Grid.Row="1">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Nuotraukos/Star_0.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="Pristatymas1" Height="16" Width="18" HorizontalAlignment="Left" Margin="125,47,0,0" VerticalAlignment="Top" Click="PristatymasStar1" Grid.Row="1">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Nuotraukos/Star_0.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="Pristatymas2" Height="16" Width="18" HorizontalAlignment="Left" Margin="150,47,0,0" VerticalAlignment="Top" Click="PristatymasStar2" Grid.Row="1">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Nuotraukos/Star_0.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="Pristatymas3" Height="16" Width="18" HorizontalAlignment="Left" Margin="175,47,0,0" VerticalAlignment="Top" Click="PristatymasStar3" Grid.Row="1">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Nuotraukos/Star_0.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="Pristatymas4" Height="16" Width="18" HorizontalAlignment="Left" Margin="200,47,0,0" VerticalAlignment="Top" Click="PristatymasStar4" Grid.Row="1">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="Nuotraukos/Star_0.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Button Content="Pristatymas5" Height="16" Width="18" HorizontalAlignment="Left" Margin="225,47,0,0" VerticalAlignment="Top" Click="PristatymasStar5" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="Nuotraukos/Star_0.png"/>

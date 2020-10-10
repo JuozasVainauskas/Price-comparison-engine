@@ -386,5 +386,80 @@ namespace Price_comparison_engine
                 tvarkytiDuomenis(2, listViewas, email, komentarai);
             }
         }
+
+        private void AptarnavimasStar1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AptarnavimasStar2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AptarnavimasStar3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AptarnavimasStar4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AptarnavimasStar5(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PrekiuKokybeStar1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PrekiuKokybeStar2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PrekiuKokybeStar3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PrekiuKokybeStar4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PrekiuKokybeStar5(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PristatymasStar1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PristatymasStar2(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PristatymasStar3(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PristatymasStar4(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PristatymasStar5(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
