@@ -39,7 +39,7 @@ namespace Price_comparison_engine
         private static int balsavusiuSk = 0;
         private static string balsuIndex = "";
         private static List<string> komentarai = new List<string>();
-        private static List<string> email;
+        private static List<string> email = new List<string>();
 
         private static Dictionary<string, double> vertinimai = new Dictionary<string, double>()
         {
@@ -55,6 +55,7 @@ namespace Price_comparison_engine
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
+                tvarkytiDuomenis(0, listViewas, email, komentarai);
                 Skaityti("Avitela", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
@@ -68,6 +69,7 @@ namespace Price_comparison_engine
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
+                tvarkytiDuomenis(1, listViewas, email, komentarai);
                 Skaityti("Elektromarkt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
@@ -80,6 +82,7 @@ namespace Price_comparison_engine
                 aptarnavimas.IsEnabled = true;
                 pristatymas.IsEnabled = true;
                 kokybe.IsEnabled = true;
+                tvarkytiDuomenis(2, listViewas, email, komentarai);
                 Skaityti("Pigu.lt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
@@ -157,12 +160,22 @@ namespace Price_comparison_engine
 
         private void Siusti(object sender, RoutedEventArgs e)
         {
-            if (parduotuve.SelectedIndex == 0)
+            if(parduotuve.SelectedIndex == -1)
+            {
+                MessageBox.Show("Nepasirinkote parduotuvės!");
+                KomentaruLangelis.Clear();
+            }
+            else if (parduotuve.SelectedIndex == 0)
             {
                 if (balsuIndex.Contains("_0"))
                 {
                     RasytiKomentarus(PrisijungimoLangas.email, 0, vertinimai["Avitela"]/3, KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
+                    SkaitytiKomentaruDuomenis(ref email, ref komentarai);
+                    sujungtiList(email, komentarai);
+                    tvarkytiDuomenis(0, listViewas, email, komentarai);
+
+
                 }
                 else
                 {
@@ -175,6 +188,10 @@ namespace Price_comparison_engine
                 {
                     RasytiKomentarus(PrisijungimoLangas.email, 1, vertinimai["Elektromarkt"]/3, KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
+                    SkaitytiKomentaruDuomenis(ref email, ref komentarai);
+                    sujungtiList(email, komentarai);
+                    tvarkytiDuomenis(1, listViewas, email, komentarai);
+
                 }
                 else
                 {
@@ -187,6 +204,10 @@ namespace Price_comparison_engine
                 {
                     RasytiKomentarus(PrisijungimoLangas.email, 2, vertinimai["Pigu.lt"]/3, KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
+                    SkaitytiKomentaruDuomenis(ref email, ref komentarai);
+                    sujungtiList(email, komentarai);
+                    tvarkytiDuomenis(2, listViewas, email, komentarai);
+
                 }
                 else
                 {
@@ -209,6 +230,8 @@ namespace Price_comparison_engine
         }
         private static void SkaitytiKomentaruDuomenis(ref List<string> email, ref List<string> komentarai)
         {
+            email.Clear();
+            komentarai.Clear();
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
                 var tempEmail = kontekstas.NaudotojoDuomenys.Select(column => column.Email).ToList();
@@ -224,28 +247,23 @@ namespace Price_comparison_engine
 
         private static void tvarkytiDuomenis(int index, ListView lv ,List<string> email, List<string>komentarai)
         {
+            lv.Items.Clear();
             foreach(var element in komentarai)
             {
                 if(element.Contains("_" + index + "_"))
                 {
-                    Console.WriteLine("#1:" + element);
                     string[] tempString;
                     tempString = element.Split(';');
+                    string emailas = tempString[0];
 
                     foreach(var stringElement in tempString)
                     {
-                        Console.WriteLine(stringElement);
                         if(stringElement.Contains("_" + index + "_"))
                         {
-                            Console.WriteLine("#2:" + stringElement);
                             string[] anotherTempString;
                             anotherTempString = stringElement.Split('_');
-                            Console.WriteLine(anotherTempString[1]); // INDEKSAS
-                            Console.WriteLine(anotherTempString[2]); // DATA
-                            Console.WriteLine(anotherTempString[3]); // VERTINIMAS
-                            Console.WriteLine(anotherTempString[4]); // KOMENTARAS
                             var text = anotherTempString[1];
-                            lv.Items.Add(new Komentaras() { Tekstas = anotherTempString[2] + " " + anotherTempString[3]});
+                            lv.Items.Add(new Komentaras() { Tekstas = emailas + " " + anotherTempString[2] + " " + anotherTempString[3]});
                             lv.Items.Add(new Komentaras() { Tekstas = anotherTempString[4]});
 
                         }
@@ -254,6 +272,16 @@ namespace Price_comparison_engine
 
             }
         }
+
+        private static void sujungtiList(List<string> a, List<string> b)
+        {
+            for(int i = 0; i < a.Count; i++)
+            {
+                a[i] = a[i] + ";" + b[i];
+                b[i] = a[i];
+            }
+        }
+
 
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
         private static void Skaityti(string parduotuvesPavadinimas, string email, ref string balsuIndex, ref double balsuSuma, ref int balsavusiuSkaicius)
@@ -369,7 +397,24 @@ namespace Price_comparison_engine
         private void listViewas_Loaded(object sender, RoutedEventArgs e)
         {
             SkaitytiKomentaruDuomenis(ref email, ref komentarai);
+            sujungtiList(email, komentarai);
             tvarkytiDuomenis(0, listViewas ,email, komentarai);
+        }
+
+        private void KeistiKomentarus(object sender, SelectionChangedEventArgs e)
+        {
+            if(PasirinktiKomentara.SelectedIndex == 0)
+            {
+                tvarkytiDuomenis(0, listViewas, email, komentarai);
+            }
+            else if(PasirinktiKomentara.SelectedIndex == 1)
+            {
+                tvarkytiDuomenis(1, listViewas, email, komentarai);
+            }
+            else if(PasirinktiKomentara.SelectedIndex == 2)
+            {
+                tvarkytiDuomenis(2, listViewas, email, komentarai);
+            }
         }
     }
 }

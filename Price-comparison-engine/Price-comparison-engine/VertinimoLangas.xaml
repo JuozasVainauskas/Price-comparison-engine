@@ -101,7 +101,7 @@
             <ComboBoxItem Content="Pigu.lt"/>
         </ComboBox>
         <Image x:Name="ivertinimoImg" HorizontalAlignment="Left" Height="13" Margin="138,133,0,0" VerticalAlignment="Top" Width="100" Source="0.png"/>
-        <ListView Name="listViewas" HorizontalAlignment="Left" Height="257" Margin="271,28,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2" Loaded="listViewas_Loaded">
+        <ListView Name="listViewas" HorizontalAlignment="Left" Height="218" Margin="271,67,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2" Loaded="listViewas_Loaded">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="" DisplayMemberBinding="{Binding Tekstas}" Width="503"/>
@@ -113,6 +113,15 @@
             Background="#E30000"
             Foreground="white"
             FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Siusti" Grid.Row="1" RenderTransformOrigin="1.386,0.657"/>
+        <TextBlock HorizontalAlignment="Left" Margin="271,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="321"><Run Text="P"/><Run Text="asirinkite, kurios parduotuvės"/><Run Text=" komentarus nor"/><Run Text="ite peržiūrėti:"/></TextBlock>
+        <ComboBox x:Name="PasirinktiKomentara" HorizontalAlignment="Left" Margin="608,40,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="KeistiKomentarus">
+            <ComboBoxItem Content="Avitela"/>
+            <ComboBoxItem Content="Elektromarkt"/>
+            <ComboBoxItem Content="Pigu.lt"/>
+        </ComboBox>
+        <Rectangle Fill="#FF0FE943" HorizontalAlignment="Left" Height="80" Margin="138,174,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="539"/>
+        <TextBlock HorizontalAlignment="Left" Margin="348,198,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Busima reklamos vieta" VerticalAlignment="Top" Height="40" Width="150"/>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,313,-0.4,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="794"/>
 
     </Grid>
 </Window>
