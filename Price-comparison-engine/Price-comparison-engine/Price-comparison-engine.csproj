@@ -338,6 +338,13 @@
   <ItemGroup>
     <Resource Include="Nuotraukos\avitela.png" />
     <Resource Include="Nuotraukos\elektromarkt.png" />
+    <Resource Include="Nuotraukos\no_product.jpg" />
+    <Resource Include="Nuotraukos\Star_0.png" />
+    <Resource Include="Nuotraukos\Star_1.png" />
+    <Resource Include="Nuotraukos\Star_2.png" />
+    <Resource Include="Nuotraukos\Star_3.png" />
+    <Resource Include="Nuotraukos\Star_4.png" />
+    <Resource Include="Nuotraukos\Star_5.png" />
     <Content Include="PCEDatabase.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
