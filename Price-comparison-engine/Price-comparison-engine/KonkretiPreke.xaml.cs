@@ -38,6 +38,8 @@ namespace Price_comparison_engine
         public static string Pav;
         public static string[] Isskaidyta;
         static readonly string[] PrekesPraleidimui = { "Šaldytuvas", "Išmanusis", "telefonas", "Kompiuteris","mobilusis","apsauginis","stiklas" };
+        public static int SoldOutBarbora;
+        public static int SoldOut;
         public KonkretiPreke(string pavadinimas)
         {
             Pav = pavadinimas;
@@ -57,6 +59,8 @@ namespace Price_comparison_engine
             var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
             var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
             var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
+            var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q=" + MainWindow.zodis + "%5D&sid=false&isc=true&orderBy=0";
+            var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
 
             var rdeItems = RdeSearch(await Html(httpClient, urlRde));
             WriteDataFromRde(rdeItems, prices);
@@ -68,6 +72,10 @@ namespace Price_comparison_engine
             WriteDataFromAvitela(avitelaItems, prices);
             var elektromarktItems = ElektromarktSearch(await Html(httpClient, urlElektromarkt));
             WriteDataFromElektromarkt(elektromarktItems, prices);
+            var gintarineVaistineItems = GintarineVaistineSearch(await Html(httpClient, urlGintarineVaistine));
+            WriteDataFromgintarineVaistine(gintarineVaistineItems, prices);
+            var barboraItems = BarboraSearch(await Html(httpClient, urlBarbora));
+            WriteDataFromBarbora(barboraItems, prices);
 
             SurikiavimasIrSurasymas(prices, dataGridas2);
         }
@@ -105,6 +113,25 @@ namespace Price_comparison_engine
                 return null;
         }
 
+        private static List<HtmlNode> GintarineVaistineSearch(HtmlDocument htmlDocument)
+        {
+            try
+            {
+                var productsHtml = htmlDocument.DocumentNode.Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                        .Equals("item-grid")).ToList();
+
+                var productListItems = productsHtml[0].Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                        .Contains("item-box")).ToList();
+                return productListItems;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         private static List<HtmlNode> BigBoxSearch(HtmlDocument htmlDocument)
         {
             try
@@ -124,6 +151,33 @@ namespace Price_comparison_engine
                 return null;
             }
         }
+
+        private static List<HtmlNode> BarboraSearch(HtmlDocument htmlDocument2)
+        {
+            try
+            {
+                var productsHtml2 = htmlDocument2.DocumentNode.Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                        .Equals("b-page-specific-content")).ToList();
+
+                var productListItems2 = productsHtml2[0].Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                        .Contains("b-product--wrap2 b-product--desktop-grid")).ToList();
+                var productListItemsSoldOut = productsHtml2[0].Descendants("div")
+                    .Where(node => node.GetAttributeValue("class", "")
+                        .Contains("b-product-out-of-stock-backdrop")).ToList();
+                foreach (var unused in productListItemsSoldOut)
+                {
+                    SoldOutBarbora++;
+                }
+                return productListItems2;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         private static List<HtmlNode> AvitelaSearch(HtmlDocument htmlDocument)
         {
             try
@@ -242,6 +296,109 @@ namespace Price_comparison_engine
             else
             {
                 var itemas = new Item { Seller = "Rde", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(itemas);
+            }
+        }
+
+        private static void WriteDataFromBarbora(List<HtmlNode> productListItems, List<Item> prices)
+        {
+            if (productListItems != null)
+            {
+                var countItems = productListItems.Count - SoldOutBarbora;
+
+                foreach (var productListItem in productListItems)
+                    if (countItems != 0)
+                    {
+                        var price = productListItem
+                            .Descendants("span").FirstOrDefault(node => node.GetAttributeValue("class", "")
+                                .Equals("b-product-price-current-number"))
+                            ?.InnerText.Trim();
+
+                        var name = productListItem
+                            .Descendants("span").FirstOrDefault(node => node.GetAttributeValue("itemprop", "")
+                                .Equals("name"))
+                            ?.InnerText.Trim();
+
+                        var link = productListItem.Descendants("a").FirstOrDefault()?.GetAttributeValue("href", "");
+
+                        var imgLink = productListItem
+                            .Descendants("img").FirstOrDefault(node => node.GetAttributeValue("itemprop", "")
+                                .Contains("image"))
+                            ?.GetAttributeValue("src", "");
+
+                        if (price != "")
+                        {
+                            price = PasalinimasTrikdanciuSimboliu(price);
+                            var priceTemporary = price;
+                            priceTemporary = PasalinimasEuroSimbol(priceTemporary);
+                            var pricea = Convert.ToDouble(priceTemporary);
+                            var pavArray = name.Split();
+                            int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
+                            if (kiekSutiko >= (Isskaidyta.Length / 2) + 1)
+                            {
+                                var itemas = new Item
+                                {
+                                    Nuotraukaa = "https://pagrindinis.barbora.lt/" + imgLink,
+                                    Sellerr = "Barbora",
+                                    Namee = name,
+                                    Priceaa = pricea,
+                                    Pricee = price,
+                                    Linkk = "https://pagrindinis.barbora.lt/" + link
+                                };
+                                prices.Add(itemas);
+                            }
+                        }
+
+                        countItems--;
+                    }
+            }
+            else
+            {
+                var itemas = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(itemas);
+            }
+        }
+
+        private static void WriteDataFromgintarineVaistine(List<HtmlNode> productListItems, List<Item> prices)
+        {
+            if (productListItems != null)
+            {
+                foreach (var productListItem in productListItems)
+                {
+
+                    var price = productListItem
+                        .Descendants("span").FirstOrDefault(node => node.GetAttributeValue("class", "")
+                            .Equals("price actual-price"))
+                        ?.InnerText.Trim();
+
+                    var name = productListItem.Descendants("input").FirstOrDefault()?.GetAttributeValue("value", "");
+
+                    var link = productListItem.Descendants("a").FirstOrDefault()?.GetAttributeValue("href", "");
+                    var imgLink = productListItem.Descendants("img").FirstOrDefault()?.GetAttributeValue("data-lazyloadsrc", "");
+
+                    if (price != "")
+                    {
+                        var regex = Regex.Match(price ?? string.Empty, @"[0-9]+\,[0-9][0-9]");
+                        price = Convert.ToString(regex);
+                        var pricea = Convert.ToDouble(price);
+
+                        var pavArray = name.Split();
+                        int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
+                        if (kiekSutiko >= (Isskaidyta.Length/2)+1)
+                        {
+                            var itemas = new Item
+                            {
+                                Nuotraukaa = imgLink, Sellerr = "Gintarine vaistine", Namee = name, Priceaa = pricea,
+                                Pricee = price+ '€', Linkk = "https://www.gintarine.lt/" + link
+                            };
+                            prices.Add(itemas);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                var itemas = new Item { Seller = "Gintarine vaistine", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
                 prices.Add(itemas);
             }
         }
