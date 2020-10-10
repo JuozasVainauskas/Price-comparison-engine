@@ -403,12 +403,23 @@ namespace Price_comparison_engine
 
         private void ChangeImgSource(Button button, string imgSrc, string imgToChangeSrc)
         {
-            ControlTemplate ct = button.Template;
-            Image btnImage = (Image)ct.FindName(imgSrc, button);
+            var ct = button.Template;
+            var btnImage = (Image)ct.FindName(imgSrc, button);
             btnImage.Source = new BitmapImage(new Uri(imgToChangeSrc, UriKind.RelativeOrAbsolute));
 
         }
+        private bool CheckImgSource(Button button, string imgSrc, string imgToChangeSrc)
+        {
+            var imgBool = false;
+            var ct = button.Template;
+            var btnImageName = ct.FindName(imgSrc, button).ToString();
+            if (btnImageName.Equals(imgToChangeSrc))
+            {
+                imgBool = true;
+            }
+            return imgBool;
 
+        }
         private void AptarnavimasStar1(object sender, RoutedEventArgs e)
         {
             ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
@@ -512,6 +523,19 @@ namespace Price_comparison_engine
             ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_1.png");
+        }
+
+        private void AptarnavimasImg1_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void AptarnavimasImg1_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
         }
     }
 }

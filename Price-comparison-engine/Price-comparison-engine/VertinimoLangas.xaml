@@ -72,7 +72,7 @@
         <Button x:Name="Aptarnavimas1" Height="18" Width="20" HorizontalAlignment="Left" Margin="125,201,0,0" VerticalAlignment="Top" Click="AptarnavimasStar1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="AptarnavimasImg1" Source="Nuotraukos/Star_0.png"/>
+                    <Image x:Name="AptarnavimasImg1" Source="Nuotraukos/Star_0.png" MouseEnter="AptarnavimasImg1_OnMouseEnter" MouseLeave="AptarnavimasImg1_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>

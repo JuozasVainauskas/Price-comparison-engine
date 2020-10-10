@@ -341,6 +341,7 @@
     <Resource Include="Nuotraukos\no_product.jpg" />
     <Resource Include="Nuotraukos\Star_0.png" />
     <Resource Include="Nuotraukos\Star_1.png" />
+    <Resource Include="Nuotraukos\Star_2.png" />
     <Content Include="PCEDatabase.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
