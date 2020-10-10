@@ -43,16 +43,16 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
 
-            if (string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
-            {
-                //VertinimoMygtukas.IsEnabled = false;
-                //VertinimoMygtukas.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                VertinimoMygtukas.IsEnabled = true;
-                VertinimoMygtukas.Visibility = Visibility.Visible;
-            }
+            //if (string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
+            //{
+            //    VertinimoMygtukas.IsEnabled = false;
+            //    VertinimoMygtukas.Visibility = Visibility.Collapsed;
+            //}
+            //else
+            //{
+            //    VertinimoMygtukas.IsEnabled = true;
+            //    VertinimoMygtukas.Visibility = Visibility.Visible;
+            //}
 
         }
 

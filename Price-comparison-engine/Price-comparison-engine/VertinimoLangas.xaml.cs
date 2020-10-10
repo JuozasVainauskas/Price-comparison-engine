@@ -389,7 +389,9 @@ namespace Price_comparison_engine
 
         private void AptarnavimasStar1(object sender, RoutedEventArgs e)
         {
-
+            ControlTemplate ct = Aptarnavimas1.Template;
+            Image btnImage = (Image)ct.FindName("AptarnavimasImg1", Aptarnavimas1);
+            btnImage.Source = new BitmapImage(new Uri("Nuotraukos/Star_1.png", UriKind.RelativeOrAbsolute));
         }
 
         private void AptarnavimasStar2(object sender, RoutedEventArgs e)
