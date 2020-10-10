@@ -32,8 +32,8 @@ namespace Price_comparison_engine
             InitializeComponent();
             this.pagrindinisLangas = pagrindinisLangas;
         }
-        public static int Role { get; private set; } = 0;
-        public static string email { get; private set; } = "";
+        public static string Role { get; private set; } = "0";
+        public static string email { get; set; } = "";
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
             email = Email.Text;

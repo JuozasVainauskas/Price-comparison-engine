@@ -129,6 +129,10 @@
     <Compile Include="Migrations\202010080936285_SukurtiKomentaruStulpeli1.designer.cs">
       <DependentUpon>202010080936285_SukurtiKomentaruStulpeli1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010101052187_Naujas.cs" />
+    <Compile Include="Migrations\202010101052187_Naujas.designer.cs">
+      <DependentUpon>202010101052187_Naujas.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
@@ -281,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010080936285_SukurtiKomentaruStulpeli1.resx">
       <DependentUpon>202010080936285_SukurtiKomentaruStulpeli1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010101052187_Naujas.resx">
+      <DependentUpon>202010101052187_Naujas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

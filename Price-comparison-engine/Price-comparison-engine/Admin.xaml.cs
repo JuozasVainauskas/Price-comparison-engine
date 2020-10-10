@@ -28,8 +28,8 @@ namespace Price_comparison_engine
             InitializeComponent();
         }
 
-        private static int role = 0;
-        private static void SkirtiRole(string email,int role)
+        private static string role = "0";
+        private static void SkirtiRole(string email, string role)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
@@ -60,10 +60,29 @@ namespace Price_comparison_engine
             }
             else if (RolesPriskirimas.SelectedIndex!= -1)
             {
-                role = RolesPriskirimas.SelectedIndex;
+                role = RolesPriskirimas.SelectedIndex.ToString();
                 SkirtiRole(email.Text, role);
                 MessageBox.Show(email.Text + " priskirta nauja rolė!");
                 email.Text = "";
+            }
+        }
+
+        //Still to be done
+        private void Istrinti(object sender, RoutedEventArgs e)
+        {
+            var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
+
+            if (email.Text == "")
+            {
+                MessageBox.Show("Įveskite vartotojo el.paštą, kuriam norite priskirti naują rolę!");
+            }
+            else if (!pattern2.IsMatch(email.Text))
+            {
+                MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
+            }
+            else if (RolesPriskirimas.SelectedIndex != -1)
+            {
+                
             }
         }
     }
