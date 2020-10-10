@@ -20,7 +20,7 @@ namespace Price_comparison_engine
     partial class Item
     {
 
-        public string Nuotraukaa { get; set; }
+        public string Imagee { get; set; }
         public string Sellerr { get; set; }
         public double Priceaa { get; set; }
 
@@ -35,15 +35,15 @@ namespace Price_comparison_engine
     public partial class KonkretiPreke
     {
         public static CartesianChart CartesianChart;
-        public static string Pav;
-        public static string[] Isskaidyta;
-        static readonly string[] PrekesPraleidimui = { "Šaldytuvas", "Išmanusis", "telefonas", "Kompiuteris","mobilusis","apsauginis","stiklas" };
+        public static string NameToSearch;
+        public static string[] Divided;
+        static readonly string[] ItemsToSkip = { "Šaldytuvas", "Išmanusis", "telefonas", "Kompiuteris","mobilusis","apsauginis","stiklas" };
         public static int SoldOutBarbora;
         public static int SoldOut;
-        public KonkretiPreke(string pavadinimas)
+        public KonkretiPreke(string name)
         {
-            Pav = pavadinimas;
-            Isskaidyta = Pav.Split();
+            NameToSearch = name;
+            Divided = NameToSearch.Split();
             InitializeComponent();
             CartesianChart = cartesianChart1;
         }
@@ -53,12 +53,12 @@ namespace Price_comparison_engine
             var prices = new List<Item>();
             var httpClient = new HttpClient();
             var regEx = new Regex(" ");
-            var urlgalas = regEx.Replace(MainWindow.zodis, "+");
-            var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
-            var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
-            var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
+            var urlEnd = regEx.Replace(MainWindow.zodis, "+");
+            var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlEnd + "/page/1";
+            var urlPigu = "https://pigu.lt/lt/search?q=" + urlEnd;
+            var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlEnd;
             var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
-            var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
+            var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlEnd;
             var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q=" + MainWindow.zodis + "%5D&sid=false&isc=true&orderBy=0";
             var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
 
@@ -77,7 +77,7 @@ namespace Price_comparison_engine
             var barboraItems = BarboraSearch(await Html(httpClient, urlBarbora));
             WriteDataFromBarbora(barboraItems, prices);
 
-            SurikiavimasIrSurasymas(prices, dataGridas2);
+            SortingAndWriting(prices, dataGridas2);
         }
 
         private static async Task<HtmlDocument> Html(HttpClient httpClient, string urlget)
@@ -269,20 +269,20 @@ namespace Price_comparison_engine
 
                         if (price != "")
                         {
-                            price = PasalinimasTrikdanciuSimboliu2(price);
-                            var priceAtsarg = price;
-                            priceAtsarg = PasalinimasTrikdanciuSimboliu2(priceAtsarg);
-                            priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
-                            double pricea = Convert.ToDouble(priceAtsarg);
+                            price = EliminatingSymbols2(price);
+                            var priceBackUp = price;
+                            priceBackUp = EliminatingSymbols2(priceBackUp);
+                            priceBackUp = EliminatingEuroSimbol(priceBackUp);
+                            double pricea = Convert.ToDouble(priceBackUp);
                             if (name != null)
                             {
                                 var pavArray = name.Split();
-                                int kiekSutiko=algoritmasKiekZodziuSutinka(pavArray);
-                                if (kiekSutiko >= (Isskaidyta.Length / 2)+1)
+                                int numberOfSameWords=AlgorithmHowManyWordsAreTheSame(pavArray);
+                                if (numberOfSameWords >= (Divided.Length / 2)+1)
                                 {
                                     var itemas = new Item
                                     {
-                                        Nuotraukaa = "https://www.rde.lt/" + imgLink, Sellerr = "Rde", Namee = name,
+                                        Imagee = "https://www.rde.lt/" + imgLink, Sellerr = "Rde", Namee = name,
                                         Priceaa = pricea, Pricee = price, Linkk = "https://www.rde.lt/" + link
                                     };
                                     prices.Add(itemas);
@@ -328,17 +328,17 @@ namespace Price_comparison_engine
 
                         if (price != "")
                         {
-                            price = PasalinimasTrikdanciuSimboliu(price);
+                            price = EliminatingSymbols(price);
                             var priceTemporary = price;
-                            priceTemporary = PasalinimasEuroSimbol(priceTemporary);
+                            priceTemporary = EliminatingEuroSimbol(priceTemporary);
                             var pricea = Convert.ToDouble(priceTemporary);
                             var pavArray = name.Split();
-                            int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                            if (kiekSutiko >= (Isskaidyta.Length / 2) + 1)
+                            int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                            if (numberOfSameWords >= (Divided.Length / 2) + 1)
                             {
                                 var itemas = new Item
                                 {
-                                    Nuotraukaa = "https://pagrindinis.barbora.lt/" + imgLink,
+                                    Imagee = "https://pagrindinis.barbora.lt/" + imgLink,
                                     Sellerr = "Barbora",
                                     Namee = name,
                                     Priceaa = pricea,
@@ -383,12 +383,12 @@ namespace Price_comparison_engine
                         var pricea = Convert.ToDouble(price);
 
                         var pavArray = name.Split();
-                        int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                        if (kiekSutiko >= (Isskaidyta.Length/2)+1)
+                        int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                        if (numberOfSameWords >= (Divided.Length/2)+1)
                         {
                             var itemas = new Item
                             {
-                                Nuotraukaa = imgLink, Sellerr = "Gintarine vaistine", Namee = name, Priceaa = pricea,
+                                Imagee = imgLink, Sellerr = "Gintarine vaistine", Namee = name, Priceaa = pricea,
                                 Pricee = price+ '€', Linkk = "https://www.gintarine.lt/" + link
                             };
                             prices.Add(itemas);
@@ -428,19 +428,19 @@ namespace Price_comparison_engine
 
                     if (price != "")
                     {
-                        price = PasalinimasTarpuPigu(price);
+                        price = EliminateSpacesPigu(price);
                         var priceAtsarg = price;
-                        price = PasalinimasEuroSimbol(price);
+                        price = EliminatingEuroSimbol(price);
                         price = price + "€";
-                        priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
+                        priceAtsarg = EliminatingEuroSimbol(priceAtsarg);
                         var pricea = Convert.ToDouble(priceAtsarg);
                         var pavArray = name.Split();
-                        int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                        if (kiekSutiko >= (Isskaidyta.Length/2)+1)
+                        int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                        if (numberOfSameWords >= (Divided.Length/2)+1)
                         {
                             var itemas = new Item
                             {
-                                Nuotraukaa = imgLink, Sellerr = "BigBox", Namee = name, Priceaa = pricea,
+                                Imagee = imgLink, Sellerr = "BigBox", Namee = name, Priceaa = pricea,
                                 Pricee = price, Linkk = link
                             };
                             prices.Add(itemas);
@@ -474,15 +474,15 @@ namespace Price_comparison_engine
                     var link = productListItem.Descendants("a").FirstOrDefault()?.GetAttributeValue("href", "");
                     if (price != "")
                     {
-                        price = PasalinimasTrikdanciuSimboliu(price);
+                        price = EliminatingSymbols(price);
                         var priceAtsarg = price;
-                        priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
+                        priceAtsarg = EliminatingEuroSimbol(priceAtsarg);
                         var pricea = Convert.ToDouble(priceAtsarg);
                         if (name != null)
                         {
                             var pavArray = name.Split();
-                            int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                            if (kiekSutiko >= (Isskaidyta.Length/2)+1)
+                            int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                            if (numberOfSameWords >= (Divided.Length/2)+1)
                             {
                                 var itemas = new Item
                                     {Sellerr = "Avitela", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link};
@@ -494,7 +494,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var itemas = new Item { Nuotraukaa = "https://avitela.lt/image/no_image.jpg",Seller = "Avitela", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var itemas = new Item { Imagee = "https://avitela.lt/image/no_image.jpg",Seller = "Avitela", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
                 prices.Add(itemas);
             }
         }
@@ -521,22 +521,22 @@ namespace Price_comparison_engine
                             .Contains("jpg"))
                         ?.GetAttributeValue("src", "");
 
-                    price = PasalinimasTarpuPigu(price);
+                    price = EliminateSpacesPigu(price);
                     var priceAtsarg = price;
-                    price = PasalinimasEuroSimbol(price);
+                    price = EliminatingEuroSimbol(price);
                     price = price + "€";
-                    priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
+                    priceAtsarg = EliminatingEuroSimbol(priceAtsarg);
 
                     var pricea = Convert.ToDouble(priceAtsarg);
                     if (name != null)
                     {
                         var pavArray = name.Split();
-                        int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                        if (kiekSutiko >= (Isskaidyta.Length/2)+1)
+                        int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                        if (numberOfSameWords >= (Divided.Length/2)+1)
                         {
                             var itemas = new Item
                             {
-                                Nuotraukaa = imgLink, Sellerr = "Pigu", Namee = name, Priceaa = pricea, Pricee = price,
+                                Imagee = imgLink, Sellerr = "Pigu", Namee = name, Priceaa = pricea, Pricee = price,
                                 Linkk = link
                             };
                             prices.Add(itemas);
@@ -571,19 +571,19 @@ namespace Price_comparison_engine
 
                     var imgLink = productListItem.Descendants("img").FirstOrDefault().GetAttributeValue("src", "");
 
-                    price = PasalinimasTarpu(price);
-                    price = PasalinimasTarpuElektromarkt(price);
+                    price = EliminateSpaces(price);
+                    price = EliminateSpacesElektromarkt(price);
                     var priceAtsarg = price;
-                    priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
+                    priceAtsarg = EliminatingEuroSimbol(priceAtsarg);
 
                     var pricea = Double.Parse(priceAtsarg);
                     var pavArray = name.Split();
-                    int kiekSutiko = algoritmasKiekZodziuSutinka(pavArray);
-                    if (kiekSutiko >= (Isskaidyta.Length/2)+1)
+                    int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                    if (numberOfSameWords >= (Divided.Length/2)+1)
                     {
                         var itemas = new Item
                         {
-                            Nuotraukaa = imgLink, Sellerr = "Elektromarkt", Namee = name, Priceaa = pricea,
+                            Imagee = imgLink, Sellerr = "Elektromarkt", Namee = name, Priceaa = pricea,
                             Pricee = price, Linkk = link
                         };
                         prices.Add(itemas);
@@ -598,35 +598,35 @@ namespace Price_comparison_engine
             }
         }
 
-        private static int algoritmasKiekZodziuSutinka(string[] pavArray)
+        private static int AlgorithmHowManyWordsAreTheSame(string[] pavArray)
         {
-            int kiekSutiko = 0;
+            int numberOfSameWords = 0;
             foreach (var t in pavArray)
             {
-                foreach (var t1 in Isskaidyta)
+                foreach (var t1 in Divided)
                 {
                     if (t.Equals(t1, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        int arIrasyti = 1;
-                        foreach (var t2 in PrekesPraleidimui)
+                        int acceptTheWord = 1;
+                        foreach (var t2 in ItemsToSkip)
                         {
                             if (t.Equals(t2, StringComparison.CurrentCultureIgnoreCase))
                             {
-                                arIrasyti = 0;
+                                acceptTheWord = 0;
                             }
                         }
-                        if (arIrasyti == 1)
+                        if (acceptTheWord == 1)
                         {
-                            kiekSutiko++;
+                            numberOfSameWords++;
                         }
                     }
                 }
             }
 
-            return kiekSutiko;
+            return numberOfSameWords;
         }
 
-        private static string PasalinimasEuroSimbol(string priceAtsarg)
+        private static string EliminatingEuroSimbol(string priceAtsarg)
         {
             var charsToRemove = new[] { "€" };
             foreach (var c in charsToRemove)
@@ -637,7 +637,7 @@ namespace Price_comparison_engine
             return priceAtsarg;
         }
 
-        private static string PasalinimasTrikdanciuSimboliu(string price)
+        private static string EliminatingSymbols(string price)
         {
             var index = price.IndexOf("\n");
             if (index > 0)
@@ -653,7 +653,7 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static string PasalinimasTrikdanciuSimboliu2(string price)
+        private static string EliminatingSymbols2(string price)
         {
             var index = price.IndexOf("\n");
             if (index > 0)
@@ -680,7 +680,7 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static string PasalinimasTarpu(string price)
+        private static string EliminateSpaces(string price)
         {
             var charsToRemove = new[] { " " };
             foreach (var c in charsToRemove)
@@ -690,7 +690,7 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static string PasalinimasTarpuElektromarkt(string price)
+        private static string EliminateSpacesElektromarkt(string price)
         {
             var charsToRemove = new[] {" "};
             foreach (var c in charsToRemove)
@@ -700,7 +700,7 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static string PasalinimasTarpuPigu(string price)
+        private static string EliminateSpacesPigu(string price)
         {
             var charsToRemove = new[] { " " };
             foreach (var c in charsToRemove)
@@ -710,7 +710,7 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static void SurikiavimasIrSurasymas(List<Item> prices, DataGrid dataGridas2)
+        private static void SortingAndWriting(List<Item> prices, DataGrid dataGridas2)
         {
             
             var sortedPricesList = prices.OrderBy(o => o.Priceaa).ToList();

@@ -14,7 +14,7 @@
  IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Nuotraukaa}" Height="100" x:Name="imageClick" MouseLeftButtonDown="ImageClick_MouseLeftButtonDown"/>
+                            <Image Source="{Binding Imagee}" Height="100" x:Name="imageClick" MouseLeftButtonDown="ImageClick_MouseLeftButtonDown"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
