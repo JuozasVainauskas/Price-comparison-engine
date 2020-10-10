@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Price_comparison_engine"
         xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Name="konkretiPrekeLangas" x:Class="Price_comparison_engine.KonkretiPreke"
         mc:Ignorable="d"
-        Title="KonkretiPreke" Height="600" Width="800" MinWidth="800" MinHeight="600">
+        Title="KonkretiPreke" Height="600" Width="800" MinWidth="800" MinHeight="600" SizeChanged="konkretiPrekeLangas_SizeChanged">
     <Grid Margin="0,277,0,0">
         <DataGrid AutoGenerateColumns="False" x:Name="dataGridas2" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="10" Initialized="DataGridTest_Initialized">
             <DataGrid.Columns>
@@ -14,7 +14,7 @@
  IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Nuotraukaa}" Height="100" x:Name="imageClick" MouseLeftButtonDown="ImageClick_MouseLeftButtonDown"/>
+                            <Image Source="{Binding Imagee}" Height="100" x:Name="imageClick" MouseLeftButtonDown="ImageClick_MouseLeftButtonDown"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
