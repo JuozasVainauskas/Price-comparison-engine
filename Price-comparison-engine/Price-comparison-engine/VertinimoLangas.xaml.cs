@@ -136,9 +136,23 @@ namespace Price_comparison_engine
                 MessageBox.Show("Jau balsavote už šią parduotuvę!");
                 parduotuve.IsEnabled = true;
                 parduotuve.SelectedIndex = -1;
-                return;
             }
-        }
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+            }
 
         private void Siusti(object sender, RoutedEventArgs e)
         {
@@ -387,81 +401,117 @@ namespace Price_comparison_engine
             }
         }
 
+        private void ChangeImgSource(Button button, string imgSrc, string imgToChangeSrc)
+        {
+            ControlTemplate ct = button.Template;
+            Image btnImage = (Image)ct.FindName(imgSrc, button);
+            btnImage.Source = new BitmapImage(new Uri(imgToChangeSrc, UriKind.RelativeOrAbsolute));
+
+        }
+
         private void AptarnavimasStar1(object sender, RoutedEventArgs e)
         {
-            ControlTemplate ct = Aptarnavimas1.Template;
-            Image btnImage = (Image)ct.FindName("AptarnavimasImg1", Aptarnavimas1);
-            btnImage.Source = new BitmapImage(new Uri("Nuotraukos/Star_1.png", UriKind.RelativeOrAbsolute));
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
         }
 
         private void AptarnavimasStar2(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
         }
 
         private void AptarnavimasStar3(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
         }
 
         private void AptarnavimasStar4(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_1.png");
         }
 
         private void AptarnavimasStar5(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_1.png");
         }
 
         private void PrekiuKokybeStar1(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
         }
 
         private void PrekiuKokybeStar2(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
         }
 
         private void PrekiuKokybeStar3(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
         }
 
         private void PrekiuKokybeStar4(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_1.png");
         }
 
         private void PrekiuKokybeStar5(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_1.png");
         }
 
         private void PristatymasStar1(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
         }
 
         private void PristatymasStar2(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
         }
 
         private void PristatymasStar3(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
         }
 
         private void PristatymasStar4(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_1.png");
         }
 
         private void PristatymasStar5(object sender, RoutedEventArgs e)
         {
-
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_1.png");
         }
     }
 }
