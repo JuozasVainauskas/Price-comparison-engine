@@ -146,6 +146,7 @@ namespace Price_comparison_engine
 
         private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {
+            PrisijungimoLangas.email = "";
             var pagrindinisLangas = new MainWindow();
             pagrindinisLangas.Show();
             this.Close();
