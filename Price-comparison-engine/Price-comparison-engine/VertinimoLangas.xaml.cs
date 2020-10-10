@@ -81,29 +81,29 @@ namespace Price_comparison_engine
         }
         private void Aptarnavimas(object sender, SelectionChangedEventArgs e)
         {
-            vertinimai["Avitela"] += aptarnavimas.SelectedIndex + 1;
-            vertinimai["Elektromarkt"] += aptarnavimas.SelectedIndex + 1;
-            vertinimai["Pigu.lt"] += aptarnavimas.SelectedIndex + 1;
-            balsai += aptarnavimas.SelectedIndex + 1;
-            aptarnavimas.IsEnabled = false;
+            //vertinimai["Avitela"] += aptarnavimas.SelectedIndex + 1;
+            //vertinimai["Elektromarkt"] += aptarnavimas.SelectedIndex + 1;
+            //vertinimai["Pigu.lt"] += aptarnavimas.SelectedIndex + 1;
+            //balsai += aptarnavimas.SelectedIndex + 1;
+            //aptarnavimas.IsEnabled = false;
         }
 
         private void Kokybe(object sender, SelectionChangedEventArgs e)
         {
-            vertinimai["Avitela"] += kokybe.SelectedIndex + 1;
-            vertinimai["Elektromarkt"] += kokybe.SelectedIndex + 1;
-            vertinimai["Pigu.lt"] += kokybe.SelectedIndex + 1;
-            balsai += kokybe.SelectedIndex + 1;
-            kokybe.IsEnabled = false;
+            //vertinimai["Avitela"] += kokybe.SelectedIndex + 1;
+            //vertinimai["Elektromarkt"] += kokybe.SelectedIndex + 1;
+            //vertinimai["Pigu.lt"] += kokybe.SelectedIndex + 1;
+            //balsai += kokybe.SelectedIndex + 1;
+            //kokybe.IsEnabled = false;
         }
 
         private void Pristatymas(object sender, SelectionChangedEventArgs e)
         {
-            vertinimai["Avitela"] += pristatymas.SelectedIndex + 1;
-            vertinimai["Elektromarkt"] += pristatymas.SelectedIndex + 1;
-            vertinimai["Pigu.lt"] += pristatymas.SelectedIndex + 1;
-            balsai += pristatymas.SelectedIndex + 1;
-            pristatymas.IsEnabled = false;
+            //vertinimai["Avitela"] += pristatymas.SelectedIndex + 1;
+            //vertinimai["Elektromarkt"] += pristatymas.SelectedIndex + 1;
+            //vertinimai["Pigu.lt"] += pristatymas.SelectedIndex + 1;
+            //balsai += pristatymas.SelectedIndex + 1;
+            //pristatymas.IsEnabled = false;
         }
         private void Vertinti(object sender, RoutedEventArgs e)
         {
@@ -331,30 +331,30 @@ namespace Price_comparison_engine
 
         private void KeistiImg(double calc)
         {
-            if (calc < 0.5)
-            {
-                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/0.png", UriKind.Relative));
-            }
-            else if (calc < 1.5)
-            {
-                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/11.png", UriKind.Relative));
-            }
-            else if (calc < 2.5)
-            {
-                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/22.png", UriKind.Relative));
-            }
-            else if (calc < 3.5)
-            {
-                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/33.png", UriKind.Relative));
-            }
-            else if (calc < 4.5)
-            {
-                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/4.png", UriKind.Relative));
-            }
-            else
-            {
-                ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/5.png", UriKind.RelativeOrAbsolute));
-            }
+            //if (calc < 0.5)
+            //{
+            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/0.png", UriKind.Relative));
+            //}
+            //else if (calc < 1.5)
+            //{
+            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/11.png", UriKind.Relative));
+            //}
+            //else if (calc < 2.5)
+            //{
+            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/22.png", UriKind.Relative));
+            //}
+            //else if (calc < 3.5)
+            //{
+            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/33.png", UriKind.Relative));
+            //}
+            //else if (calc < 4.5)
+            //{
+            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/4.png", UriKind.Relative));
+            //}
+            //else
+            //{
+            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/5.png", UriKind.RelativeOrAbsolute));
+            //}
         }
         private void Atstatyti(double calc)
         {
