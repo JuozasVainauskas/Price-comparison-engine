@@ -69,9 +69,21 @@
             Foreground="white"
             FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti" Grid.Row="1"/>
         <Image x:Name="ParduotuvesImg" HorizontalAlignment="Left" Height="100" Margin="77,28,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/avitela.png"/>
-        <Image x:Name="AptarnavmasImg" HorizontalAlignment="Left" Margin="125,205,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/Star_0.png"/>
-        <Image x:Name="PrekiuKokybeImg" HorizontalAlignment="Left" Margin="125,18,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/Star_0.png" Grid.Row="1"/>
-        <Image x:Name="PristatymasImg" HorizontalAlignment="Left" Margin="125,51,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/Star_0.png" Grid.Row="1"/>
+        <Image x:Name="AptarnavmasImg0" HorizontalAlignment="Left" Width="18" Margin="125,202,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png"/>
+        <Image x:Name="PrekiuKokybeImg0" HorizontalAlignment="Left" Width="18" Margin="125,0,0,321" VerticalAlignment="Bottom" Source="Nuotraukos/Star_0.png" Grid.Row="1" RenderTransformOrigin="0.481,-0.458"/>
+        <Image x:Name="PristatymasImg0" HorizontalAlignment="Left" Width="18" Margin="125,47,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png" Grid.Row="1"/>
+        <Image x:Name="AptarnavmasImg1" HorizontalAlignment="Left" Width="18" Margin="150,202,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png"/>
+        <Image x:Name="PrekiuKokybeImg1" HorizontalAlignment="Left" Width="18" Margin="150,0,0,321" VerticalAlignment="Bottom" Source="Nuotraukos/Star_0.png" Grid.Row="1" RenderTransformOrigin="0.481,-0.458"/>
+        <Image x:Name="PristatymasImg1" HorizontalAlignment="Left" Width="18" Margin="150,47,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png" Grid.Row="1"/>
+        <Image x:Name="AptarnavmasImg2" HorizontalAlignment="Left" Width="18" Margin="175,202,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png"/>
+        <Image x:Name="PrekiuKokybeImg2" HorizontalAlignment="Left" Width="18" Margin="175,0,0,321" VerticalAlignment="Bottom" Source="Nuotraukos/Star_0.png" Grid.Row="1" RenderTransformOrigin="0.481,-0.458"/>
+        <Image x:Name="PristatymasImg2" HorizontalAlignment="Left" Width="18" Margin="175,47,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png" Grid.Row="1"/>
+        <Image x:Name="AptarnavmasImg3" HorizontalAlignment="Left" Width="18" Margin="200,202,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png"/>
+        <Image x:Name="PrekiuKokybeImg3" HorizontalAlignment="Left" Width="18" Margin="200,0,0,321" VerticalAlignment="Bottom" Source="Nuotraukos/Star_0.png" Grid.Row="1" RenderTransformOrigin="0.481,-0.458"/>
+        <Image x:Name="PristatymasImg3" HorizontalAlignment="Left" Width="18" Margin="200, 47,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png" Grid.Row="1"/>
+        <Image x:Name="AptarnavmasImg4" HorizontalAlignment="Left" Width="18" Margin="225,202,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png"/>
+        <Image x:Name="PrekiuKokybeImg4" HorizontalAlignment="Left" Width="18" Margin="225,0,0,321" VerticalAlignment="Bottom" Source="Nuotraukos/Star_0.png" Grid.Row="1" RenderTransformOrigin="0.481,-0.458"/>
+        <Image x:Name="PristatymasImg4" HorizontalAlignment="Left" Width="18" Margin="225,47,0,0" VerticalAlignment="Top" Source="Nuotraukos/Star_0.png" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="17,201,0,0" TextWrapping="Wrap" Text="Aptarnavimas" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="17,15,0,0" TextWrapping="Wrap" Text="Prekių kokybė" VerticalAlignment="Top" Width="76" Height="15" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="17,47,0,0" TextWrapping="Wrap" Text="Pristatymas" VerticalAlignment="Top" Grid.Row="1"/>

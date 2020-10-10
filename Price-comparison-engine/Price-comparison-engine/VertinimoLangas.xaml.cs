@@ -25,9 +25,6 @@ namespace Price_comparison_engine
         public VertinimoLangas()
         {
             InitializeComponent();
-            aptarnavimas.IsEnabled = false;
-            pristatymas.IsEnabled = false;
-            kokybe.IsEnabled = false;
         }
 
         class Komentaras
@@ -52,9 +49,6 @@ namespace Price_comparison_engine
         {
             if(parduotuve.SelectedIndex == 0)
             {
-                aptarnavimas.IsEnabled = true;
-                pristatymas.IsEnabled = true;
-                kokybe.IsEnabled = true;
                 tvarkytiDuomenis(0, listViewas, email, komentarai);
                 Skaityti("Avitela", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
@@ -66,9 +60,6 @@ namespace Price_comparison_engine
             }
             if (parduotuve.SelectedIndex == 1)
             {
-                aptarnavimas.IsEnabled = true;
-                pristatymas.IsEnabled = true;
-                kokybe.IsEnabled = true;
                 tvarkytiDuomenis(1, listViewas, email, komentarai);
                 Skaityti("Elektromarkt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
@@ -79,9 +70,6 @@ namespace Price_comparison_engine
             }
             if (parduotuve.SelectedIndex == 2)
             {
-                aptarnavimas.IsEnabled = true;
-                pristatymas.IsEnabled = true;
-                kokybe.IsEnabled = true;
                 tvarkytiDuomenis(2, listViewas, email, komentarai);
                 Skaityti("Pigu.lt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
@@ -146,13 +134,7 @@ namespace Price_comparison_engine
             else
             {
                 MessageBox.Show("Jau balsavote už šią parduotuvę!");
-                aptarnavimas.IsEnabled = true;
-                pristatymas.IsEnabled = true;
-                kokybe.IsEnabled = true;
                 parduotuve.IsEnabled = true;
-                aptarnavimas.SelectedIndex = -1;
-                kokybe.SelectedIndex = -1;
-                pristatymas.SelectedIndex = -1;
                 parduotuve.SelectedIndex = -1;
                 return;
             }
@@ -217,13 +199,7 @@ namespace Price_comparison_engine
             else
             {
                 MessageBox.Show("Jau esate palikęs atsiliepimą už šią parduotuvę!");
-                aptarnavimas.IsEnabled = true;
-                pristatymas.IsEnabled = true;
-                kokybe.IsEnabled = true;
                 parduotuve.IsEnabled = true;
-                aptarnavimas.SelectedIndex = -1;
-                kokybe.SelectedIndex = -1;
-                pristatymas.SelectedIndex = -1;
                 parduotuve.SelectedIndex = -1;
                 return;
             }
@@ -384,13 +360,7 @@ namespace Price_comparison_engine
         {
             ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
             KeistiImg(calc);
-            aptarnavimas.IsEnabled = true;
-            pristatymas.IsEnabled = true;
-            kokybe.IsEnabled = true;
             parduotuve.IsEnabled = true;
-            aptarnavimas.SelectedIndex = -1;
-            kokybe.SelectedIndex = -1;
-            pristatymas.SelectedIndex = -1;
             parduotuve.SelectedIndex = -1;
         }
 
