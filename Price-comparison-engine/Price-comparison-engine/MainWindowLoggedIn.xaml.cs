@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Price_comparison_engine.Klases;
 
 namespace Price_comparison_engine
 {
@@ -21,12 +23,26 @@ namespace Price_comparison_engine
     /// DataGridLoggedIn_Initialized
     public partial class MainWindowLoggedIn : Window
     {
+        public void DataDirectoryInitialize()
+        {
+            var enviroment = System.Environment.CurrentDirectory;
+            var projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
+            AppDomain.CurrentDomain.SetData("DataDirectory", projectDirectory);
+        }
         public MainWindowLoggedIn()
         {
             InitializeComponent();
             if(vartotojoRole.Equals("1"))
             {
                 administravimas.Visibility = Visibility.Visible;
+            }
+            DataDirectoryInitialize();
+            Skaityti(ref puslapioUrl, ref imgUrl);
+            if (puslapioUrl.Count >= 3 && imgUrl.Count >= 3)
+            {
+                img1.Source = new BitmapImage(new Uri(imgUrl[0], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(imgUrl[1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(imgUrl[2], UriKind.Absolute));
             }
         }
 
@@ -53,7 +69,76 @@ namespace Price_comparison_engine
             SlideShowResize(iKairePuse1, skirtumasIlgio, skirtumasIlgio);
             SlideShowResize(iDesinePuse1, skirtumasIlgio, skirtumasIlgio);*/
         }
+        private static List<string> puslapioUrl = new List<string>();
+        private static List<string> imgUrl = new List<string>();
 
+        public static int indexFront = 3;
+        public static int indexBack = 0;
+        public static int urlIndex = 0;
+
+        private void Slider_Back(object sender, MouseButtonEventArgs e)
+        {
+            if (indexBack > 0)
+            {
+                urlIndex--;
+                indexBack--;
+                indexFront--;
+                img1.Source = new BitmapImage(new Uri(imgUrl[indexBack], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(imgUrl[indexBack + 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(imgUrl[indexBack + 2], UriKind.Absolute));
+            }
+        }
+
+        private void Slider_Front(object sender, MouseButtonEventArgs e)
+        {
+            if (indexFront < puslapioUrl.Count - 1)
+            {
+                urlIndex++;
+                img1.Source = new BitmapImage(new Uri(imgUrl[indexFront - 2], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(imgUrl[indexFront - 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(imgUrl[indexFront], UriKind.Absolute));
+                indexFront++;
+                indexBack++;
+            }
+        }
+
+        private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (puslapioUrl.Count >= 3)
+            {
+                System.Diagnostics.Process.Start(puslapioUrl[urlIndex]);
+            }
+        }
+
+        private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (puslapioUrl.Count >= 3)
+            {
+                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 1]);
+            }
+        }
+
+        private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (puslapioUrl.Count >= 3)
+            {
+                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 2]);
+            }
+        }
+        private static void Skaityti(ref List<string> puslapioUrl, ref List<string> imgUrl)
+        {
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var tempPuslapioUrl = kontekstas.PuslapiuDuomenys.Select(column => column.PuslapioURL).ToList();
+                var tempImgUrl = kontekstas.PuslapiuDuomenys.Select(column => column.ImgURL).ToList();
+
+                if (tempPuslapioUrl != null && tempImgUrl != null)
+                {
+                    puslapioUrl = tempPuslapioUrl;
+                    imgUrl = tempImgUrl;
+                }
+            }
+        }
         private static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
         {
         }
@@ -92,33 +177,6 @@ namespace Price_comparison_engine
         public static int slideCounter_2 = 1;
         public static int slideCounter2_2 = 3;
 
-
-        private void Slider_Back2(object sender, MouseButtonEventArgs e)
-        {
-            if (slideCounter_2 > 3)
-            {
-                slideCounter_2 = 1;
-            }
-            img1_2.Source = img2_2.Source;
-            img2_2.Source = img3_2.Source;
-            img3_2.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter_2 + ".jpg", UriKind.RelativeOrAbsolute));
-            slideCounter2_2 = slideCounter_2;
-            slideCounter_2++;
-        }
-
-
-        private void Slider_Front2(object sender, MouseButtonEventArgs e)
-        {
-            if (slideCounter2_2 <= 0)
-            {
-                slideCounter2_2 = 3;
-            }
-            img3_2.Source = img2_2.Source;
-            img2_2.Source = img1_2.Source;
-            img1_2.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter2_2 + ".jpg", UriKind.RelativeOrAbsolute));
-            slideCounter_2 = slideCounter2_2;
-            slideCounter2_2--;
-        }
 
         private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {

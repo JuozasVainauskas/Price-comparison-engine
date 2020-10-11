@@ -78,14 +78,14 @@
         </Rectangle>
         <TextBlock HorizontalAlignment="Center" Margin="434,164,232,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="24"><Run Text=" "/><Run Text="Išsaugotos prekės:"/></TextBlock>
         <TextBlock HorizontalAlignment="Center" Margin="15,164,634,381" TextWrapping="Wrap" VerticalAlignment="Center" RenderTransformOrigin="0.467,3.632" Width="143" Height="24"><Run Text=" "/><Run Text="Populiariausios prekės:"/></TextBlock>
-        <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,100,33,0" VerticalAlignment="Top" Width="144" Height="56"
+        <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,82,28,0" VerticalAlignment="Top" Width="144" Height="56"
             Background="#FF0FA943"
             Foreground="#e6f3ff"
             FontFamily="Cooper Black" Style="{DynamicResource ButtonRounded}" FontSize="24" Click="Ieškoti_Click"
                 />
-        <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False"/>
-        <Image x:Name="img1_2" Height="49" Margin="53,0,0,89" VerticalAlignment="Bottom" Source="Nuotraukos/1.jpg" HorizontalAlignment="Left" Width="64" RenderTransformOrigin="0.66,0.745"/>
-        <Image x:Name="iKairePuse1" HorizontalAlignment="Left" Height="45" Margin="16,0,0,-4" VerticalAlignment="Bottom" Width="47" Source="Nuotraukos/back.png" MouseDown="Slider_Back2" RenderTransformOrigin="0.518,-0.309">
+        <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False"/>
+
+        <Image x:Name="iKairePuse1" HorizontalAlignment="Left" Height="70" Margin="3,0,0,-22" VerticalAlignment="Bottom" Width="60" Source="Nuotraukos/back.png" MouseDown="Slider_Front" RenderTransformOrigin="0.518,-0.309">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -95,18 +95,8 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="img2_2" HorizontalAlignment="Center" Height="54" Margin="50,0,683,169" VerticalAlignment="Bottom" Width="59" Source="Nuotraukos/2.jpg" RenderTransformOrigin="0.949,0.556">
-            <Image.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.235"/>
-                    <TranslateTransform X="0.012" Y="-0.107"/>
-                </TransformGroup>
-            </Image.RenderTransform>
-        </Image>
-        <Image x:Name="img3_2" HorizontalAlignment="Right" Height="63" Margin="0,0,690,249" VerticalAlignment="Bottom" Width="64" Source="Nuotraukos/3.jpg" RenderTransformOrigin="0.281,0.429"/>
-        <Image x:Name="iDesinePuse1" HorizontalAlignment="Right" Height="47" Margin="0,0,708,310" VerticalAlignment="Bottom" Width="48" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front2">
+
+        <Image x:Name="iDesinePuse1" HorizontalAlignment="Right" Height="70" Margin="0,0,705,303" VerticalAlignment="Bottom" Width="60" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Back">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -164,6 +154,9 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="VertinimoMygtukas" Content="Įvertinti pardavėją" HorizontalAlignment="Left" Margin="673,162,0,0" VerticalAlignment="Top" Width="119" Click="Button_Click"/>
+        <Image x:Name="img1" Height="60" Margin="41,0,680,90" VerticalAlignment="Bottom" Source="no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Center" Width="71" RenderTransformOrigin="0.507,0.283"/>
+        <Image x:Name="img2" HorizontalAlignment="Center" Height="60" Margin="41,0,680,169" VerticalAlignment="Bottom" Width="71" Source="no_product.jpg" MouseDown="Img2_MouseDown"/>
+        <Image x:Name="img3" HorizontalAlignment="Center" Height="60" Margin="41,0,680,252" VerticalAlignment="Bottom" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img3_MouseDown" RenderTransformOrigin="1.036,0.279"/>
 
     </Grid>
 </Window>
