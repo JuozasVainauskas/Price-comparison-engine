@@ -412,8 +412,11 @@ namespace Price_comparison_engine
         {
             var imgBool = false;
             var ct = button.Template;
-            var btnImageName = ct.FindName(imgSrc, button).ToString();
-            if (btnImageName.Equals(imgToChangeSrc))
+            var btnImage = (Image)ct.FindName(imgSrc, button);
+            var btnImageSrc = btnImage.Source.ToString();
+            btnImageSrc =  btnImageSrc.Substring(Math.Max(0, btnImageSrc.Length-imgToChangeSrc.Length));
+
+            if (btnImageSrc.Equals(imgToChangeSrc))
             {
                 imgBool = true;
             }
@@ -423,12 +426,19 @@ namespace Price_comparison_engine
         private void AptarnavimasStar1(object sender, RoutedEventArgs e)
         {
             ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
         }
 
         private void AptarnavimasStar2(object sender, RoutedEventArgs e)
         {
             ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
         }
 
         private void AptarnavimasStar3(object sender, RoutedEventArgs e)
@@ -436,6 +446,8 @@ namespace Price_comparison_engine
             ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
         }
 
         private void AptarnavimasStar4(object sender, RoutedEventArgs e)
@@ -444,6 +456,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
         }
 
         private void AptarnavimasStar5(object sender, RoutedEventArgs e)
@@ -458,12 +471,19 @@ namespace Price_comparison_engine
         private void PrekiuKokybeStar1(object sender, RoutedEventArgs e)
         {
             ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
         }
 
         private void PrekiuKokybeStar2(object sender, RoutedEventArgs e)
         {
             ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
         }
 
         private void PrekiuKokybeStar3(object sender, RoutedEventArgs e)
@@ -471,6 +491,8 @@ namespace Price_comparison_engine
             ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
         }
 
         private void PrekiuKokybeStar4(object sender, RoutedEventArgs e)
@@ -479,6 +501,7 @@ namespace Price_comparison_engine
             ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
         }
 
         private void PrekiuKokybeStar5(object sender, RoutedEventArgs e)
@@ -493,12 +516,19 @@ namespace Price_comparison_engine
         private void PristatymasStar1(object sender, RoutedEventArgs e)
         {
             ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
         }
 
         private void PristatymasStar2(object sender, RoutedEventArgs e)
         {
             ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
         }
 
         private void PristatymasStar3(object sender, RoutedEventArgs e)
@@ -506,6 +536,8 @@ namespace Price_comparison_engine
             ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
         }
 
         private void PristatymasStar4(object sender, RoutedEventArgs e)
@@ -514,6 +546,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
         }
 
         private void PristatymasStar5(object sender, RoutedEventArgs e)
@@ -535,7 +568,10 @@ namespace Price_comparison_engine
 
         private void AptarnavimasImg1_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+            if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+            }
         }
     }
 }
