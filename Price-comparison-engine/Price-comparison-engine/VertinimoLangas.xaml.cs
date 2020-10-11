@@ -38,6 +38,13 @@ namespace Price_comparison_engine
         private static List<string> komentarai = new List<string>();
         private static List<string> email = new List<string>();
 
+        private static Dictionary<string, int> rating = new Dictionary<string, int>()
+        {
+            {"Aptarnavimas", 0},
+            {"PrekiuKokybe", 0},
+            {"Pristatymas", 0}
+        };
+
         private static Dictionary<string, double> vertinimai = new Dictionary<string, double>()
         {
             {"Avitela", 0},
@@ -53,7 +60,6 @@ namespace Price_comparison_engine
                 Skaityti("Avitela", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
-                KeistiImg(calc);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
 
                 parduotuve.IsEnabled = false;
@@ -64,7 +70,6 @@ namespace Price_comparison_engine
                 Skaityti("Elektromarkt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
-                KeistiImg(calc);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
             }
@@ -74,85 +79,72 @@ namespace Price_comparison_engine
                 Skaityti("Pigu.lt", PrisijungimoLangas.email, ref balsuIndex, ref balsai, ref balsavusiuSk);
                 ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = balsai / (3 * balsavusiuSk);
-                KeistiImg(calc);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
             }
         }
-        private void Aptarnavimas(object sender, SelectionChangedEventArgs e)
-        {
-            //vertinimai["Avitela"] += aptarnavimas.SelectedIndex + 1;
-            //vertinimai["Elektromarkt"] += aptarnavimas.SelectedIndex + 1;
-            //vertinimai["Pigu.lt"] += aptarnavimas.SelectedIndex + 1;
-            //balsai += aptarnavimas.SelectedIndex + 1;
-            //aptarnavimas.IsEnabled = false;
-        }
 
-        private void Kokybe(object sender, SelectionChangedEventArgs e)
-        {
-            //vertinimai["Avitela"] += kokybe.SelectedIndex + 1;
-            //vertinimai["Elektromarkt"] += kokybe.SelectedIndex + 1;
-            //vertinimai["Pigu.lt"] += kokybe.SelectedIndex + 1;
-            //balsai += kokybe.SelectedIndex + 1;
-            //kokybe.IsEnabled = false;
-        }
-
-        private void Pristatymas(object sender, SelectionChangedEventArgs e)
-        {
-            //vertinimai["Avitela"] += pristatymas.SelectedIndex + 1;
-            //vertinimai["Elektromarkt"] += pristatymas.SelectedIndex + 1;
-            //vertinimai["Pigu.lt"] += pristatymas.SelectedIndex + 1;
-            //balsai += pristatymas.SelectedIndex + 1;
-            //pristatymas.IsEnabled = false;
-        }
         private void Vertinti(object sender, RoutedEventArgs e)
         {
-            if (parduotuve.SelectedIndex == 0 && !balsuIndex.Contains("_0"))
+            if (rating["Aptarnavimas"] == 0 || rating["PrekiuKokybe"] == 0 || rating["Pristatymas"] == 0)
             {
-                balsavusiuSk++;
-                var calc = balsai / (3 * balsavusiuSk);
-                balsuIndex += "_0";
-                Rasyti("Avitela",balsuIndex,PrisijungimoLangas.email, balsai, balsavusiuSk);
-                Atstatyti(calc);
-            }
-            else if (parduotuve.SelectedIndex == 1 && !balsuIndex.Contains("_1"))
-            {
-                balsavusiuSk++;
-                var calc = balsai / (3 * balsavusiuSk);
-                balsuIndex += "_1";
-               Rasyti("Elektromarkt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
-                Atstatyti(calc);
-            }
-            else if (parduotuve.SelectedIndex == 2 && !balsuIndex.Contains("_2"))
-            {
-                balsavusiuSk++;
-                var calc = balsai / (3 * balsavusiuSk);
-                balsuIndex += "_2";
-                Rasyti("Pigu.lt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
-                Atstatyti(calc);
+                MessageBox.Show("Turite pažymėti vertinimą prie visų kriterijų.");
             }
             else
             {
-                MessageBox.Show("Jau balsavote už šią parduotuvę!");
-                parduotuve.IsEnabled = true;
-                parduotuve.SelectedIndex = -1;
+                if (parduotuve.SelectedIndex == 0 && !balsuIndex.Contains("_0"))
+                {
+                    balsavusiuSk++;
+                    balsai += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    var calc = balsai / (3 * balsavusiuSk);
+                    balsuIndex += "_0";
+                    Rasyti("Avitela", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
+                    Atstatyti(calc);
+                }
+                else if (parduotuve.SelectedIndex == 1 && !balsuIndex.Contains("_1"))
+                {
+                    balsavusiuSk++;
+                    balsai += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    var calc = balsai / (3 * balsavusiuSk);
+                    balsuIndex += "_1";
+                    Rasyti("Elektromarkt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
+                    Atstatyti(calc);
+                }
+                else if (parduotuve.SelectedIndex == 2 && !balsuIndex.Contains("_2"))
+                {
+                    balsavusiuSk++;
+                    balsai += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    var calc = balsai / (3 * balsavusiuSk);
+                    balsuIndex += "_2";
+                    Rasyti("Pigu.lt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
+                    Atstatyti(calc);
+                }
+                else
+                {
+                    MessageBox.Show("Jau balsavote už šią parduotuvę!");
+                    parduotuve.IsEnabled = true;
+                    parduotuve.SelectedIndex = -1;
+                }
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+                rating["Aptarnavimas"] = 0;
+                rating["PrekiuKokybe"] = 0;
+                rating["Pristatymas"] = 0;
             }
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
-            }
+        }
 
         private void Siusti(object sender, RoutedEventArgs e)
         {
@@ -343,37 +335,9 @@ namespace Price_comparison_engine
             }
         }
 
-        private void KeistiImg(double calc)
-        {
-            //if (calc < 0.5)
-            //{
-            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/0.png", UriKind.Relative));
-            //}
-            //else if (calc < 1.5)
-            //{
-            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/11.png", UriKind.Relative));
-            //}
-            //else if (calc < 2.5)
-            //{
-            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/22.png", UriKind.Relative));
-            //}
-            //else if (calc < 3.5)
-            //{
-            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/33.png", UriKind.Relative));
-            //}
-            //else if (calc < 4.5)
-            //{
-            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/4.png", UriKind.Relative));
-            //}
-            //else
-            //{
-            //    ivertinimoImg.Source = new BitmapImage(new Uri("Nuotraukos/5.png", UriKind.RelativeOrAbsolute));
-            //}
-        }
         private void Atstatyti(double calc)
         {
             ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-            KeistiImg(calc);
             parduotuve.IsEnabled = true;
             parduotuve.SelectedIndex = -1;
         }
@@ -406,8 +370,8 @@ namespace Price_comparison_engine
             var ct = button.Template;
             var btnImage = (Image)ct.FindName(imgSrc, button);
             btnImage.Source = new BitmapImage(new Uri(imgToChangeSrc, UriKind.RelativeOrAbsolute));
-
         }
+
         private bool CheckImgSource(Button button, string imgSrc)
         {
             var imgBool = false;
@@ -424,8 +388,8 @@ namespace Price_comparison_engine
                 imgBool = true;
             }
             return imgBool;
-
         }
+
         private void AptarnavimasStar1(object sender, RoutedEventArgs e)
         {
             ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
@@ -433,6 +397,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
             ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
             ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            rating["Aptarnavimas"] = 1;
         }
 
         private void AptarnavimasStar2(object sender, RoutedEventArgs e)
@@ -442,6 +407,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
             ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
             ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            rating["Aptarnavimas"] = 2;
         }
 
         private void AptarnavimasStar3(object sender, RoutedEventArgs e)
@@ -451,6 +417,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
             ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            rating["Aptarnavimas"] = 3;
         }
 
         private void AptarnavimasStar4(object sender, RoutedEventArgs e)
@@ -460,6 +427,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            rating["Aptarnavimas"] = 4;
         }
 
         private void AptarnavimasStar5(object sender, RoutedEventArgs e)
@@ -469,6 +437,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_1.png");
             ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_1.png");
+            rating["Aptarnavimas"] = 5;
         }
 
         private void PrekiuKokybeStar1(object sender, RoutedEventArgs e)
@@ -478,6 +447,7 @@ namespace Price_comparison_engine
             ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
             ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
             ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            rating["PrekiuKokybe"] = 1;
         }
 
         private void PrekiuKokybeStar2(object sender, RoutedEventArgs e)
@@ -487,6 +457,7 @@ namespace Price_comparison_engine
             ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
             ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
             ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            rating["PrekiuKokybe"] = 2;
         }
 
         private void PrekiuKokybeStar3(object sender, RoutedEventArgs e)
@@ -496,6 +467,7 @@ namespace Price_comparison_engine
             ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
             ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            rating["PrekiuKokybe"] = 3;
         }
 
         private void PrekiuKokybeStar4(object sender, RoutedEventArgs e)
@@ -505,6 +477,7 @@ namespace Price_comparison_engine
             ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            rating["PrekiuKokybe"] = 4;
         }
 
         private void PrekiuKokybeStar5(object sender, RoutedEventArgs e)
@@ -514,6 +487,7 @@ namespace Price_comparison_engine
             ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_1.png");
             ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_1.png");
+            rating["PrekiuKokybe"] = 5;
         }
 
         private void PristatymasStar1(object sender, RoutedEventArgs e)
@@ -523,6 +497,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
             ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
             ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+            rating["Pristatymas"] = 1;
         }
 
         private void PristatymasStar2(object sender, RoutedEventArgs e)
@@ -532,6 +507,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
             ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
             ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+            rating["Pristatymas"] = 2;
         }
 
         private void PristatymasStar3(object sender, RoutedEventArgs e)
@@ -541,6 +517,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
             ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+            rating["Pristatymas"] = 3;
         }
 
         private void PristatymasStar4(object sender, RoutedEventArgs e)
@@ -550,6 +527,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+            rating["Pristatymas"] = 4;
         }
 
         private void PristatymasStar5(object sender, RoutedEventArgs e)
@@ -559,6 +537,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_1.png");
             ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_1.png");
+            rating["Pristatymas"] = 5;
         }
 
         private void AptarnavimasImg1_OnMouseEnter(object sender, MouseEventArgs e)
