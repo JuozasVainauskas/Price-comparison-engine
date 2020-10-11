@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,7 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
+    /// DataGridLoggedIn_Initialized
     public partial class MainWindowLoggedIn : Window
     {
         public MainWindowLoggedIn()
@@ -32,7 +34,7 @@ namespace Price_comparison_engine
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var skirtumasPlocio = this.ActualWidth / 1.2;
+           /* var skirtumasPlocio = this.ActualWidth / 1.2;
             var skirtumasIlgio = this.ActualHeight / 1.1;
             var skirtumasPlocioBlokeliui = this.ActualHeight / 1.05;
             var skirtumasPlocioNuotraukai = this.ActualWidth / 1.2;
@@ -45,16 +47,15 @@ namespace Price_comparison_engine
             RectangleIštempimas(vidurinėLinija2);
             //RectangleResize(vidurinėLinija2, skirtumasPlocioBlokeliui);
             RectangleIštempimas(apatinėLinija);
-            SlideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
             SlideShowResize(img1_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
             SlideShowResize(img2_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
             SlideShowResize(img3_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(iKairePuse, skirtumasIlgio, skirtumasIlgio);
-            SlideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
             SlideShowResize(iKairePuse1, skirtumasIlgio, skirtumasIlgio);
-            SlideShowResize(iDesinePuse1, skirtumasIlgio, skirtumasIlgio);
+            SlideShowResize(iDesinePuse1, skirtumasIlgio, skirtumasIlgio);*/
+        }
+
+        private static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
+        {
         }
 
         private void RectangleResize(Rectangle plotelis, double ilgis)
@@ -90,32 +91,7 @@ namespace Price_comparison_engine
         public static int slideCounter2 = 3;
         public static int slideCounter_2 = 1;
         public static int slideCounter2_2 = 3;
-        private void Slider_Back(object sender, MouseButtonEventArgs e)
-        {
-            if (slideCounter > 3)
-            {
-                slideCounter = 1;
-            }
-            img1.Source = img2.Source;
-            img2.Source = img3.Source;
-            img3.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter + ".jpg", UriKind.RelativeOrAbsolute));
-            slideCounter2 = slideCounter;
-            slideCounter++;
-        }
 
-        private void Slider_Front(object sender, MouseButtonEventArgs e)
-        {
-            if (slideCounter2 <= 0)
-            {
-                slideCounter2 = 3;
-            }
-            img3.Source = img2.Source;
-            img2.Source = img1.Source;
-            img1.Source = new BitmapImage(new Uri("Nuotraukos/" + slideCounter2 + ".jpg", UriKind.RelativeOrAbsolute));
-            slideCounter = slideCounter2;
-            slideCounter2--;
-        }
-        
 
         private void Slider_Back2(object sender, MouseButtonEventArgs e)
         {
@@ -163,6 +139,36 @@ namespace Price_comparison_engine
         {
                 var adminLangoAtidarymas = new Admin();
                 adminLangoAtidarymas.Show();
+        }
+
+        private void DataGridas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+        private void ImageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var name = (((Image)sender).DataContext as Item)?.Name;
+            var langas = new KonkretiPreke(name);
+            langas.Show();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var vertinimoLangoAtidarymas = new VertinimoLangas();
+            vertinimoLangoAtidarymas.Show();
+        }
+
+        private void LinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            var link = (((Button)sender).DataContext as Item)?.Link;
+            if (link != null) Process.Start(link);
+        }
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void DataGridLoggedIn_Initialized(object sender, EventArgs e)
+        {
+            GetHtmlAssync(DataGridLoggedIn);
         }
     }
 }
