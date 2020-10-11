@@ -9,6 +9,7 @@
 - [x] Register/login forms
 - [x] Search field
 - [x] FAQ
+- [x] Admin panel
 - [x] Contacts -> *Needs an update*
 - [x] Searched products' list/Interface
 - [x] Slideshow
@@ -20,6 +21,7 @@
 **Back-End**
 - [x] Gather data from online shop websites
 - [x] Compare the gathered data
+- [x] Admin panel
 - [x] Password hashing/encryption
 - [x] Register and login forms' error catching
 - [x] Email confirm and password reset
