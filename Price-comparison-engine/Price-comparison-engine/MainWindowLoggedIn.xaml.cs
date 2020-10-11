@@ -50,24 +50,33 @@ namespace Price_comparison_engine
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-           /* var skirtumasPlocio = this.ActualWidth / 1.2;
-            var skirtumasIlgio = this.ActualHeight / 1.1;
-            var skirtumasPlocioBlokeliui = this.ActualHeight / 1.05;
-            var skirtumasPlocioNuotraukai = this.ActualWidth / 1.2;
-            var skirtumasIlgioNuotraukai = this.ActualHeight / 1.2;
-            MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
-            TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
-            RectangleIštempimas(viršutinėlinija);
-            RectangleIštempimas(vidurinėLinija);
-            //RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
-            RectangleIštempimas(vidurinėLinija2);
-            //RectangleResize(vidurinėLinija2, skirtumasPlocioBlokeliui);
+            /* var skirtumasPlocio = this.ActualWidth / 1.2;
+             var skirtumasIlgio = this.ActualHeight / 1.1;
+             var skirtumasPlocioBlokeliui = this.ActualHeight / 1.05;
+             var skirtumasPlocioNuotraukai = this.ActualWidth / 1.2;
+             var skirtumasIlgioNuotraukai = this.ActualHeight / 1.2;
+             MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
+             TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
+             RectangleIštempimas(viršutinėlinija);
+             RectangleIštempimas(vidurinėLinija);
+             //RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
+             RectangleIštempimas(vidurinėLinija2);
+             //RectangleResize(vidurinėLinija2, skirtumasPlocioBlokeliui);
+             RectangleIštempimas(apatinėLinija);
+             SlideShowResize(img1_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+             SlideShowResize(img2_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+             SlideShowResize(img3_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+             SlideShowResize(iKairePuse1, skirtumasIlgio, skirtumasIlgio);
+             SlideShowResize(iDesinePuse1, skirtumasIlgio, skirtumasIlgio);*/
+            var skirtumasPlocioNuotraukai = this.ActualWidth / 1.1;
+            var skirtumasIlgioNuotraukai = this.ActualHeight / 1.1;
+            var skirtumasPlocio = this.ActualWidth / 1.2;
+            TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3);
+            viršutinėlinija.Width = this.ActualWidth;
             RectangleIštempimas(apatinėLinija);
-            SlideShowResize(img1_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(img2_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(img3_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-            SlideShowResize(iKairePuse1, skirtumasIlgio, skirtumasIlgio);
-            SlideShowResize(iDesinePuse1, skirtumasIlgio, skirtumasIlgio);*/
+            SlideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
         }
         private static List<string> puslapioUrl = new List<string>();
         private static List<string> imgUrl = new List<string>();
@@ -154,10 +163,9 @@ namespace Price_comparison_engine
             mygtukas.Height = this.ActualHeight - ilgis;
         }
 
-        private void TextBoxResize(TextBox tekstBoksas, double plotis, double ilgis)
+        private void TextBoxResize(TextBox tekstBoksas, double plotis)
         {
             tekstBoksas.Width = this.ActualWidth - plotis;
-            tekstBoksas.Height = this.ActualHeight - ilgis;
         }
 
         private void RectangleIštempimas(Rectangle plotelis)
