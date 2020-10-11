@@ -61,23 +61,12 @@
     </Window.Resources>
     <Grid>
 
-        <Rectangle x:Name="viršutinėlinija" Fill="#FF0FA943" HorizontalAlignment="Left" Height="52" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
+        <Rectangle x:Name="viršutinėlinija" Fill="#FF0FA943" HorizontalAlignment="Center" Height="52" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
         <Rectangle x:Name="apatinėLinija" Fill="#FF0FA943" HorizontalAlignment="Left" Height="27.08" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Bottom" Width="794"/>
         <TextBlock HorizontalAlignment="Center" Margin="291.052,0,138.948,3.12" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="362" Foreground="#FFF9F9F9" Height="18.96"><Run Text=" "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <TextBlock HorizontalAlignment="Center" Height="42" Margin="291.052,10,250.578,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250.37" FontSize="24" FontFamily="Cooper Black"><Run Text=" "/><Run Text="Sveiki prisijung"/><Run Text="ę!"/></TextBlock>
-        <Rectangle x:Name="vidurinėLinija2" Fill="#FF0FA943" HorizontalAlignment="Center" Height="27" Margin="0,161,0,381" Stroke="Black" Width="792" VerticalAlignment="Center" MinWidth="0" MinHeight="0"/>
-        <Rectangle x:Name="vidurinėLinija" Fill="#FF0FA943" HorizontalAlignment="Center" Height="16" Margin="-33,344,443,0" Stroke="Black" VerticalAlignment="Top" Width="382" RenderTransformOrigin="0.5,0.5">
-            <Rectangle.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90.263"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Rectangle.RenderTransform>
-        </Rectangle>
         <TextBlock HorizontalAlignment="Center" Margin="434,164,232,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="24"><Run Text=" "/><Run Text="Išsaugotos prekės:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Center" Margin="15,164,634,381" TextWrapping="Wrap" VerticalAlignment="Center" RenderTransformOrigin="0.467,3.632" Width="143" Height="24"><Run Text=" "/><Run Text="Populiariausios prekės:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="15,164,634,381" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.467,3.632" Width="143" Height="24"><Run Text=" "/><Run Text="Populiariausios prekės:"/></TextBlock>
         <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,82,28,0" VerticalAlignment="Top" Width="144" Height="56"
             Background="#FF0FA943"
             Foreground="#e6f3ff"
@@ -85,7 +74,7 @@
                 />
         <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False"/>
 
-        <Image x:Name="iKairePuse1" HorizontalAlignment="Left" Height="70" Margin="3,0,0,-22" VerticalAlignment="Bottom" Width="60" Source="Nuotraukos/back.png" MouseDown="Slider_Front" RenderTransformOrigin="0.518,-0.309">
+        <Image x:Name="iKairePuse1" HorizontalAlignment="Left" Height="70" Margin="6,0,0,-22" VerticalAlignment="Bottom" Width="60" Source="Nuotraukos/back.png" MouseDown="Slider_Front" RenderTransformOrigin="0.518,-0.309">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -96,7 +85,7 @@
             </Image.RenderTransform>
         </Image>
 
-        <Image x:Name="iDesinePuse1" HorizontalAlignment="Right" Height="70" Margin="0,0,705,303" VerticalAlignment="Bottom" Width="60" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Back">
+        <Image x:Name="iDesinePuse1" HorizontalAlignment="Left" Height="70" Margin="27,215,0,0" VerticalAlignment="Top" Width="60" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Back">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -153,13 +142,10 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="VertinimoMygtukas" Content="Įvertinti pardavėją" HorizontalAlignment="Left" Height="40" Margin="159,7,0,0" VerticalAlignment="Top" Width="122" Click="VertintiClick"
-                Background="#87c1ff"
-                Foreground="White"
-                FontFamily="Arial" Style="{DynamicResource ButtonRounded}"/>
-        <Image x:Name="img1" Height="60" Margin="41,0,680,90" VerticalAlignment="Bottom" Source="no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Center" Width="71" RenderTransformOrigin="0.507,0.283"/>
-        <Image x:Name="img2" HorizontalAlignment="Center" Height="60" Margin="41,0,680,169" VerticalAlignment="Bottom" Width="71" Source="no_product.jpg" MouseDown="Img2_MouseDown"/>
-        <Image x:Name="img3" HorizontalAlignment="Center" Height="60" Margin="41,0,680,252" VerticalAlignment="Bottom" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img3_MouseDown" RenderTransformOrigin="1.036,0.279"/>
+        <Button x:Name="VertinimoMygtukas" Content="Įvertinti pardavėją" HorizontalAlignment="Right" Margin="673,162,0,0" VerticalAlignment="Top" Width="119" Click="Button_Click"/>
+        <Image x:Name="img1" Height="60" Margin="55,0,0,90" VerticalAlignment="Bottom" Source="no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Left" Width="71" RenderTransformOrigin="0.507,0.283"/>
+        <Image x:Name="img2" HorizontalAlignment="Left" Height="60" Margin="55,324,0,185" VerticalAlignment="Center" Width="71" Source="no_product.jpg" MouseDown="Img2_MouseDown"/>
+        <Image x:Name="img3" HorizontalAlignment="Left" Height="60" Margin="55,259,0,0" VerticalAlignment="Top" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img3_MouseDown" RenderTransformOrigin="1.036,0.279"/>
 
     </Grid>
 </Window>
