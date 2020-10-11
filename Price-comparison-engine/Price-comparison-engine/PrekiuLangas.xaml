@@ -44,7 +44,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="VertinimoMygtukas" Content="Įvertinti pardavėją" HorizontalAlignment="Left" Margin="207,49,0,0" VerticalAlignment="Top" Width="119" Click="Button_Click"/>
         <WrapPanel x:Name="wrapPanel1" HorizontalAlignment="Left" Height="100" Margin="207,88,0,0" VerticalAlignment="Top" Width="100"/>
     </Grid>
 </Window>

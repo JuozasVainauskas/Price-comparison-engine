@@ -45,14 +45,10 @@ namespace Price_comparison_engine
 
             if (string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
             {
-                VertinimoMygtukas.IsEnabled = false;
-                VertinimoMygtukas.Visibility = Visibility.Collapsed;
                 DataGridas.Columns[5].Visibility = Visibility.Collapsed;
             }
             else
             {
-                VertinimoMygtukas.IsEnabled = true;
-                VertinimoMygtukas.Visibility = Visibility.Visible;
                 DataGridas.Columns[5].Visibility = Visibility.Visible;
                 LoggedIn = 1;
             }

@@ -32,7 +32,17 @@ namespace Price_comparison_engine
         public MainWindowLoggedIn()
         {
             InitializeComponent();
-            if(vartotojoRole.Equals("1"))
+            if (string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
+            {
+                VertinimoMygtukas.IsEnabled = false;
+                VertinimoMygtukas.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                VertinimoMygtukas.IsEnabled = true;
+                VertinimoMygtukas.Visibility = Visibility.Visible;
+            }
+            if (vartotojoRole.Equals("1"))
             {
                 administravimas.Visibility = Visibility.Visible;
             }
@@ -209,7 +219,7 @@ namespace Price_comparison_engine
             var langas = new KonkretiPreke(name);
             langas.Show();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void VertintiClick(object sender, RoutedEventArgs e)
         {
             var vertinimoLangoAtidarymas = new VertinimoLangas();
             vertinimoLangoAtidarymas.Show();
