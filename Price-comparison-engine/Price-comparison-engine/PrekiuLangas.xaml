@@ -27,7 +27,17 @@
                         <DataTemplate>
                             <Button x:Name="linkButton" Background="#FF36B04D" ContentStringFormat="" Click="LinkButton_Click">
                                 <Hyperlink NavigateUri="{Binding Link}">
+                                    <TextBlock><Bold>Eiti</Bold></TextBlock>
                                 </Hyperlink>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Išsaugoti">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="saveButton" Background="#FF36B04D" ContentStringFormat="" Click="saveButton_Click">
+                                <TextBlock><Bold>Išsaugoti</Bold></TextBlock>
                             </Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
