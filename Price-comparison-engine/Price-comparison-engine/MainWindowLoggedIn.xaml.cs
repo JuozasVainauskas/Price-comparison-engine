@@ -22,13 +22,13 @@ namespace Price_comparison_engine
         public MainWindowLoggedIn()
         {
             InitializeComponent();
-            if(vartotojoRole == 1)
+            if(vartotojoRole.Equals("1"))
             {
                 administravimas.Visibility = Visibility.Visible;
             }
         }
 
-        private static readonly int vartotojoRole = PrisijungimoLangas.Role;
+        private static readonly string vartotojoRole = PrisijungimoLangas.Role;
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -146,6 +146,7 @@ namespace Price_comparison_engine
 
         private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {
+            PrisijungimoLangas.email = "";
             var pagrindinisLangas = new MainWindow();
             pagrindinisLangas.Show();
             this.Close();
