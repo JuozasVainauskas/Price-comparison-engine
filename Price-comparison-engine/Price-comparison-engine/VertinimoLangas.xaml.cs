@@ -408,12 +408,15 @@ namespace Price_comparison_engine
             btnImage.Source = new BitmapImage(new Uri(imgToChangeSrc, UriKind.RelativeOrAbsolute));
 
         }
-        private bool CheckImgSource(Button button, string imgSrc, string imgToChangeSrc)
+        private bool CheckImgSource(Button button, string imgSrc)
         {
             var imgBool = false;
+            var imgToChangeSrc = "Nuotraukos/Star_1.png";
+
             var ct = button.Template;
             var btnImage = (Image)ct.FindName(imgSrc, button);
             var btnImageSrc = btnImage.Source.ToString();
+
             btnImageSrc =  btnImageSrc.Substring(Math.Max(0, btnImageSrc.Length-imgToChangeSrc.Length));
 
             if (btnImageSrc.Equals(imgToChangeSrc))
@@ -560,7 +563,7 @@ namespace Price_comparison_engine
 
         private void AptarnavimasImg1_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png"))
+            if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
                 ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
             }
@@ -568,9 +571,293 @@ namespace Price_comparison_engine
 
         private void AptarnavimasImg1_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png"))
+            if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
                 ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void AptarnavimasImg2_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void AptarnavimasImg2_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void AptarnavimasImg3_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void AptarnavimasImg3_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void AptarnavimasImg4_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void AptarnavimasImg4_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void AptarnavimasImg5_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Aptarnavimas5, "AptarnavimasImg5") && !CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void AptarnavimasImg5_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Aptarnavimas5, "AptarnavimasImg5") && !CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            {
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void PrekiuKokybeImg1_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PrekiuKokybeImg1_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void PrekiuKokybeImg2_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PrekiuKokybeImg2_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void PrekiuKokybeImg3_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PrekiuKokybeImg3_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void PrekiuKokybeImg4_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PrekiuKokybeImg4_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void PrekiuKokybeImg5_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe5, "PrekiuKokybeImg5") && !CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PrekiuKokybeImg5_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(PrekiuKokybe5, "PrekiuKokybeImg5") && !CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            {
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void PristatymasImg1_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PristatymasImg1_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
+            }
+        }
+        
+        private void PristatymasImg2_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PristatymasImg2_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void PristatymasImg3_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PristatymasImg3_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void PristatymasImg4_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PristatymasImg4_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
+            }
+        }
+
+        private void PristatymasImg5_OnMouseEnter(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas5, "PristatymasImg5") && !CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_2.png");
+            }
+        }
+
+        private void PristatymasImg5_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            if (!CheckImgSource(Pristatymas5, "PristatymasImg5") && !CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            {
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
             }
         }
     }
