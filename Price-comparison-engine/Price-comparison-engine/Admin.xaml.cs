@@ -26,6 +26,16 @@ namespace Price_comparison_engine
         public Admin()
         {
             InitializeComponent();
+            AtnaujintiStatistika();
+        }
+
+        private void AtnaujintiStatistika()
+        {
+            List<int> ls = Skaiciuoti();
+            RegisteredUsers.Text = ls[0].ToString();
+            Admins.Text = ls[1].ToString();
+            Users.Text = ls[2].ToString();
+            Goods.Text = ls[3].ToString();
         }
 
         public partial class Vartotojas
@@ -36,7 +46,7 @@ namespace Price_comparison_engine
         }
 
         private static string role = "0";
-        private static void SkirtiRole(string email, string role)
+        private void SkirtiRole(string email, string role)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
@@ -45,6 +55,7 @@ namespace Price_comparison_engine
                 {
                     rezultatas.Role = role;
                     kontekstas.SaveChanges();
+                    AtnaujintiStatistika();
                 }
                 else
                 {
@@ -69,7 +80,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static void Istrinti(string email)
+        private void Istrinti(string email)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
@@ -78,6 +89,7 @@ namespace Price_comparison_engine
                 {
                     kontekstas.NaudotojoDuomenys.Remove(rezultatas);
                     kontekstas.SaveChanges();
+                    AtnaujintiStatistika();
                     MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
                 }
                 else
@@ -135,6 +147,7 @@ namespace Price_comparison_engine
                     };
                     kontekstas.NaudotojoDuomenys.Add(naudotojoDuomenys);
                     kontekstas.SaveChanges();
+                    AtnaujintiStatistika();
                     MessageBox.Show("Vartotojas sekmingai sukurtas!");
                 }
             }
@@ -196,6 +209,35 @@ namespace Price_comparison_engine
                     Email = tempEmail;
                     Role = tempRole;
                 }
+            }
+        }
+        private static List<int> Skaiciuoti()
+        {
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                List<int> StatistikosListas = new List<int>();
+
+                var VisiNariai = kontekstas.NaudotojoDuomenys
+               .Where(o => o.NaudotojoID >= 0)
+               .Count();
+                StatistikosListas.Add(VisiNariai);
+
+                var Administratoriai = kontekstas.NaudotojoDuomenys
+               .Where(o => o.Role == "1")
+               .Count();
+                StatistikosListas.Add(Administratoriai);
+
+                var PaprastiNariai = kontekstas.NaudotojoDuomenys
+               .Where(o => o.Role == "0")
+               .Count();
+                StatistikosListas.Add(PaprastiNariai);
+
+                var Prekes = kontekstas.PrekiuDuomenys
+               .Where(o => o.PrekiuID >= 0)
+               .Count();
+                StatistikosListas.Add(Prekes);
+
+                return StatistikosListas;
             }
         }
     }
