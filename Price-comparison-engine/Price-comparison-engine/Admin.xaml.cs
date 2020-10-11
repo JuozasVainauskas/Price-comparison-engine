@@ -28,6 +28,15 @@ namespace Price_comparison_engine
             InitializeComponent();
         }
 
+        public partial class Vartotojas
+        {
+            public int ID { get; set; }
+            public string Email { get; set; }   
+            public int Role { get; set; }
+
+
+        }
+
         private static int role = 0;
         private static void SkirtiRole(string email,int role)
         {
@@ -54,6 +63,11 @@ namespace Price_comparison_engine
                 SkirtiRole(email.Text, role);
                 MessageBox.Show(email.Text + " priskirta nauja rolė!");
                 email.Text = "";
+                UsersTable.Items.Clear();
+                Email.Clear();
+                Role.Clear();
+                Skaityti(ref Email, ref Role);
+                iLentele();
             }
         }
 
@@ -81,6 +95,11 @@ namespace Price_comparison_engine
             {
                 Istrinti(emailToDelete.Text);
                 emailToDelete.Clear();
+                UsersTable.Items.Clear();
+                Email.Clear();
+                Role.Clear();
+                Skaityti(ref Email, ref Role);
+                iLentele();
             }
         }
 
@@ -128,6 +147,11 @@ namespace Price_comparison_engine
             Sukurti(EmailToCreate.Text,PasswordToCreate.Password);
             EmailToCreate.Clear();
             PasswordToCreate.Clear();
+            UsersTable.Items.Clear();
+            Email.Clear();
+            Role.Clear();
+            Skaityti(ref Email, ref Role);
+            iLentele();
         }
 
         private bool ArTinkamasPastas(string email)
@@ -143,6 +167,38 @@ namespace Price_comparison_engine
             }
             else return true;
 
+        }
+
+        private static List<string> Email = new List<string>();
+        private static List<int> Role = new List<int>();
+        private void RodytiVartotojus(object sender, EventArgs e)
+        {
+          Skaityti(ref Email,ref Role);
+          iLentele();
+        }
+
+        private void iLentele()
+        {
+            for (int i = 0; i < Email.Count; i++)
+            {
+                var vartotojas = new Vartotojas { ID = i, Email = Email[i], Role = Role[i] };
+                UsersTable.Items.Add(vartotojas);
+            }
+        }
+
+        private static void Skaityti(ref List<string> Email, ref List<int> Role)
+        {
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var tempEmail = kontekstas.NaudotojoDuomenys.Select(column => column.Email).ToList();
+                var tempRole = kontekstas.NaudotojoDuomenys.Select(column => column.Role).ToList();
+
+                if (tempEmail != null && tempRole != null)
+                {
+                    Email = tempEmail;
+                    Role = tempRole;
+                }
+            }
         }
     }
 }
