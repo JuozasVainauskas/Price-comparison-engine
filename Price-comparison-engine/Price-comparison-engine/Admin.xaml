@@ -45,6 +45,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="194,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="144" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"><Run Text="Suteikti rolę"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="176,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="179" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E" Text="Sukurti vartotoją"/>
         <TextBlock HorizontalAlignment="Left" Margin="178,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="179" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"><Run Text="Ištrinti"/><Run Text=" vartotoją"/></TextBlock>
+        <TextBlock x:Name="RegisteredUsers" HorizontalAlignment="Left" Margin="690,94,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="64" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
+        <TextBlock x:Name="Users" HorizontalAlignment="Left" Margin="598,126,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="87" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
+        <TextBlock x:Name="Admins" HorizontalAlignment="Left" Margin="649,159,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="96" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
+        <TextBlock x:Name="Goods" HorizontalAlignment="Left" Margin="709,366,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="75" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
 
     </Grid>
 </Window>
