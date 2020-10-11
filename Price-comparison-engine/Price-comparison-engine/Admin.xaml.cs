@@ -84,6 +84,52 @@ namespace Price_comparison_engine
             }
         }
 
+        private void Sukurti(string email, string slaptazodis)
+        {
+            var salt = GeneruotiHash.SukurtiSalt(10);
+            var slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(PasswordToCreate.Password, salt);
+
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(slaptazodis))
+            {
+                MessageBox.Show("Prašome užpildyti visus laukus.");
+            }
+            else if (!ArTinkamasPastas(email))
+            {
+                MessageBox.Show("Neteisingai suformatuotas el. paštas!");
+            }
+            else
+            {
+                var kontekstas = new DuomenuBazesKontekstas();
+                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == email);
+                if (rezultatas != null)
+                {
+                    MessageBox.Show("Toks email jau panaudotas. Pabandykite kitą.");
+                }
+                else
+                {
+                    var naudotojoDuomenys = new NaudotojoDuomenys()
+                    {
+                        Email = email,
+                        SlaptazodzioHash = slaptazodzioHash,
+                        SlaptazodzioSalt = salt,
+                        ArBalsavo = "",
+                        Komentaras = "",
+                        Role = 0
+                    };
+                    kontekstas.NaudotojoDuomenys.Add(naudotojoDuomenys);
+                    kontekstas.SaveChanges();
+                    MessageBox.Show("Vartotojas sekmingai sukurtas!");
+                }
+            }
+        }
+
+        private void SukurtiVartotoja(object sender, RoutedEventArgs e)
+        {
+            Sukurti(EmailToCreate.Text,PasswordToCreate.Password);
+            EmailToCreate.Clear();
+            PasswordToCreate.Clear();
+        }
+
         private bool ArTinkamasPastas(string email)
         {
             var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
