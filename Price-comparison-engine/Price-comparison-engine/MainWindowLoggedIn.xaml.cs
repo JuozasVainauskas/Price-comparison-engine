@@ -246,6 +246,33 @@ namespace Price_comparison_engine
         {
             GetHtmlAssync(DataGridLoggedIn);
         }
+
+        private static List<Item> ReadSavedItems(string email)
+        {
+            var item = new List<Item>();
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var tempPageUrl = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.PageURL).ToList();
+                var tempImgUrl = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ImgURL).ToList();
+                var tempShopName = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ShopName).ToList();
+                var tempItemName = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ItemName).ToList();
+                var tempPrice = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.Price).ToList();
+
+                for (var i = 0; i < tempPageUrl.Count; i++)
+                {
+                    var itemas = new Item
+                    {
+                        Link = tempPageUrl.ElementAt(i),
+                        Nuotrauka = tempImgUrl.ElementAt(i),
+                        Seller = tempShopName.ElementAt(i),
+                        Name = tempItemName.ElementAt(i),
+                        Price = tempPrice.ElementAt(i)
+                    };
+                    item.Add(itemas);
+                }
+            }
+            return item;
+        }
     }
 }
     

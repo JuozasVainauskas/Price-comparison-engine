@@ -667,12 +667,6 @@ namespace Price_comparison_engine
             GetHtmlAssync(DataGridas);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var vertinimoLangoAtidarymas = new VertinimoLangas();
-            vertinimoLangoAtidarymas.Show();
-        }
-
         private void LinkButton_Click(object sender, RoutedEventArgs e)
         {
             var link = (((Button)sender).DataContext as Item)?.Link;
@@ -702,7 +696,6 @@ namespace Price_comparison_engine
                     };
                     kontekstas.PrekiuDuomenys.Add(prekiuDuomenys);
                     kontekstas.SaveChanges();
-
                 }
             }
         }
@@ -732,7 +725,6 @@ namespace Price_comparison_engine
                 }
             }
             return item;
-
         }
 
         private static void RasytiData(string siteUrl, string imgUrl)
@@ -751,6 +743,29 @@ namespace Price_comparison_engine
                     kontekstas.PuslapiuDuomenys.Add(puslapiuDuomenys);
                     kontekstas.SaveChanges();
 
+                }
+            }
+        }
+
+        private static void WriteSavedItems(string pageUrl, string imgUrl, string shopName, string itemName, string price, string email)
+        {
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var rezultatas = kontekstas.SavedItems.SingleOrDefault(c => c.PageURL == pageUrl && c.ImgURL == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Email == email);
+
+                if (rezultatas == null)
+                {
+                    var savedItems = new SavedItems()
+                    {
+                        PageURL = pageUrl,
+                        ImgURL = imgUrl,
+                        ShopName = shopName,
+                        ItemName = itemName,
+                        Price = price,
+                        Email = email
+                    };
+                    kontekstas.SavedItems.Add(savedItems);
+                    kontekstas.SaveChanges();
                 }
             }
         }
