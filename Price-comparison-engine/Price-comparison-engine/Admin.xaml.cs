@@ -36,7 +36,7 @@ namespace Price_comparison_engine
         }
 
         private static string role = "0";
-        private static void SkirtiRole(string email,int role)
+        private static void SkirtiRole(string email, string role)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
@@ -131,7 +131,7 @@ namespace Price_comparison_engine
                         SlaptazodzioSalt = salt,
                         ArBalsavo = "",
                         Komentaras = "",
-                        Role = 0
+                        Role = "0"
                     };
                     kontekstas.NaudotojoDuomenys.Add(naudotojoDuomenys);
                     kontekstas.SaveChanges();
