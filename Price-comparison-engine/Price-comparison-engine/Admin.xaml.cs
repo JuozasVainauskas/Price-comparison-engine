@@ -48,23 +48,55 @@ namespace Price_comparison_engine
 
         private void Priskirti(object sender, RoutedEventArgs e)
         {
-            var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
-
-            if (email.Text == "")
-            {
-                MessageBox.Show("Įveskite vartotojo el.paštą, kuriam norite priskirti naują rolę!");
-            }
-            else if (!pattern2.IsMatch(email.Text))
-            {
-                MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
-            }
-            else if (RolesPriskirimas.SelectedIndex!= -1)
+            if (RolesPriskirimas.SelectedIndex != -1 && ArTinkamasPastas(email.Text))
             {
                 role = RolesPriskirimas.SelectedIndex;
                 SkirtiRole(email.Text, role);
                 MessageBox.Show(email.Text + " priskirta nauja rolė!");
                 email.Text = "";
             }
+        }
+
+        private static void Istrinti(string email)
+        {
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                if (rezultatas != null)
+                {
+                    kontekstas.NaudotojoDuomenys.Remove(rezultatas);
+                    kontekstas.SaveChanges();
+                    MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
+                }
+                else
+                {
+                    MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
+                }
+            }
+        }
+
+        private void IstrintiVartotoja(object sender, RoutedEventArgs e)
+        {
+            if(ArTinkamasPastas(emailToDelete.Text))
+            {
+                Istrinti(emailToDelete.Text);
+                emailToDelete.Clear();
+            }
+        }
+
+        private bool ArTinkamasPastas(string email)
+        {
+            var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
+            if (email == "")
+            {
+                return false;
+            }
+            else if (!pattern2.IsMatch(email))
+            {
+                return false;
+            }
+            else return true;
+
         }
     }
 }
