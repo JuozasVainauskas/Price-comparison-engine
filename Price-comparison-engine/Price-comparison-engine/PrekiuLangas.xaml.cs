@@ -92,7 +92,7 @@ namespace Price_comparison_engine
                 var urlgalas = regEx.Replace(MainWindow.zodis, "+");
                 var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
                 var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
-                var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
+              //  var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
                 var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
                 var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
                 var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
@@ -101,8 +101,8 @@ namespace Price_comparison_engine
                 WriteDataFromRde(rdeItems, prices);
                 var barboraItems = BarboraSearch(await Html(httpClient, urlBarbora));
                 WriteDataFromBarbora(barboraItems, prices);
-                var piguItems = PiguSearch(await Html(httpClient, urlPigu));
-                WriteDataFromPigu(piguItems, prices);
+               // var piguItems = PiguSearch(await Html(httpClient, urlPigu));
+                //WriteDataFromPigu(piguItems, prices);
                 var bigBoxItem = BigBoxSearch(await Html(httpClient, urlBigBox));
                 WriteDataFromBigBox(bigBoxItem, prices);
                 var avitelaItems = AvitelaSearch(await Html(httpClient, urlAvitela));
@@ -675,6 +675,15 @@ namespace Price_comparison_engine
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Prekė sėkmingai išsaugota palyginimui!");
+            var link = (((Button)sender).DataContext as Item)?.Link;
+            var shopName = (((Button)sender).DataContext as Item)?.Seller;
+            var photoUrll = (((Button)sender).DataContext as Item)?.Nuotrauka;
+            var itemName = (((Button)sender).DataContext as Item)?.Name;
+            var price = (((Button)sender).DataContext as Item)?.Price;
+            if (link != null)
+            {
+                WriteSavedItems(link, photoUrll, shopName, itemName, price, PrisijungimoLangas.email);
+            }
         }
 
         private static void RasytiPrekes(string siteUrl, string imgUrl, string parduotuvesVardas, string prekesVardas, string prekesKaina, string raktinisZodis)

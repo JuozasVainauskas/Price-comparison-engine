@@ -58,6 +58,17 @@ namespace Price_comparison_engine
 
         private static readonly string vartotojoRole = PrisijungimoLangas.Role;
 
+        private static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
+        {
+            if (ReadSavedItems(PrisijungimoLangas.email).Any())
+            {
+                foreach (var item in ReadSavedItems(PrisijungimoLangas.email))
+                {
+                    DataGridLoggedIn.Items.Add(item);
+                }
+            }
+        }
+
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             /* var skirtumasPlocio = this.ActualWidth / 1.2;
@@ -158,10 +169,7 @@ namespace Price_comparison_engine
                 }
             }
         }
-        private static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
-        {
-        }
-
+  
         private void RectangleResize(Rectangle plotelis, double ilgis)
         {
             plotelis.Height = this.ActualHeight - ilgis;
@@ -273,6 +281,7 @@ namespace Price_comparison_engine
             }
             return item;
         }
+   
     }
 }
     
