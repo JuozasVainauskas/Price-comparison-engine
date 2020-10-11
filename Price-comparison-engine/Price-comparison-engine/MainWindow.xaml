@@ -111,8 +111,8 @@
         <TextBlock HorizontalAlignment="Center" Margin="278,0,145,0" TextWrapping="Wrap" VerticalAlignment="Bottom" Grid.ColumnSpan="3" Width="369" Foreground="#FFF9F9F9" Height="27"><Run Text="     "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
 
         <Image HorizontalAlignment="Left" Height="52" Margin="10,0,0,0" VerticalAlignment="Top" Width="100" Source="Nuotraukos/logo.png"/>
-        <Image x:Name="img1" Height="182" Margin="136,0,108.8,63.4" VerticalAlignment="Bottom" Source="no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Center" Width="160"/>
-        <Image x:Name="img2" HorizontalAlignment="Center" Height="182" Margin="329,0,300.6,63.4" VerticalAlignment="Bottom" Width="164" Grid.ColumnSpan="3" Source="no_product.jpg" MouseDown="Img2_MouseDown"/>
+        <Image x:Name="img1" Height="182" Margin="136,0,108.8,63.4" VerticalAlignment="Bottom" Source="Nuotraukos/no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Center" Width="160"/>
+        <Image x:Name="img2" HorizontalAlignment="Center" Height="182" Margin="329,0,300.6,63.4" VerticalAlignment="Bottom" Width="164" Grid.ColumnSpan="3" Source="Nuotraukos/no_product.jpg" MouseDown="Img2_MouseDown"/>
         <Image x:Name="img3" HorizontalAlignment="Center" Height="184" Margin="41,0,131,63" VerticalAlignment="Bottom" Width="164" Grid.Column="2" Source="Nuotraukos/no_product.jpg" MouseDown="Img3_MouseDown"/>
         <Image x:Name="iDesinePuse" HorizontalAlignment="Right" Height="55" Margin="200,0,78,128" VerticalAlignment="Bottom" Width="58" Grid.Column="2" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Front"/>
         <Image x:Name="iKairePuse" HorizontalAlignment="Left" Height="55" Margin="63,0,235,128" VerticalAlignment="Bottom" Width="106" Source="Nuotraukos/back.png" MouseDown="Slider_Back"/>

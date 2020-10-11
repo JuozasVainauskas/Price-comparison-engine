@@ -188,8 +188,6 @@ namespace Price_comparison_engine
                     SkaitytiKomentaruDuomenis(ref email, ref komentarai);
                     sujungtiList(email, komentarai);
                     tvarkytiDuomenis(0, listViewas, email, komentarai);
-
-
                 }
                 else
                 {
@@ -272,7 +270,10 @@ namespace Price_comparison_engine
                             anotherTempString = stringElement.Split('_');
                             var text = anotherTempString[1];
                             lv.Items.Add(new Komentaras() { Tekstas = emailas + " " + anotherTempString[2] + " Apt.: " + anotherTempString[3] + " Pr. Kok.: " + anotherTempString[4] + " Prist.: " + anotherTempString[5]});
-                            lv.Items.Add(new Komentaras() { Tekstas = anotherTempString[6]});
+                            if (!string.IsNullOrWhiteSpace(anotherTempString[6]))
+                            {
+                                lv.Items.Add(new Komentaras() { Tekstas = anotherTempString[6] });
+                            }
 
                         }
                     }

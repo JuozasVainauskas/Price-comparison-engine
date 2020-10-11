@@ -46,13 +46,13 @@ namespace Price_comparison_engine
             if (string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
             {
                 DataGridas.Columns[5].Visibility = Visibility.Collapsed;
+                LoggedIn = 0;
             }
             else
             {
                 DataGridas.Columns[5].Visibility = Visibility.Visible;
                 LoggedIn = 1;
             }
-
         }
 
         private static async void GetHtmlAssync(DataGrid dataGrid)
