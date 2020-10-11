@@ -29,7 +29,7 @@ namespace Price_comparison_engine.Klases
                 }
             };
             var fromEmail = new MailAddress("smartshopautobot@gmail.com", "Smart Shop");
-            var toEmail = new MailAddress("ernestas20111@gmail.com", "Naudotojas");
+            var toEmail = new MailAddress(email, "Naudotojas");
             var laiskas = new MailMessage()
             {
                 IsBodyHtml = true,

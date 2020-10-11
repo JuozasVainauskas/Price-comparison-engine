@@ -23,20 +23,14 @@ namespace Price_comparison_engine
     /// DataGridLoggedIn_Initialized
     public partial class MainWindowLoggedIn : Window
     {
-        public void DataDirectoryInitialize()
-        {
-            var enviroment = System.Environment.CurrentDirectory;
-            var projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
-            AppDomain.CurrentDomain.SetData("DataDirectory", projectDirectory);
-        }
         public MainWindowLoggedIn()
         {
             InitializeComponent();
-            if(vartotojoRole.Equals("1"))
+            if (PrisijungimoLangas.Role.Equals("1"))
             {
+                administravimas.IsEnabled = true;
                 administravimas.Visibility = Visibility.Visible;
             }
-            DataDirectoryInitialize();
             Skaityti(ref puslapioUrl, ref imgUrl);
             if (puslapioUrl.Count >= 3 && imgUrl.Count >= 3)
             {
@@ -46,7 +40,16 @@ namespace Price_comparison_engine
             }
         }
 
-        private static readonly string vartotojoRole = PrisijungimoLangas.Role;
+        private static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
+        {
+            if (ReadSavedItems(PrisijungimoLangas.email).Any())
+            {
+                foreach (var item in ReadSavedItems(PrisijungimoLangas.email))
+                {
+                    DataGridLoggedIn.Items.Add(item);
+                }
+            }
+        }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
@@ -148,10 +151,7 @@ namespace Price_comparison_engine
                 }
             }
         }
-        private static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
-        {
-        }
-
+  
         private void RectangleResize(Rectangle plotelis, double ilgis)
         {
             plotelis.Height = this.ActualHeight - ilgis;
@@ -179,16 +179,15 @@ namespace Price_comparison_engine
             nuotrauka.Height = this.ActualHeight - ilgis;
         }
 
-
         public static int slideCounter = 1;
         public static int slideCounter2 = 3;
         public static int slideCounter_2 = 1;
         public static int slideCounter2_2 = 3;
 
-
         private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {
             PrisijungimoLangas.email = "";
+            PrisijungimoLangas.Role = "0";
             var pagrindinisLangas = new MainWindow();
             pagrindinisLangas.Show();
             this.Close();
@@ -207,17 +206,13 @@ namespace Price_comparison_engine
                 adminLangoAtidarymas.Show();
         }
 
-        private void DataGridas_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
         private void ImageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var name = (((Image)sender).DataContext as Item)?.Name;
             var langas = new KonkretiPreke(name);
             langas.Show();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void VertintiClick(object sender, RoutedEventArgs e)
         {
             var vertinimoLangoAtidarymas = new VertinimoLangas();
             vertinimoLangoAtidarymas.Show();
@@ -228,13 +223,42 @@ namespace Price_comparison_engine
             var link = (((Button)sender).DataContext as Item)?.Link;
             if (link != null) Process.Start(link);
         }
+
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
+
         private void DataGridLoggedIn_Initialized(object sender, EventArgs e)
         {
             GetHtmlAssync(DataGridLoggedIn);
+        }
+
+        private static List<Item> ReadSavedItems(string email)
+        {
+            var item = new List<Item>();
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var tempPageUrl = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.PageURL).ToList();
+                var tempImgUrl = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ImgURL).ToList();
+                var tempShopName = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ShopName).ToList();
+                var tempItemName = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ItemName).ToList();
+                var tempPrice = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.Price).ToList();
+
+                for (var i = 0; i < tempPageUrl.Count; i++)
+                {
+                    var itemas = new Item
+                    {
+                        Link = tempPageUrl.ElementAt(i),
+                        Nuotrauka = tempImgUrl.ElementAt(i),
+                        Seller = tempShopName.ElementAt(i),
+                        Name = tempItemName.ElementAt(i),
+                        Price = tempPrice.ElementAt(i)
+                    };
+                    item.Add(itemas);
+                }
+            }
+            return item;
         }
     }
 }

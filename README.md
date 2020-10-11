@@ -9,16 +9,19 @@
 - [x] Register/login forms
 - [x] Search field
 - [x] FAQ
+- [x] Admin panel
 - [x] Contacts -> *Needs an update*
 - [x] Searched products' list/Interface
 - [x] Slideshow
 - [x] Stars/comments under the shops
+- [x] Saving products
 - [ ] Comments under the products
 - [ ] Review about the page
 
 **Back-End**
 - [x] Gather data from online shop websites
 - [x] Compare the gathered data
+- [x] Admin panel
 - [x] Password hashing/encryption
 - [x] Register and login forms' error catching
 - [x] Email confirm and password reset
@@ -26,10 +29,9 @@
 - [x] Slideshow
 - [x] Products' list cashing
 - [x] Stars/comments under the shops
+- [x] Saving products
 - [ ] Comments under the products
 - [ ] Review about the page
 
-**Things to be done shortly**
-- Code refactoring
 ## Initial goal
 Create a program/website/app which takes the data of the prices from different shopping websites and provides a comparison in a visual manner

@@ -26,14 +26,16 @@ namespace Price_comparison_engine
     public partial class PrisijungimoLangas : Window
     {
         readonly MainWindow pagrindinisLangas;
+        public static string Role { get; set; }
+        public static string email { get; set; }
 
         public PrisijungimoLangas(MainWindow pagrindinisLangas)
         {
             InitializeComponent();
             this.pagrindinisLangas = pagrindinisLangas;
+            Role = "0";
+            email = "";
         }
-        public static string Role { get; private set; } = "0";
-        public static string email { get; set; } = "";
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
             email = Email.Text;
@@ -54,6 +56,7 @@ namespace Price_comparison_engine
                     {
                         var mainWindowLoggedIn = new MainWindowLoggedIn();
                         mainWindowLoggedIn.Show();
+
                         this.Close();
                         pagrindinisLangas.Close();
                     }

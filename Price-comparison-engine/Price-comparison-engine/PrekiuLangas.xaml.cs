@@ -45,18 +45,14 @@ namespace Price_comparison_engine
 
             if (string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
             {
-                VertinimoMygtukas.IsEnabled = false;
-                VertinimoMygtukas.Visibility = Visibility.Collapsed;
                 DataGridas.Columns[5].Visibility = Visibility.Collapsed;
+                LoggedIn = 0;
             }
             else
             {
-                VertinimoMygtukas.IsEnabled = true;
-                VertinimoMygtukas.Visibility = Visibility.Visible;
                 DataGridas.Columns[5].Visibility = Visibility.Visible;
                 LoggedIn = 1;
             }
-
         }
 
         private static async void GetHtmlAssync(DataGrid dataGrid)
@@ -96,7 +92,7 @@ namespace Price_comparison_engine
                 var urlgalas = regEx.Replace(MainWindow.zodis, "+");
                 var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
                 var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
-                var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
+              //  var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
                 var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
                 var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
                 var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
@@ -105,8 +101,8 @@ namespace Price_comparison_engine
                 WriteDataFromRde(rdeItems, prices);
                 var barboraItems = BarboraSearch(await Html(httpClient, urlBarbora));
                 WriteDataFromBarbora(barboraItems, prices);
-                var piguItems = PiguSearch(await Html(httpClient, urlPigu));
-                WriteDataFromPigu(piguItems, prices);
+               // var piguItems = PiguSearch(await Html(httpClient, urlPigu));
+                //WriteDataFromPigu(piguItems, prices);
                 var bigBoxItem = BigBoxSearch(await Html(httpClient, urlBigBox));
                 WriteDataFromBigBox(bigBoxItem, prices);
                 var avitelaItems = AvitelaSearch(await Html(httpClient, urlAvitela));
@@ -671,12 +667,6 @@ namespace Price_comparison_engine
             GetHtmlAssync(DataGridas);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var vertinimoLangoAtidarymas = new VertinimoLangas();
-            vertinimoLangoAtidarymas.Show();
-        }
-
         private void LinkButton_Click(object sender, RoutedEventArgs e)
         {
             var link = (((Button)sender).DataContext as Item)?.Link;
@@ -685,6 +675,15 @@ namespace Price_comparison_engine
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Prekė sėkmingai išsaugota palyginimui!");
+            var link = (((Button)sender).DataContext as Item)?.Link;
+            var shopName = (((Button)sender).DataContext as Item)?.Seller;
+            var photoUrll = (((Button)sender).DataContext as Item)?.Nuotrauka;
+            var itemName = (((Button)sender).DataContext as Item)?.Name;
+            var price = (((Button)sender).DataContext as Item)?.Price;
+            if (link != null)
+            {
+                WriteSavedItems(link, photoUrll, shopName, itemName, price, PrisijungimoLangas.email);
+            }
         }
 
         private static void RasytiPrekes(string siteUrl, string imgUrl, string parduotuvesVardas, string prekesVardas, string prekesKaina, string raktinisZodis)
@@ -706,7 +705,6 @@ namespace Price_comparison_engine
                     };
                     kontekstas.PrekiuDuomenys.Add(prekiuDuomenys);
                     kontekstas.SaveChanges();
-
                 }
             }
         }
@@ -736,7 +734,6 @@ namespace Price_comparison_engine
                 }
             }
             return item;
-
         }
 
         private static void RasytiData(string siteUrl, string imgUrl)
@@ -755,6 +752,29 @@ namespace Price_comparison_engine
                     kontekstas.PuslapiuDuomenys.Add(puslapiuDuomenys);
                     kontekstas.SaveChanges();
 
+                }
+            }
+        }
+
+        private static void WriteSavedItems(string pageUrl, string imgUrl, string shopName, string itemName, string price, string email)
+        {
+            using (var kontekstas = new DuomenuBazesKontekstas())
+            {
+                var rezultatas = kontekstas.SavedItems.SingleOrDefault(c => c.PageURL == pageUrl && c.ImgURL == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Email == email);
+
+                if (rezultatas == null)
+                {
+                    var savedItems = new SavedItems()
+                    {
+                        PageURL = pageUrl,
+                        ImgURL = imgUrl,
+                        ShopName = shopName,
+                        ItemName = itemName,
+                        Price = price,
+                        Email = email
+                    };
+                    kontekstas.SavedItems.Add(savedItems);
+                    kontekstas.SaveChanges();
                 }
             }
         }

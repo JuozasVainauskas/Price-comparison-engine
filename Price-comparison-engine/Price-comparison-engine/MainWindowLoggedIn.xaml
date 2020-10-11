@@ -100,12 +100,12 @@
             Foreground="White"
             FontFamily="Arial" Style="{DynamicResource ButtonRounded}"
                 />
-        <Button x:Name="administravimas" Content="Administravimas" HorizontalAlignment="Right" Height="40" Margin="0,7,632.6,0" VerticalAlignment="Top" Width="144" Click="AdminPrisijungimas" Visibility="Hidden"
+        <Button x:Name="administravimas" Content="Administravimas" HorizontalAlignment="Left" Height="40" Margin="142,7,0,0" VerticalAlignment="Top" Width="144" Click="AdminPrisijungimas" Visibility="Collapsed" IsEnabled="False"
             Background="#E81034"
             Foreground="White"
             FontFamily="Arial" Style="{DynamicResource ButtonRounded}"
                 />
-        <DataGrid AutoGenerateColumns="False" x:Name="DataGridLoggedIn" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="172,193,10,36" Initialized="DataGridLoggedIn_Initialized" SelectionChanged="DataGridas_SelectionChanged">
+        <DataGrid AutoGenerateColumns="False" x:Name="DataGridLoggedIn" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="172,193,10,36" Initialized="DataGridLoggedIn_Initialized">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Image" Width="SizeToCells"
                     IsReadOnly="True">
@@ -142,9 +142,12 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="VertinimoMygtukas" Content="Įvertinti pardavėją" HorizontalAlignment="Right" Margin="673,162,0,0" VerticalAlignment="Top" Width="119" Click="Button_Click"/>
-        <Image x:Name="img1" Height="60" Margin="55,0,0,90" VerticalAlignment="Bottom" Source="no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Left" Width="71" RenderTransformOrigin="0.507,0.283"/>
-        <Image x:Name="img2" HorizontalAlignment="Left" Height="60" Margin="55,324,0,185" VerticalAlignment="Center" Width="71" Source="no_product.jpg" MouseDown="Img2_MouseDown"/>
+        <Button x:Name="VertinimoMygtukas" Content="Įvertinti pardavėją" HorizontalAlignment="Left" Height="40" Margin="10,7,0,0" VerticalAlignment="Top" Width="122" Click="VertintiClick"
+                Background="#87c1ff"
+                Foreground="White"
+                FontFamily="Arial" Style="{DynamicResource ButtonRounded}"/>
+        <Image x:Name="img1" Height="60" Margin="55,0,0,90" VerticalAlignment="Bottom" Source="Nuotraukos/no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Left" Width="71" RenderTransformOrigin="0.507,0.283"/>
+        <Image x:Name="img2" HorizontalAlignment="Left" Height="60" Margin="55,324,0,185" VerticalAlignment="Center" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img2_MouseDown"/>
         <Image x:Name="img3" HorizontalAlignment="Left" Height="60" Margin="55,259,0,0" VerticalAlignment="Top" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img3_MouseDown" RenderTransformOrigin="1.036,0.279"/>
 
     </Grid>
