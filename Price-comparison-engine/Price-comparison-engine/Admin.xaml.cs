@@ -32,12 +32,10 @@ namespace Price_comparison_engine
         {
             public int ID { get; set; }
             public string Email { get; set; }   
-            public int Role { get; set; }
-
-
+            public string Role { get; set; }
         }
 
-        private static int role = 0;
+        private static string role = "0";
         private static void SkirtiRole(string email,int role)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
@@ -59,7 +57,7 @@ namespace Price_comparison_engine
         {
             if (RolesPriskirimas.SelectedIndex != -1 && ArTinkamasPastas(email.Text))
             {
-                role = RolesPriskirimas.SelectedIndex;
+                role = RolesPriskirimas.SelectedIndex.ToString();
                 SkirtiRole(email.Text, role);
                 MessageBox.Show(email.Text + " priskirta nauja rolė!");
                 email.Text = "";
@@ -170,10 +168,10 @@ namespace Price_comparison_engine
         }
 
         private static List<string> Email = new List<string>();
-        private static List<int> Role = new List<int>();
+        private static List<string> Role = new List<string>();
         private void RodytiVartotojus(object sender, EventArgs e)
         {
-          Skaityti(ref Email,ref Role);
+          Skaityti(ref Email, ref Role);
           iLentele();
         }
 
@@ -186,7 +184,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static void Skaityti(ref List<string> Email, ref List<int> Role)
+        private static void Skaityti(ref List<string> Email, ref List<string> Role)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
