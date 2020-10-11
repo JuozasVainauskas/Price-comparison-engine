@@ -38,7 +38,7 @@ namespace Price_comparison_engine
     {
         public static int SoldOutBarbora;
         public static int SoldOut;
-
+        public static int LoggedIn=0;
         public PrekiuLangas()
         {
             InitializeComponent();
@@ -47,11 +47,14 @@ namespace Price_comparison_engine
             {
                 VertinimoMygtukas.IsEnabled = false;
                 VertinimoMygtukas.Visibility = Visibility.Collapsed;
+                DataGridas.Columns[5].Visibility = Visibility.Collapsed;
             }
             else
             {
                 VertinimoMygtukas.IsEnabled = true;
                 VertinimoMygtukas.Visibility = Visibility.Visible;
+                DataGridas.Columns[5].Visibility = Visibility.Visible;
+                LoggedIn = 1;
             }
 
         }
@@ -678,6 +681,10 @@ namespace Price_comparison_engine
         {
             var link = (((Button)sender).DataContext as Item)?.Link;
             if (link != null) Process.Start(link);
+        }
+        private void saveButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Prekė sėkmingai išsaugota palyginimui!");
         }
 
         private static void RasytiPrekes(string siteUrl, string imgUrl, string parduotuvesVardas, string prekesVardas, string prekesKaina, string raktinisZodis)
