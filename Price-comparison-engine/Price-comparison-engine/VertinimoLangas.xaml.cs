@@ -271,7 +271,7 @@ namespace Price_comparison_engine
                             string[] anotherTempString;
                             anotherTempString = stringElement.Split('_');
                             var text = anotherTempString[1];
-                            lv.Items.Add(new Komentaras() { Tekstas = emailas + " " + anotherTempString[2] + " Apt.:" + anotherTempString[3] + " Pr. Kok.:" + anotherTempString[4] + " Prist.:" + anotherTempString[5]});
+                            lv.Items.Add(new Komentaras() { Tekstas = emailas + " " + anotherTempString[2] + " Apt.: " + anotherTempString[3] + " Pr. Kok.: " + anotherTempString[4] + " Prist.: " + anotherTempString[5]});
                             lv.Items.Add(new Komentaras() { Tekstas = anotherTempString[6]});
 
                         }
