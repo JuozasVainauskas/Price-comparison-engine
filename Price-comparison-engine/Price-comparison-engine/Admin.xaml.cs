@@ -84,10 +84,18 @@ namespace Price_comparison_engine
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
-                if (rezultatas != null)
+                var savedItems = kontekstas.SavedItems.Where(c => c.Email == email).ToList();
+                foreach(var savedItem in savedItems)
                 {
-                    kontekstas.NaudotojoDuomenys.Remove(rezultatas);
+                    kontekstas.SavedItems.Remove(savedItem);
+                }
+                kontekstas.SaveChangesAsync();
+
+                var result = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+
+                if (result != null)
+                {
+                    kontekstas.NaudotojoDuomenys.Remove(result);
                     kontekstas.SaveChanges();
                     AtnaujintiStatistika();
                     MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
