@@ -49,22 +49,6 @@ namespace Price_comparison_engine
                     DataGridLoggedIn.Items.Add(item);
                 }
             }
-
-            /*if (addSaved == 1)
-            {
-                DataGridLoggedIn.Items.Refresh();
-                addSaved = 0;
-            }*/
-
-            /*if (addSaved == 1)
-            {
-                foreach (var item in ReadSavedItems(PrisijungimoLangas.email))
-                {
-                    DataGridLoggedIn.Items.Add(item);
-                }
-
-                addSaved = 0;
-            }*/
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
