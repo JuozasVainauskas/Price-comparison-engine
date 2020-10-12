@@ -191,7 +191,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="KomentaruLangelis"  HorizontalAlignment="Left" Height="41" Margin="271,80,0,0" TextWrapping="Wrap" Text="Komentuokite" VerticalAlignment="Top" Width="388" Grid.Row="1"/>
+        <TextBox x:Name="KomentaruLangelis"  HorizontalAlignment="Left" Height="41" Margin="271,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="388" Grid.Row="1"/>
         <Button Content="Siųsti" HorizontalAlignment="Left" Margin="688,80,0,0" VerticalAlignment="Top" Width="86" Height="35"
             Background="#E30000"
             Foreground="white"
@@ -205,5 +205,6 @@
         <Rectangle Fill="#FF0FE943" HorizontalAlignment="Left" Height="80" Margin="138,174,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="539"/>
         <TextBlock HorizontalAlignment="Left" Margin="348,198,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Busima reklamos vieta" VerticalAlignment="Top" Height="40" Width="150"/>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="37" Margin="0,313,-0.4,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="794"/>
+        <TextBlock x:Name="NoteAboutComments" HorizontalAlignment="Left" Margin="271,126,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Jeigu norite palikti išsamesnį atsiliepimą, galite savo žinutę įrašyti į teksto laukelį esantį aukščiau." VerticalAlignment="Top" Height="34" Width="406"/>
     </Grid>
 </Window>
