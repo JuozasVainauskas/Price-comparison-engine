@@ -1,26 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Price_comparison_engine.Klases;
 
 namespace Price_comparison_engine
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
-    /// DataGridLoggedIn_Initialized
     public partial class MainWindowLoggedIn : Window
     {
         public MainWindowLoggedIn()
@@ -39,7 +29,6 @@ namespace Price_comparison_engine
                 img3.Source = new BitmapImage(new Uri(imgUrl[2], UriKind.Absolute));
             }
         }
-        public static int addSaved = 0;
         public static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
         {
             if (ReadSavedItems(PrisijungimoLangas.email).Any())
