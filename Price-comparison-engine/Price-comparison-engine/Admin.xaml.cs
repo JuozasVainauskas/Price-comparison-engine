@@ -84,38 +84,27 @@ namespace Price_comparison_engine
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                using (var dbContextTransaction = kontekstas.Database.BeginTransaction())
-                {
-                    try
+                    var savedItems = kontekstas.SavedItems.Where(c => c.Email == email).ToList();
+                    
+                    foreach (var savedItem in savedItems)
                     {
-                        var savedItems = kontekstas.SavedItems.Where(c => c.Email == email).ToList();
-                        foreach (var savedItem in savedItems)
-                        {
-                            kontekstas.SavedItems.Remove(savedItem);
-                        }
+                        kontekstas.SavedItems.Remove(savedItem);
+                    }
+                    kontekstas.SaveChanges();
+
+                    var result = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+
+                    if (result != null)
+                    {
+                        kontekstas.NaudotojoDuomenys.Remove(result);
                         kontekstas.SaveChanges();
-
-                        var result = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
-
-                        if (result != null)
-                        {
-                            kontekstas.NaudotojoDuomenys.Remove(result);
-                            kontekstas.SaveChanges();
-                            AtnaujintiStatistika();
-                            MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
-                        }
-
-                        dbContextTransaction.Commit();
+                        AtnaujintiStatistika();
+                        MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show("Įvyko klaida bandant ištrinti duomenis.");
+                        MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
                     }
-                }
             }
         }
 
