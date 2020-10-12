@@ -80,32 +80,30 @@ namespace Price_comparison_engine
             }
         }
 
-        /*Upgrade needed*/
         private void Istrinti(string email)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                    var savedItems = kontekstas.SavedItems.Where(c => c.Email == email).ToList();
+                var savedItems = kontekstas.SavedItems.Where(c => c.Email == email).ToList();
                     
-                    foreach (var savedItem in savedItems)
-                    {
-                        kontekstas.SavedItems.Remove(savedItem);
-                    }
-                    kontekstas.SaveChanges();
+                foreach (var savedItem in savedItems)
+                {
+                    kontekstas.SavedItems.Remove(savedItem);
+                }
 
-                    var result = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                var result = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
 
-                    if (result != null)
-                    {
-                        kontekstas.NaudotojoDuomenys.Remove(result);
-                        kontekstas.SaveChanges();
-                        AtnaujintiStatistika();
-                        MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
-                    }
+                if (result != null)
+                {
+                    kontekstas.NaudotojoDuomenys.Remove(result);
+                    AtnaujintiStatistika();
+                    MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
+                }
+                else
+                {
+                    MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
+                }
+                kontekstas.SaveChanges();
             }
         }
 
