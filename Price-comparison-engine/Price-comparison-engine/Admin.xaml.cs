@@ -80,6 +80,7 @@ namespace Price_comparison_engine
             }
         }
 
+        /*Upgrade needed*/
         private void Istrinti(string email)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
