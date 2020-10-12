@@ -676,9 +676,7 @@ namespace Price_comparison_engine
        
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-
            // MainWindowLoggedIn mainWindowLoggedIn;
-            MessageBox.Show("Prekė sėkmingai išsaugota palyginimui!");
             var link = (((Button)sender).DataContext as Item)?.Link;
             var shopName = (((Button)sender).DataContext as Item)?.Seller;
             var photoUrll = (((Button)sender).DataContext as Item)?.Nuotrauka;
@@ -688,6 +686,7 @@ namespace Price_comparison_engine
             {
                 WriteSavedItems(link, photoUrll, shopName, itemName, price, PrisijungimoLangas.email);
             }
+
             var itemas = new Item
             {
                 Link = link,
@@ -696,9 +695,16 @@ namespace Price_comparison_engine
                 Name = itemName,
                 Price = price
             };
-            grLoggedIn.DataGridLoggedIn.Items.Add(itemas);
 
-
+            if (!grLoggedIn.DataGridLoggedIn.Items.Cast<Item>().Any(t => t.Link == link && t.Nuotrauka == photoUrll && t.Seller == shopName && t.Name == itemName && t.Price == price))
+            {
+                MessageBox.Show("Prekė sėkmingai išsaugota palyginimui!");
+                grLoggedIn.DataGridLoggedIn.Items.Add(itemas);
+            }
+            else
+            {
+                MessageBox.Show("Prekė jau buvo pridėta.");
+            }
         }
 
         private static void RasytiPrekes(string siteUrl, string imgUrl, string parduotuvesVardas, string prekesVardas, string prekesKaina, string raktinisZodis)
