@@ -84,17 +84,37 @@ namespace Price_comparison_engine
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
-                if (rezultatas != null)
+                using (var dbContextTransaction = kontekstas.Database.BeginTransaction())
                 {
-                    kontekstas.NaudotojoDuomenys.Remove(rezultatas);
-                    kontekstas.SaveChanges();
-                    AtnaujintiStatistika();
-                    MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
-                }
-                else
-                {
-                    MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
+                    try
+                    {
+                        var savedItems = kontekstas.SavedItems.Where(c => c.Email == email).ToList();
+                        foreach (var savedItem in savedItems)
+                        {
+                            kontekstas.SavedItems.Remove(savedItem);
+                        }
+                        kontekstas.SaveChanges();
+
+                        var result = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+
+                        if (result != null)
+                        {
+                            kontekstas.NaudotojoDuomenys.Remove(result);
+                            kontekstas.SaveChanges();
+                            AtnaujintiStatistika();
+                            MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
+                        }
+
+                        dbContextTransaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Įvyko klaida bandant ištrinti duomenis.");
+                    }
                 }
             }
         }

@@ -64,10 +64,10 @@
             <RowDefinition Height="22*"/>
             <RowDefinition Height="35*"/>
         </Grid.RowDefinitions>
-        <Button Content="Vertinti" HorizontalAlignment="Left" Margin="52,86,0,0" VerticalAlignment="Top" Width="145" Height="35"
+        <Button Content="Palikti atsiliepimą" HorizontalAlignment="Left" Margin="43,80,0,0" VerticalAlignment="Top" Width="177" Height="41"
             Background="#FF015DFF"
             Foreground="white"
-            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Vertinti" Grid.Row="1"/>
+            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="VertintiClick" Grid.Row="1"/>
         <Image x:Name="ParduotuvesImg" HorizontalAlignment="Left" Height="100" Margin="77,28,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/avitela.png"/>
         <Button x:Name="Aptarnavimas1" Height="18" Width="20" HorizontalAlignment="Left" Margin="125,199,0,0" VerticalAlignment="Top" Click="AptarnavimasStar1">
             <Button.Template>
@@ -192,10 +192,6 @@
             </ListView.View>
         </ListView>
         <TextBox x:Name="KomentaruLangelis"  HorizontalAlignment="Left" Height="41" Margin="271,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="388" Grid.Row="1"/>
-        <Button Content="Siųsti" HorizontalAlignment="Left" Margin="688,80,0,0" VerticalAlignment="Top" Width="86" Height="35"
-            Background="#E30000"
-            Foreground="white"
-            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Siusti" Grid.Row="1" RenderTransformOrigin="1.386,0.657"/>
         <TextBlock HorizontalAlignment="Left" Margin="271,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="321"><Run Text="P"/><Run Text="asirinkite, kurios parduotuvės"/><Run Text=" komentarus nor"/><Run Text="ite peržiūrėti:"/></TextBlock>
         <ComboBox x:Name="PasirinktiKomentara" HorizontalAlignment="Left" Margin="608,40,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="KeistiKomentarus">
             <ComboBoxItem Content="Avitela"/>
