@@ -39,8 +39,8 @@ namespace Price_comparison_engine
                 img3.Source = new BitmapImage(new Uri(imgUrl[2], UriKind.Absolute));
             }
         }
-
-        private static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
+        public static int addSaved = 0;
+        public static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
         {
             if (ReadSavedItems(PrisijungimoLangas.email).Any())
             {
@@ -49,6 +49,22 @@ namespace Price_comparison_engine
                     DataGridLoggedIn.Items.Add(item);
                 }
             }
+
+            /*if (addSaved == 1)
+            {
+                DataGridLoggedIn.Items.Refresh();
+                addSaved = 0;
+            }*/
+
+            /*if (addSaved == 1)
+            {
+                foreach (var item in ReadSavedItems(PrisijungimoLangas.email))
+                {
+                    DataGridLoggedIn.Items.Add(item);
+                }
+
+                addSaved = 0;
+            }*/
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -196,8 +212,8 @@ namespace Price_comparison_engine
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.zodis = ieškojimoLaukas.Text;
-            var prekiųLangoAtidarymas = new PrekiuLangas();
-            prekiųLangoAtidarymas.Show();
+            PrekiuLangas prekiuLangas = new PrekiuLangas(this);
+            prekiuLangas.Show();
         }
 
         private void AdminPrisijungimas(object sender, RoutedEventArgs e)
@@ -258,6 +274,7 @@ namespace Price_comparison_engine
                     item.Add(itemas);
                 }
             }
+
             return item;
         }
     }

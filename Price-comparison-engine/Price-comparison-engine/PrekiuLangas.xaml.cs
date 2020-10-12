@@ -39,10 +39,11 @@ namespace Price_comparison_engine
         public static int SoldOutBarbora;
         public static int SoldOut;
         public static int LoggedIn=0;
-        public PrekiuLangas()
+        MainWindowLoggedIn grLoggedIn;
+        public PrekiuLangas(MainWindowLoggedIn grid)
         {
             InitializeComponent();
-
+            this.grLoggedIn = grid;
             if (string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
             {
                 DataGridas.Columns[5].Visibility = Visibility.Collapsed;
@@ -672,8 +673,11 @@ namespace Price_comparison_engine
             var link = (((Button)sender).DataContext as Item)?.Link;
             if (link != null) Process.Start(link);
         }
+       
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
+
+           // MainWindowLoggedIn mainWindowLoggedIn;
             MessageBox.Show("Prekė sėkmingai išsaugota palyginimui!");
             var link = (((Button)sender).DataContext as Item)?.Link;
             var shopName = (((Button)sender).DataContext as Item)?.Seller;
@@ -684,6 +688,17 @@ namespace Price_comparison_engine
             {
                 WriteSavedItems(link, photoUrll, shopName, itemName, price, PrisijungimoLangas.email);
             }
+            var itemas = new Item
+            {
+                Link = link,
+                Nuotrauka = photoUrll,
+                Seller = shopName,
+                Name = itemName,
+                Price = price
+            };
+            grLoggedIn.DataGridLoggedIn.Items.Add(itemas);
+
+
         }
 
         private static void RasytiPrekes(string siteUrl, string imgUrl, string parduotuvesVardas, string prekesVardas, string prekesKaina, string raktinisZodis)
