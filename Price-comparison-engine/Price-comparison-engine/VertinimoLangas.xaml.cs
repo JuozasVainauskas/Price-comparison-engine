@@ -2,18 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Price_comparison_engine
 {
@@ -101,9 +94,13 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Vertinti(object sender, RoutedEventArgs e)
+        private void VertintiClick(object sender, RoutedEventArgs e)
         {
-            if (rating["Aptarnavimas"] == 0 || rating["PrekiuKokybe"] == 0 || rating["Pristatymas"] == 0)
+            if (parduotuve.SelectedIndex == -1)
+            {
+                MessageBox.Show("Turite pasirinkti parduotuvę.");
+            }
+            else if (rating["Aptarnavimas"] == 0 || rating["PrekiuKokybe"] == 0 || rating["Pristatymas"] == 0)
             {
                 MessageBox.Show("Turite pažymėti vertinimą prie visų kriterijų.");
             }
@@ -111,6 +108,7 @@ namespace Price_comparison_engine
             {
                 if (parduotuve.SelectedIndex == 0 && !balsuIndex.Contains("_0"))
                 {
+                    //Rating
                     balsavusiuSk++;
                     balsai += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     vertinimai["Avitela"]["Aptarnavimas"] = rating["Aptarnavimas"];
@@ -120,9 +118,17 @@ namespace Price_comparison_engine
                     balsuIndex += "_0";
                     Rasyti("Avitela", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
                     Atstatyti(calc);
+                    //Comment
+                    RasytiKomentarus(PrisijungimoLangas.email, 0, vertinimai["Avitela"]["Aptarnavimas"], vertinimai["Avitela"]["PrekiuKokybe"], vertinimai["Avitela"]["Pristatymas"], KomentaruLangelis.Text);
+                    KomentaruLangelis.Clear();
+                    SkaitytiKomentaruDuomenis(ref email, ref komentarai);
+                    sujungtiList(email, komentarai);
+                    tvarkytiDuomenis(0, listViewas, email, komentarai);
+
                 }
                 else if (parduotuve.SelectedIndex == 1 && !balsuIndex.Contains("_1"))
                 {
+                    //Rating
                     balsavusiuSk++;
                     balsai += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     vertinimai["Elektromarkt"]["Aptarnavimas"] = rating["Aptarnavimas"];
@@ -132,9 +138,16 @@ namespace Price_comparison_engine
                     balsuIndex += "_1";
                     Rasyti("Elektromarkt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
                     Atstatyti(calc);
+                    //Comment
+                    RasytiKomentarus(PrisijungimoLangas.email, 1, vertinimai["Elektromarkt"]["Aptarnavimas"], vertinimai["Elektromarkt"]["PrekiuKokybe"], vertinimai["Elektromarkt"]["Pristatymas"], KomentaruLangelis.Text);
+                    KomentaruLangelis.Clear();
+                    SkaitytiKomentaruDuomenis(ref email, ref komentarai);
+                    sujungtiList(email, komentarai);
+                    tvarkytiDuomenis(1, listViewas, email, komentarai);
                 }
                 else if (parduotuve.SelectedIndex == 2 && !balsuIndex.Contains("_2"))
                 {
+                    //Rating
                     balsavusiuSk++;
                     balsai += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     vertinimai["Pigu.lt"]["Aptarnavimas"] = rating["Aptarnavimas"];
@@ -144,12 +157,19 @@ namespace Price_comparison_engine
                     balsuIndex += "_2";
                     Rasyti("Pigu.lt", balsuIndex, PrisijungimoLangas.email, balsai, balsavusiuSk);
                     Atstatyti(calc);
+                    //Comment
+                    RasytiKomentarus(PrisijungimoLangas.email, 2, vertinimai["Pigu.lt"]["Aptarnavimas"], vertinimai["Pigu.lt"]["PrekiuKokybe"], vertinimai["Pigu.lt"]["Pristatymas"], KomentaruLangelis.Text);
+                    KomentaruLangelis.Clear();
+                    SkaitytiKomentaruDuomenis(ref email, ref komentarai);
+                    sujungtiList(email, komentarai);
+                    tvarkytiDuomenis(2, listViewas, email, komentarai);
                 }
                 else
                 {
-                    MessageBox.Show("Jau balsavote už šią parduotuvę!");
+                    MessageBox.Show("Jau esate palikęs atsiliepimą už šią parduotuvę!");
                     parduotuve.IsEnabled = true;
                     parduotuve.SelectedIndex = -1;
+                    KomentaruLangelis.Clear();
                 }
                 ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
                 ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
@@ -172,68 +192,6 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Siusti(object sender, RoutedEventArgs e)
-        {
-            if(parduotuve.SelectedIndex == -1)
-            {
-                MessageBox.Show("Nepasirinkote parduotuvės!");
-                KomentaruLangelis.Clear();
-            }
-            else if (parduotuve.SelectedIndex == 0)
-            {
-                if (balsuIndex.Contains("_0"))
-                {
-                    RasytiKomentarus(PrisijungimoLangas.email, 0, vertinimai["Avitela"]["Aptarnavimas"], vertinimai["Avitela"]["PrekiuKokybe"], vertinimai["Avitela"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    SkaitytiKomentaruDuomenis(ref email, ref komentarai);
-                    sujungtiList(email, komentarai);
-                    tvarkytiDuomenis(0, listViewas, email, komentarai);
-                }
-                else
-                {
-                    MessageBox.Show("Pirmiausiai, turite įvertinti parduotuvę.");
-                }
-            }
-            else if (parduotuve.SelectedIndex == 1)
-            {
-                if (balsuIndex.Contains("_1"))
-                {
-                    RasytiKomentarus(PrisijungimoLangas.email, 1, vertinimai["Elektromarkt"]["Aptarnavimas"], vertinimai["Elektromarkt"]["PrekiuKokybe"], vertinimai["Elektromarkt"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    SkaitytiKomentaruDuomenis(ref email, ref komentarai);
-                    sujungtiList(email, komentarai);
-                    tvarkytiDuomenis(1, listViewas, email, komentarai);
-
-                }
-                else
-                {
-                    MessageBox.Show("Pirmiausiai, turite įvertinti parduotuvę.");
-                }
-            }
-            else if (parduotuve.SelectedIndex == 2)
-            {
-                if (balsuIndex.Contains("_2"))
-                {
-                    RasytiKomentarus(PrisijungimoLangas.email, 2, vertinimai["Pigu.lt"]["Aptarnavimas"], vertinimai["Pigu.lt"]["PrekiuKokybe"], vertinimai["Pigu.lt"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    SkaitytiKomentaruDuomenis(ref email, ref komentarai);
-                    sujungtiList(email, komentarai);
-                    tvarkytiDuomenis(2, listViewas, email, komentarai);
-
-                }
-                else
-                {
-                    MessageBox.Show("Pirmiausiai, turite įvertinti parduotuvę.");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Jau esate palikęs atsiliepimą už šią parduotuvę!");
-                parduotuve.IsEnabled = true;
-                parduotuve.SelectedIndex = -1;
-                return;
-            }
-        }
         private static void SkaitytiKomentaruDuomenis(ref List<string> email, ref List<string> komentarai)
         {
             email.Clear();
