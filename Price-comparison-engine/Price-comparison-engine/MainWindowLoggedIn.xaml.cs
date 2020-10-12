@@ -197,7 +197,8 @@ namespace Price_comparison_engine
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var currentRowIndex = DataGridLoggedIn.Items.IndexOf(DataGridLoggedIn.CurrentItem);
+            DataGridLoggedIn.Items.RemoveAt(currentRowIndex);
         }
 
         private void DataGridLoggedIn_Initialized(object sender, EventArgs e)
