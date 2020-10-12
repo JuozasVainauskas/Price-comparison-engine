@@ -198,6 +198,20 @@ namespace Price_comparison_engine
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             var currentRowIndex = DataGridLoggedIn.Items.IndexOf(DataGridLoggedIn.CurrentItem);
+
+            using (var context = new DuomenuBazesKontekstas())
+            {
+                var tempItem = (Item)DataGridLoggedIn.Items.GetItemAt(currentRowIndex);
+
+                var result = context.SavedItems.SingleOrDefault(b => b.Email == PrisijungimoLangas.email && b.PageURL == tempItem.Link && b.ImgURL == tempItem.Nuotrauka && b.ShopName == tempItem.Seller && b.ItemName == tempItem.Name && b.Price == tempItem.Price);
+
+                if (result != null)
+                {
+                    context.SavedItems.Remove(result);
+                    context.SaveChanges();
+                }
+            }
+
             DataGridLoggedIn.Items.RemoveAt(currentRowIndex);
         }
 
