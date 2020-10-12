@@ -93,7 +93,7 @@ namespace Price_comparison_engine
                 var urlgalas = regEx.Replace(MainWindow.zodis, "+");
                 var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
                 var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
-              //  var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
+                var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
                 var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
                 var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
                 var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
@@ -102,8 +102,8 @@ namespace Price_comparison_engine
                 WriteDataFromRde(rdeItems, prices);
                 var barboraItems = BarboraSearch(await Html(httpClient, urlBarbora));
                 WriteDataFromBarbora(barboraItems, prices);
-               // var piguItems = PiguSearch(await Html(httpClient, urlPigu));
-                //WriteDataFromPigu(piguItems, prices);
+                var piguItems = PiguSearch(await Html(httpClient, urlPigu));
+                WriteDataFromPigu(piguItems, prices);
                 var bigBoxItem = BigBoxSearch(await Html(httpClient, urlBigBox));
                 WriteDataFromBigBox(bigBoxItem, prices);
                 var avitelaItems = AvitelaSearch(await Html(httpClient, urlAvitela));
@@ -527,19 +527,24 @@ namespace Price_comparison_engine
                             ?.GetAttributeValue("src", "");
 
                         Console.WriteLine(imgLink);
-                        price = PasalinimasTarpuPigu(price);
-                        var priceAtsarg = price;
-                        price = PasalinimasEuroSimbol(price);
-                        price = price + "€";
-                        priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
+                        if (price != null)
+                        {
+                            price = PasalinimasTarpuPigu(price);
+                            var priceAtsarg = price;
+                            price = PasalinimasEuroSimbol(price);
+                            price = price + "€";
+                            priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
 
-
-
-                        var pricea = Convert.ToDouble(priceAtsarg);
-                        var itemas = new Item { Nuotrauka = imgLink, Seller = "Pigu", Name = name, Pricea = pricea, Price = price, Link = link };
-                        prices.Add(itemas);
-                        RasytiData(link, imgLink);
-                        countItems--;
+                            var pricea = Convert.ToDouble(priceAtsarg);
+                            var itemas = new Item
+                            {
+                                Nuotrauka = imgLink, Seller = "Pigu", Name = name, Pricea = pricea, Price = price,
+                                Link = link
+                            };
+                            prices.Add(itemas);
+                            RasytiData(link, imgLink);
+                            countItems--;
+                        }
                     }
             }
             else
