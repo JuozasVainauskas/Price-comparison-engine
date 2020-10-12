@@ -62,7 +62,7 @@ namespace Price_comparison_engine
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
             zodis = ieskojimoLaukas.Text;
-            var prekiųLangoAtidarymas = new PrekiuLangas();
+            var prekiųLangoAtidarymas = new PrekiuLangas(null);
             prekiųLangoAtidarymas.Show();
         }
 

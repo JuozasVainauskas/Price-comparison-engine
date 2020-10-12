@@ -1,26 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Price_comparison_engine.Klases;
 
 namespace Price_comparison_engine
 {
-    /// <summary>
-    /// Interaction logic for Window1.xaml
-    /// </summary>
-    /// DataGridLoggedIn_Initialized
     public partial class MainWindowLoggedIn : Window
     {
         public MainWindowLoggedIn()
@@ -39,8 +29,7 @@ namespace Price_comparison_engine
                 img3.Source = new BitmapImage(new Uri(imgUrl[2], UriKind.Absolute));
             }
         }
-
-        private static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
+        public static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
         {
             if (ReadSavedItems(PrisijungimoLangas.email).Any())
             {
@@ -53,24 +42,6 @@ namespace Price_comparison_engine
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            /* var skirtumasPlocio = this.ActualWidth / 1.2;
-             var skirtumasIlgio = this.ActualHeight / 1.1;
-             var skirtumasPlocioBlokeliui = this.ActualHeight / 1.05;
-             var skirtumasPlocioNuotraukai = this.ActualWidth / 1.2;
-             var skirtumasIlgioNuotraukai = this.ActualHeight / 1.2;
-             MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
-             TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
-             RectangleIštempimas(viršutinėlinija);
-             RectangleIštempimas(vidurinėLinija);
-             //RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
-             RectangleIštempimas(vidurinėLinija2);
-             //RectangleResize(vidurinėLinija2, skirtumasPlocioBlokeliui);
-             RectangleIštempimas(apatinėLinija);
-             SlideShowResize(img1_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-             SlideShowResize(img2_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-             SlideShowResize(img3_2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
-             SlideShowResize(iKairePuse1, skirtumasIlgio, skirtumasIlgio);
-             SlideShowResize(iDesinePuse1, skirtumasIlgio, skirtumasIlgio);*/
             var skirtumasPlocioNuotraukai = this.ActualWidth / 1.1;
             var skirtumasIlgioNuotraukai = this.ActualHeight / 1.1;
             var skirtumasPlocio = this.ActualWidth / 1.2;
@@ -196,8 +167,8 @@ namespace Price_comparison_engine
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
             MainWindow.zodis = ieškojimoLaukas.Text;
-            var prekiųLangoAtidarymas = new PrekiuLangas();
-            prekiųLangoAtidarymas.Show();
+            PrekiuLangas prekiuLangas = new PrekiuLangas(this);
+            prekiuLangas.Show();
         }
 
         private void AdminPrisijungimas(object sender, RoutedEventArgs e)
@@ -226,7 +197,8 @@ namespace Price_comparison_engine
 
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var currentRowIndex = DataGridLoggedIn.Items.IndexOf(DataGridLoggedIn.CurrentItem);
+            DataGridLoggedIn.Items.RemoveAt(currentRowIndex);
         }
 
         private void DataGridLoggedIn_Initialized(object sender, EventArgs e)
@@ -258,6 +230,7 @@ namespace Price_comparison_engine
                     item.Add(itemas);
                 }
             }
+
             return item;
         }
     }
