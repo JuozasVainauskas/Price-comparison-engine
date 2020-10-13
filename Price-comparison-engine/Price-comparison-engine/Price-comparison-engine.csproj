@@ -98,7 +98,6 @@
     </Compile>
     <Compile Include="Klases\CommentsTable.cs" />
     <Compile Include="Klases\ItemsTable.cs" />
-    <Compile Include="Klases\PrekiuDuomenys.cs" />
     <Compile Include="Klases\Role.cs" />
     <Compile Include="Klases\SavedItems.cs" />
     <Compile Include="Klases\ShopRatingTable.cs" />
@@ -120,6 +119,10 @@
     <Compile Include="Migrations\202010132049002_Newer1.cs" />
     <Compile Include="Migrations\202010132049002_Newer1.designer.cs">
       <DependentUpon>202010132049002_Newer1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010132106127_DeleteOldTables.cs" />
+    <Compile Include="Migrations\202010132106127_DeleteOldTables.designer.cs">
+      <DependentUpon>202010132106127_DeleteOldTables.cs</DependentUpon>
     </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
@@ -242,6 +245,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010132049002_Newer1.resx">
       <DependentUpon>202010132049002_Newer1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010132106127_DeleteOldTables.resx">
+      <DependentUpon>202010132106127_DeleteOldTables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -280,12 +280,12 @@ namespace Price_comparison_engine
                                 int numberOfSameWords=AlgorithmHowManyWordsAreTheSame(pavArray);
                                 if (numberOfSameWords >= (Divided.Length / 2)+1)
                                 {
-                                    var itemas = new Item
+                                    var singleItem = new Item
                                     {
                                         Imagee = "https://www.rde.lt/" + imgLink, Sellerr = "Rde", Namee = name,
                                         Priceaa = pricea, Pricee = price, Linkk = "https://www.rde.lt/" + link
                                     };
-                                    prices.Add(itemas);
+                                    prices.Add(singleItem);
                                 }
                             }
                         
@@ -295,8 +295,8 @@ namespace Price_comparison_engine
             }
             else
             {
-                var itemas = new Item { Seller = "Rde", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
-                prices.Add(itemas);
+                var singleItem = new Item { Seller = "Rde", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(singleItem);
             }
         }
 
@@ -336,7 +336,7 @@ namespace Price_comparison_engine
                             int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
                             if (numberOfSameWords >= (Divided.Length / 2) + 1)
                             {
-                                var itemas = new Item
+                                var singleItem = new Item
                                 {
                                     Imagee = "https://pagrindinis.barbora.lt/" + imgLink,
                                     Sellerr = "Barbora",
@@ -345,7 +345,7 @@ namespace Price_comparison_engine
                                     Pricee = price,
                                     Linkk = "https://pagrindinis.barbora.lt/" + link
                                 };
-                                prices.Add(itemas);
+                                prices.Add(singleItem);
                             }
                         }
 
@@ -354,8 +354,8 @@ namespace Price_comparison_engine
             }
             else
             {
-                var itemas = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
-                prices.Add(itemas);
+                var singleItem = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(singleItem);
             }
         }
 
@@ -386,20 +386,20 @@ namespace Price_comparison_engine
                         int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
                         if (numberOfSameWords >= (Divided.Length/2)+1)
                         {
-                            var itemas = new Item
+                            var singleItem = new Item
                             {
                                 Imagee = imgLink, Sellerr = "Gintarine vaistine", Namee = name, Priceaa = pricea,
                                 Pricee = price+ '€', Linkk = "https://www.gintarine.lt/" + link
                             };
-                            prices.Add(itemas);
+                            prices.Add(singleItem);
                         }
                     }
                 }
             }
             else
             {
-                var itemas = new Item { Seller = "Gintarine vaistine", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
-                prices.Add(itemas);
+                var singleItem = new Item { Seller = "Gintarine vaistine", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(singleItem);
             }
         }
 
@@ -438,20 +438,20 @@ namespace Price_comparison_engine
                         int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
                         if (numberOfSameWords >= (Divided.Length/2)+1)
                         {
-                            var itemas = new Item
+                            var singleItem = new Item
                             {
                                 Imagee = imgLink, Sellerr = "BigBox", Namee = name, Priceaa = pricea,
                                 Pricee = price, Linkk = link
                             };
-                            prices.Add(itemas);
+                            prices.Add(singleItem);
                         }
                     }
                 }
             }
             else
             {
-                var itemas = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
-                prices.Add(itemas);
+                var singleItem = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(singleItem);
             }
         }
         private static void WriteDataFromAvitela(List<HtmlNode> productListItems, List<Item> prices)
@@ -484,9 +484,9 @@ namespace Price_comparison_engine
                             int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
                             if (numberOfSameWords >= (Divided.Length/2)+1)
                             {
-                                var itemas = new Item
+                                var singleItem = new Item
                                     {Sellerr = "Avitela", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link};
-                                prices.Add(itemas);
+                                prices.Add(singleItem);
                             }
                         }
                     }
@@ -494,8 +494,8 @@ namespace Price_comparison_engine
             }
             else
             {
-                var itemas = new Item { Imagee = "https://avitela.lt/image/no_image.jpg",Seller = "Avitela", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
-                prices.Add(itemas);
+                var singleItem = new Item { Imagee = "https://avitela.lt/image/no_image.jpg",Seller = "Avitela", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(singleItem);
             }
         }
         private static void WriteDataFromPigu(List<HtmlNode> productListItems, List<Item> prices)
@@ -534,20 +534,20 @@ namespace Price_comparison_engine
                         int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
                         if (numberOfSameWords >= (Divided.Length/2)+1)
                         {
-                            var itemas = new Item
+                            var singleItem = new Item
                             {
                                 Imagee = imgLink, Sellerr = "Pigu", Namee = name, Priceaa = pricea, Pricee = price,
                                 Linkk = link
                             };
-                            prices.Add(itemas);
+                            prices.Add(singleItem);
                         }
                     }
                 }
             }
             else
             {
-                var itemas = new Item { Seller = "Pigu", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
-                prices.Add(itemas);
+                var singleItem = new Item { Seller = "Pigu", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(singleItem);
             }
         }
         private static void WriteDataFromElektromarkt(List<HtmlNode> productListItems2, List<Item> prices)
@@ -581,20 +581,20 @@ namespace Price_comparison_engine
                     int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
                     if (numberOfSameWords >= (Divided.Length/2)+1)
                     {
-                        var itemas = new Item
+                        var singleItem = new Item
                         {
                             Imagee = imgLink, Sellerr = "Elektromarkt", Namee = name, Priceaa = pricea,
                             Pricee = price, Linkk = link
                         };
-                        prices.Add(itemas);
+                        prices.Add(singleItem);
                     }
 
                 }
             }
             else
             {
-                var itemas = new Item { Seller = "Elektromarkt", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
-                prices.Add(itemas);
+                var singleItem = new Item { Seller = "Elektromarkt", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                prices.Add(singleItem);
             }
         }
 

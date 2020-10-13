@@ -251,8 +251,8 @@ namespace Price_comparison_engine
                .Count();
                 StatistikosListas.Add(PaprastiNariai);
 
-                var Prekes = context.PrekiuDuomenys
-               .Where(o => o.PrekiuID >= 0)
+                var Prekes = context.ItemsTable
+               .Where(o => o.ItemId >= 0)
                .Count();
                 StatistikosListas.Add(Prekes);
 

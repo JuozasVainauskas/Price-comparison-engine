@@ -194,8 +194,8 @@ namespace Price_comparison_engine
         {
             using (var context = new DuomenuBazesKontekstas())
             {
-                var tempPageUrl = context.PrekiuDuomenys.Select(column => column.PuslapioURL).ToList();
-                var tempImgUrl = context.PrekiuDuomenys.Select(column => column.ImgURL).ToList();
+                var tempPageUrl = context.ItemsTable.Select(column => column.PageUrl).ToList();
+                var tempImgUrl = context.ItemsTable.Select(column => column.ImgUrl).ToList();
 
                 for (int i = 0; i < tempPageUrl.Count; i++)
                 {
