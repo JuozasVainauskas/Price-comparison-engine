@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Price_comparison_engine
+namespace Price_comparison_engine.Klases
 {
     enum Role
     {

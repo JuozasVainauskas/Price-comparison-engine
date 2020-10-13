@@ -98,6 +98,7 @@
     </Compile>
     <Compile Include="Klases\PrekiuDuomenys.cs" />
     <Compile Include="Klases\PuslapiuDuomenys.cs" />
+    <Compile Include="Klases\Role.cs" />
     <Compile Include="Klases\SavedItems.cs" />
     <Compile Include="KonkretiPreke.xaml.cs">
       <DependentUpon>KonkretiPreke.xaml</DependentUpon>
