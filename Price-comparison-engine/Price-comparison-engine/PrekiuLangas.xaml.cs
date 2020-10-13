@@ -83,7 +83,6 @@ namespace Price_comparison_engine
             
            if (SkaitytiPrekes(MainWindow.zodis).Any())
             {
-
                 foreach (var item in SkaitytiPrekes(MainWindow.zodis)) dataGrid.Items.Add(item);
             }
             else
@@ -542,7 +541,6 @@ namespace Price_comparison_engine
                                 Link = link
                             };
                             prices.Add(itemas);
-                            RasytiData(link, imgLink);
                             countItems--;
                         }
                     }
@@ -582,7 +580,6 @@ namespace Price_comparison_engine
                     var pricea = double.Parse(priceAtsarg);
                     var item1 = new Item { Nuotrauka = imgLink, Seller = "Elektromarkt", Name = name, Pricea = pricea, Price = price, Link = link };
                     prices.Add(item1);
-                    RasytiData(link, imgLink);
 
                 }
             }
@@ -738,48 +735,17 @@ namespace Price_comparison_engine
         private static List<Item> SkaitytiPrekes(string raktinisZodis)
         {
             var item = new List<Item>();
+            
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var tempSiteUrl = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.PuslapioURL).ToList();
-                var tempImgUrl = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.ImgURL).ToList();
-                var tempParduotuvesVardas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.ParduotuvesVardas).ToList();
-                var tempPrekesVardas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.PrekesVardas).ToList();
-                var tempPrekesKaina = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => x.PrekesKaina).ToList();
+                var rezultatas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => new Item { Link = x.PuslapioURL, Nuotrauka = x.ImgURL, Seller = x.ParduotuvesVardas, Name = x.PrekesVardas, Price = x.PrekesKaina }).ToList();
 
-                for (var i = 0; i < tempSiteUrl.Count; i++)
+                foreach (var itemas in rezultatas)
                 {
-                    var itemas = new Item
-                    {
-                        Link = tempSiteUrl.ElementAt(i),
-                        Nuotrauka = tempImgUrl.ElementAt(i),
-                        Seller = tempParduotuvesVardas.ElementAt(i),
-                        Name = tempPrekesVardas.ElementAt(i),
-                        Price = tempPrekesKaina.ElementAt(i)
-                    };
                     item.Add(itemas);
                 }
             }
             return item;
-        }
-
-        private static void RasytiData(string siteUrl, string imgUrl)
-        {
-            using (var kontekstas = new DuomenuBazesKontekstas())
-            {
-                var rezultatas = kontekstas.PuslapiuDuomenys.SingleOrDefault(c => c.PuslapioURL == siteUrl && c.ImgURL == imgUrl);
-
-                if (rezultatas == null)
-                {
-                    var puslapiuDuomenys = new PuslapiuDuomenys
-                    {
-                        PuslapioURL = siteUrl,
-                        ImgURL = imgUrl
-                    };
-                    kontekstas.PuslapiuDuomenys.Add(puslapiuDuomenys);
-                    kontekstas.SaveChanges();
-
-                }
-            }
         }
 
         private static void WriteSavedItems(string pageUrl, string imgUrl, string shopName, string itemName, string price, string email)

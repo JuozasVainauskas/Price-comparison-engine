@@ -97,47 +97,10 @@
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Klases\PrekiuDuomenys.cs" />
-    <Compile Include="Klases\PuslapiuDuomenys.cs" />
     <Compile Include="Klases\Role.cs" />
     <Compile Include="Klases\SavedItems.cs" />
     <Compile Include="KonkretiPreke.xaml.cs">
       <DependentUpon>KonkretiPreke.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.cs" />
-    <Compile Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.designer.cs">
-      <DependentUpon>202009301256108_SukurtiPuslapiuDuomenis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.cs" />
-    <Compile Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.designer.cs">
-      <DependentUpon>202009301256479_SukurtiPuslapiuDuomenis1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.cs" />
-    <Compile Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.designer.cs">
-      <DependentUpon>202010031026457_NaudotojoDuomenuUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010061127433_SukurtiNaujaLentele.cs" />
-    <Compile Include="Migrations\202010061127433_SukurtiNaujaLentele.designer.cs">
-      <DependentUpon>202010061127433_SukurtiNaujaLentele.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010061143547_AtnaujintiPrekiuLentele.cs" />
-    <Compile Include="Migrations\202010061143547_AtnaujintiPrekiuLentele.designer.cs">
-      <DependentUpon>202010061143547_AtnaujintiPrekiuLentele.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010080930126_SukurtiKomentaruStulpeli.cs" />
-    <Compile Include="Migrations\202010080930126_SukurtiKomentaruStulpeli.designer.cs">
-      <DependentUpon>202010080930126_SukurtiKomentaruStulpeli.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010080936285_SukurtiKomentaruStulpeli1.cs" />
-    <Compile Include="Migrations\202010080936285_SukurtiKomentaruStulpeli1.designer.cs">
-      <DependentUpon>202010080936285_SukurtiKomentaruStulpeli1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010101052187_Naujas.cs" />
-    <Compile Include="Migrations\202010101052187_Naujas.designer.cs">
-      <DependentUpon>202010101052187_Naujas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010111627554_NewTableShop.cs" />
-    <Compile Include="Migrations\202010111627554_NewTableShop.designer.cs">
-      <DependentUpon>202010111627554_NewTableShop.cs</DependentUpon>
     </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
@@ -147,18 +110,6 @@
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
     <Compile Include="Klases\ParduotuviuDuomenys.cs" />
     <Compile Include="Klases\SiustiEmail.cs" />
-    <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.cs" />
-    <Compile Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.designer.cs">
-      <DependentUpon>202009281809480_SukurtiNaudotojoDuomenis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.cs" />
-    <Compile Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.designer.cs">
-      <DependentUpon>202009290826175_SukurtiParduotuviuDuomenis.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.cs" />
-    <Compile Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.designer.cs">
-      <DependentUpon>202009291048511_SukurtiParduotuviuDuomenis1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatvirtinimoLangas.xaml.cs">
       <DependentUpon>PatvirtinimoLangas.xaml</DependentUpon>
@@ -262,42 +213,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202009281809480_SukurtiNaudotojoDuomenis.resx">
-      <DependentUpon>202009281809480_SukurtiNaudotojoDuomenis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009290826175_SukurtiParduotuviuDuomenis.resx">
-      <DependentUpon>202009290826175_SukurtiParduotuviuDuomenis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009291048511_SukurtiParduotuviuDuomenis1.resx">
-      <DependentUpon>202009291048511_SukurtiParduotuviuDuomenis1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301256108_SukurtiPuslapiuDuomenis.resx">
-      <DependentUpon>202009301256108_SukurtiPuslapiuDuomenis.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202009301256479_SukurtiPuslapiuDuomenis1.resx">
-      <DependentUpon>202009301256479_SukurtiPuslapiuDuomenis1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010031026457_NaudotojoDuomenuUpdate.resx">
-      <DependentUpon>202010031026457_NaudotojoDuomenuUpdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010061127433_SukurtiNaujaLentele.resx">
-      <DependentUpon>202010061127433_SukurtiNaujaLentele.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010061143547_AtnaujintiPrekiuLentele.resx">
-      <DependentUpon>202010061143547_AtnaujintiPrekiuLentele.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010080930126_SukurtiKomentaruStulpeli.resx">
-      <DependentUpon>202010080930126_SukurtiKomentaruStulpeli.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010080936285_SukurtiKomentaruStulpeli1.resx">
-      <DependentUpon>202010080936285_SukurtiKomentaruStulpeli1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010101052187_Naujas.resx">
-      <DependentUpon>202010101052187_Naujas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010111627554_NewTableShop.resx">
-      <DependentUpon>202010111627554_NewTableShop.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
