@@ -206,7 +206,7 @@ namespace Price_comparison_engine
             {
                 var tempItem = (Item)DataGridLoggedIn.Items.GetItemAt(currentRowIndex);
 
-                var result = context.SavedItems.SingleOrDefault(b => b.Email == PrisijungimoLangas.email && b.PageUrl == tempItem.Link && b.ImgUrl == tempItem.Nuotrauka && b.ShopName == tempItem.Seller && b.ItemName == tempItem.Name && b.Price == tempItem.Price);
+                var result = context.SavedItems.SingleOrDefault(b => b.Email == PrisijungimoLangas.email && b.PageURL == tempItem.Link && b.ImgURL == tempItem.Nuotrauka && b.ShopName == tempItem.Seller && b.ItemName == tempItem.Name && b.Price == tempItem.Price);
 
                 if (result != null)
                 {
@@ -226,16 +226,28 @@ namespace Price_comparison_engine
         private static List<Item> ReadSavedItems(string email)
         {
             var item = new List<Item>();
-
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => new Item { Link = x.PageUrl, Nuotrauka = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
+                var tempPageUrl = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.PageURL).ToList();
+                var tempImgUrl = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ImgURL).ToList();
+                var tempShopName = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ShopName).ToList();
+                var tempItemName = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ItemName).ToList();
+                var tempPrice = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.Price).ToList();
 
-                foreach (var itemas in rezultatas)
+                for (var i = 0; i < tempPageUrl.Count; i++)
                 {
+                    var itemas = new Item
+                    {
+                        Link = tempPageUrl.ElementAt(i),
+                        Nuotrauka = tempImgUrl.ElementAt(i),
+                        Seller = tempShopName.ElementAt(i),
+                        Name = tempItemName.ElementAt(i),
+                        Price = tempPrice.ElementAt(i)
+                    };
                     item.Add(itemas);
                 }
             }
+
             return item;
         }
     }

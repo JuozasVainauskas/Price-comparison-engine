@@ -752,14 +752,14 @@ namespace Price_comparison_engine
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.SavedItems.SingleOrDefault(c => c.PageUrl == pageUrl && c.ImgUrl == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Email == email);
+                var rezultatas = kontekstas.SavedItems.SingleOrDefault(c => c.PageURL == pageUrl && c.ImgURL == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Email == email);
 
                 if (rezultatas == null)
                 {
                     var savedItems = new SavedItems()
                     {
-                        PageUrl = pageUrl,
-                        ImgUrl = imgUrl,
+                        PageURL = pageUrl,
+                        ImgURL = imgUrl,
                         ShopName = shopName,
                         ItemName = itemName,
                         Price = price,
