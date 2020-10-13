@@ -395,12 +395,12 @@ namespace Price_comparison_engine
         {
             using (var context = new DuomenuBazesKontekstas())
             {
-                var result = context.ParduotuviuDuomenys.SingleOrDefault(c => c.ParduotuvesPavadinimas == shopName);
+                var result = context.ShopRatingTable.SingleOrDefault(c => c.ShopName == shopName);
 
                 if (result != null)
                 {
-                    votesNumber = (int)result.BalsuSuma;
-                    votersNumber = result.BalsavusiuSkaicius;
+                    votesNumber = result.VotesNumber;
+                    votersNumber = result.VotersNumber;
                 }
             }
 
@@ -440,11 +440,11 @@ namespace Price_comparison_engine
         {
             using (var context = new DuomenuBazesKontekstas())
             {
-                var result = context.ParduotuviuDuomenys.SingleOrDefault(b => b.ParduotuvesPavadinimas == shopName);
+                var result = context.ShopRatingTable.SingleOrDefault(b => b.ShopName == shopName);
                 if (result != null)
                 {
-                    result.BalsavusiuSkaicius = votersNumber;
-                    result.BalsuSuma = votesNumber;
+                    result.VotersNumber = votersNumber;
+                    result.VotesNumber = votesNumber;
                     context.SaveChanges();
                 }
             }

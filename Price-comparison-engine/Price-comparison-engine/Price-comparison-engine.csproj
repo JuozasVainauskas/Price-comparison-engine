@@ -113,13 +113,20 @@
     <Compile Include="Migrations\202010131953326_Newest.designer.cs">
       <DependentUpon>202010131953326_Newest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010132042124_Newer.cs" />
+    <Compile Include="Migrations\202010132042124_Newer.designer.cs">
+      <DependentUpon>202010132042124_Newer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010132049002_Newer1.cs" />
+    <Compile Include="Migrations\202010132049002_Newer1.designer.cs">
+      <DependentUpon>202010132049002_Newer1.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
     <Compile Include="Klases\GeneruotiHash.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
-    <Compile Include="Klases\ParduotuviuDuomenys.cs" />
     <Compile Include="Klases\SiustiEmail.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatvirtinimoLangas.xaml.cs">
@@ -229,6 +236,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010131953326_Newest.resx">
       <DependentUpon>202010131953326_Newest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010132042124_Newer.resx">
+      <DependentUpon>202010132042124_Newer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010132049002_Newer1.resx">
+      <DependentUpon>202010132049002_Newer1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Price_comparison_engine.Klases
 {
@@ -18,9 +19,9 @@ namespace Price_comparison_engine.Klases
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
         public DbSet<NaudotojoDuomenys> NaudotojoDuomenys { get; set; }
-        public DbSet<ParduotuviuDuomenys> ParduotuviuDuomenys { get; set; }
         public DbSet<PrekiuDuomenys> PrekiuDuomenys { get; set; }
         public DbSet<ShopRatingTable> ShopRatingTable { get; set; }
         public DbSet<ItemsTable> ItemsTable { get; set; }
