@@ -115,10 +115,13 @@ namespace Price_comparison_engine
                 var tempPuslapioUrl = kontekstas.PrekiuDuomenys.Select(column => column.PuslapioURL).ToList();
                 var tempImgUrl = kontekstas.PrekiuDuomenys.Select(column => column.ImgURL).ToList();
 
-                if (tempPuslapioUrl != null && tempImgUrl != null)
+                for (int i = 0; i < tempPuslapioUrl.Count; i++)
                 {
-                    puslapioUrl = tempPuslapioUrl;
-                    imgUrl = tempImgUrl;
+                    if (tempPuslapioUrl.ElementAt(i) != null && tempImgUrl.ElementAt(i) != null)
+                    {
+                        puslapioUrl.Add(tempPuslapioUrl.ElementAt(i));
+                        imgUrl.Add(tempImgUrl.ElementAt(i));
+                    }
                 }
             }
         }
