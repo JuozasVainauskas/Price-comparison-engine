@@ -232,27 +232,27 @@ namespace Price_comparison_engine
         }
         private static List<int> Skaiciuoti()
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
                 List<int> StatistikosListas = new List<int>();
 
-                var VisiNariai = context.NaudotojoDuomenys
+                var VisiNariai = kontekstas.NaudotojoDuomenys
                .Where(o => o.NaudotojoID >= 0)
                .Count();
                 StatistikosListas.Add(VisiNariai);
 
-                var Administratoriai = context.NaudotojoDuomenys
+                var Administratoriai = kontekstas.NaudotojoDuomenys
                .Where(o => o.Role == "1")
                .Count();
                 StatistikosListas.Add(Administratoriai);
 
-                var PaprastiNariai = context.NaudotojoDuomenys
+                var PaprastiNariai = kontekstas.NaudotojoDuomenys
                .Where(o => o.Role == "0")
                .Count();
                 StatistikosListas.Add(PaprastiNariai);
 
-                var Prekes = context.ItemsTable
-               .Where(o => o.ItemId >= 0)
+                var Prekes = kontekstas.PrekiuDuomenys
+               .Where(o => o.PrekiuID >= 0)
                .Count();
                 StatistikosListas.Add(Prekes);
 

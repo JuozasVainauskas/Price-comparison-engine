@@ -709,40 +709,40 @@ namespace Price_comparison_engine
             }
         }
 
-        private static void RasytiPrekes(string pageUrl, string imgUrl, string shopName, string itemName, string price, string keyword)
+        private static void RasytiPrekes(string siteUrl, string imgUrl, string parduotuvesVardas, string prekesVardas, string prekesKaina, string raktinisZodis)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var result = context.ItemsTable.SingleOrDefault(c => c.PageUrl == pageUrl && c.ImgUrl == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Keyword == keyword);
+                var rezultatas = kontekstas.PrekiuDuomenys.SingleOrDefault(c => c.PuslapioURL == siteUrl && c.ImgURL == imgUrl && c.ParduotuvesVardas == parduotuvesVardas && c.PrekesVardas == prekesVardas && c.PrekesKaina == prekesKaina && c.RaktinisZodis == raktinisZodis);
 
-                if (result == null)
+                if (rezultatas == null)
                 {
-                    var itemsTable = new ItemsTable
+                    var prekiuDuomenys = new PrekiuDuomenys
                     {
-                        PageUrl = pageUrl,
-                        ImgUrl = imgUrl,
-                        ShopName = shopName,
-                        ItemName = itemName,
-                        Price = price,
-                        Keyword = keyword
+                        PuslapioURL = siteUrl,
+                        ImgURL = imgUrl,
+                        ParduotuvesVardas = parduotuvesVardas,
+                        PrekesVardas = prekesVardas,
+                        PrekesKaina = prekesKaina,
+                        RaktinisZodis = raktinisZodis
                     };
-                    context.ItemsTable.Add(itemsTable);
-                    context.SaveChanges();
+                    kontekstas.PrekiuDuomenys.Add(prekiuDuomenys);
+                    kontekstas.SaveChanges();
                 }
             }
         }
 
-        private static List<Item> SkaitytiPrekes(string keyword)
+        private static List<Item> SkaitytiPrekes(string raktinisZodis)
         {
             var item = new List<Item>();
             
-            using (var context = new DuomenuBazesKontekstas())
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var result = context.ItemsTable.Where(x => x.Keyword == keyword).Select(x => new Item { Link = x.PageUrl, Nuotrauka = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
+                var rezultatas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => new Item { Link = x.PuslapioURL, Nuotrauka = x.ImgURL, Seller = x.ParduotuvesVardas, Name = x.PrekesVardas, Price = x.PrekesKaina }).ToList();
 
-                foreach (var itemVar in result)
+                foreach (var itemas in rezultatas)
                 {
-                    item.Add(itemVar);
+                    item.Add(itemas);
                 }
             }
             return item;
@@ -750,11 +750,11 @@ namespace Price_comparison_engine
 
         private static void WriteSavedItems(string pageUrl, string imgUrl, string shopName, string itemName, string price, string email)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var result = context.SavedItems.SingleOrDefault(c => c.PageUrl == pageUrl && c.ImgUrl == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Email == email);
+                var rezultatas = kontekstas.SavedItems.SingleOrDefault(c => c.PageUrl == pageUrl && c.ImgUrl == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Email == email);
 
-                if (result == null)
+                if (rezultatas == null)
                 {
                     var savedItems = new SavedItems()
                     {
@@ -765,8 +765,8 @@ namespace Price_comparison_engine
                         Price = price,
                         Email = email
                     };
-                    context.SavedItems.Add(savedItems);
-                    context.SaveChanges();
+                    kontekstas.SavedItems.Add(savedItems);
+                    kontekstas.SaveChanges();
                 }
             }
         }
