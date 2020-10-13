@@ -83,7 +83,6 @@ namespace Price_comparison_engine
             
            if (SkaitytiPrekes(MainWindow.zodis).Any())
             {
-
                 foreach (var item in SkaitytiPrekes(MainWindow.zodis)) dataGrid.Items.Add(item);
             }
             else
@@ -737,6 +736,10 @@ namespace Price_comparison_engine
 
         private static List<Item> SkaitytiPrekes(string raktinisZodis)
         {
+			/*
+            var item = new List<Item>();
+			var rezultatas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => new Item{ Link = x.PuslapioURL, Nuotrauka = x.ImgURL, Seller = x.ParduotuvesVardas, Name = x.PrekesVardas, Price = x.PrekesKaina}).ToList();
+			*/
             var item = new List<Item>();
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
