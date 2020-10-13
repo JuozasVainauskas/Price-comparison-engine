@@ -22,6 +22,8 @@ namespace Price_comparison_engine.Klases
         public DbSet<NaudotojoDuomenys> NaudotojoDuomenys { get; set; }
         public DbSet<ParduotuviuDuomenys> ParduotuviuDuomenys { get; set; }
         public DbSet<PrekiuDuomenys> PrekiuDuomenys { get; set; }
+        public DbSet<ShopRatingTable> ShopRatingTable { get; set; }
+        public DbSet<ItemsTable> ItemsTable { get; set; }
         public DbSet<SavedItems> SavedItems { get; set; }
         public DbSet<CommentsTable> CommentsTable { get; set; }
     }
