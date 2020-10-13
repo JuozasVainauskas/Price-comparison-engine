@@ -417,21 +417,21 @@ namespace Price_comparison_engine
 
         private static void RasytiKomentarus(string email, int parduotuvesId, double aptarnavimas, double prekiuKokybe, double pristatymas, string komentaras)
         {
-            using (var kontekstas = new DuomenuBazesKontekstas())
+            using (var context = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                var result = context.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
 
-                if (rezultatas != null)
+                if (result != null)
                 {
-                    var temp = rezultatas.Komentaras;
+                    var temp = result.Komentaras;
 
-                    if (rezultatas.ArBalsavo.Contains("_" + parduotuvesId) && !temp.Contains("_" + parduotuvesId + "_"))
+                    if (result.ArBalsavo.Contains("_" + parduotuvesId) && !temp.Contains("_" + parduotuvesId + "_"))
                     {
                         temp += string.Concat("_", parduotuvesId, "_", DateTime.Now.ToString("yyyy-MM-dd HH:mm"), "_", string.Format("{0:F2}", aptarnavimas), "_", string.Format("{0:F2}", prekiuKokybe), "_", string.Format("{0:F2}", pristatymas), "_", komentaras, ";");
                     }
 
-                    rezultatas.Komentaras = temp;
-                    kontekstas.SaveChanges();
+                    result.Komentaras = temp;
+                    context.SaveChanges();
                 }
             }
         }

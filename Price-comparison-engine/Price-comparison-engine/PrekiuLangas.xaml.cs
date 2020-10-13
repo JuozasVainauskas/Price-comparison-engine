@@ -736,11 +736,11 @@ namespace Price_comparison_engine
         {
             var item = new List<Item>();
             
-            using (var kontekstas = new DuomenuBazesKontekstas())
+            using (var context = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => new Item { Link = x.PuslapioURL, Nuotrauka = x.ImgURL, Seller = x.ParduotuvesVardas, Name = x.PrekesVardas, Price = x.PrekesKaina }).ToList();
+                var result = context.PrekiuDuomenys.Where(x => x.RaktinisZodis == raktinisZodis).Select(x => new Item { Link = x.PuslapioURL, Nuotrauka = x.ImgURL, Seller = x.ParduotuvesVardas, Name = x.PrekesVardas, Price = x.PrekesKaina }).ToList();
 
-                foreach (var itemas in rezultatas)
+                foreach (var itemas in result)
                 {
                     item.Add(itemas);
                 }
@@ -750,11 +750,11 @@ namespace Price_comparison_engine
 
         private static void WriteSavedItems(string pageUrl, string imgUrl, string shopName, string itemName, string price, string email)
         {
-            using (var kontekstas = new DuomenuBazesKontekstas())
+            using (var context = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.SavedItems.SingleOrDefault(c => c.PageUrl == pageUrl && c.ImgUrl == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Email == email);
+                var result = context.SavedItems.SingleOrDefault(c => c.PageUrl == pageUrl && c.ImgUrl == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Email == email);
 
-                if (rezultatas == null)
+                if (result == null)
                 {
                     var savedItems = new SavedItems()
                     {
@@ -765,8 +765,8 @@ namespace Price_comparison_engine
                         Price = price,
                         Email = email
                     };
-                    kontekstas.SavedItems.Add(savedItems);
-                    kontekstas.SaveChanges();
+                    context.SavedItems.Add(savedItems);
+                    context.SaveChanges();
                 }
             }
         }

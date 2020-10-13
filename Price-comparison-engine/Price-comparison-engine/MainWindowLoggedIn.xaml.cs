@@ -21,8 +21,8 @@ namespace Price_comparison_engine
                 administravimas.IsEnabled = true;
                 administravimas.Visibility = Visibility.Visible;
             }
-            Skaityti(ref puslapioUrl, ref imgUrl);
-            if (puslapioUrl.Count >= 3 && imgUrl.Count >= 3)
+            Skaityti(ref pageUrl, ref imgUrl);
+            if (pageUrl.Count >= 3 && imgUrl.Count >= 3)
             {
                 img1.Source = new BitmapImage(new Uri(imgUrl[0], UriKind.Absolute));
                 img2.Source = new BitmapImage(new Uri(imgUrl[1], UriKind.Absolute));
@@ -52,7 +52,7 @@ namespace Price_comparison_engine
             SlideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
             SlideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
         }
-        private static List<string> puslapioUrl = new List<string>();
+        private static List<string> pageUrl = new List<string>();
         private static List<string> imgUrl = new List<string>();
 
         public static int indexFront = 3;
@@ -74,7 +74,7 @@ namespace Price_comparison_engine
 
         private void Slider_Front(object sender, MouseButtonEventArgs e)
         {
-            if (indexFront < puslapioUrl.Count - 1)
+            if (indexFront < pageUrl.Count - 1)
             {
                 urlIndex++;
                 img1.Source = new BitmapImage(new Uri(imgUrl[indexFront - 2], UriKind.Absolute));
@@ -87,33 +87,33 @@ namespace Price_comparison_engine
 
         private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (puslapioUrl.Count >= 3)
+            if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(puslapioUrl[urlIndex]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex]);
             }
         }
 
         private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (puslapioUrl.Count >= 3)
+            if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 1]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex + 1]);
             }
         }
 
         private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (puslapioUrl.Count >= 3)
+            if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 2]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex + 2]);
             }
         }
         private static void Skaityti(ref List<string> puslapioUrl, ref List<string> imgUrl)
         {
-            using (var kontekstas = new DuomenuBazesKontekstas())
+            using (var context = new DuomenuBazesKontekstas())
             {
-                var tempPuslapioUrl = kontekstas.PrekiuDuomenys.Select(column => column.PuslapioURL).ToList();
-                var tempImgUrl = kontekstas.PrekiuDuomenys.Select(column => column.ImgURL).ToList();
+                var tempPuslapioUrl = context.PrekiuDuomenys.Select(column => column.PuslapioURL).ToList();
+                var tempImgUrl = context.PrekiuDuomenys.Select(column => column.ImgURL).ToList();
 
                 for (int i = 0; i < tempPuslapioUrl.Count; i++)
                 {
@@ -227,13 +227,13 @@ namespace Price_comparison_engine
         {
             var item = new List<Item>();
 
-            using (var kontekstas = new DuomenuBazesKontekstas())
+            using (var context = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => new Item { Link = x.PageUrl, Nuotrauka = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
+                var result = context.SavedItems.Where(x => x.Email == email).Select(x => new Item { Link = x.PageUrl, Nuotrauka = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
 
-                foreach (var itemas in rezultatas)
+                foreach (var singleItem in result)
                 {
-                    item.Add(itemas);
+                    item.Add(singleItem);
                 }
             }
             return item;

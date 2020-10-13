@@ -53,14 +53,14 @@ namespace Price_comparison_engine
                 var salt = GeneruotiHash.SukurtiSalt(10);
                 var slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, salt);
 
-                using (var kontekstas = new DuomenuBazesKontekstas())
+                using (var context = new DuomenuBazesKontekstas())
                 {
-                    var slaptazodis = kontekstas.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
-                    if (slaptazodis != null)
+                    var result = context.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                    if (result != null)
                     {
-                        slaptazodis.SlaptazodzioHash = slaptazodzioHash;
-                        slaptazodis.SlaptazodzioSalt = salt;
-                        kontekstas.SaveChanges();
+                        result.SlaptazodzioHash = slaptazodzioHash;
+                        result.SlaptazodzioSalt = salt;
+                        context.SaveChanges();
 
                         MessageBox.Show("Slaptažodis pakeistas sėkmingai.");
                         this.Close();

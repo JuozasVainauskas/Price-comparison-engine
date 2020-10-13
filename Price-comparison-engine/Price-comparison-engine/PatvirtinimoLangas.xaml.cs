@@ -23,15 +23,15 @@ namespace Price_comparison_engine
     {
         readonly MainWindow pagrindinisLangas;
         readonly RegistracijosLangas registracijosLangas;
-        readonly DuomenuBazesKontekstas kontekstas;
+        readonly DuomenuBazesKontekstas context;
         private string kodas;
-        public PatvirtinimoLangas(DuomenuBazesKontekstas kontekstas, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
+        public PatvirtinimoLangas(DuomenuBazesKontekstas context, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
         {
             InitializeComponent();
             new SiustiEmail(kodas, email);
             this.pagrindinisLangas = pagrindinisLangas;
             this.registracijosLangas = registracijosLangas;
-            this.kontekstas = kontekstas;
+            this.context = context;
             this.kodas = kodas;
         }
 
@@ -39,7 +39,7 @@ namespace Price_comparison_engine
         {
             if (kodas.Equals(PatvirtinimoLangelis.Text))
             {
-                kontekstas.SaveChanges();
+                context.SaveChanges();
 
                 pagrindinisLangas.Close();
                 registracijosLangas.Close();

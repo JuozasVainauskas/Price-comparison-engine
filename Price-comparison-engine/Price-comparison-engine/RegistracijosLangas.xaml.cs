@@ -60,9 +60,9 @@ namespace Price_comparison_engine
             }
             else
             {
-                var kontekstas = new DuomenuBazesKontekstas();
-                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == Email.Text);
-                if (rezultatas != null)
+                var context = new DuomenuBazesKontekstas();
+                var result = context.NaudotojoDuomenys.SingleOrDefault(c => c.Email == Email.Text);
+                if (result != null)
                 { 
                     MessageBox.Show("Toks email jau panaudotas. Pabandykite kitą.");
                 }
@@ -98,11 +98,11 @@ namespace Price_comparison_engine
                         Komentaras = "",
                         Role = "0"
                     };
-                    kontekstas.NaudotojoDuomenys.Add(naudotojoDuomenys);
+                    context.NaudotojoDuomenys.Add(naudotojoDuomenys);
 
                     var kodas = GeneruotiHash.SukurtiSalt(16);
                     kodas = kodas.Remove(kodas.Length - 2);
-                    var patvirtinimoLangas = new PatvirtinimoLangas(kontekstas, pagrindinisLangas, this, kodas, Email.Text.Trim());
+                    var patvirtinimoLangas = new PatvirtinimoLangas(context, pagrindinisLangas, this, kodas, Email.Text.Trim());
                     patvirtinimoLangas.Show();
                 }
             }
