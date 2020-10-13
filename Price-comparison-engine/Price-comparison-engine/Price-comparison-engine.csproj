@@ -96,11 +96,20 @@
     <Compile Include="Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Klases\CommentsTable.cs" />
     <Compile Include="Klases\PrekiuDuomenys.cs" />
     <Compile Include="Klases\Role.cs" />
     <Compile Include="Klases\SavedItems.cs" />
     <Compile Include="KonkretiPreke.xaml.cs">
       <DependentUpon>KonkretiPreke.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010131636164_CreateCommentsTable.cs" />
+    <Compile Include="Migrations\202010131636164_CreateCommentsTable.designer.cs">
+      <DependentUpon>202010131636164_CreateCommentsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010131655402_UpdateSavedItemsTable.cs" />
+    <Compile Include="Migrations\202010131655402_UpdateSavedItemsTable.designer.cs">
+      <DependentUpon>202010131655402_UpdateSavedItemsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
@@ -213,6 +222,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\202010131636164_CreateCommentsTable.resx">
+      <DependentUpon>202010131636164_CreateCommentsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010131655402_UpdateSavedItemsTable.resx">
+      <DependentUpon>202010131655402_UpdateSavedItemsTable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
