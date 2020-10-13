@@ -26,14 +26,14 @@ namespace Price_comparison_engine
     public partial class PrisijungimoLangas : Window
     {
         readonly MainWindow pagrindinisLangas;
-        public static string Role { get; set; }
+        public static Enum NarioRole { get; set; }
         public static string email { get; set; }
 
         public PrisijungimoLangas(MainWindow pagrindinisLangas)
         {
             InitializeComponent();
             this.pagrindinisLangas = pagrindinisLangas;
-            Role = "0";
+            NarioRole = Role.Vartotojas;
             email = "";
         }
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
@@ -48,7 +48,14 @@ namespace Price_comparison_engine
                 {
                     var salt = rezultatas.SlaptazodzioSalt;
                     var slaptazodzioHash = rezultatas.SlaptazodzioHash;
-                    Role = rezultatas.Role;
+                    if(rezultatas.Role == "0")
+                    {
+                        NarioRole = Role.Vartotojas;
+                    }
+                    else if (rezultatas.Role == "1")
+                    {
+                        NarioRole = Role.Administratorius;
+                    }
 
                     var naudotojoIvestasSlaptazodis = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
 

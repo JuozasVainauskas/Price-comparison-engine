@@ -32,8 +32,8 @@
         <DataGrid x:Name="UsersTable" HorizontalAlignment="Left" Height="153" Margin="37,79,0,0" VerticalAlignment="Top" Width="430" Initialized="RodytiVartotojus">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding Path=ID}" Width="30"></DataGridTextColumn>
-                <DataGridTextColumn Header="Email" IsReadOnly="True"  Binding="{Binding Path=Email}" Width="330"></DataGridTextColumn>
-                <DataGridTextColumn Header="Rolė" IsReadOnly="True"  Binding="{Binding Path=Role}" Width="60"></DataGridTextColumn>
+                <DataGridTextColumn Header="Email" IsReadOnly="True"  Binding="{Binding Path=Email}" Width="300"></DataGridTextColumn>
+                <DataGridTextColumn Header="Rolė" IsReadOnly="True"  Binding="{Binding Path=Role}" Width="100"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock HorizontalAlignment="Left" Margin="194,47,0,0" TextWrapping="Wrap" Text="Visi vartotojai" VerticalAlignment="Top" Height="35" Width="144" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"/>
