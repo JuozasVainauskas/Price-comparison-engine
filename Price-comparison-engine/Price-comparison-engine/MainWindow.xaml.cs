@@ -36,8 +36,8 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
             DataDirectoryInitialize();
-            Skaityti(ref pageUrl, ref imgUrl);
-            if (pageUrl.Count >= 3 && imgUrl.Count >= 3)
+            Skaityti(ref puslapioUrl, ref imgUrl);
+            if (puslapioUrl.Count >= 3 && imgUrl.Count >= 3)
             {
                 img1.Source = new BitmapImage(new Uri(imgUrl[0], UriKind.Absolute));
                 img2.Source = new BitmapImage(new Uri(imgUrl[1], UriKind.Absolute));
@@ -133,7 +133,7 @@ namespace Price_comparison_engine
             nuotrauka.Height = this.ActualHeight-ilgis;
         }
 
-        private static List<string> pageUrl = new List<string>();
+        private static List<string> puslapioUrl = new List<string>();
         private static List<string> imgUrl = new List<string>();
 
         public static int indexFront = 3;
@@ -155,7 +155,7 @@ namespace Price_comparison_engine
 
         private void Slider_Front(object sender, MouseButtonEventArgs e)
         {
-            if (indexFront < pageUrl.Count - 1)
+            if (indexFront < puslapioUrl.Count - 1)
             {
                 urlIndex++;
                 img1.Source = new BitmapImage(new Uri(imgUrl[indexFront - 2], UriKind.Absolute));
@@ -168,25 +168,25 @@ namespace Price_comparison_engine
 
         private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (pageUrl.Count >= 3)
+            if (puslapioUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(pageUrl[urlIndex]);
+                System.Diagnostics.Process.Start(puslapioUrl[urlIndex]);
             }
         }
 
         private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (pageUrl.Count >= 3)
+            if (puslapioUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(pageUrl[urlIndex + 1]);
+                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 1]);
             }
         }
 
         private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (pageUrl.Count >= 3)
+            if (puslapioUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(pageUrl[urlIndex + 2]);
+                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 2]);
             }
         }
 
@@ -201,52 +201,11 @@ namespace Price_comparison_engine
                 {
                     if (tempPageUrl.ElementAt(i) != null && tempImgUrl.ElementAt(i) != null)
                     {
-                        pageUrl.Add(tempPageUrl.ElementAt(i));
+                        puslapioUrl.Add(tempPageUrl.ElementAt(i));
                         imgUrl.Add(tempImgUrl.ElementAt(i));
                     }
                 }
             }
         }
-        /*
-         
-            CreateTable(
-                    "dbo.ItemsTable",
-                    c => new
-                    {
-                        ItemId = c.Int(nullable: false, identity: true),
-                        PageUrl = c.String(),
-                        ImgUrl = c.String(),
-                        ShopName = c.String(),
-                        ItemName = c.String(),
-                        Price = c.String(),
-                        Keyword = c.String(),
-                    })
-                .PrimaryKey(t => t.ItemId);
-            CreateTable(
-                    "dbo.CommentsTable",
-                    c => new
-                    {
-                        CommentId = c.Int(nullable: false, identity: true),
-                        Email = c.String(),
-                        ShopId = c.Int(nullable: false),
-                        Date = c.String(),
-                        ServiceRating = c.Int(nullable: false),
-                        ProductsQualityRating = c.Int(nullable: false),
-                        DeliveryRating = c.Int(nullable: false),
-                        Comment = c.String(),
-                    })
-                .PrimaryKey(t => t.CommentId);
-
-            CreateTable(
-                    "dbo.ShopRatingTable",
-                    c => new
-                    {
-                        ShopId = c.Int(nullable: false, identity: true),
-                        ShopName = c.String(),
-                        VotesNumber = c.Int(nullable: false),
-                        VotersNumber = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ShopId);
-         */
     }
 }
