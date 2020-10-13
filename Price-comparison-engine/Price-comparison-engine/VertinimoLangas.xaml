@@ -182,7 +182,11 @@
         <ComboBox x:Name="parduotuve" HorizontalAlignment="Left" Margin="148,157,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Parduotuve">
             <ComboBoxItem Content="Avitela"/>
             <ComboBoxItem Content="Elektromarkt"/>
-            <ComboBoxItem Content="Pigu.lt"/>
+            <ComboBoxItem Content="Pigu"/>
+            <ComboBoxItem Content="Barbora"/>
+            <ComboBoxItem Content="Bigbox"/>
+            <ComboBoxItem Content="Rde"/>
+            <ComboBoxItem Content="GintarineVaistine"/>
         </ComboBox>
         <ListView Name="listViewas" HorizontalAlignment="Left" Height="218" Margin="271,67,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2" Loaded="listViewas_Loaded">
             <ListView.View>
@@ -196,7 +200,11 @@
         <ComboBox x:Name="PasirinktiKomentara" HorizontalAlignment="Left" Margin="608,40,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="KeistiKomentarus">
             <ComboBoxItem Content="Avitela"/>
             <ComboBoxItem Content="Elektromarkt"/>
-            <ComboBoxItem Content="Pigu.lt"/>
+            <ComboBoxItem Content="Pigu"/>
+            <ComboBoxItem Content="Barbora"/>
+            <ComboBoxItem Content="Bigbox"/>
+            <ComboBoxItem Content="Rde"/>
+            <ComboBoxItem Content="GintarineVaistine"/>
         </ComboBox>
         <Rectangle Fill="#FF0FE943" HorizontalAlignment="Left" Height="80" Margin="138,174,0,0" Grid.Row="1" Stroke="Black" VerticalAlignment="Top" Width="539"/>
         <TextBlock HorizontalAlignment="Left" Margin="348,198,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Busima reklamos vieta" VerticalAlignment="Top" Height="40" Width="150"/>

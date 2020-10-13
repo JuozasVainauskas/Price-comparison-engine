@@ -97,7 +97,8 @@
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Klases\CommentsTable.cs" />
-    <Compile Include="Klases\PrekiuDuomenys.cs" />
+    <Compile Include="Klases\ShopRatingTable.cs" />
+    <Compile Include="Klases\ItemsTable.cs" />
     <Compile Include="Klases\Role.cs" />
     <Compile Include="Klases\SavedItems.cs" />
     <Compile Include="KonkretiPreke.xaml.cs">
@@ -111,13 +112,16 @@
     <Compile Include="Migrations\202010131655402_UpdateSavedItemsTable.designer.cs">
       <DependentUpon>202010131655402_UpdateSavedItemsTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010131723507_AddTables.cs" />
+    <Compile Include="Migrations\202010131723507_AddTables.designer.cs">
+      <DependentUpon>202010131723507_AddTables.cs</DependentUpon>
+    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
     <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
     <Compile Include="Klases\GeneruotiHash.cs" />
     <Compile Include="Klases\NaudotojoDuomenys.cs" />
-    <Compile Include="Klases\ParduotuviuDuomenys.cs" />
     <Compile Include="Klases\SiustiEmail.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatvirtinimoLangas.xaml.cs">
@@ -227,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010131655402_UpdateSavedItemsTable.resx">
       <DependentUpon>202010131655402_UpdateSavedItemsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010131723507_AddTables.resx">
+      <DependentUpon>202010131723507_AddTables.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

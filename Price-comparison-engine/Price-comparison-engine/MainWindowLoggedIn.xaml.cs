@@ -108,18 +108,18 @@ namespace Price_comparison_engine
                 System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 2]);
             }
         }
-        private static void Skaityti(ref List<string> puslapioUrl, ref List<string> imgUrl)
+        private static void Skaityti(ref List<string> pageUrl, ref List<string> imgUrl)
         {
             using (var kontekstas = new DuomenuBazesKontekstas())
             {
-                var tempPuslapioUrl = kontekstas.PrekiuDuomenys.Select(column => column.PuslapioURL).ToList();
-                var tempImgUrl = kontekstas.PrekiuDuomenys.Select(column => column.ImgURL).ToList();
+                var tempPageUrl = kontekstas.ItemsTable.Select(column => column.PageUrl).ToList();
+                var tempImgUrl = kontekstas.ItemsTable.Select(column => column.ImgUrl).ToList();
 
-                for (int i = 0; i < tempPuslapioUrl.Count; i++)
+                for (int i = 0; i < tempPageUrl.Count; i++)
                 {
-                    if (tempPuslapioUrl.ElementAt(i) != null && tempImgUrl.ElementAt(i) != null)
+                    if (tempPageUrl.ElementAt(i) != null && tempImgUrl.ElementAt(i) != null)
                     {
-                        puslapioUrl.Add(tempPuslapioUrl.ElementAt(i));
+                        pageUrl.Add(tempPageUrl.ElementAt(i));
                         imgUrl.Add(tempImgUrl.ElementAt(i));
                     }
                 }
