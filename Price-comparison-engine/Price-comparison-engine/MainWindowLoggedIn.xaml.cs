@@ -16,7 +16,7 @@ namespace Price_comparison_engine
         public MainWindowLoggedIn()
         {
             InitializeComponent();
-            if (PrisijungimoLangas.Role.Equals("1"))
+            if (PrisijungimoLangas.NarioRole.Equals(Role.Administratorius))
             {
                 administravimas.IsEnabled = true;
                 administravimas.Visibility = Visibility.Visible;
@@ -158,7 +158,7 @@ namespace Price_comparison_engine
         private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {
             PrisijungimoLangas.email = "";
-            PrisijungimoLangas.Role = "0";
+            PrisijungimoLangas.NarioRole = Role.Vartotojas;
             var pagrindinisLangas = new MainWindow();
             pagrindinisLangas.Show();
             this.Close();

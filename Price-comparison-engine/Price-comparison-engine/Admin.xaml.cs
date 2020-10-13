@@ -38,7 +38,7 @@ namespace Price_comparison_engine
             Goods.Text = ls[3].ToString();
         }
 
-        public partial class Vartotojas
+        private partial class Vartotojas
         {
             public int ID { get; set; }
             public string Email { get; set; }   
@@ -214,6 +214,17 @@ namespace Price_comparison_engine
 
                 if (tempEmail != null && tempRole != null)
                 {
+                    for(int i = 0; i < tempRole.Count; i++)
+                    {
+                        if(tempRole[i] == "0")
+                        {
+                            tempRole[i] = "Vartotojas";
+                        }
+                        else if(tempRole[i] == "1")
+                        {
+                            tempRole[i] = "Administratorius";
+                        }
+                    }
                     Email = tempEmail;
                     Role = tempRole;
                 }
