@@ -21,8 +21,8 @@ namespace Price_comparison_engine
                 administravimas.IsEnabled = true;
                 administravimas.Visibility = Visibility.Visible;
             }
-            Skaityti(ref puslapioUrl, ref imgUrl);
-            if (puslapioUrl.Count >= 3 && imgUrl.Count >= 3)
+            Skaityti(ref pageUrl, ref imgUrl);
+            if (pageUrl.Count >= 3 && imgUrl.Count >= 3)
             {
                 img1.Source = new BitmapImage(new Uri(imgUrl[0], UriKind.Absolute));
                 img2.Source = new BitmapImage(new Uri(imgUrl[1], UriKind.Absolute));
@@ -52,7 +52,7 @@ namespace Price_comparison_engine
             SlideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
             SlideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
         }
-        private static List<string> puslapioUrl = new List<string>();
+        private static List<string> pageUrl = new List<string>();
         private static List<string> imgUrl = new List<string>();
 
         public static int indexFront = 3;
@@ -74,7 +74,7 @@ namespace Price_comparison_engine
 
         private void Slider_Front(object sender, MouseButtonEventArgs e)
         {
-            if (indexFront < puslapioUrl.Count - 1)
+            if (indexFront < pageUrl.Count - 1)
             {
                 urlIndex++;
                 img1.Source = new BitmapImage(new Uri(imgUrl[indexFront - 2], UriKind.Absolute));
@@ -87,39 +87,39 @@ namespace Price_comparison_engine
 
         private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (puslapioUrl.Count >= 3)
+            if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(puslapioUrl[urlIndex]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex]);
             }
         }
 
         private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (puslapioUrl.Count >= 3)
+            if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 1]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex + 1]);
             }
         }
 
         private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (puslapioUrl.Count >= 3)
+            if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(puslapioUrl[urlIndex + 2]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex + 2]);
             }
         }
-        private static void Skaityti(ref List<string> puslapioUrl, ref List<string> imgUrl)
+        private static void Skaityti(ref List<string> pageUrl, ref List<string> imgUrl)
         {
-            using (var kontekstas = new DuomenuBazesKontekstas())
+            using (var context = new DuomenuBazesKontekstas())
             {
-                var tempPuslapioUrl = kontekstas.PrekiuDuomenys.Select(column => column.PuslapioURL).ToList();
-                var tempImgUrl = kontekstas.PrekiuDuomenys.Select(column => column.ImgURL).ToList();
+                var tempPageUrl = context.ItemsTable.Select(column => column.PageUrl).ToList();
+                var tempImgUrl = context.ItemsTable.Select(column => column.ImgUrl).ToList();
 
-                for (int i = 0; i < tempPuslapioUrl.Count; i++)
+                for (int i = 0; i < tempPageUrl.Count; i++)
                 {
-                    if (tempPuslapioUrl.ElementAt(i) != null && tempImgUrl.ElementAt(i) != null)
+                    if (tempPageUrl.ElementAt(i) != null && tempImgUrl.ElementAt(i) != null)
                     {
-                        puslapioUrl.Add(tempPuslapioUrl.ElementAt(i));
+                        pageUrl.Add(tempPageUrl.ElementAt(i));
                         imgUrl.Add(tempImgUrl.ElementAt(i));
                     }
                 }
@@ -206,7 +206,7 @@ namespace Price_comparison_engine
             {
                 var tempItem = (Item)DataGridLoggedIn.Items.GetItemAt(currentRowIndex);
 
-                var result = context.SavedItems.SingleOrDefault(b => b.Email == PrisijungimoLangas.email && b.PageURL == tempItem.Link && b.ImgURL == tempItem.Nuotrauka && b.ShopName == tempItem.Seller && b.ItemName == tempItem.Name && b.Price == tempItem.Price);
+                var result = context.SavedItems.SingleOrDefault(b => b.Email == PrisijungimoLangas.email && b.PageUrl == tempItem.Link && b.ImgUrl == tempItem.Nuotrauka && b.ShopName == tempItem.Seller && b.ItemName == tempItem.Name && b.Price == tempItem.Price);
 
                 if (result != null)
                 {
@@ -226,28 +226,16 @@ namespace Price_comparison_engine
         private static List<Item> ReadSavedItems(string email)
         {
             var item = new List<Item>();
-            using (var kontekstas = new DuomenuBazesKontekstas())
-            {
-                var tempPageUrl = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.PageURL).ToList();
-                var tempImgUrl = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ImgURL).ToList();
-                var tempShopName = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ShopName).ToList();
-                var tempItemName = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.ItemName).ToList();
-                var tempPrice = kontekstas.SavedItems.Where(x => x.Email == email).Select(x => x.Price).ToList();
 
-                for (var i = 0; i < tempPageUrl.Count; i++)
+            using (var context = new DuomenuBazesKontekstas())
+            {
+                var result = context.SavedItems.Where(x => x.Email == email).Select(x => new Item { Link = x.PageUrl, Nuotrauka = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
+
+                foreach (var singleItem in result)
                 {
-                    var itemas = new Item
-                    {
-                        Link = tempPageUrl.ElementAt(i),
-                        Nuotrauka = tempImgUrl.ElementAt(i),
-                        Seller = tempShopName.ElementAt(i),
-                        Name = tempItemName.ElementAt(i),
-                        Price = tempPrice.ElementAt(i)
-                    };
-                    item.Add(itemas);
+                    item.Add(singleItem);
                 }
             }
-
             return item;
         }
     }

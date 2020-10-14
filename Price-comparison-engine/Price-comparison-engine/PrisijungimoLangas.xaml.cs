@@ -40,19 +40,19 @@ namespace Price_comparison_engine
         {
             email = Email.Text;
 
-            using (var kontekstas = new DuomenuBazesKontekstas())
+            using (var context = new DuomenuBazesKontekstas())
             {
-                var rezultatas = kontekstas.NaudotojoDuomenys.SingleOrDefault(c => c.Email == Email.Text);
+                var result = context.NaudotojoDuomenys.SingleOrDefault(c => c.Email == Email.Text);
                 
-                if (rezultatas != null)
+                if (result != null)
                 {
-                    var salt = rezultatas.SlaptazodzioSalt;
-                    var slaptazodzioHash = rezultatas.SlaptazodzioHash;
-                    if(rezultatas.Role == "0")
+                    var salt = result.SlaptazodzioSalt;
+                    var slaptazodzioHash = result.SlaptazodzioHash;
+                    if(result.Role == "0")
                     {
                         NarioRole = Role.Vartotojas;
                     }
-                    else if (rezultatas.Role == "1")
+                    else if (result.Role == "1")
                     {
                         NarioRole = Role.Administratorius;
                     }

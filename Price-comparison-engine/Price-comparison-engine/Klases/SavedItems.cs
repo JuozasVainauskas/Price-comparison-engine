@@ -12,10 +12,10 @@ namespace Price_comparison_engine.Klases
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int SavedItemID { get; set; }
+        public int SavedItemId { get; set; }
         public string Email { get; set; }
-        public string PageURL { get; set; }
-        public string ImgURL { get; set; }
+        public string PageUrl { get; set; }
+        public string ImgUrl { get; set; }
         public string ShopName { get; set; }
         public string ItemName { get; set; }
         public string Price { get; set; }
