@@ -23,10 +23,13 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class Admin : Window
     {
-        public Admin()
+        private MainWindowLoggedIn mainWindowLoggedIn;
+
+        public Admin(MainWindowLoggedIn mainWindowLoggedIn)
         {
             InitializeComponent();
             AtnaujintiStatistika();
+            this.mainWindowLoggedIn = mainWindowLoggedIn;
         }
 
         private void AtnaujintiStatistika()
@@ -50,7 +53,7 @@ namespace Price_comparison_engine
         {
             using (var context = new DuomenuBazesKontekstas())
             {
-                var result = context.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                var result = context.UserData.SingleOrDefault(b => b.Email == email);
                 if (result != null)
                 {
                     result.Role = role;
@@ -85,17 +88,17 @@ namespace Price_comparison_engine
             using (var context = new DuomenuBazesKontekstas())
             {
                 var savedItems = context.SavedItems.Where(c => c.Email == email).ToList();
-                    
+
                 foreach (var savedItem in savedItems)
                 {
                     context.SavedItems.Remove(savedItem);
                 }
 
-                var result = context.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                var result = context.UserData.SingleOrDefault(c => c.Email == email);
 
                 if (result != null)
                 {
-                    context.NaudotojoDuomenys.Remove(result);
+                    context.UserData.Remove(result);
                     AtnaujintiStatistika();
                     MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
                 }
@@ -103,7 +106,25 @@ namespace Price_comparison_engine
                 {
                     MessageBox.Show("Vartotojas tokiu emailu neegzistuoja arba nebuvo rastas.");
                 }
+
+                var comments = context.CommentsTable.Where(c => c.Email == email).ToList();
+
+                foreach (var comment in comments)
+                {
+                    context.CommentsTable.Remove(comment);
+                }
+
                 context.SaveChanges();
+            }
+
+            if (email == PrisijungimoLangas.email)
+            {
+                PrisijungimoLangas.email = "";
+                PrisijungimoLangas.NarioRole = Klases.Role.Vartotojas;
+                var mainWindow = new MainWindow();
+                mainWindow.Show();
+                mainWindowLoggedIn.Close();
+                this.Close();
             }
         }
 
@@ -121,12 +142,12 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Sukurti(string email, string slaptazodis)
+        private void Sukurti(string email, string password)
         {
-            var salt = GeneruotiHash.SukurtiSalt(10);
-            var slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(PasswordToCreate.Password, salt);
+            var passwordSalt = GeneruotiHash.SukurtiSalt(10);
+            var passwordHash = GeneruotiHash.GenerateSHA256Hash(PasswordToCreate.Password, passwordSalt);
 
-            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(slaptazodis))
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Prašome užpildyti visus laukus.");
             }
@@ -137,23 +158,21 @@ namespace Price_comparison_engine
             else
             {
                 var context = new DuomenuBazesKontekstas();
-                var result = context.NaudotojoDuomenys.SingleOrDefault(c => c.Email == email);
+                var result = context.UserData.SingleOrDefault(c => c.Email == email);
                 if (result != null)
                 {
                     MessageBox.Show("Toks email jau panaudotas. Pabandykite kitą.");
                 }
                 else
                 {
-                    var naudotojoDuomenys = new NaudotojoDuomenys()
+                    var userData = new UserData()
                     {
                         Email = email,
-                        SlaptazodzioHash = slaptazodzioHash,
-                        SlaptazodzioSalt = salt,
-                        ArBalsavo = "",
-                        Komentaras = "",
+                        PasswordHash = passwordHash,
+                        PasswordSalt = passwordSalt,
                         Role = "0"
                     };
-                    context.NaudotojoDuomenys.Add(naudotojoDuomenys);
+                    context.UserData.Add(userData);
                     context.SaveChanges();
                     AtnaujintiStatistika();
                     MessageBox.Show("Vartotojas sekmingai sukurtas!");
@@ -209,25 +228,22 @@ namespace Price_comparison_engine
         {
             using (var context = new DuomenuBazesKontekstas())
             {
-                var tempEmail = context.NaudotojoDuomenys.Select(column => column.Email).ToList();
-                var tempRole = context.NaudotojoDuomenys.Select(column => column.Role).ToList();
+                var tempEmail = context.UserData.Select(column => column.Email).ToList();
+                var tempRole = context.UserData.Select(column => column.Role).ToList();
 
-                if (tempEmail != null && tempRole != null)
+                for(int i = 0; i < tempRole.Count; i++)
                 {
-                    for(int i = 0; i < tempRole.Count; i++)
+                    if(tempRole[i] == "0")
                     {
-                        if(tempRole[i] == "0")
-                        {
-                            tempRole[i] = "Vartotojas";
-                        }
-                        else if(tempRole[i] == "1")
-                        {
-                            tempRole[i] = "Administratorius";
-                        }
+                        tempRole[i] = "Vartotojas";
                     }
-                    Email = tempEmail;
-                    Role = tempRole;
+                    else if(tempRole[i] == "1")
+                    {
+                        tempRole[i] = "Administratorius";
+                    }
                 }
+                Email = tempEmail;
+                Role = tempRole;
             }
         }
         private static List<int> Skaiciuoti()
@@ -236,17 +252,17 @@ namespace Price_comparison_engine
             {
                 List<int> StatistikosListas = new List<int>();
 
-                var VisiNariai = context.NaudotojoDuomenys
-               .Where(o => o.NaudotojoID >= 0)
+                var VisiNariai = context.UserData
+               .Where(o => o.UserId >= 0)
                .Count();
                 StatistikosListas.Add(VisiNariai);
 
-                var Administratoriai = context.NaudotojoDuomenys
+                var Administratoriai = context.UserData
                .Where(o => o.Role == "1")
                .Count();
                 StatistikosListas.Add(Administratoriai);
 
-                var PaprastiNariai = context.NaudotojoDuomenys
+                var PaprastiNariai = context.UserData
                .Where(o => o.Role == "0")
                .Count();
                 StatistikosListas.Add(PaprastiNariai);

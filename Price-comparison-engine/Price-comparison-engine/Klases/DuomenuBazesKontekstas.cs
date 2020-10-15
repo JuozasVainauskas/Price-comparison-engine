@@ -21,7 +21,6 @@ namespace Price_comparison_engine.Klases
             base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
-        public DbSet<NaudotojoDuomenys> NaudotojoDuomenys { get; set; }
         public DbSet<UserData> UserData { get; set; }
         public DbSet<ShopRatingTable> ShopRatingTable { get; set; }
         public DbSet<ItemsTable> ItemsTable { get; set; }

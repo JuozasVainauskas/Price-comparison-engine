@@ -50,16 +50,16 @@ namespace Price_comparison_engine
             }
             else
             {
-                var salt = GeneruotiHash.SukurtiSalt(10);
-                var slaptazodzioHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, salt);
+                var passwordSalt = GeneruotiHash.SukurtiSalt(10);
+                var passwordHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, passwordSalt);
 
                 using (var context = new DuomenuBazesKontekstas())
                 {
-                    var result = context.NaudotojoDuomenys.SingleOrDefault(b => b.Email == email);
+                    var result = context.UserData.SingleOrDefault(b => b.Email == email);
                     if (result != null)
                     {
-                        result.SlaptazodzioHash = slaptazodzioHash;
-                        result.SlaptazodzioSalt = salt;
+                        result.PasswordHash = passwordHash;
+                        result.PasswordSalt = passwordSalt;
                         context.SaveChanges();
 
                         MessageBox.Show("Slaptažodis pakeistas sėkmingai.");

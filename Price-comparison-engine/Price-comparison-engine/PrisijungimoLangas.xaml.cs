@@ -42,12 +42,12 @@ namespace Price_comparison_engine
 
             using (var context = new DuomenuBazesKontekstas())
             {
-                var result = context.NaudotojoDuomenys.SingleOrDefault(c => c.Email == Email.Text);
+                var result = context.UserData.SingleOrDefault(c => c.Email == Email.Text);
                 
                 if (result != null)
                 {
-                    var salt = result.SlaptazodzioSalt;
-                    var slaptazodzioHash = result.SlaptazodzioHash;
+                    var passwordSalt = result.PasswordSalt;
+                    var passworHash = result.PasswordHash;
                     if(result.Role == "0")
                     {
                         NarioRole = Role.Vartotojas;
@@ -57,9 +57,9 @@ namespace Price_comparison_engine
                         NarioRole = Role.Administratorius;
                     }
 
-                    var naudotojoIvestasSlaptazodis = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, salt);
+                    var naudotojoIvestasSlaptazodis = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, passwordSalt);
 
-                    if (slaptazodzioHash.Equals(naudotojoIvestasSlaptazodis))
+                    if (passworHash.Equals(naudotojoIvestasSlaptazodis))
                     {
                         var mainWindowLoggedIn = new MainWindowLoggedIn();
                         mainWindowLoggedIn.Show();

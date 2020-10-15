@@ -162,8 +162,8 @@ namespace Price_comparison_engine
         {
             PrisijungimoLangas.email = "";
             PrisijungimoLangas.NarioRole = Role.Vartotojas;
-            var pagrindinisLangas = new MainWindow();
-            pagrindinisLangas.Show();
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
             this.Close();
         }
 
@@ -176,7 +176,7 @@ namespace Price_comparison_engine
 
         private void AdminPrisijungimas(object sender, RoutedEventArgs e)
         {
-                var adminLangoAtidarymas = new Admin();
+                var adminLangoAtidarymas = new Admin(this);
                 adminLangoAtidarymas.Show();
         }
 
