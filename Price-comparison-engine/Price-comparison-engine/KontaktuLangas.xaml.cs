@@ -23,7 +23,7 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
         }
-        private void TbReferAFriend_MouseDown(object sender, MouseButtonEventArgs e)
+        private void SendEmail(object sender, MouseButtonEventArgs e)
         {
             try
             {
