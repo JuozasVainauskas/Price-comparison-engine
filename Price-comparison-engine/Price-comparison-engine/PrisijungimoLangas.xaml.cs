@@ -42,7 +42,7 @@ namespace Price_comparison_engine
                         userRole = Role.Admin;
                     }
 
-                    var usersPasswordInput = GenerateHash.GenerateSHA256Hash(password.Password, passwordSalt);
+                    var usersPasswordInput = GenerateHash.GenerateSHA256Hash(passwordBox.Password, passwordSalt);
 
                     if (passworHash.Equals(usersPasswordInput))
                     {

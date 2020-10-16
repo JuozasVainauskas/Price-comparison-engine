@@ -7,13 +7,13 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for PatvirtinimoLangas.xaml
     /// </summary>
-    public partial class PatvirtinimoLangas : Window
+    public partial class ConfirmationWindow : Window
     {
         readonly MainWindow mainWindow;
         readonly RegistrationWindow registrationWindow;
         readonly DatabaseContext context;
         private string code;
-        public PatvirtinimoLangas(DatabaseContext context, MainWindow mainWindow, RegistrationWindow registrationWindow, string code, string email)
+        public ConfirmationWindow(DatabaseContext context, MainWindow mainWindow, RegistrationWindow registrationWindow, string code, string email)
         {
             InitializeComponent();
             new SendEmail(code, email);

@@ -65,7 +65,7 @@
     </Window.Resources>
     <Grid>
         <TextBox HorizontalAlignment="Left" x:Name="Email" Height="30" Margin="164,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="451" FontSize="20"/>
-        <PasswordBox x:Name="password" HorizontalAlignment="Left" Margin="164,212,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="164,212,0,0" VerticalAlignment="Top" Width="451" Height="30" FontSize="20"/>
         <Button Content="Prisijungti" HorizontalAlignment="Left" Margin="298,259,0,0" VerticalAlignment="Top" Width="177" Height="39"
                 Background="#FF015DFF"
                 Foreground="white"

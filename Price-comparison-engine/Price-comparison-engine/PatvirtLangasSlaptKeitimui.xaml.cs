@@ -32,7 +32,7 @@ namespace Price_comparison_engine
             else
             {
                 email = emailBox.Text;
-                code = GenerateHash.SukurtiSalt(16);
+                code = GenerateHash.CreateSalt(16);
                 code = code.Remove(code.Length - 2);
 
                 new SendEmail(code, email);

@@ -50,7 +50,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var passwordSalt = GenerateHash.SukurtiSalt(10);
+                var passwordSalt = GenerateHash.CreateSalt(10);
                 var passwordHash = GenerateHash.GenerateSHA256Hash(slaptazodis.Password, passwordSalt);
 
                 using (var context = new DatabaseContext())

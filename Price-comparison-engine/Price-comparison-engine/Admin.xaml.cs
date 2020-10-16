@@ -135,7 +135,7 @@ namespace Price_comparison_engine
 
         private void Create(string email, string password)
         {
-            var passwordSalt = GenerateHash.SukurtiSalt(10);
+            var passwordSalt = GenerateHash.CreateSalt(10);
             var passwordHash = GenerateHash.GenerateSHA256Hash(PasswordToCreate.Password, passwordSalt);
 
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
