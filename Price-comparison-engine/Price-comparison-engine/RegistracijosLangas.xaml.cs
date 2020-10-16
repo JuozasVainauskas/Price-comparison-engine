@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Net;
 using System.Collections.Generic;
@@ -36,8 +36,8 @@ namespace Price_comparison_engine
 
         private void Registruotis_Mygtukas(object sender, RoutedEventArgs e)
         {
-            var passwordSalt = GeneruotiHash.SukurtiSalt(10);
-            var passwordHash = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, passwordSalt);
+            var passwordSalt = GenerateHash.SukurtiSalt(10);
+            var passwordHash = GenerateHash.GenerateSHA256Hash(Slaptazodis.Password, passwordSalt);
             
             var pattern1 = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
             var pattern2 = new Regex(@"([a-zA-Z0-9._-]*[a-zA-Z0-9][a-zA-Z0-9._-]*)(@gmail.com)$", RegexOptions.Compiled);
@@ -60,7 +60,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var context = new DuomenuBazesKontekstas();
+                var context = new DatabaseContext();
                 var result = context.UserData.SingleOrDefault(c => c.Email == Email.Text);
                 if (result != null)
                 { 
@@ -77,7 +77,7 @@ namespace Price_comparison_engine
                     };
                     context.UserData.Add(userData);
 
-                    var kodas = GeneruotiHash.SukurtiSalt(16);
+                    var kodas = GenerateHash.SukurtiSalt(16);
                     kodas = kodas.Remove(kodas.Length - 2);
                     var patvirtinimoLangas = new PatvirtinimoLangas(context, pagrindinisLangas, this, kodas, Email.Text.Trim());
                     patvirtinimoLangas.Show();

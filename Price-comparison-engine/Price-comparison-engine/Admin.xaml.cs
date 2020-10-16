@@ -1,20 +1,10 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Price_comparison_engine
 {
@@ -28,37 +18,37 @@ namespace Price_comparison_engine
         public Admin(MainWindowLoggedIn mainWindowLoggedIn)
         {
             InitializeComponent();
-            AtnaujintiStatistika();
+            UpdateStatistics();
             this.mainWindowLoggedIn = mainWindowLoggedIn;
         }
 
-        private void AtnaujintiStatistika()
+        private void UpdateStatistics()
         {
-            List<int> ls = Skaiciuoti();
-            RegisteredUsers.Text = ls[0].ToString();
-            Admins.Text = ls[1].ToString();
-            Users.Text = ls[2].ToString();
-            Goods.Text = ls[3].ToString();
+            List<int> ls = Count();
+            registeredUsers.Text = ls[0].ToString();
+            admins.Text = ls[1].ToString();
+            users.Text = ls[2].ToString();
+            goods.Text = ls[3].ToString();
         }
 
-        private partial class Vartotojas
+        private partial class User
         {
             public int ID { get; set; }
             public string Email { get; set; }   
             public string Role { get; set; }
         }
 
-        private static string role = "0";
-        private void SkirtiRole(string email, string role)
+        private static string _role = "0";
+        private void SetRole(string email, string role)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.UserData.SingleOrDefault(b => b.Email == email);
                 if (result != null)
                 {
                     result.Role = role;
                     context.SaveChanges();
-                    AtnaujintiStatistika();
+                    UpdateStatistics();
                 }
                 else
                 {
@@ -67,25 +57,25 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Priskirti(object sender, RoutedEventArgs e)
+        private void RoleSetter(object sender, RoutedEventArgs e)
         {
-            if (RolesPriskirimas.SelectedIndex != -1 && ArTinkamasPastas(email.Text))
+            if (selectRole.SelectedIndex != -1 && EmailVerification(email.Text))
             {
-                role = RolesPriskirimas.SelectedIndex.ToString();
-                SkirtiRole(email.Text, role);
+                _role = selectRole.SelectedIndex.ToString();
+                SetRole(email.Text, _role);
                 MessageBox.Show(email.Text + " priskirta nauja rolė!");
                 email.Text = "";
                 UsersTable.Items.Clear();
                 Email.Clear();
                 Role.Clear();
-                Skaityti(ref Email, ref Role);
-                iLentele();
+                Read(ref Email, ref Role);
+                ToTable();
             }
         }
 
-        private void Istrinti(string email)
+        private void Delete(string email)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var savedItems = context.SavedItems.Where(c => c.Email == email).ToList();
 
@@ -99,7 +89,7 @@ namespace Price_comparison_engine
                 if (result != null)
                 {
                     context.UserData.Remove(result);
-                    AtnaujintiStatistika();
+                    UpdateStatistics();
                     MessageBox.Show("Vartotojas " + email + " buvo ištrintas iš duomenų bazės!");
                 }
                 else
@@ -117,10 +107,10 @@ namespace Price_comparison_engine
                 context.SaveChanges();
             }
 
-            if (email == PrisijungimoLangas.email)
+            if (email == LoginWindow.email)
             {
-                PrisijungimoLangas.email = "";
-                PrisijungimoLangas.NarioRole = Klases.Role.Vartotojas;
+                LoginWindow.email = "";
+                LoginWindow.NarioRole = Classes.Role.User;
                 var mainWindow = new MainWindow();
                 mainWindow.Show();
                 mainWindowLoggedIn.Close();
@@ -128,36 +118,37 @@ namespace Price_comparison_engine
             }
         }
 
-        private void IstrintiVartotoja(object sender, RoutedEventArgs e)
+        private void DeleteUser(object sender, RoutedEventArgs e)
         {
-            if(ArTinkamasPastas(emailToDelete.Text))
+            if(EmailVerification(emailToDelete.Text))
             {
-                Istrinti(emailToDelete.Text);
+                Delete(emailToDelete.Text);
                 emailToDelete.Clear();
                 UsersTable.Items.Clear();
                 Email.Clear();
                 Role.Clear();
-                Skaityti(ref Email, ref Role);
-                iLentele();
+                Read(ref Email, ref Role);
+                ToTable();
+                UpdateStatistics();
             }
         }
 
-        private void Sukurti(string email, string password)
+        private void Create(string email, string password)
         {
-            var passwordSalt = GeneruotiHash.SukurtiSalt(10);
-            var passwordHash = GeneruotiHash.GenerateSHA256Hash(PasswordToCreate.Password, passwordSalt);
+            var passwordSalt = GenerateHash.SukurtiSalt(10);
+            var passwordHash = GenerateHash.GenerateSHA256Hash(PasswordToCreate.Password, passwordSalt);
 
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Prašome užpildyti visus laukus.");
             }
-            else if (!ArTinkamasPastas(email))
+            else if (!EmailVerification(email))
             {
                 MessageBox.Show("Neteisingai suformatuotas el. paštas!");
             }
             else
             {
-                var context = new DuomenuBazesKontekstas();
+                var context = new DatabaseContext();
                 var result = context.UserData.SingleOrDefault(c => c.Email == email);
                 if (result != null)
                 {
@@ -174,32 +165,32 @@ namespace Price_comparison_engine
                     };
                     context.UserData.Add(userData);
                     context.SaveChanges();
-                    AtnaujintiStatistika();
+                    UpdateStatistics();
                     MessageBox.Show("Vartotojas sekmingai sukurtas!");
                 }
             }
         }
 
-        private void SukurtiVartotoja(object sender, RoutedEventArgs e)
+        private void CreateUser(object sender, RoutedEventArgs e)
         {
-            Sukurti(EmailToCreate.Text,PasswordToCreate.Password);
-            EmailToCreate.Clear();
+            Create(emailToCreate.Text,PasswordToCreate.Password);
+            emailToCreate.Clear();
             PasswordToCreate.Clear();
             UsersTable.Items.Clear();
             Email.Clear();
             Role.Clear();
-            Skaityti(ref Email, ref Role);
-            iLentele();
+            Read(ref Email, ref Role);
+            ToTable();
         }
 
-        private bool ArTinkamasPastas(string email)
+        private bool EmailVerification(string email)
         {
-            var pattern2 = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
+            var pattern = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
             if (email == "")
             {
                 return false;
             }
-            else if (!pattern2.IsMatch(email))
+            else if (!pattern.IsMatch(email))
             {
                 return false;
             }
@@ -209,24 +200,24 @@ namespace Price_comparison_engine
 
         private static List<string> Email = new List<string>();
         private static List<string> Role = new List<string>();
-        private void RodytiVartotojus(object sender, EventArgs e)
+        private void ShowUsers(object sender, EventArgs e)
         {
-          Skaityti(ref Email, ref Role);
-          iLentele();
+          Read(ref Email, ref Role);
+          ToTable();
         }
 
-        private void iLentele()
+        private void ToTable()
         {
             for (int i = 0; i < Email.Count; i++)
             {
-                var vartotojas = new Vartotojas { ID = i, Email = Email[i], Role = Role[i] };
-                UsersTable.Items.Add(vartotojas);
+                var user = new User { ID = i, Email = Email[i], Role = Role[i] };
+                UsersTable.Items.Add(user);
             }
         }
 
-        private static void Skaityti(ref List<string> Email, ref List<string> Role)
+        private static void Read(ref List<string> Email, ref List<string> Role)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var tempEmail = context.UserData.Select(column => column.Email).ToList();
                 var tempRole = context.UserData.Select(column => column.Role).ToList();
@@ -246,33 +237,33 @@ namespace Price_comparison_engine
                 Role = tempRole;
             }
         }
-        private static List<int> Skaiciuoti()
+        private static List<int> Count()
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
-                List<int> StatistikosListas = new List<int>();
+                List<int> statisticList = new List<int>();
 
-                var VisiNariai = context.UserData
+                var allUsers = context.UserData
                .Where(o => o.UserId >= 0)
                .Count();
-                StatistikosListas.Add(VisiNariai);
+                statisticList.Add(allUsers);
 
-                var Administratoriai = context.UserData
+                var admins = context.UserData
                .Where(o => o.Role == "1")
                .Count();
-                StatistikosListas.Add(Administratoriai);
+                statisticList.Add(admins);
 
-                var PaprastiNariai = context.UserData
+                var regularUsers = context.UserData
                .Where(o => o.Role == "0")
                .Count();
-                StatistikosListas.Add(PaprastiNariai);
+                statisticList.Add(regularUsers);
 
-                var Prekes = context.ItemsTable
+                var goods = context.ItemsTable
                .Where(o => o.ItemId >= 0)
                .Count();
-                StatistikosListas.Add(Prekes);
+                statisticList.Add(goods);
 
-                return StatistikosListas;
+                return statisticList;
             }
         }
     }

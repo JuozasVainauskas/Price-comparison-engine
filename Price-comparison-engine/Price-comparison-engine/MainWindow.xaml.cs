@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -74,7 +74,7 @@ namespace Price_comparison_engine
 
         private void PrisijungtiMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var prisijungimoLangoAtidarymas = new PrisijungimoLangas(this);
+            var prisijungimoLangoAtidarymas = new LoginWindow(this);
             prisijungimoLangoAtidarymas.Show();
         }
 
@@ -192,7 +192,7 @@ namespace Price_comparison_engine
 
         private static void Skaityti(ref List<string> pageUrl, ref List<string> imgUrl)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var tempPageUrl = context.ItemsTable.Select(column => column.PageUrl).ToList();
                 var tempImgUrl = context.ItemsTable.Select(column => column.ImgUrl).ToList();

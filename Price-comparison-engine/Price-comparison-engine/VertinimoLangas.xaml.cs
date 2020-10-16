@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -170,7 +170,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                if (parduotuve.SelectedIndex == 0 && commentsData.SingleOrDefault(c => c.Email == PrisijungimoLangas.email && c.ShopId == 0) == null)
+                if (parduotuve.SelectedIndex == 0 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.email && c.ShopId == 0) == null)
                 {
                     //Rating
                     balsavusiuSk++;
@@ -182,12 +182,12 @@ namespace Price_comparison_engine
                     Rasyti("Avitela", balsai, balsavusiuSk);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(PrisijungimoLangas.email, 0, singlePersonRatings["Avitela"]["Aptarnavimas"], singlePersonRatings["Avitela"]["PrekiuKokybe"], singlePersonRatings["Avitela"]["Pristatymas"], KomentaruLangelis.Text);
+                    WriteComments(LoginWindow.email, 0, singlePersonRatings["Avitela"]["Aptarnavimas"], singlePersonRatings["Avitela"]["PrekiuKokybe"], singlePersonRatings["Avitela"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
                     FillList(commentsData.Where(c => c.ShopId == 0).ToList(), listViewas);
                 }
-                else if (parduotuve.SelectedIndex == 1 && commentsData.SingleOrDefault(c => c.Email == PrisijungimoLangas.email && c.ShopId == 1) == null)
+                else if (parduotuve.SelectedIndex == 1 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.email && c.ShopId == 1) == null)
                 {
                     //Rating
                     balsavusiuSk++;
@@ -199,12 +199,12 @@ namespace Price_comparison_engine
                     Rasyti("Elektromarkt", balsai, balsavusiuSk);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(PrisijungimoLangas.email, 1, singlePersonRatings["Elektromarkt"]["Aptarnavimas"], singlePersonRatings["Elektromarkt"]["PrekiuKokybe"], singlePersonRatings["Elektromarkt"]["Pristatymas"], KomentaruLangelis.Text);
+                    WriteComments(LoginWindow.email, 1, singlePersonRatings["Elektromarkt"]["Aptarnavimas"], singlePersonRatings["Elektromarkt"]["PrekiuKokybe"], singlePersonRatings["Elektromarkt"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
                     FillList(commentsData.Where(c => c.ShopId == 1).ToList(), listViewas);
                 }
-                else if (parduotuve.SelectedIndex == 2 && commentsData.SingleOrDefault(c => c.Email == PrisijungimoLangas.email && c.ShopId == 2) == null)
+                else if (parduotuve.SelectedIndex == 2 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.email && c.ShopId == 2) == null)
                 {
                     //Rating
                     balsavusiuSk++;
@@ -216,12 +216,12 @@ namespace Price_comparison_engine
                     Rasyti("Pigu", balsai, balsavusiuSk);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(PrisijungimoLangas.email, 2, singlePersonRatings["Pigu"]["Aptarnavimas"], singlePersonRatings["Pigu"]["PrekiuKokybe"], singlePersonRatings["Pigu"]["Pristatymas"], KomentaruLangelis.Text);
+                    WriteComments(LoginWindow.email, 2, singlePersonRatings["Pigu"]["Aptarnavimas"], singlePersonRatings["Pigu"]["PrekiuKokybe"], singlePersonRatings["Pigu"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
                     FillList(commentsData.Where(c => c.ShopId == 2).ToList(), listViewas);
                 }
-                else if (parduotuve.SelectedIndex == 3 && commentsData.SingleOrDefault(c => c.Email == PrisijungimoLangas.email && c.ShopId == 3) == null)
+                else if (parduotuve.SelectedIndex == 3 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.email && c.ShopId == 3) == null)
                 {
                     //Rating
                     balsavusiuSk++;
@@ -233,12 +233,12 @@ namespace Price_comparison_engine
                     Rasyti("Barbora", balsai, balsavusiuSk);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(PrisijungimoLangas.email, 3, singlePersonRatings["Barbora"]["Aptarnavimas"], singlePersonRatings["Barbora"]["PrekiuKokybe"], singlePersonRatings["Barbora"]["Pristatymas"], KomentaruLangelis.Text);
+                    WriteComments(LoginWindow.email, 3, singlePersonRatings["Barbora"]["Aptarnavimas"], singlePersonRatings["Barbora"]["PrekiuKokybe"], singlePersonRatings["Barbora"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
                     FillList(commentsData.Where(c => c.ShopId == 3).ToList(), listViewas);
                 }
-                else if (parduotuve.SelectedIndex == 4 && commentsData.SingleOrDefault(c => c.Email == PrisijungimoLangas.email && c.ShopId == 4) == null)
+                else if (parduotuve.SelectedIndex == 4 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.email && c.ShopId == 4) == null)
                 {
                     //Rating
                     balsavusiuSk++;
@@ -250,12 +250,12 @@ namespace Price_comparison_engine
                     Rasyti("Bigbox", balsai, balsavusiuSk);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(PrisijungimoLangas.email, 4, singlePersonRatings["Bigbox"]["Aptarnavimas"], singlePersonRatings["Bigbox"]["PrekiuKokybe"], singlePersonRatings["Bigbox"]["Pristatymas"], KomentaruLangelis.Text);
+                    WriteComments(LoginWindow.email, 4, singlePersonRatings["Bigbox"]["Aptarnavimas"], singlePersonRatings["Bigbox"]["PrekiuKokybe"], singlePersonRatings["Bigbox"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
                     FillList(commentsData.Where(c => c.ShopId == 4).ToList(), listViewas);
                 }
-                else if (parduotuve.SelectedIndex == 5 && commentsData.SingleOrDefault(c => c.Email == PrisijungimoLangas.email && c.ShopId == 5) == null)
+                else if (parduotuve.SelectedIndex == 5 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.email && c.ShopId == 5) == null)
                 {
                     //Rating
                     balsavusiuSk++;
@@ -267,12 +267,12 @@ namespace Price_comparison_engine
                     Rasyti("Rde", balsai, balsavusiuSk);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(PrisijungimoLangas.email, 5, singlePersonRatings["Rde"]["Aptarnavimas"], singlePersonRatings["Rde"]["PrekiuKokybe"], singlePersonRatings["Rde"]["Pristatymas"], KomentaruLangelis.Text);
+                    WriteComments(LoginWindow.email, 5, singlePersonRatings["Rde"]["Aptarnavimas"], singlePersonRatings["Rde"]["PrekiuKokybe"], singlePersonRatings["Rde"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
                     FillList(commentsData.Where(c => c.ShopId == 5).ToList(), listViewas);
                 }
-                else if (parduotuve.SelectedIndex == 6 && commentsData.SingleOrDefault(c => c.Email == PrisijungimoLangas.email && c.ShopId == 6) == null)
+                else if (parduotuve.SelectedIndex == 6 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.email && c.ShopId == 6) == null)
                 {
                     //Rating
                     balsavusiuSk++;
@@ -284,7 +284,7 @@ namespace Price_comparison_engine
                     Rasyti("GintarineVaistine", balsai, balsavusiuSk);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(PrisijungimoLangas.email, 6, singlePersonRatings["GintarineVaistine"]["Aptarnavimas"], singlePersonRatings["GintarineVaistine"]["PrekiuKokybe"], singlePersonRatings["GintarineVaistine"]["Pristatymas"], KomentaruLangelis.Text);
+                    WriteComments(LoginWindow.email, 6, singlePersonRatings["GintarineVaistine"]["Aptarnavimas"], singlePersonRatings["GintarineVaistine"]["PrekiuKokybe"], singlePersonRatings["GintarineVaistine"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
                     FillList(commentsData.Where(c => c.ShopId == 6).ToList(), listViewas);
@@ -339,7 +339,7 @@ namespace Price_comparison_engine
         private static List<CommentsTable> ReadComments()
         {
             List<CommentsTable> temp;
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 temp = context.CommentsTable.ToList();
             }
@@ -348,7 +348,7 @@ namespace Price_comparison_engine
 
         private static void WriteComments(string email, int shopId, int serviceRating, int productsQualityRating, int deliveryRating, string comment)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.CommentsTable.SingleOrDefault(b => b.Email == email && b.ShopId == shopId);
                 
@@ -373,7 +373,7 @@ namespace Price_comparison_engine
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
         private static void Skaityti(string shopName, ref int votesNumber, ref int votersNumber)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.ShopRatingTable.SingleOrDefault(c => c.ShopName == shopName);
 
@@ -387,7 +387,7 @@ namespace Price_comparison_engine
 
         private static void Rasyti(string shopName, int votesNumber, int votersNumber)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.ShopRatingTable.SingleOrDefault(b => b.ShopName == shopName);
                 if (result != null)

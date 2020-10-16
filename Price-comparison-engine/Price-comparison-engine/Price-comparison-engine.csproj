@@ -96,12 +96,12 @@
     <Compile Include="Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Klases\CommentsTable.cs" />
-    <Compile Include="Klases\ItemsTable.cs" />
-    <Compile Include="Klases\Role.cs" />
-    <Compile Include="Klases\SavedItems.cs" />
-    <Compile Include="Klases\ShopRatingTable.cs" />
-    <Compile Include="Klases\UserData.cs" />
+    <Compile Include="Classes\CommentsTable.cs" />
+    <Compile Include="Classes\ItemsTable.cs" />
+    <Compile Include="Classes\Role.cs" />
+    <Compile Include="Classes\SavedItems.cs" />
+    <Compile Include="Classes\ShopRatingTable.cs" />
+    <Compile Include="Classes\UserData.cs" />
     <Compile Include="KonkretiPreke.xaml.cs">
       <DependentUpon>KonkretiPreke.xaml</DependentUpon>
     </Compile>
@@ -136,9 +136,9 @@
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Klases\DuomenuBazesKontekstas.cs" />
-    <Compile Include="Klases\GeneruotiHash.cs" />
-    <Compile Include="Klases\SiustiEmail.cs" />
+    <Compile Include="Classes\DatabaseContext.cs" />
+    <Compile Include="Classes\GenerateHash.cs" />
+    <Compile Include="Classes\SiustiEmail.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PatvirtinimoLangas.xaml.cs">
       <DependentUpon>PatvirtinimoLangas.xaml</DependentUpon>

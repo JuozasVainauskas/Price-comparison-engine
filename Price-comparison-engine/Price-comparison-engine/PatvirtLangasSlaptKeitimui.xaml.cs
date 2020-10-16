@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,7 +43,7 @@ namespace Price_comparison_engine
             else
             {
                 email = emailLangelis.Text;
-                kodas = GeneruotiHash.SukurtiSalt(16);
+                kodas = GenerateHash.SukurtiSalt(16);
                 kodas = kodas.Remove(kodas.Length - 2);
 
                 new SiustiEmail(kodas, email);

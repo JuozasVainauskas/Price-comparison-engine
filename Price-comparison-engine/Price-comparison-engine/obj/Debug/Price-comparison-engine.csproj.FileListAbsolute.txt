@@ -212,12 +212,6 @@ C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine
 C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\MainWindowLoggedIn.baml
 C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\SlaptazodzioKeitimoLangas.baml
 C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\VertinimoLangas.baml
-C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiNaudotojoDuomenis.resources
-C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiParduotuviuDuomenis.resources
-C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiParduotuviuDuomenis1.resources
-C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiPuslapiuDuomenis.resources
-C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiPuslapiuDuomenis1.resources
-C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.NaudotojoDuomenuUpdate.resources
 C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.CopyComplete
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\LiveCharts.dll
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\LiveCharts.Wpf.dll
@@ -257,3 +251,10 @@ C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiKomentaruStulpeli1.resources
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Naujas.resources
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.NewTableShop.resources
+C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations._new.resources
+C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Newest.resources
+C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Newer.resources
+C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Newer1.resources
+C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.DeleteOldTables.resources
+C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Neww.resources
+C:\Users\Justas\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Newww.resources

@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Net;
 using System.Net.Mail;
@@ -23,24 +23,24 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for PrisijungimoLangas.xaml
     /// </summary>
-    public partial class PrisijungimoLangas : Window
+    public partial class LoginWindow : Window
     {
         readonly MainWindow pagrindinisLangas;
         public static Enum NarioRole { get; set; }
         public static string email { get; set; }
 
-        public PrisijungimoLangas(MainWindow pagrindinisLangas)
+        public LoginWindow(MainWindow pagrindinisLangas)
         {
             InitializeComponent();
             this.pagrindinisLangas = pagrindinisLangas;
-            NarioRole = Role.Vartotojas;
+            NarioRole = Role.User;
             email = "";
         }
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
             email = Email.Text;
 
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.UserData.SingleOrDefault(c => c.Email == Email.Text);
                 
@@ -50,14 +50,14 @@ namespace Price_comparison_engine
                     var passworHash = result.PasswordHash;
                     if(result.Role == "0")
                     {
-                        NarioRole = Role.Vartotojas;
+                        NarioRole = Role.User;
                     }
                     else if (result.Role == "1")
                     {
-                        NarioRole = Role.Administratorius;
+                        NarioRole = Role.Admin;
                     }
 
-                    var naudotojoIvestasSlaptazodis = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, passwordSalt);
+                    var naudotojoIvestasSlaptazodis = GenerateHash.GenerateSHA256Hash(Slaptazodis.Password, passwordSalt);
 
                     if (passworHash.Equals(naudotojoIvestasSlaptazodis))
                     {
