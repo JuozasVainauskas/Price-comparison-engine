@@ -8,12 +8,12 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for PatvirtLangasSlaptKeitimui.xaml
     /// </summary>
-    public partial class PatvirtLangasSlaptKeitimui : Window
+    public partial class ConfirmNewPasswordWindow : Window
     {
         private string code;
         private string email;
 
-        public PatvirtLangasSlaptKeitimui()
+        public ConfirmNewPasswordWindow()
         {
             InitializeComponent();
         }
