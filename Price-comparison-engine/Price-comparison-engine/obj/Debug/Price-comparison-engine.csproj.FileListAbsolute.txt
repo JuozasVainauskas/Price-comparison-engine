@@ -74,8 +74,6 @@ C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\P
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\HtmlAgilityPack.dll
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\HtmlAgilityPack.xml
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiuLangas.g.cs
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PrekiuLangas.baml
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price-comparison-engine.csproj.CopyComplete
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\PCEDatabase.mdf
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\PCEDatabase_log.ldf
@@ -141,11 +139,6 @@ C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Pri
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\PatvirtinimoLangas.baml
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\SlaptazodzioKeitimoLangas.baml
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\VertinimoLangas.baml
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiNaudotojoDuomenis.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiParduotuviuDuomenis.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiParduotuviuDuomenis1.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiPuslapiuDuomenis.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiPuslapiuDuomenis1.resources
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\WebDriver.dll
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\WebDriver.xml
 C:\Users\User\Documents\GitHub\Price-comparison-engine\Price-Comparison-Engine\Price-comparison-engine\obj\Debug\PatvirtLangasSlaptKeitimui.g.cs
@@ -229,13 +222,6 @@ C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Pri
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\KonkretiPreke.g.cs
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Admin.baml
 C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\KonkretiPreke.baml
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.NaudotojoDuomenuUpdate.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiNaujaLentele.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.AtnaujintiPrekiuLentele.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiKomentaruStulpeli.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiKomentaruStulpeli1.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Naujas.resources
-C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.NewTableShop.resources
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\LiveCharts.dll
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\LiveCharts.Wpf.dll
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\bin\Debug\WebDriver.dll
@@ -257,3 +243,12 @@ C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.SukurtiKomentaruStulpeli1.resources
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Naujas.resources
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.NewTableShop.resources
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\ItemsWindow.g.cs
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\ItemsWindow.baml
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations._new.resources
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Newest.resources
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Newer.resources
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Newer1.resources
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.DeleteOldTables.resources
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Neww.resources
+C:\Users\PC\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\obj\Debug\Price_comparison_engine.Migrations.Newww.resources
