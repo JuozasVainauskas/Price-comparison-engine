@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
-        xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Name="konkretiPrekeLangas" x:Class="Price_comparison_engine.KonkretiPreke"
+        xmlns:Wpf="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" x:Name="konkretiPrekeLangas" x:Class="Price_comparison_engine.CurrentGoods"
         mc:Ignorable="d"
         Title="KonkretiPreke" Height="600" Width="800" MinWidth="800" MinHeight="600" SizeChanged="konkretiPrekeLangas_SizeChanged">
     <Grid Margin="0,277,0,0">

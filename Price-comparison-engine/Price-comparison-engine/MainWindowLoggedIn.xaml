@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Price_comparison_engine"
         mc:Ignorable="d"
-        Title="Prisijungta" Height="450" Width="800" MinWidth="800" MinHeight="600" SizeChanged="Window_SizeChanged" >
+        Title="Prisijungta" Height="450" Width="800" MinWidth="800" MinHeight="600" SizeChanged="WindowSizeChanged" >
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -61,20 +61,20 @@
     </Window.Resources>
     <Grid>
 
-        <Rectangle x:Name="viršutinėlinija" Fill="#FF0FA943" HorizontalAlignment="Center" Height="52" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
-        <Rectangle x:Name="apatinėLinija" Fill="#FF0FA943" HorizontalAlignment="Left" Height="27.08" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Bottom" Width="794"/>
+        <Rectangle x:Name="upperLine" Fill="#FF0FA943" HorizontalAlignment="Center" Height="52" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Top" Width="794"/>
+        <Rectangle x:Name="bottomLine" Fill="#FF0FA943" HorizontalAlignment="Left" Height="27.08" Margin="0,0,-2,0" Stroke="Black" VerticalAlignment="Bottom" Width="794"/>
         <TextBlock HorizontalAlignment="Center" Margin="291.052,0,138.948,3.12" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="362" Foreground="#FFF9F9F9" Height="18.96"><Run Text=" "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
         <TextBlock HorizontalAlignment="Center" Height="42" Margin="291.052,10,250.578,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250.37" FontSize="24" FontFamily="Cooper Black"><Run Text=" "/><Run Text="Sveiki prisijung"/><Run Text="ę!"/></TextBlock>
         <TextBlock HorizontalAlignment="Center" Margin="434,164,232,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="126" Height="24"><Run Text=" "/><Run Text="Išsaugotos prekės:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="15,164,634,381" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.467,3.632" Width="143" Height="24"><Run Text=" "/><Run Text="Populiariausios prekės:"/></TextBlock>
-        <Button x:Name="Ieškoti" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,82,28,0" VerticalAlignment="Top" Width="144" Height="56"
+        <Button x:Name="search" Content="Ieškoti" HorizontalAlignment="Right" Margin="0,82,28,0" VerticalAlignment="Top" Width="144" Height="56"
             Background="#FF0FA943"
             Foreground="#e6f3ff"
-            FontFamily="Cooper Black" Style="{DynamicResource ButtonRounded}" FontSize="24" Click="Ieškoti_Click"
+            FontFamily="Cooper Black" Style="{DynamicResource ButtonRounded}" FontSize="24" Click="Search"
                 />
-        <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False"/>
+        <TextBox HorizontalAlignment="Left" x:Name="searchField" Height="56" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False"/>
 
-        <Image x:Name="iKairePuse1" HorizontalAlignment="Left" Height="70" Margin="6,0,0,-22" VerticalAlignment="Bottom" Width="60" Source="Nuotraukos/back.png" MouseDown="Slider_Front" RenderTransformOrigin="0.518,-0.309">
+        <Image x:Name="toLeft" HorizontalAlignment="Left" Height="70" Margin="6,0,0,-22" VerticalAlignment="Bottom" Width="60" Source="Nuotraukos/back.png" MouseDown="SliderFront" RenderTransformOrigin="0.518,-0.309">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -85,7 +85,7 @@
             </Image.RenderTransform>
         </Image>
 
-        <Image x:Name="iDesinePuse1" HorizontalAlignment="Left" Height="70" Margin="27,215,0,0" VerticalAlignment="Top" Width="60" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Back">
+        <Image x:Name="toRight" HorizontalAlignment="Left" Height="70" Margin="27,215,0,0" VerticalAlignment="Top" Width="60" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="SliderBack">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -95,23 +95,23 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Button x:Name="atsijungimoMygtukas" Content="Atsijungti" HorizontalAlignment="Right" Height="40" Margin="615,7,0,0" VerticalAlignment="Top" Width="144" Click="AtsijungimoMygtukas_Click"
+        <Button x:Name="logoutBtn" Content="Atsijungti" HorizontalAlignment="Right" Height="40" Margin="615,7,0,0" VerticalAlignment="Top" Width="144" Click="LogOut"
             Background="#FF015DFF"
             Foreground="White"
             FontFamily="Arial" Style="{DynamicResource ButtonRounded}"
                 />
-        <Button x:Name="administravimas" Content="Administravimas" HorizontalAlignment="Left" Height="40" Margin="142,7,0,0" VerticalAlignment="Top" Width="144" Click="AdminPrisijungimas" Visibility="Collapsed" IsEnabled="False"
+        <Button x:Name="administration" Content="Administravimas" HorizontalAlignment="Left" Height="40" Margin="142,7,0,0" VerticalAlignment="Top" Width="144" Click="AdminLogin" Visibility="Collapsed" IsEnabled="False"
             Background="#E81034"
             Foreground="White"
             FontFamily="Arial" Style="{DynamicResource ButtonRounded}"
                 />
-        <DataGrid AutoGenerateColumns="False" x:Name="DataGridLoggedIn" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="172,193,10,36" Initialized="DataGridLoggedIn_Initialized">
+        <DataGrid AutoGenerateColumns="False" x:Name="DataGridLoggedIn" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="172,193,10,36" Initialized="InitaliseDatagrid">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Image" Width="SizeToCells"
                     IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Nuotrauka}" Height="100" x:Name="imageClick" MouseLeftButtonDown="ImageClick_MouseLeftButtonDown"/>
+                            <Image Source="{Binding Nuotrauka}" Height="100" x:Name="imageClick" MouseLeftButtonDown="CurrentGoods"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -121,7 +121,7 @@
                 <DataGridTemplateColumn Header="Nuoroda">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="linkButton" Background="#FF36B04D" ContentStringFormat="" Click="LinkButton_Click">
+                            <Button x:Name="linkButton" Background="#FF36B04D" ContentStringFormat="" Click="Link">
                                 <Hyperlink NavigateUri="{Binding Link}">
                                     <InlineUIContainer>
                                         <TextBlock><Bold><Run Text="Eiti"/></Bold></TextBlock>
@@ -134,7 +134,7 @@
                 <DataGridTemplateColumn Header="Ištrinti">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button x:Name="deleteButton" Background="Firebrick" ContentStringFormat="" Click="deleteButton_Click">
+                            <Button x:Name="deleteButton" Background="Firebrick" ContentStringFormat="" Click="delete">
                                 <TextBlock><Bold><Run Text="Ištrinti"/></Bold></TextBlock>
                             </Button>
                         </DataTemplate>
@@ -142,13 +142,13 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="VertinimoMygtukas" Content="Įvertinti pardavėją" HorizontalAlignment="Left" Height="40" Margin="10,7,0,0" VerticalAlignment="Top" Width="122" Click="VertintiClick"
+        <Button x:Name="evaluateBtn" Content="Įvertinti pardavėją" HorizontalAlignment="Left" Height="40" Margin="10,7,0,0" VerticalAlignment="Top" Width="122" Click="Evaluate"
                 Background="#87c1ff"
                 Foreground="White"
                 FontFamily="Arial" Style="{DynamicResource ButtonRounded}"/>
-        <Image x:Name="img1" Height="60" Margin="55,0,0,90" VerticalAlignment="Bottom" Source="Nuotraukos/no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Left" Width="71" RenderTransformOrigin="0.507,0.283"/>
-        <Image x:Name="img2" HorizontalAlignment="Left" Height="60" Margin="55,324,0,185" VerticalAlignment="Center" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img2_MouseDown"/>
-        <Image x:Name="img3" HorizontalAlignment="Left" Height="60" Margin="55,259,0,0" VerticalAlignment="Top" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img3_MouseDown" RenderTransformOrigin="1.036,0.279"/>
+        <Image x:Name="img1" Height="60" Margin="55,0,0,90" VerticalAlignment="Bottom" Source="Nuotraukos/no_product.jpg" MouseDown="Img1MouseDown" HorizontalAlignment="Left" Width="71" RenderTransformOrigin="0.507,0.283"/>
+        <Image x:Name="img2" HorizontalAlignment="Left" Height="60" Margin="55,324,0,185" VerticalAlignment="Center" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img2MouseDown"/>
+        <Image x:Name="img3" HorizontalAlignment="Left" Height="60" Margin="55,259,0,0" VerticalAlignment="Top" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img3MouseDown" RenderTransformOrigin="1.036,0.279"/>
 
     </Grid>
 </Window>

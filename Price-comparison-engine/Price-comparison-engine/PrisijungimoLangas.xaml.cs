@@ -26,14 +26,14 @@ namespace Price_comparison_engine
     public partial class LoginWindow : Window
     {
         readonly MainWindow pagrindinisLangas;
-        public static Enum NarioRole { get; set; }
+        public static Enum userRole { get; set; }
         public static string email { get; set; }
 
         public LoginWindow(MainWindow pagrindinisLangas)
         {
             InitializeComponent();
             this.pagrindinisLangas = pagrindinisLangas;
-            NarioRole = Role.User;
+            userRole = Role.User;
             email = "";
         }
         private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
@@ -50,11 +50,11 @@ namespace Price_comparison_engine
                     var passworHash = result.PasswordHash;
                     if(result.Role == "0")
                     {
-                        NarioRole = Role.User;
+                        userRole = Role.User;
                     }
                     else if (result.Role == "1")
                     {
-                        NarioRole = Role.Admin;
+                        userRole = Role.Admin;
                     }
 
                     var naudotojoIvestasSlaptazodis = GenerateHash.GenerateSHA256Hash(Slaptazodis.Password, passwordSalt);

@@ -13,9 +13,9 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for VertinimoLangas.xaml
     /// </summary>
-    public partial class VertinimoLangas : Window
+    public partial class EvaluationWindow : Window
     {
-        public VertinimoLangas()
+        public EvaluationWindow()
         {
             InitializeComponent();
         }

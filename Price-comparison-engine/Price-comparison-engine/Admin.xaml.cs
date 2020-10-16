@@ -110,7 +110,7 @@ namespace Price_comparison_engine
             if (email == LoginWindow.email)
             {
                 LoginWindow.email = "";
-                LoginWindow.NarioRole = Classes.Role.User;
+                LoginWindow.userRole = Classes.Role.User;
                 var mainWindow = new MainWindow();
                 mainWindow.Show();
                 mainWindowLoggedIn.Close();
