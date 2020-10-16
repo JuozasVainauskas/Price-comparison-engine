@@ -105,7 +105,7 @@
             Foreground="White"
             FontFamily="Arial" Style="{DynamicResource ButtonRounded}"
                 />
-        <DataGrid AutoGenerateColumns="False" x:Name="DataGridLoggedIn" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="172,193,10,36" Initialized="InitaliseDatagrid">
+        <DataGrid AutoGenerateColumns="False" x:Name="DataGridLoggedIn" CanUserAddRows="True" ItemsSource="{Binding TestBinding}" Margin="172,193,10,36" Initialized="InitialiseDatagrid">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Image" Width="SizeToCells"
                     IsReadOnly="True">

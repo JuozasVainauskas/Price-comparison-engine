@@ -218,7 +218,7 @@ namespace Price_comparison_engine
             DataGridLoggedIn.Items.RemoveAt(currentRowIndex);
         }
 
-        private void InitaliseDatagrid(object sender, EventArgs e)
+        private void InitialiseDatagrid(object sender, EventArgs e)
         {
             GetHtmlAssync(DataGridLoggedIn);
         }

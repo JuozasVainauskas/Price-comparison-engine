@@ -240,7 +240,7 @@ namespace Price_comparison_engine {
             this.DataGridLoggedIn = ((System.Windows.Controls.DataGrid)(target));
             
             #line 108 "..\..\MainWindowLoggedIn.xaml"
-            this.DataGridLoggedIn.Initialized += new System.EventHandler(this.InitaliseDatagrid);
+            this.DataGridLoggedIn.Initialized += new System.EventHandler(this.InitialiseDatagrid);
             
             #line default
             #line hidden

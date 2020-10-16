@@ -46,7 +46,7 @@ namespace Price_comparison_engine
                 kodas = GenerateHash.SukurtiSalt(16);
                 kodas = kodas.Remove(kodas.Length - 2);
 
-                new SiustiEmail(kodas, email);
+                new SendEmail(kodas, email);
 
                 emailLangelis.Visibility = Visibility.Collapsed;
                 pranesimas1.Visibility = Visibility.Collapsed;
