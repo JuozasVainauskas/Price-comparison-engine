@@ -22,10 +22,10 @@ namespace Price_comparison_engine
     public partial class PatvirtinimoLangas : Window
     {
         readonly MainWindow pagrindinisLangas;
-        readonly RegistracijosLangas registracijosLangas;
+        readonly RegistrationWindow registracijosLangas;
         readonly DatabaseContext context;
         private string kodas;
-        public PatvirtinimoLangas(DatabaseContext context, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
+        public PatvirtinimoLangas(DatabaseContext context, MainWindow pagrindinisLangas, RegistrationWindow registracijosLangas, string kodas, string email)
         {
             InitializeComponent();
             new SiustiEmail(kodas, email);

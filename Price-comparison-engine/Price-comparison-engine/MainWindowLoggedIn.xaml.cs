@@ -169,8 +169,8 @@ namespace Price_comparison_engine
 
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.zodis = ieškojimoLaukas.Text;
-            PrekiuLangas prekiuLangas = new PrekiuLangas(this);
+            MainWindow.word = ieškojimoLaukas.Text;
+            GoodsWindow prekiuLangas = new GoodsWindow(this);
             prekiuLangas.Show();
         }
 

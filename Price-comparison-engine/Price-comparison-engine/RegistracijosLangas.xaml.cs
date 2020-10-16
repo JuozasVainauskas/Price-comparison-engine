@@ -24,11 +24,11 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for RegistracijosLangas.xaml
     /// </summary>
-    public partial class RegistracijosLangas : Window
+    public partial class RegistrationWindow : Window
     {
         readonly MainWindow pagrindinisLangas;
 
-        public RegistracijosLangas(MainWindow pagrindinisLangas)
+        public RegistrationWindow(MainWindow pagrindinisLangas)
         {
             InitializeComponent();
             this.pagrindinisLangas = pagrindinisLangas;

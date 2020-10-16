@@ -34,13 +34,13 @@ namespace Price_comparison_engine
         public string Link { get; set; }
     }
 
-    public partial class PrekiuLangas
+    public partial class GoodsWindow
     {
         public static int SoldOutBarbora;
         public static int SoldOut;
         public static int LoggedIn=0;
         MainWindowLoggedIn grLoggedIn;
-        public PrekiuLangas(MainWindowLoggedIn grid)
+        public GoodsWindow(MainWindowLoggedIn grid)
         {
             InitializeComponent();
             this.grLoggedIn = grid;
@@ -81,22 +81,22 @@ namespace Price_comparison_engine
                  dataGrid.Items.Add(singleItem);
              }*/
 
-            if (SkaitytiPrekes(MainWindow.zodis).Any())
+            if (SkaitytiPrekes(MainWindow.word).Any())
             {
-                foreach (var item in SkaitytiPrekes(MainWindow.zodis)) dataGrid.Items.Add(item);
+                foreach (var item in SkaitytiPrekes(MainWindow.word)) dataGrid.Items.Add(item);
             }
             else
             {
                 var httpClient = new HttpClient();
                 var regEx = new Regex(" ");
-                var urlgalas = regEx.Replace(MainWindow.zodis, "+");
+                var urlgalas = regEx.Replace(MainWindow.word, "+");
                 var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
-                var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
+                var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.word;
                 var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
                 var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
-                var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
+                var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.word;
                 var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
-                var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q="+ MainWindow.zodis + "%5D&sid=false&isc=true&orderBy=0";
+                var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q="+ MainWindow.word + "%5D&sid=false&isc=true&orderBy=0";
                 var rdeItems = RdeSearch(await Html(httpClient, urlRde));
                 WriteDataFromRde(rdeItems, prices);
                 var barboraItems = BarboraSearch(await Html(httpClient, urlBarbora));
@@ -309,7 +309,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Gintarine vaistine", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Gintarine vaistine", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -357,7 +357,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Rde", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Rde", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -405,7 +405,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Avitela", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Avitela", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -449,7 +449,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "BigBox", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "BigBox", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -495,7 +495,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -547,7 +547,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Pigu", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Pigu", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -585,7 +585,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var item1 = new Item { Seller = "Elektromarkt", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var item1 = new Item { Seller = "Elektromarkt", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(item1);
             }
         }
@@ -643,7 +643,7 @@ namespace Price_comparison_engine
             foreach (var item in sortedPricesList)
             {
                 dataGridas.Items.Add(item);
-                RasytiPrekes(item.Link, item.Nuotrauka, item.Seller, item.Name, item.Price, MainWindow.zodis);
+                RasytiPrekes(item.Link, item.Nuotrauka, item.Seller, item.Name, item.Price, MainWindow.word);
             }
             prices.Clear();
         }

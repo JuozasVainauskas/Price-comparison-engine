@@ -17,9 +17,9 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for KontaktuLangas.xaml
     /// </summary>
-    public partial class KontaktuLangas : Window
+    public partial class ContactsWindow : Window
     {
-        public KontaktuLangas()
+        public ContactsWindow()
         {
             InitializeComponent();
         }

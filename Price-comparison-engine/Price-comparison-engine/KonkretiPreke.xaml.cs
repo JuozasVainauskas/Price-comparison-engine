@@ -53,14 +53,14 @@ namespace Price_comparison_engine
             var prices = new List<Item>();
             var httpClient = new HttpClient();
             var regEx = new Regex(" ");
-            var urlEnd = regEx.Replace(MainWindow.zodis, "+");
+            var urlEnd = regEx.Replace(MainWindow.word, "+");
             var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlEnd + "/page/1";
             var urlPigu = "https://pigu.lt/lt/search?q=" + urlEnd;
             var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlEnd;
-            var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.zodis;
+            var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.word;
             var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlEnd;
-            var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q=" + MainWindow.zodis + "%5D&sid=false&isc=true&orderBy=0";
-            var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.zodis;
+            var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q=" + MainWindow.word + "%5D&sid=false&isc=true&orderBy=0";
+            var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.word;
 
             var rdeItems = RdeSearch(await Html(httpClient, urlRde));
             WriteDataFromRde(rdeItems, prices);
@@ -295,7 +295,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Rde", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Rde", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -354,7 +354,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -398,7 +398,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Gintarine vaistine", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Gintarine vaistine", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -450,7 +450,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Barbora", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -494,7 +494,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Imagee = "https://avitela.lt/image/no_image.jpg",Seller = "Avitela", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Imagee = "https://avitela.lt/image/no_image.jpg",Seller = "Avitela", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -546,7 +546,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Pigu", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Pigu", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
@@ -593,7 +593,7 @@ namespace Price_comparison_engine
             }
             else
             {
-                var singleItem = new Item { Seller = "Elektromarkt", Name = "tokios prekės " + MainWindow.zodis + " nėra šioje parduotuvėje" };
+                var singleItem = new Item { Seller = "Elektromarkt", Name = "tokios prekės " + MainWindow.word + " nėra šioje parduotuvėje" };
                 prices.Add(singleItem);
             }
         }
