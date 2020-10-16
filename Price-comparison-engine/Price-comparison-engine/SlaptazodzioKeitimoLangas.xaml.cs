@@ -21,12 +21,12 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for SlaptazodzioKeitimoLangas.xaml
     /// </summary>
-    public partial class SlaptazodzioKeitimoLangas : Window
+    public partial class ChangePasswordWindow : Window
     {
 
         readonly string email;
 
-        public SlaptazodzioKeitimoLangas(string email)
+        public ChangePasswordWindow(string email)
         {
             InitializeComponent();
             this.email = email;
