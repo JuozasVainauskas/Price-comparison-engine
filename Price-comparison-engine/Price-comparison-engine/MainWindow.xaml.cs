@@ -102,32 +102,32 @@ namespace Price_comparison_engine
             SlideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
         }
 
-        private void MygtukoResize(Button mygtukas, double plotis, double ilgis)
+        private void MygtukoResize(Button mygtukas, double plotis=0, double ilgis=0)
         {
             mygtukas.Width = this.ActualWidth - plotis;
             mygtukas.Height = this.ActualHeight - ilgis;
         }
 
-        private void TextBlockResize(TextBlock tekstoBlokas, double plotis, double ilgis)
+        private void TextBlockResize(TextBlock tekstoBlokas, double plotis=0, double ilgis=0)
         {
             tekstoBlokas.Width = this.ActualWidth - plotis;
             tekstoBlokas.Height = this.ActualHeight - ilgis;
         }
 
-        private void TextBoxResize(TextBox tekstBoksas, double plotis, double ilgis)
+        private void TextBoxResize(TextBox tekstBoksas, double plotis=0, double ilgis=0)
         {
             tekstBoksas.Width = this.ActualWidth - plotis;
             tekstBoksas.Height = this.ActualHeight - ilgis;
         }
-        private void RectangleResize(Rectangle plotelis, double ilgis)
+        private void RectangleResize(Rectangle plotelis, double ilgis=0)
         {
             plotelis.Height = this.ActualHeight - ilgis;
         }
-        private void RectangleIštempimas(Rectangle plotelis)
+        private void RectangleIštempimas(Rectangle plotelis,double skirtumasPlocio=0)
         {
-            plotelis.Width = this.ActualWidth;
+            plotelis.Width = this.ActualWidth-skirtumasPlocio;
         }
-        private void SlideShowResize(Image nuotrauka,double plotis, double ilgis)
+        private void SlideShowResize(Image nuotrauka,double plotis=0, double ilgis=0)
         {
             nuotrauka.Width = this.ActualWidth-plotis;
             nuotrauka.Height = this.ActualHeight-ilgis;
