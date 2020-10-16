@@ -14,6 +14,8 @@ using Price_comparison_engine.Klases;
 
 namespace Price_comparison_engine
 {
+
+    
     public partial class Item
     {
         public string Nuotrauka { get; set; }
@@ -34,7 +36,17 @@ namespace Price_comparison_engine
         public static int SoldOutBarbora;
         public static int SoldOut;
         public static int LoggedIn;
+        private static Regex regEx = new Regex(" ");
         MainWindowLoggedIn GrLoggedIn;
+
+        protected Htmle.HtmlE html = new Htmle.HtmlE(0,regEx.Replace(MainWindow.word, "+"));
+
+        public Htmle.HtmlE Htmla
+        {
+            get { return html; }
+            set { html = value; }
+        }
+   
         public ItemsWindow(MainWindowLoggedIn grid)
         {
             InitializeComponent();
@@ -51,7 +63,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private static async void GetHtmlAssync(DataGrid dataGrid)
+        private async void GetHtmlAssync(DataGrid dataGrid)
         {
             var prices = new List<Item>();
 
@@ -62,14 +74,12 @@ namespace Price_comparison_engine
             else
             {
                 var httpClient = new HttpClient();
-                var regEx = new Regex(" ");
-                var urlEnd = regEx.Replace(MainWindow.word, "+");
-                var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlEnd + "/page/1";
+                var urlRde = "https://www.rde.lt/search_result/lt/word/" + Htmla.htmlEnd  + "/page/1";
                 var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.word;
-                var urlPigu = "https://pigu.lt/lt/search?q=" + urlEnd;
-                var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlEnd;
+                var urlPigu = "https://pigu.lt/lt/search?q=" + Htmla.htmlEnd;
+                var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + Htmla.htmlEnd;
                 var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.word;
-                var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlEnd;
+                var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + Htmla.htmlEnd;
                 var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q="+ MainWindow.word + "%5D&sid=false&isc=true&orderBy=0";
                 var rdeItems = RdeSearch(await Html(httpClient, urlRde));
                 WriteDataFromRde(rdeItems, prices);
