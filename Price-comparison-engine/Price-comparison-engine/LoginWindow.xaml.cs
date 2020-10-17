@@ -25,18 +25,18 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class LoginWindow : Window
     {
-        readonly MainWindow pagrindinisLangas;
+        readonly MainWindow mainWindow;
         public static Enum UserRole { get; set; }
         public static string Email { get; set; }
 
         public LoginWindow(MainWindow pagrindinisLangas)
         {
             InitializeComponent();
-            this.pagrindinisLangas = pagrindinisLangas;
+            this.mainWindow = pagrindinisLangas;
             UserRole = Role.User;
             Email = "";
         }
-        private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
+        private void LoginClick(object sender, RoutedEventArgs e)
         {
             Email = EmailBox.Text;
 
@@ -57,15 +57,15 @@ namespace Price_comparison_engine
                         UserRole = Role.Admin;
                     }
 
-                    var naudotojoIvestasSlaptazodis = GenerateHash.GenerateSHA256Hash(Slaptazodis.Password, passwordSalt);
+                    var userEnteredPassword = GenerateHash.GenerateSHA256Hash(passwordBox.Password, passwordSalt);
 
-                    if (passworHash.Equals(naudotojoIvestasSlaptazodis))
+                    if (passworHash.Equals(userEnteredPassword))
                     {
                         var mainWindowLoggedIn = new MainWindowLoggedIn();
                         mainWindowLoggedIn.Show();
 
                         this.Close();
-                        pagrindinisLangas.Close();
+                        mainWindow.Close();
                     }
                     else
                     {
@@ -79,10 +79,10 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Sukurti_nauja_slaptazodi_mygtukas(object sender, RoutedEventArgs e)
+        private void ResetPasswordClick(object sender, RoutedEventArgs e)
         {
-            var patvirtLangasSlaptKeitimui = new PatvirtLangasSlaptKeitimui();
-            patvirtLangasSlaptKeitimui.Show();
+            var confirmNewPasswordWindow = new PatvirtLangasSlaptKeitimui();
+            confirmNewPasswordWindow.Show();
         }
     }
 }

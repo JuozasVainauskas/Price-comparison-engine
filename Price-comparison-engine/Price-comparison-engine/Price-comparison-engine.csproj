@@ -229,27 +229,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuotraukos\logo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Nuotraukos\user.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Nuotraukos\1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Nuotraukos\2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Nuotraukos\3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Nuotraukos\back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Nuotraukos\next.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
@@ -262,12 +241,19 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Nuotraukos\avitela.png" />
-    <Resource Include="Nuotraukos\elektromarkt.png" />
-    <Resource Include="Nuotraukos\no_product.jpg" />
-    <Resource Include="Nuotraukos\Star_0.png" />
-    <Resource Include="Nuotraukos\Star_1.png" />
-    <Resource Include="Nuotraukos\Star_2.png" />
+    <Resource Include="Assets\1.jpg" />
+    <Resource Include="Assets\2.jpg" />
+    <Resource Include="Assets\3.jpg" />
+    <Resource Include="Assets\avitela.png" />
+    <Resource Include="Assets\back.png" />
+    <Resource Include="Assets\elektromarkt.png" />
+    <Resource Include="Assets\logo.png" />
+    <Resource Include="Assets\next.png" />
+    <Resource Include="Assets\no_product.jpg" />
+    <Resource Include="Assets\Star_0.png" />
+    <Resource Include="Assets\Star_1.png" />
+    <Resource Include="Assets\Star_2.png" />
+    <Resource Include="Assets\user.jpg" />
     <Content Include="PCEDatabase.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -276,6 +262,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

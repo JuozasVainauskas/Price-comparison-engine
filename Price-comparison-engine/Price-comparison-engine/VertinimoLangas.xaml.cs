@@ -97,7 +97,7 @@ namespace Price_comparison_engine
             {
                 FillList(commentsData.Where(c => c.ShopId == 0).ToList(), listViewas);
                 Skaityti("Avitela", ref balsai, ref balsavusiuSk);
-                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)balsai / (3 * balsavusiuSk);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
@@ -106,7 +106,7 @@ namespace Price_comparison_engine
             {
                 FillList(commentsData.Where(c => c.ShopId == 1).ToList(), listViewas);
                 Skaityti("Elektromarkt", ref balsai, ref balsavusiuSk);
-                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/elektromarkt.png", UriKind.RelativeOrAbsolute));
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Assets/elektromarkt.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)balsai / (3 * balsavusiuSk);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
@@ -115,7 +115,7 @@ namespace Price_comparison_engine
             {
                 FillList(commentsData.Where(c => c.ShopId == 2).ToList(), listViewas);
                 Skaityti("Pigu", ref balsai, ref balsavusiuSk);
-                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)balsai / (3 * balsavusiuSk);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
@@ -124,7 +124,7 @@ namespace Price_comparison_engine
             {
                 FillList(commentsData.Where(c => c.ShopId == 3).ToList(), listViewas);
                 Skaityti("Barbora", ref balsai, ref balsavusiuSk);
-                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)balsai / (3 * balsavusiuSk);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
@@ -133,7 +133,7 @@ namespace Price_comparison_engine
             {
                 FillList(commentsData.Where(c => c.ShopId == 4).ToList(), listViewas);
                 Skaityti("Bigbox", ref balsai, ref balsavusiuSk);
-                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)balsai / (3 * balsavusiuSk);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
@@ -142,7 +142,7 @@ namespace Price_comparison_engine
             {
                 FillList(commentsData.Where(c => c.ShopId == 5).ToList(), listViewas);
                 Skaityti("Rde", ref balsai, ref balsavusiuSk);
-                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)balsai / (3 * balsavusiuSk);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
@@ -151,7 +151,7 @@ namespace Price_comparison_engine
             {
                 FillList(commentsData.Where(c => c.ShopId == 6).ToList(), listViewas);
                 Skaityti("GintarineVaistine", ref balsai, ref balsavusiuSk);
-                ParduotuvesImg.Source = new BitmapImage(new Uri("Nuotraukos/avitela.png", UriKind.RelativeOrAbsolute));
+                ParduotuvesImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)balsai / (3 * balsavusiuSk);
                 ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
                 parduotuve.IsEnabled = false;
@@ -296,21 +296,21 @@ namespace Price_comparison_engine
                     parduotuve.SelectedIndex = -1;
                     KomentaruLangelis.Clear();
                 }
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
                 rating["Aptarnavimas"] = 0;
                 rating["PrekiuKokybe"] = 0;
                 rating["Pristatymas"] = 0;
@@ -454,7 +454,7 @@ namespace Price_comparison_engine
         private bool CheckImgSource(Button button, string imgSrc)
         {
             var imgBool = false;
-            var imgToChangeSrc = "Nuotraukos/Star_1.png";
+            var imgToChangeSrc = "Assets/Star_1.png";
 
             var ct = button.Template;
             var btnImage = (Image)ct.FindName(imgSrc, button);
@@ -471,151 +471,151 @@ namespace Price_comparison_engine
 
         private void AptarnavimasStar1(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
             rating["Aptarnavimas"] = 1;
         }
 
         private void AptarnavimasStar2(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
             rating["Aptarnavimas"] = 2;
         }
 
         private void AptarnavimasStar3(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
             rating["Aptarnavimas"] = 3;
         }
 
         private void AptarnavimasStar4(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
             rating["Aptarnavimas"] = 4;
         }
 
         private void AptarnavimasStar5(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_1.png");
+            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_1.png");
             rating["Aptarnavimas"] = 5;
         }
 
         private void PrekiuKokybeStar1(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
             rating["PrekiuKokybe"] = 1;
         }
 
         private void PrekiuKokybeStar2(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
             rating["PrekiuKokybe"] = 2;
         }
 
         private void PrekiuKokybeStar3(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
             rating["PrekiuKokybe"] = 3;
         }
 
         private void PrekiuKokybeStar4(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
             rating["PrekiuKokybe"] = 4;
         }
 
         private void PrekiuKokybeStar5(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_1.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_1.png");
+            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_1.png");
+            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_1.png");
             rating["PrekiuKokybe"] = 5;
         }
 
         private void PristatymasStar1(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
             rating["Pristatymas"] = 1;
         }
 
         private void PristatymasStar2(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
             rating["Pristatymas"] = 2;
         }
 
         private void PristatymasStar3(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
             rating["Pristatymas"] = 3;
         }
 
         private void PristatymasStar4(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
             rating["Pristatymas"] = 4;
         }
 
         private void PristatymasStar5(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_1.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_1.png");
+            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_1.png");
+            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_1.png");
             rating["Pristatymas"] = 5;
         }
 
@@ -623,7 +623,7 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
             }
         }
 
@@ -631,7 +631,7 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
             }
         }
 
@@ -639,8 +639,8 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_2.png");
             }
         }
 
@@ -648,8 +648,8 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
             }
         }
 
@@ -657,9 +657,9 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_2.png");
             }
         }
 
@@ -667,9 +667,9 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
             }
         }
 
@@ -677,10 +677,10 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_2.png");
             }
         }
 
@@ -688,10 +688,10 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
             }
         }
 
@@ -699,11 +699,11 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas5, "AptarnavimasImg5") && !CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_2.png");
+                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_2.png");
             }
         }
 
@@ -711,11 +711,11 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Aptarnavimas5, "AptarnavimasImg5") && !CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
+                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
             }
         }
 
@@ -723,7 +723,7 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
             }
         }
 
@@ -731,7 +731,7 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
             }
         }
 
@@ -739,8 +739,8 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_2.png");
             }
         }
 
@@ -748,8 +748,8 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
             }
         }
 
@@ -757,9 +757,9 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_2.png");
             }
         }
 
@@ -767,9 +767,9 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
             }
         }
 
@@ -777,10 +777,10 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_2.png");
             }
         }
 
@@ -788,10 +788,10 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
             }
         }
 
@@ -799,11 +799,11 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe5, "PrekiuKokybeImg5") && !CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_2.png");
-                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_2.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_2.png");
+                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_2.png");
             }
         }
 
@@ -811,11 +811,11 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(PrekiuKokybe5, "PrekiuKokybeImg5") && !CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Nuotraukos/Star_0.png");
-                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Nuotraukos/Star_0.png");
+                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
+                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
             }
         }
 
@@ -823,7 +823,7 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
             }
         }
 
@@ -831,7 +831,7 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
             }
         }
         
@@ -839,8 +839,8 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_2.png");
             }
         }
 
@@ -848,8 +848,8 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
             }
         }
 
@@ -857,9 +857,9 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_2.png");
             }
         }
 
@@ -867,9 +867,9 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
             }
         }
 
@@ -877,10 +877,10 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_2.png");
             }
         }
 
@@ -888,10 +888,10 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
             }
         }
 
@@ -899,11 +899,11 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas5, "PristatymasImg5") && !CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_2.png");
-                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_2.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_2.png");
+                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_2.png");
             }
         }
 
@@ -911,11 +911,11 @@ namespace Price_comparison_engine
         {
             if (!CheckImgSource(Pristatymas5, "PristatymasImg5") && !CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Nuotraukos/Star_0.png");
-                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Nuotraukos/Star_0.png");
+                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
+                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
             }
         }
     }

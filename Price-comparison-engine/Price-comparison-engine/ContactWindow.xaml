@@ -14,10 +14,10 @@
         <TextBlock Name="ref2"  MouseDown="TbReferAFriend_MouseDown" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Margin="63,115,0,0" Width="135"><Run Text="Ernestas"/><Run Text=" Ščevinskas"/></TextBlock>
         <TextBlock Name="ref3"  MouseDown="TbReferAFriend_MouseDown" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Juozas Vainauskas" VerticalAlignment="Top" Margin="63,147,0,0" Width="135"/>
         <TextBlock Name="ref4"  MouseDown="TbReferAFriend_MouseDown" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Justas Vitkauskas" VerticalAlignment="Top" Margin="63,180,0,0" Width="135"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="24,136,0,0" VerticalAlignment="Top" Width="30" Source="Nuotraukos/user.jpg"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="24,74,0,0" VerticalAlignment="Top" Width="30" Source="Nuotraukos/user.jpg"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="24,106,0,0" VerticalAlignment="Top" Width="30" Source="Nuotraukos/user.jpg" RenderTransformOrigin="0.6,2.542"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="24,171,0,0" VerticalAlignment="Top" Width="30" Source="Nuotraukos/user.jpg" RenderTransformOrigin="0.44,0.924"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="24,136,0,0" VerticalAlignment="Top" Width="30" Source="Assets/user.jpg"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="24,74,0,0" VerticalAlignment="Top" Width="30" Source="Assets/user.jpg"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="24,106,0,0" VerticalAlignment="Top" Width="30" Source="Assets/user.jpg" RenderTransformOrigin="0.6,2.542"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="24,171,0,0" VerticalAlignment="Top" Width="30" Source="Assets/user.jpg" RenderTransformOrigin="0.44,0.924"/>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Right" Height="34" Margin="0,386,-0.2,0" Stroke="Black" VerticalAlignment="Top" Width="257"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,0,-0.2,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="257" Foreground="#FFF9F9F9" Height="14"><Run Text=" "/><Run Text=" "/><Run Text=" "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
     </Grid>

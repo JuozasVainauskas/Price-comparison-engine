@@ -74,7 +74,7 @@
                 />
         <TextBox HorizontalAlignment="Left" x:Name="ieškojimoLaukas" Height="56" Margin="10,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="585" FontSize="36" UseLayoutRounding="False"/>
 
-        <Image x:Name="iKairePuse1" HorizontalAlignment="Left" Height="70" Margin="6,0,0,-22" VerticalAlignment="Bottom" Width="60" Source="Nuotraukos/back.png" MouseDown="Slider_Front" RenderTransformOrigin="0.518,-0.309">
+        <Image x:Name="iKairePuse1" HorizontalAlignment="Left" Height="70" Margin="6,0,0,-22" VerticalAlignment="Bottom" Width="60" Source="Assets/back.png" MouseDown="Slider_Front" RenderTransformOrigin="0.518,-0.309">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -85,7 +85,7 @@
             </Image.RenderTransform>
         </Image>
 
-        <Image x:Name="iDesinePuse1" HorizontalAlignment="Left" Height="70" Margin="27,215,0,0" VerticalAlignment="Top" Width="60" Source="Nuotraukos/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Back">
+        <Image x:Name="iDesinePuse1" HorizontalAlignment="Left" Height="70" Margin="27,215,0,0" VerticalAlignment="Top" Width="60" Source="Assets/next.png" RenderTransformOrigin="0.575,0.149" MouseDown="Slider_Back">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -111,7 +111,7 @@
                     IsReadOnly="True">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Nuotrauka}" Height="100" x:Name="imageClick" MouseLeftButtonDown="ImageClick_MouseLeftButtonDown"/>
+                            <Image Source="{Binding Picture}" Height="100" x:Name="imageClick" MouseLeftButtonDown="ImageClick_MouseLeftButtonDown"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -146,9 +146,9 @@
                 Background="#87c1ff"
                 Foreground="White"
                 FontFamily="Arial" Style="{DynamicResource ButtonRounded}"/>
-        <Image x:Name="img1" Height="60" Margin="55,0,0,90" VerticalAlignment="Bottom" Source="Nuotraukos/no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Left" Width="71" RenderTransformOrigin="0.507,0.283"/>
-        <Image x:Name="img2" HorizontalAlignment="Left" Height="60" Margin="55,324,0,185" VerticalAlignment="Center" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img2_MouseDown"/>
-        <Image x:Name="img3" HorizontalAlignment="Left" Height="60" Margin="55,259,0,0" VerticalAlignment="Top" Width="71" Source="Nuotraukos/no_product.jpg" MouseDown="Img3_MouseDown" RenderTransformOrigin="1.036,0.279"/>
+        <Image x:Name="img1" Height="60" Margin="55,0,0,90" VerticalAlignment="Bottom" Source="Assets/no_product.jpg" MouseDown="Img1_MouseDown" HorizontalAlignment="Left" Width="71" RenderTransformOrigin="0.507,0.283"/>
+        <Image x:Name="img2" HorizontalAlignment="Left" Height="60" Margin="55,324,0,185" VerticalAlignment="Center" Width="71" Source="Assets/no_product.jpg" MouseDown="Img2_MouseDown"/>
+        <Image x:Name="img3" HorizontalAlignment="Left" Height="60" Margin="55,259,0,0" VerticalAlignment="Top" Width="71" Source="Assets/no_product.jpg" MouseDown="Img3_MouseDown" RenderTransformOrigin="1.036,0.279"/>
 
     </Grid>
 </Window>
