@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Price_comparison_engine.Klases
+namespace Price_comparison_engine.Classes
 {
     enum Role
     {
-        Vartotojas,
-        Administratorius,
+        User,
+        Admin,
     }
 }

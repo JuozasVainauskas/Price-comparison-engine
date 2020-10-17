@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Price_comparison_engine.Klases
+namespace Price_comparison_engine.Classes
 {
-    class GeneruotiHash
+    class GenerateHash
     {
-        public static string SukurtiSalt(int dydis)
+        public static string CreateSalt(int dydis)
         {
             var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
             var buferis = new byte[dydis];

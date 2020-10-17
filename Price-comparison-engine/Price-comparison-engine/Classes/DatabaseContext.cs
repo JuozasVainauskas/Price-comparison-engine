@@ -9,11 +9,11 @@ using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace Price_comparison_engine.Klases
+namespace Price_comparison_engine.Classes
 {
-    public class DuomenuBazesKontekstas : DbContext
+    public class DatabaseContext : DbContext
     {
-        public DuomenuBazesKontekstas():base("name=DuomenuBazesKontekstas")
+        public DatabaseContext():base("name=DuomenuBazesKontekstas")
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

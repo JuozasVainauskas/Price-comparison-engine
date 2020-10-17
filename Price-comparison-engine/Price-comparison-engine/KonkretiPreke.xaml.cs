@@ -32,7 +32,7 @@ namespace Price_comparison_engine
 
     }
 
-    public partial class KonkretiPreke
+    public partial class CurrentGoods
     {
         public static CartesianChart CartesianChart;
         public static string NameToSearch;
@@ -40,7 +40,7 @@ namespace Price_comparison_engine
         static readonly string[] ItemsToSkip = { "Šaldytuvas", "Išmanusis", "telefonas", "Kompiuteris","mobilusis","apsauginis","stiklas" };
         public static int SoldOutBarbora;
         public static int SoldOut;
-        public KonkretiPreke(string name)
+        public CurrentGoods(string name)
         {
             NameToSearch = name;
             Divided = NameToSearch.Split();

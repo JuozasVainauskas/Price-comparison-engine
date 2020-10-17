@@ -1,4 +1,4 @@
-﻿<Window x:Class="Price_comparison_engine.VertinimoLangas"
+﻿<Window x:Class="Price_comparison_engine.EvaluationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -67,119 +67,119 @@
         <Button Content="Palikti atsiliepimą" HorizontalAlignment="Left" Margin="43,80,0,0" VerticalAlignment="Top" Width="177" Height="41"
             Background="#FF015DFF"
             Foreground="white"
-            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="VertintiClick" Grid.Row="1"/>
-        <Image x:Name="ParduotuvesImg" HorizontalAlignment="Left" Height="100" Margin="77,28,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/avitela.png"/>
-        <Button x:Name="Aptarnavimas1" Height="18" Width="20" HorizontalAlignment="Left" Margin="125,199,0,0" VerticalAlignment="Top" Click="AptarnavimasStar1">
+            FontFamily="Arial" FontSize="16" Style="{DynamicResource RoundedButton}" Click="Evaluate" Grid.Row="1"/>
+        <Image x:Name="sellerImg" HorizontalAlignment="Left" Height="100" Margin="77,28,0,0" VerticalAlignment="Top" Width="103" Source="Nuotraukos/avitela.png"/>
+        <Button x:Name="service1" Height="18" Width="20" HorizontalAlignment="Left" Margin="125,199,0,0" VerticalAlignment="Top" Click="ServiceStar1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="AptarnavimasImg1" Source="Nuotraukos/Star_0.png" MouseEnter="AptarnavimasImg1_OnMouseEnter" MouseLeave="AptarnavimasImg1_OnMouseLeave"/>
+                    <Image x:Name="serviceImg1" Source="Nuotraukos/Star_0.png" MouseEnter="ServiceImg1_OnMouseEnter" MouseLeave="ServiceImg1_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="Aptarnavimas2" Height="18" Width="20" HorizontalAlignment="Left" Margin="150,199,0,0" VerticalAlignment="Top" Click="AptarnavimasStar2">
+        <Button x:Name="service2" Height="18" Width="20" HorizontalAlignment="Left" Margin="150,199,0,0" VerticalAlignment="Top" Click="ServiceStar2">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="AptarnavimasImg2" Source="Nuotraukos/Star_0.png" MouseEnter="AptarnavimasImg2_OnMouseEnter" MouseLeave="AptarnavimasImg2_OnMouseLeave"/>
+                    <Image x:Name="serviceImg2" Source="Nuotraukos/Star_0.png" MouseEnter="ServiceImg2_OnMouseEnter" MouseLeave="ServiceImg2_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="Aptarnavimas3" Height="18" Width="20" HorizontalAlignment="Left" Margin="175,199,0,0" VerticalAlignment="Top" Click="AptarnavimasStar3">
+        <Button x:Name="service3" Height="18" Width="20" HorizontalAlignment="Left" Margin="175,199,0,0" VerticalAlignment="Top" Click="ServiceStar3">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="AptarnavimasImg3" Source="Nuotraukos/Star_0.png" MouseEnter="AptarnavimasImg3_OnMouseEnter" MouseLeave="AptarnavimasImg3_OnMouseLeave"/>
+                    <Image x:Name="serviceImg3" Source="Nuotraukos/Star_0.png" MouseEnter="ServiceImg3_OnMouseEnter" MouseLeave="ServiceImg3_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="Aptarnavimas4" Height="18" Width="20" HorizontalAlignment="Left" Margin="200,199,0,0" VerticalAlignment="Top" Click="AptarnavimasStar4">
+        <Button x:Name="service4" Height="18" Width="20" HorizontalAlignment="Left" Margin="200,199,0,0" VerticalAlignment="Top" Click="ServiceStar4">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="AptarnavimasImg4" Source="Nuotraukos/Star_0.png" MouseEnter="AptarnavimasImg4_OnMouseEnter" MouseLeave="AptarnavimasImg4_OnMouseLeave"/>
+                    <Image x:Name="serviceImg4" Source="Nuotraukos/Star_0.png" MouseEnter="ServiceImg4_OnMouseEnter" MouseLeave="ServiceImg4_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="Aptarnavimas5" Height="18" Width="20" HorizontalAlignment="Left" Margin="225,199,0,0" VerticalAlignment="Top" Click="AptarnavimasStar5">
+        <Button x:Name="service5" Height="18" Width="20" HorizontalAlignment="Left" Margin="225,199,0,0" VerticalAlignment="Top" Click="ServiceStar5">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="AptarnavimasImg5" Source="Nuotraukos/Star_0.png" MouseEnter="AptarnavimasImg5_OnMouseEnter" MouseLeave="AptarnavimasImg5_OnMouseLeave"/>
+                    <Image x:Name="serviceImg5" Source="Nuotraukos/Star_0.png" MouseEnter="ServiceImg5_OnMouseEnter" MouseLeave="ServiceImg5_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="PrekiuKokybe1" Height="18" Width="20" HorizontalAlignment="Left" Margin="125,12,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar1" Grid.Row="1">
+        <Button x:Name="quality1" Height="18" Width="20" HorizontalAlignment="Left" Margin="125,12,0,0" VerticalAlignment="Top" Click="QualityStar1" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PrekiuKokybeImg1" Source="Nuotraukos/Star_0.png" MouseEnter="PrekiuKokybeImg1_OnMouseEnter" MouseLeave="PrekiuKokybeImg1_OnMouseLeave"/>
+                    <Image x:Name="qualityImg1" Source="Nuotraukos/Star_0.png" MouseEnter="QualityImg1_OnMouseEnter" MouseLeave="QualityImg1_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="PrekiuKokybe2" Height="18" Width="20" HorizontalAlignment="Left" Margin="150,12,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar2" Grid.Row="1">
+        <Button x:Name="quality2" Height="18" Width="20" HorizontalAlignment="Left" Margin="150,12,0,0" VerticalAlignment="Top" Click="QualityStar2" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PrekiuKokybeImg2" Source="Nuotraukos/Star_0.png" MouseEnter="PrekiuKokybeImg2_OnMouseEnter" MouseLeave="PrekiuKokybeImg2_OnMouseLeave"/>
+                    <Image x:Name="qualityImg2" Source="Nuotraukos/Star_0.png" MouseEnter="QualityImg2_OnMouseEnter" MouseLeave="QualityImg2_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="PrekiuKokybe3" Height="18" Width="20" HorizontalAlignment="Left" Margin="175,12,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar3" Grid.Row="1">
+        <Button x:Name="quality3" Height="18" Width="20" HorizontalAlignment="Left" Margin="175,12,0,0" VerticalAlignment="Top" Click="QualityStar3" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PrekiuKokybeImg3" Source="Nuotraukos/Star_0.png" MouseEnter="PrekiuKokybeImg3_OnMouseEnter" MouseLeave="PrekiuKokybeImg3_OnMouseLeave"/>
+                    <Image x:Name="qualityImg3" Source="Nuotraukos/Star_0.png" MouseEnter="QualityImg3_OnMouseEnter" MouseLeave="QualityImg3_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="PrekiuKokybe4" Height="18" Width="20" HorizontalAlignment="Left" Margin="200,12,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar4" Grid.Row="1">
+        <Button x:Name="quality4" Height="18" Width="20" HorizontalAlignment="Left" Margin="200,12,0,0" VerticalAlignment="Top" Click="QualityStar4" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PrekiuKokybeImg4" Source="Nuotraukos/Star_0.png" MouseEnter="PrekiuKokybeImg4_OnMouseEnter" MouseLeave="PrekiuKokybeImg4_OnMouseLeave"/>
+                    <Image x:Name="qualityImg4" Source="Nuotraukos/Star_0.png" MouseEnter="QualityImg4_OnMouseEnter" MouseLeave="QualityImg4_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="PrekiuKokybe5" Height="18" Width="20" HorizontalAlignment="Left" Margin="225,12,0,0" VerticalAlignment="Top" Click="PrekiuKokybeStar5" Grid.Row="1">
+        <Button x:Name="quality5" Height="18" Width="20" HorizontalAlignment="Left" Margin="225,12,0,0" VerticalAlignment="Top" Click="QualityStar5" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PrekiuKokybeImg5" Source="Nuotraukos/Star_0.png" MouseEnter="PrekiuKokybeImg5_OnMouseEnter" MouseLeave="PrekiuKokybeImg5_OnMouseLeave"/>
+                    <Image x:Name="qualityImg5" Source="Nuotraukos/Star_0.png" MouseEnter="QualityImg5_OnMouseEnter" MouseLeave="QualityImg5_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="Pristatymas1" Height="18" Width="20" HorizontalAlignment="Left" Margin="125,45,0,0" VerticalAlignment="Top" Click="PristatymasStar1" Grid.Row="1">
+        <Button x:Name="delivery1" Height="18" Width="20" HorizontalAlignment="Left" Margin="125,45,0,0" VerticalAlignment="Top" Click="DeliveryStar1" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PristatymasImg1" Source="Nuotraukos/Star_0.png" MouseEnter="PristatymasImg1_OnMouseEnter" MouseLeave="PristatymasImg1_OnMouseLeave"/>
+                    <Image x:Name="deliveryImg1" Source="Nuotraukos/Star_0.png" MouseEnter="DeliveryImg1_OnMouseEnter" MouseLeave="DeliveryImg1_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="Pristatymas2" Height="18" Width="20" HorizontalAlignment="Left" Margin="150,45,0,0" VerticalAlignment="Top" Click="PristatymasStar2" Grid.Row="1">
+        <Button x:Name="delivery2" Height="18" Width="20" HorizontalAlignment="Left" Margin="150,45,0,0" VerticalAlignment="Top" Click="DeliveryStar2" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PristatymasImg2" Source="Nuotraukos/Star_0.png" MouseEnter="PristatymasImg2_OnMouseEnter" MouseLeave="PristatymasImg2_OnMouseLeave"/>
+                    <Image x:Name="deliveryImg2" Source="Nuotraukos/Star_0.png" MouseEnter="DeliveryImg2_OnMouseEnter" MouseLeave="DeliveryImg2_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="Pristatymas3" Height="18" Width="20" HorizontalAlignment="Left" Margin="175,45,0,0" VerticalAlignment="Top" Click="PristatymasStar3" Grid.Row="1">
+        <Button x:Name="delivery3" Height="18" Width="20" HorizontalAlignment="Left" Margin="175,45,0,0" VerticalAlignment="Top" Click="DeliveryStar3" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PristatymasImg3" Source="Nuotraukos/Star_0.png" MouseEnter="PristatymasImg3_OnMouseEnter" MouseLeave="PristatymasImg3_OnMouseLeave"/>
+                    <Image x:Name="deliveryImg3" Source="Nuotraukos/Star_0.png" MouseEnter="DeliveryImg3_OnMouseEnter" MouseLeave="DeliveryImg3_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="Pristatymas4" Height="18" Width="20" HorizontalAlignment="Left" Margin="200,45,0,0" VerticalAlignment="Top" Click="PristatymasStar4" Grid.Row="1">
+        <Button x:Name="delivery4" Height="18" Width="20" HorizontalAlignment="Left" Margin="200,45,0,0" VerticalAlignment="Top" Click="DeliveryStar4" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PristatymasImg4" Source="Nuotraukos/Star_0.png" MouseEnter="PristatymasImg4_OnMouseEnter" MouseLeave="PristatymasImg4_OnMouseLeave"/>
+                    <Image x:Name="deliveryImg4" Source="Nuotraukos/Star_0.png" MouseEnter="DeliveryImg4_OnMouseEnter" MouseLeave="DeliveryImg4_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
-        <Button x:Name="Pristatymas5" Height="18" Width="20" HorizontalAlignment="Left" Margin="225,45,0,0" VerticalAlignment="Top" Click="PristatymasStar5" Grid.Row="1">
+        <Button x:Name="delivery5" Height="18" Width="20" HorizontalAlignment="Left" Margin="225,45,0,0" VerticalAlignment="Top" Click="DeliveryStar5" Grid.Row="1">
             <Button.Template>
                 <ControlTemplate>
-                    <Image x:Name="PristatymasImg5" Source="Nuotraukos/Star_0.png" MouseEnter="PristatymasImg5_OnMouseEnter" MouseLeave="PristatymasImg5_OnMouseLeave"/>
+                    <Image x:Name="deliveryImg5" Source="Nuotraukos/Star_0.png" MouseEnter="DeliveryImg5_OnMouseEnter" MouseLeave="DeliveryImg5_OnMouseLeave"/>
                 </ControlTemplate>
             </Button.Template>
         </Button>
         <TextBlock HorizontalAlignment="Left" Margin="17,201,0,0" TextWrapping="Wrap" Text="Aptarnavimas" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="17,15,0,0" TextWrapping="Wrap" Text="Prekių kokybė" VerticalAlignment="Top" Width="76" Height="15" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="17,47,0,0" TextWrapping="Wrap" Text="Pristatymas" VerticalAlignment="Top" Grid.Row="1"/>
-        <TextBlock x:Name="ivertinimas" HorizontalAlignment="Left" Margin="138,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
+        <TextBlock x:Name="evaluationBlock" HorizontalAlignment="Left" Margin="138,7,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"/>
         <TextBlock HorizontalAlignment="Left" Margin="17,164,0,0" TextWrapping="Wrap" Text="Parduotuvė" VerticalAlignment="Top"/>
-        <ComboBox x:Name="parduotuve" HorizontalAlignment="Left" Margin="148,157,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Parduotuve">
+        <ComboBox x:Name="seller" HorizontalAlignment="Left" Margin="148,157,0,0" VerticalAlignment="Top" Width="37" SelectionChanged="Seller">
             <ComboBoxItem Content="Avitela"/>
             <ComboBoxItem Content="Elektromarkt"/>
             <ComboBoxItem Content="Pigu"/>
@@ -188,16 +188,16 @@
             <ComboBoxItem Content="Rde"/>
             <ComboBoxItem Content="GintarineVaistine"/>
         </ComboBox>
-        <ListView Name="listViewas" HorizontalAlignment="Left" Height="218" Margin="271,67,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2" Loaded="listViewas_Loaded">
+        <ListView Name="listView" HorizontalAlignment="Left" Height="218" Margin="271,67,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2" Loaded="LoadListview">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="" DisplayMemberBinding="{Binding Tekstas}" Width="503"/>
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBox x:Name="KomentaruLangelis"  HorizontalAlignment="Left" Height="41" Margin="271,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="388" Grid.Row="1"/>
+        <TextBox x:Name="commentBox"  HorizontalAlignment="Left" Height="41" Margin="271,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="388" Grid.Row="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="271,46,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="321"><Run Text="P"/><Run Text="asirinkite, kurios parduotuvės"/><Run Text=" komentarus nor"/><Run Text="ite peržiūrėti:"/></TextBlock>
-        <ComboBox x:Name="PasirinktiKomentara" HorizontalAlignment="Left" Margin="608,40,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="KeistiKomentarus">
+        <ComboBox x:Name="chooseCommentBox" HorizontalAlignment="Left" Margin="608,40,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ChangeComments">
             <ComboBoxItem Content="Avitela"/>
             <ComboBoxItem Content="Elektromarkt"/>
             <ComboBoxItem Content="Pigu"/>

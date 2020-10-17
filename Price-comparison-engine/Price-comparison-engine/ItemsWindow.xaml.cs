@@ -10,13 +10,18 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Shapes;
 using HtmlAgilityPack;
-using Price_comparison_engine.Klases;
+using Price_comparison_engine.Classes;
 
 namespace Price_comparison_engine
 {
+    /// <summary>
+    /// Interaction logic for PrekiųLangas.xaml
+    /// </summary>
+    /// 
+
     public partial class Item
     {
-        public string Nuotrauka { get; set; }
+        public string Photo { get; set; }
 
         public string Seller { get; set; }
 
@@ -29,24 +34,24 @@ namespace Price_comparison_engine
         public string Link { get; set; }
     }
 
-    public partial class ItemsWindow
+    public partial class GoodsWindow
     {
         public static int SoldOutBarbora;
         public static int SoldOut;
-        public static int LoggedIn;
-        MainWindowLoggedIn GrLoggedIn;
-        public ItemsWindow(MainWindowLoggedIn grid)
+        public static int LoggedIn=0;
+        MainWindowLoggedIn grLoggedIn;
+        public GoodsWindow(MainWindowLoggedIn grid)
         {
             InitializeComponent();
-            this.GrLoggedIn = grid;
-            if (string.IsNullOrWhiteSpace(PrisijungimoLangas.email))
+            this.grLoggedIn = grid;
+            if (string.IsNullOrWhiteSpace(LoginWindow.email))
             {
-                dataGrid.Columns[5].Visibility = Visibility.Collapsed;
+                DataGridas.Columns[5].Visibility = Visibility.Collapsed;
                 LoggedIn = 0;
             }
             else
             {
-                dataGrid.Columns[5].Visibility = Visibility.Visible;
+                DataGridas.Columns[5].Visibility = Visibility.Visible;
                 LoggedIn = 1;
             }
         }
@@ -55,21 +60,42 @@ namespace Price_comparison_engine
         {
             var prices = new List<Item>();
 
-            if (ReadItems(MainWindow.word).Any())
+            /* var chromeOptions = new ChromeOptions();
+             //var user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
+             //chromeOptions.AddArgument("f'user-agent="+user_agent);
+             //chromeOptions.AddArgument("headless");
+             //chromeOptions.AddArgument("window-size=1920,1080");
+             //chromeOptions.AddArgument("log-level=3");
+             IWebDriver driver = new ChromeDriver(chromeOptions);
+             driver.Manage().Window.Maximize();
+             driver.Navigate().GoToUrl("https://www.topocentras.lt/");
+             var element = driver.FindElement(By.XPath("/html/body/div[1]/header[1]/div[1]/div[2]/div[1]/div[1]/input"));
+             element.SendKeys(MainWindow.zodis);
+             driver.FindElement(By.XPath("/html/body/div[1]/header[1]/div[1]/div[2]/div[1]/div[1]/button")).Click();
+             var prekes = driver.FindElements(By.ClassName("ProductGrid-productName-1JN"));
+             foreach(var preke in prekes)
+             {
+                 var singleItem = new Item { Seller = "Topo  Centras", Name = preke.Text};
+                 prices.Add(singleItem);
+                 Console.WriteLine(preke.Text);
+                 dataGrid.Items.Add(singleItem);
+             }*/
+
+            if (SkaitytiPrekes(MainWindow.word).Any())
             {
-                foreach (var item in ReadItems(MainWindow.word)) dataGrid.Items.Add(item);
+                foreach (var item in SkaitytiPrekes(MainWindow.word)) dataGrid.Items.Add(item);
             }
             else
             {
                 var httpClient = new HttpClient();
                 var regEx = new Regex(" ");
-                var urlEnd = regEx.Replace(MainWindow.word, "+");
-                var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlEnd + "/page/1";
+                var urlgalas = regEx.Replace(MainWindow.word, "+");
+                var urlRde = "https://www.rde.lt/search_result/lt/word/" + urlgalas + "/page/1";
                 var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.word;
-                var urlPigu = "https://pigu.lt/lt/search?q=" + urlEnd;
-                var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlEnd;
+                var urlPigu = "https://pigu.lt/lt/search?q=" + urlgalas;
+                var urlBigBox = "https://bigbox.lt/paieska?controller=search&orderby=position&orderway=desc&ssa_submit=&search_query=" + urlgalas;
                 var urlAvitela = "https://avitela.lt/paieska/" + MainWindow.word;
-                var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlEnd;
+                var urlElektromarkt = "https://www.elektromarkt.lt/lt/catalogsearch/result/?order=price&dir=desc&q=" + urlgalas;
                 var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q="+ MainWindow.word + "%5D&sid=false&isc=true&orderBy=0";
                 var rdeItems = RdeSearch(await Html(httpClient, urlRde));
                 WriteDataFromRde(rdeItems, prices);
@@ -276,7 +302,7 @@ namespace Price_comparison_engine
                             price = Convert.ToString(regex);
                             var pricea = Convert.ToDouble(price);
 
-                        var singleItem = new Item { Nuotrauka = imgLink, Seller = "Gintarine vaistine", Name = name, Pricea = pricea, Price = price +'€', Link = "https://www.gintarine.lt/" + link };
+                        var singleItem = new Item { Photo = imgLink, Seller = "Gintarine vaistine", Name = name, Pricea = pricea, Price = price +'€', Link = "https://www.gintarine.lt/" + link };
                             prices.Add(singleItem);
                     }
                 }
@@ -323,7 +349,7 @@ namespace Price_comparison_engine
                             priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
                             var pricea = Convert.ToDouble(priceAtsarg);
 
-                            var singleItem = new Item { Nuotrauka = "https://www.rde.lt/" + imgLink, Seller = "Rde", Name = name, Pricea = pricea, Price = price, Link = "https://www.rde.lt/" + link };
+                            var singleItem = new Item { Photo = "https://www.rde.lt/" + imgLink, Seller = "Rde", Name = name, Pricea = pricea, Price = price, Link = "https://www.rde.lt/" + link };
                             prices.Add(singleItem);
                         }
                     }
@@ -365,12 +391,12 @@ namespace Price_comparison_engine
                         var pricea = Convert.ToDouble(priceAtsarg);
                         if (imgLink != "")
                         {
-                            var singleItem = new Item { Nuotrauka = imgLink, Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
+                            var singleItem = new Item { Photo = imgLink, Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
                             prices.Add(singleItem);
                         }
                         else
                         {
-                            var singleItem = new Item { Nuotrauka = "https://avitela.lt/image/no_image.jpg", Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
+                            var singleItem = new Item { Photo = "https://avitela.lt/image/no_image.jpg", Seller = "Avitela", Name = name, Pricea = pricea, Price = price, Link = link };
                             prices.Add(singleItem);
                         }
 
@@ -415,7 +441,7 @@ namespace Price_comparison_engine
                         price = price + "€";
                         priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
                         var pricea = Convert.ToDouble(priceAtsarg);
-                        var singleItem = new Item { Nuotrauka = imgLink, Seller = "BigBox", Name = name, Pricea = pricea, Price = price, Link = link };
+                        var singleItem = new Item { Photo = imgLink, Seller = "BigBox", Name = name, Pricea = pricea, Price = price, Link = link };
 
                         prices.Add(singleItem);
                     }
@@ -460,7 +486,7 @@ namespace Price_comparison_engine
                             var priceTemporary = price;
                             priceTemporary = PasalinimasEuroSimbol(priceTemporary);
                             var pricea = Convert.ToDouble(priceTemporary);
-                            var item1 = new Item { Nuotrauka = "https://pagrindinis.barbora.lt/" + imgLink, Seller = "Barbora", Name = name, Pricea = pricea, Price = price, Link = "https://pagrindinis.barbora.lt/" + link };
+                            var item1 = new Item { Photo = "https://pagrindinis.barbora.lt/" + imgLink, Seller = "Barbora", Name = name, Pricea = pricea, Price = price, Link = "https://pagrindinis.barbora.lt/" + link };
                             prices.Add(item1);
                         }
 
@@ -511,7 +537,7 @@ namespace Price_comparison_engine
                             var pricea = Convert.ToDouble(priceAtsarg);
                             var singleItem = new Item
                             {
-                                Nuotrauka = imgLink, Seller = "Pigu", Name = name, Pricea = pricea, Price = price,
+                                Photo = imgLink, Seller = "Pigu", Name = name, Pricea = pricea, Price = price,
                                 Link = link
                             };
                             prices.Add(singleItem);
@@ -552,7 +578,7 @@ namespace Price_comparison_engine
                     priceAtsarg = PasalinimasEuroSimbol(priceAtsarg);
 
                     var pricea = double.Parse(priceAtsarg);
-                    var item1 = new Item { Nuotrauka = imgLink, Seller = "Elektromarkt", Name = name, Pricea = pricea, Price = price, Link = link };
+                    var item1 = new Item { Photo = imgLink, Seller = "Elektromarkt", Name = name, Pricea = pricea, Price = price, Link = link };
                     prices.Add(item1);
 
                 }
@@ -611,13 +637,13 @@ namespace Price_comparison_engine
             return price;
         }
 
-        private static void SortAndInsert(List<Item> prices, DataGrid dataGrid)
+        private static void SortAndInsert(List<Item> prices, DataGrid dataGridas)
         {
             var sortedPricesList = prices.OrderBy(o => o.Pricea).ToList();
             foreach (var item in sortedPricesList)
             {
-                dataGrid.Items.Add(item);
-                WriteItems(item.Link, item.Nuotrauka, item.Seller, item.Name, item.Price, MainWindow.word);
+                dataGridas.Items.Add(item);
+                RasytiPrekes(item.Link, item.Photo, item.Seller, item.Name, item.Price, MainWindow.word);
             }
             prices.Clear();
         }
@@ -625,23 +651,23 @@ namespace Price_comparison_engine
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            RectangleChangingHeight(rectangle1);
-            RectangleChangingWidth(rectangle2);
+            RectangleIstempimasAukstis(rectangle1);
+            RectangleIstempimasPlotis(rectangle2);
         }
 
-        private void RectangleChangingHeight(Rectangle area)
+        private void RectangleIstempimasAukstis(Rectangle plotelis)
         {
-            area.Height = ActualHeight;
+            plotelis.Height = ActualHeight;
         }
 
-        private void RectangleChangingWidth(Rectangle area)
+        private void RectangleIstempimasPlotis(Rectangle plotelis)
         {
-            area.Width = ActualWidth;
+            plotelis.Width = ActualWidth;
         }
 
         private void DataGridTest_Initialized(object sender, EventArgs e)
         {
-            GetHtmlAssync(dataGrid);
+            GetHtmlAssync(DataGridas);
         }
 
         private void LinkButton_Click(object sender, RoutedEventArgs e)
@@ -652,29 +678,30 @@ namespace Price_comparison_engine
        
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
+           // MainWindowLoggedIn mainWindowLoggedIn;
             var link = (((Button)sender).DataContext as Item)?.Link;
             var shopName = (((Button)sender).DataContext as Item)?.Seller;
-            var photoUrll = (((Button)sender).DataContext as Item)?.Nuotrauka;
+            var photoUrll = (((Button)sender).DataContext as Item)?.Photo;
             var itemName = (((Button)sender).DataContext as Item)?.Name;
             var price = (((Button)sender).DataContext as Item)?.Price;
             if (link != null)
             {
-                WriteSavedItems(link, photoUrll, shopName, itemName, price, PrisijungimoLangas.email);
+                WriteSavedItems(link, photoUrll, shopName, itemName, price, LoginWindow.email);
             }
 
             var singleItem = new Item
             {
                 Link = link,
-                Nuotrauka = photoUrll,
+                Photo = photoUrll,
                 Seller = shopName,
                 Name = itemName,
                 Price = price
             };
 
-            if (!GrLoggedIn.DataGridLoggedIn.Items.Cast<Item>().Any(t => t.Link == link && t.Nuotrauka == photoUrll && t.Seller == shopName && t.Name == itemName && t.Price == price))
+            if (!grLoggedIn.DataGridLoggedIn.Items.Cast<Item>().Any(t => t.Link == link && t.Photo == photoUrll && t.Seller == shopName && t.Name == itemName && t.Price == price))
             {
                 MessageBox.Show("Prekė sėkmingai išsaugota palyginimui!");
-                GrLoggedIn.DataGridLoggedIn.Items.Add(singleItem);
+                grLoggedIn.DataGridLoggedIn.Items.Add(singleItem);
             }
             else
             {
@@ -682,13 +709,13 @@ namespace Price_comparison_engine
             }
         }
 
-        private static void WriteItems(string pageUrl, string imgUrl, string shopName, string itemName, string price, string keyword)
+        private static void RasytiPrekes(string pageUrl, string imgUrl, string shopName, string itemName, string price, string keyword)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var kontekstas = new DatabaseContext())
             {
-                var result = context.ItemsTable.SingleOrDefault(c => c.PageUrl == pageUrl && c.ImgUrl == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Keyword == keyword);
+                var rezultatas = kontekstas.ItemsTable.SingleOrDefault(c => c.PageUrl == pageUrl && c.ImgUrl == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Keyword == keyword);
 
-                if (result == null)
+                if (rezultatas == null)
                 {
                     var itemsTable = new ItemsTable
                     {
@@ -699,19 +726,19 @@ namespace Price_comparison_engine
                         Price = price,
                         Keyword = keyword
                     };
-                    context.ItemsTable.Add(itemsTable);
-                    context.SaveChanges();
+                    kontekstas.ItemsTable.Add(itemsTable);
+                    kontekstas.SaveChanges();
                 }
             }
         }
 
-        private static List<Item> ReadItems(string keyword)
+        private static List<Item> SkaitytiPrekes(string keyword)
         {
             var item = new List<Item>();
             
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
-                var result = context.ItemsTable.Where(x => x.Keyword == keyword).Select(x => new Item { Link = x.PageUrl, Nuotrauka = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
+                var result = context.ItemsTable.Where(x => x.Keyword == keyword).Select(x => new Item { Link = x.PageUrl, Photo = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
 
                 foreach (var singleItem in result)
                 {
@@ -723,7 +750,7 @@ namespace Price_comparison_engine
 
         private static void WriteSavedItems(string pageUrl, string imgUrl, string shopName, string itemName, string price, string email)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.SavedItems.SingleOrDefault(c => c.PageUrl == pageUrl && c.ImgUrl == imgUrl && c.ShopName == shopName && c.ItemName == itemName && c.Price == price && c.Email == email);
 
@@ -747,8 +774,8 @@ namespace Price_comparison_engine
         private void ImageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var name = (((Image)sender).DataContext as Item)?.Name;
-            var window = new KonkretiPreke(name);
-            window.Show();
+            var langas = new CurrentGoods(name);
+            langas.Show();
         }
     }
 }
