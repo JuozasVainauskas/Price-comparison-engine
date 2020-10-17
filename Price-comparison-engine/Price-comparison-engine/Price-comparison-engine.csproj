@@ -106,34 +106,6 @@
     <Compile Include="KonkretiPreke.xaml.cs">
       <DependentUpon>KonkretiPreke.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202010131930478_new.cs" />
-    <Compile Include="Migrations\202010131930478_new.designer.cs">
-      <DependentUpon>202010131930478_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010131953326_Newest.cs" />
-    <Compile Include="Migrations\202010131953326_Newest.designer.cs">
-      <DependentUpon>202010131953326_Newest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010132042124_Newer.cs" />
-    <Compile Include="Migrations\202010132042124_Newer.designer.cs">
-      <DependentUpon>202010132042124_Newer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010132049002_Newer1.cs" />
-    <Compile Include="Migrations\202010132049002_Newer1.designer.cs">
-      <DependentUpon>202010132049002_Newer1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010132106127_DeleteOldTables.cs" />
-    <Compile Include="Migrations\202010132106127_DeleteOldTables.designer.cs">
-      <DependentUpon>202010132106127_DeleteOldTables.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010141329397_Neww.cs" />
-    <Compile Include="Migrations\202010141329397_Neww.designer.cs">
-      <DependentUpon>202010141329397_Neww.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202010150918071_Newww.cs" />
-    <Compile Include="Migrations\202010150918071_Newww.designer.cs">
-      <DependentUpon>202010150918071_Newww.cs</DependentUpon>
-    </Compile>
     <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
       <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
     </Compile>
@@ -243,27 +215,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\202010131930478_new.resx">
-      <DependentUpon>202010131930478_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010131953326_Newest.resx">
-      <DependentUpon>202010131953326_Newest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010132042124_Newer.resx">
-      <DependentUpon>202010132042124_Newer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010132049002_Newer1.resx">
-      <DependentUpon>202010132049002_Newer1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010132106127_DeleteOldTables.resx">
-      <DependentUpon>202010132106127_DeleteOldTables.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010141329397_Neww.resx">
-      <DependentUpon>202010141329397_Neww.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202010150918071_Newww.resx">
-      <DependentUpon>202010150918071_Newww.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
