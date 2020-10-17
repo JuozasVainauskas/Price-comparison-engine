@@ -81,7 +81,7 @@ namespace Price_comparison_engine
 
         private void ResetPasswordClick(object sender, RoutedEventArgs e)
         {
-            var confirmNewPasswordWindow = new PatvirtLangasSlaptKeitimui();
+            var confirmNewPasswordWindow = new ConfirmNewPasswordWindow();
             confirmNewPasswordWindow.Show();
         }
     }

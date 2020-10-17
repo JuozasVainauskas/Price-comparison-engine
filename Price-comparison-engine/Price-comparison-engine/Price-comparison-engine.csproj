@@ -108,8 +108,8 @@
     <Compile Include="ParticularItemWindow.xaml.cs">
       <DependentUpon>ParticularItemWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PatvirtLangasSlaptKeitimui.xaml.cs">
-      <DependentUpon>PatvirtLangasSlaptKeitimui.xaml</DependentUpon>
+    <Compile Include="ConfirmNewPasswordWindow.xaml.cs">
+      <DependentUpon>ConfirmNewPasswordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\GenerateHash.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -125,11 +125,11 @@
     <Compile Include="MainWindowLoggedIn.xaml.cs">
       <DependentUpon>MainWindowLoggedIn.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SlaptazodzioKeitimoLangas.xaml.cs">
-      <DependentUpon>SlaptazodzioKeitimoLangas.xaml</DependentUpon>
+    <Compile Include="PasswordChangeWindow.xaml.cs">
+      <DependentUpon>PasswordChangeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VertinimoLangas.xaml.cs">
-      <DependentUpon>VertinimoLangas.xaml</DependentUpon>
+    <Compile Include="RatingWindow.xaml.cs">
+      <DependentUpon>RatingWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Admin.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -143,7 +143,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PatvirtLangasSlaptKeitimui.xaml">
+    <Page Include="ConfirmNewPasswordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,11 +189,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SlaptazodzioKeitimoLangas.xaml">
+    <Page Include="PasswordChangeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VertinimoLangas.xaml">
+    <Page Include="RatingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
