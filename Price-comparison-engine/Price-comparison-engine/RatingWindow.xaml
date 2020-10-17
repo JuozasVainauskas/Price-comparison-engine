@@ -188,10 +188,10 @@
             <ComboBoxItem Content="Rde"/>
             <ComboBoxItem Content="GintarineVaistine"/>
         </ComboBox>
-        <ListView Name="listViewas" HorizontalAlignment="Left" Height="218" Margin="271,67,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2" Loaded="listViewas_Loaded">
+        <ListView Name="ListView" HorizontalAlignment="Left" Height="218" Margin="271,67,0,0" VerticalAlignment="Top" Width="503" Grid.RowSpan="2" Loaded="ListViewLoaded">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="" DisplayMemberBinding="{Binding Tekstas}" Width="503"/>
+                    <GridViewColumn Header="" DisplayMemberBinding="{Binding Text}" Width="503"/>
                 </GridView>
             </ListView.View>
         </ListView>

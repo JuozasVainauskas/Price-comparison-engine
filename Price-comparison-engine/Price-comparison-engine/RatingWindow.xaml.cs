@@ -95,7 +95,7 @@ namespace Price_comparison_engine
         {
             if (parduotuve.SelectedIndex == 0)
             {
-                FillList(commentsData.Where(c => c.ShopId == 0).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
                 ReadRatings("Avitela", ref votes, ref votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)votes / (3 * votersCount);
@@ -104,7 +104,7 @@ namespace Price_comparison_engine
             }
             if (parduotuve.SelectedIndex == 1)
             {
-                FillList(commentsData.Where(c => c.ShopId == 1).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 1).ToList(), ListView);
                 ReadRatings("Elektromarkt", ref votes, ref votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/elektromarkt.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)votes / (3 * votersCount);
@@ -113,7 +113,7 @@ namespace Price_comparison_engine
             }
             if (parduotuve.SelectedIndex == 2)
             {
-                FillList(commentsData.Where(c => c.ShopId == 2).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 2).ToList(), ListView);
                 ReadRatings("Pigu", ref votes, ref votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)votes / (3 * votersCount);
@@ -122,7 +122,7 @@ namespace Price_comparison_engine
             }
             if (parduotuve.SelectedIndex == 3)
             {
-                FillList(commentsData.Where(c => c.ShopId == 3).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 3).ToList(), ListView);
                 ReadRatings("Barbora", ref votes, ref votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)votes / (3 * votersCount);
@@ -131,7 +131,7 @@ namespace Price_comparison_engine
             }
             if (parduotuve.SelectedIndex == 4)
             {
-                FillList(commentsData.Where(c => c.ShopId == 4).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 4).ToList(), ListView);
                 ReadRatings("Bigbox", ref votes, ref votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)votes / (3 * votersCount);
@@ -140,7 +140,7 @@ namespace Price_comparison_engine
             }
             if (parduotuve.SelectedIndex == 5)
             {
-                FillList(commentsData.Where(c => c.ShopId == 5).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 5).ToList(), ListView);
                 ReadRatings("Rde", ref votes, ref votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)votes / (3 * votersCount);
@@ -149,7 +149,7 @@ namespace Price_comparison_engine
             }
             if (parduotuve.SelectedIndex == 6)
             {
-                FillList(commentsData.Where(c => c.ShopId == 6).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 6).ToList(), ListView);
                 ReadRatings("GintarineVaistine", ref votes, ref votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
                 var calc = (double)votes / (3 * votersCount);
@@ -185,7 +185,7 @@ namespace Price_comparison_engine
                     WriteComments(LoginWindow.Email, 0, singlePersonRatings["Avitela"]["Aptarnavimas"], singlePersonRatings["Avitela"]["PrekiuKokybe"], singlePersonRatings["Avitela"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 0).ToList(), listViewas);
+                    FillList(commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
                 }
                 else if (parduotuve.SelectedIndex == 1 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 1) == null)
                 {
@@ -202,7 +202,7 @@ namespace Price_comparison_engine
                     WriteComments(LoginWindow.Email, 1, singlePersonRatings["Elektromarkt"]["Aptarnavimas"], singlePersonRatings["Elektromarkt"]["PrekiuKokybe"], singlePersonRatings["Elektromarkt"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 1).ToList(), listViewas);
+                    FillList(commentsData.Where(c => c.ShopId == 1).ToList(), ListView);
                 }
                 else if (parduotuve.SelectedIndex == 2 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 2) == null)
                 {
@@ -219,7 +219,7 @@ namespace Price_comparison_engine
                     WriteComments(LoginWindow.Email, 2, singlePersonRatings["Pigu"]["Aptarnavimas"], singlePersonRatings["Pigu"]["PrekiuKokybe"], singlePersonRatings["Pigu"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 2).ToList(), listViewas);
+                    FillList(commentsData.Where(c => c.ShopId == 2).ToList(), ListView);
                 }
                 else if (parduotuve.SelectedIndex == 3 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 3) == null)
                 {
@@ -236,7 +236,7 @@ namespace Price_comparison_engine
                     WriteComments(LoginWindow.Email, 3, singlePersonRatings["Barbora"]["Aptarnavimas"], singlePersonRatings["Barbora"]["PrekiuKokybe"], singlePersonRatings["Barbora"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 3).ToList(), listViewas);
+                    FillList(commentsData.Where(c => c.ShopId == 3).ToList(), ListView);
                 }
                 else if (parduotuve.SelectedIndex == 4 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 4) == null)
                 {
@@ -253,7 +253,7 @@ namespace Price_comparison_engine
                     WriteComments(LoginWindow.Email, 4, singlePersonRatings["Bigbox"]["Aptarnavimas"], singlePersonRatings["Bigbox"]["PrekiuKokybe"], singlePersonRatings["Bigbox"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 4).ToList(), listViewas);
+                    FillList(commentsData.Where(c => c.ShopId == 4).ToList(), ListView);
                 }
                 else if (parduotuve.SelectedIndex == 5 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 5) == null)
                 {
@@ -270,7 +270,7 @@ namespace Price_comparison_engine
                     WriteComments(LoginWindow.Email, 5, singlePersonRatings["Rde"]["Aptarnavimas"], singlePersonRatings["Rde"]["PrekiuKokybe"], singlePersonRatings["Rde"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 5).ToList(), listViewas);
+                    FillList(commentsData.Where(c => c.ShopId == 5).ToList(), ListView);
                 }
                 else if (parduotuve.SelectedIndex == 6 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 6) == null)
                 {
@@ -287,7 +287,7 @@ namespace Price_comparison_engine
                     WriteComments(LoginWindow.Email, 6, singlePersonRatings["GintarineVaistine"]["Aptarnavimas"], singlePersonRatings["GintarineVaistine"]["PrekiuKokybe"], singlePersonRatings["GintarineVaistine"]["Pristatymas"], KomentaruLangelis.Text);
                     KomentaruLangelis.Clear();
                     commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 6).ToList(), listViewas);
+                    FillList(commentsData.Where(c => c.ShopId == 6).ToList(), ListView);
                 }
                 else
                 {
@@ -405,41 +405,41 @@ namespace Price_comparison_engine
             parduotuve.SelectedIndex = -1;
         }
 
-        private void listViewas_Loaded(object sender, RoutedEventArgs e)
+        private void ListViewLoaded(object sender, RoutedEventArgs e)
         {
             commentsData = ReadComments();
-            FillList(commentsData.Where(c => c.ShopId == 0).ToList(), listViewas);
+            FillList(commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
         }
 
         private void ChangeComments(object sender, SelectionChangedEventArgs e)
         {
             if (PasirinktiKomentara.SelectedIndex == 0)
             {
-                FillList(commentsData.Where(c => c.ShopId == 0).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
             }
             else if (PasirinktiKomentara.SelectedIndex == 1)
             {
-                FillList(commentsData.Where(c => c.ShopId == 1).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 1).ToList(), ListView);
             }
             else if (PasirinktiKomentara.SelectedIndex == 2)
             {
-                FillList(commentsData.Where(c => c.ShopId == 2).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 2).ToList(), ListView);
             }
             else if (PasirinktiKomentara.SelectedIndex == 3)
             {
-                FillList(commentsData.Where(c => c.ShopId == 3).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 3).ToList(), ListView);
             }
             else if (PasirinktiKomentara.SelectedIndex == 4)
             {
-                FillList(commentsData.Where(c => c.ShopId == 4).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 4).ToList(), ListView);
             }
             else if (PasirinktiKomentara.SelectedIndex == 5)
             {
-                FillList(commentsData.Where(c => c.ShopId == 5).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 5).ToList(), ListView);
             }
             else if (PasirinktiKomentara.SelectedIndex == 6)
             {
-                FillList(commentsData.Where(c => c.ShopId == 6).ToList(), listViewas);
+                FillList(commentsData.Where(c => c.ShopId == 6).ToList(), ListView);
             }
         }
 
