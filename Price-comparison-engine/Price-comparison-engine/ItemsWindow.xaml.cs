@@ -757,7 +757,7 @@ namespace Price_comparison_engine
         private void ImageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var name = (((Image)sender).DataContext as Item)?.Name;
-            var window = new KonkretiPreke(name);
+            var window = new ParticularItemWindow(name);
             window.Show();
         }
     }

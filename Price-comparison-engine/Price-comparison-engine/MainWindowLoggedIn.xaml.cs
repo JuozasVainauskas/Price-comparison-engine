@@ -183,8 +183,8 @@ namespace Price_comparison_engine
         private void ImageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var name = (((Image)sender).DataContext as Item)?.Name;
-            var langas = new KonkretiPreke(name);
-            langas.Show();
+            var window = new ParticularItemWindow(name);
+            window.Show();
         }
         private void VertintiClick(object sender, RoutedEventArgs e)
         {

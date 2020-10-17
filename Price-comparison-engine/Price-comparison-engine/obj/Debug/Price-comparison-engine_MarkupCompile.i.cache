@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\ernes\Documents\GitHub\Price-comparison-engine\Price-comparison-engine\Price-comparison-engine\App.xaml
-131670758569
+13327609855
 2-926136481
-29-160062427
+291649394429
 211464259339
-Admin.xaml;QaWindow.xaml;KonkretiPreke.xaml;PatvirtLangasSlaptKeitimui.xaml;ContactWindow.xaml;MainWindow.xaml;PatvirtinimoLangas.xaml;ItemsWindow.xaml;LoginWindow.xaml;RegistracijosLangas.xaml;MainWindowLoggedIn.xaml;SlaptazodzioKeitimoLangas.xaml;VertinimoLangas.xaml;
+Admin.xaml;QaWindow.xaml;ParticularItemWindow.xaml;PatvirtLangasSlaptKeitimui.xaml;ContactWindow.xaml;MainWindow.xaml;ConfirmationWindow.xaml;ItemsWindow.xaml;LoginWindow.xaml;RegisteringWindow.xaml;MainWindowLoggedIn.xaml;SlaptazodzioKeitimoLangas.xaml;VertinimoLangas.xaml;
 
 True
 
