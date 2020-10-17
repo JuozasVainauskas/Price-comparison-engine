@@ -62,22 +62,22 @@ namespace Price_comparison_engine
             var urlGintarineVaistine = "https://www.gintarine.lt/search?adv=false&cid=0&mid=0&vid=0&q=" + MainWindow.word + "%5D&sid=false&isc=true&orderBy=0";
             var urlBarbora = "https://pagrindinis.barbora.lt/paieska?q=" + MainWindow.word;
 
-            var rdeItems = RdeSearch(await Html(httpClient, urlRde));
-            WriteDataFromRde(rdeItems, prices);
-            var piguItems = PiguSearch(await Html(httpClient, urlPigu));
-            WriteDataFromPigu(piguItems, prices);
-            var bigBoxItem = BigBoxSearch(await Html(httpClient, urlBigBox));
-            WriteDataFromBigBox(bigBoxItem, prices);
-            var avitelaItems = AvitelaSearch(await Html(httpClient, urlAvitela));
-            WriteDataFromAvitela(avitelaItems, prices);
-            var elektromarktItems = ElektromarktSearch(await Html(httpClient, urlElektromarkt));
-            WriteDataFromElektromarkt(elektromarktItems, prices);
-            var gintarineVaistineItems = GintarineVaistineSearch(await Html(httpClient, urlGintarineVaistine));
-            WriteDataFromgintarineVaistine(gintarineVaistineItems, prices);
-            var barboraItems = BarboraSearch(await Html(httpClient, urlBarbora));
-            WriteDataFromBarbora(barboraItems, prices);
+            var rdeItems = RdeSearch(await Html(httpClient:httpClient, urlget:urlRde));
+            WriteDataFromRde(productListItems:rdeItems, prices: prices);
+            var piguItems = PiguSearch(await Html(httpClient: httpClient, urlget: urlPigu));
+            WriteDataFromPigu(productListItems: piguItems, prices: prices);
+            var bigBoxItem = BigBoxSearch(await Html(httpClient: httpClient, urlget: urlBigBox));
+            WriteDataFromBigBox(productListItems: bigBoxItem, prices: prices);
+            var avitelaItems = AvitelaSearch(await Html(httpClient: httpClient, urlget: urlAvitela));
+            WriteDataFromAvitela(productListItems: avitelaItems, prices: prices);
+            var elektromarktItems = ElektromarktSearch(await Html(httpClient: httpClient, urlget: urlElektromarkt));
+            WriteDataFromElektromarkt(productListItems: elektromarktItems, prices: prices);
+            var gintarineVaistineItems = GintarineVaistineSearch(await Html(httpClient: httpClient, urlget: urlGintarineVaistine));
+            WriteDataFromgintarineVaistine(productListItems: gintarineVaistineItems,prices: prices);
+            var barboraItems = BarboraSearch(await Html(httpClient: httpClient, urlget: urlBarbora));
+            WriteDataFromBarbora(productListItems: barboraItems, prices: prices);
 
-            SortingAndWriting(prices, dataGridas2);
+            SortingAndWriting(prices:prices,dataGridas2: dataGridas2);
         }
 
         private static async Task<HtmlDocument> Html(HttpClient httpClient, string urlget)
@@ -550,11 +550,11 @@ namespace Price_comparison_engine
                 prices.Add(singleItem);
             }
         }
-        private static void WriteDataFromElektromarkt(List<HtmlNode> productListItems2, List<Item> prices)
+        private static void WriteDataFromElektromarkt(List<HtmlNode> productListItems, List<Item> prices)
         {
-            if (productListItems2 != null)
+            if (productListItems != null)
             {
-                foreach (var productListItem in productListItems2)
+                foreach (var productListItem in productListItems)
                 {
 
                     var name = productListItem
