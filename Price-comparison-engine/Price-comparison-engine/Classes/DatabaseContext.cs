@@ -13,7 +13,7 @@ namespace Price_comparison_engine.Classes
 {
     public class DatabaseContext : DbContext
     {
-        public DatabaseContext():base("name=DuomenuBazesKontekstas")
+        public DatabaseContext():base("name=DatabaseContext")
         {
         }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
