@@ -1,0 +1,35 @@
+﻿<Window x:Class="Price_comparison_engine.QaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Price_comparison_engine"
+        mc:Ignorable="d"
+        Title="QaWindow" Height="450" Width="378" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="38*"/>
+            <RowDefinition Height="163*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="53" Stroke="Black" VerticalAlignment="Top" Width="371" Grid.RowSpan="2"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="43" Width="351" FontSize="24" Grid.RowSpan="2"><Run Foreground="White" Text="Dažniausiai užduodami klausimai"/></TextBlock>
+        <Expander Header="Kodėl nematau prekių?" HorizontalAlignment="Left" Height="52" Margin="10,56.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="351" IsExpanded="False" Grid.RowSpan="2">
+            <TextBox IsReadOnly="true" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Programa yra kūrimo stadijoje, todėl gali kilti tokie trukdžiai." Width="341"/>
+        </Expander>
+        <Expander Header="Kaip surasti geriausią prekę?" HorizontalAlignment="Left" Height="41" Margin="10,32.4,0,0" Grid.Row="2" VerticalAlignment="Top" Width="351">
+            <Grid Background="#FFE5E5E5" Margin="2,0,8.6,0">
+                <TextBox IsReadOnly="true" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Įveskite prekę į paiešką, pasirinkite kategoriją ir kainą." VerticalAlignment="Top" Width="339" Margin="0,0,0,-4.6"/>
+            </Grid>
+        </Expander>
+        <Expander Header="Ar visi pasiūlymai tikri? Ar tai ne apgaulė?" HorizontalAlignment="Left" Height="52" Margin="10,84.6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="351">
+            <TextBox IsReadOnly="true" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Taip, visos prekės yra tikros." VerticalAlignment="Top" Width="339"/>
+        </Expander>
+        <Expander Header="Ką daryti, jeigu radau klaidą?" HorizontalAlignment="Left" Height="52" Margin="10,136.6,0,0" Grid.Row="2" VerticalAlignment="Top" Width="351">
+            <TextBox IsReadOnly="true" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="Praneškite klaidą administracijai paštu." VerticalAlignment="Top" Width="339"/>
+        </Expander>
+        <Rectangle Fill="#FF0FA943" HorizontalAlignment="Right" Height="34" Margin="0,295.4,0.2,-3" Grid.Row="2" Stroke="Black" VerticalAlignment="Top" Width="371"/>
+        <TextBlock HorizontalAlignment="Center" Margin="57,0,50.2,5" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="264" Foreground="#FFF9F9F9" Height="14" Grid.Row="2"><Run Text="     "/><Run Text="Vilnius unive"/><Run Text="rsity, 2020."/><Run Text=" "/><Run Text="©"/><Run Text="All rights reserved."/></TextBlock>
+
+    </Grid>
+</Window>

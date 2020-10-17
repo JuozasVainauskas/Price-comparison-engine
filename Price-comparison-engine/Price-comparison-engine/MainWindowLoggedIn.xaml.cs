@@ -16,7 +16,7 @@ namespace Price_comparison_engine
         public MainWindowLoggedIn()
         {
             InitializeComponent();
-            if (PrisijungimoLangas.NarioRole.Equals(Role.Admin))
+            if (LoginWindow.UserRole.Equals(Role.Admin))
             {
                 administravimas.IsEnabled = true;
                 administravimas.Visibility = Visibility.Visible;
@@ -31,9 +31,9 @@ namespace Price_comparison_engine
         }
         public static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
         {
-            if (ReadSavedItems(PrisijungimoLangas.email).Any())
+            if (ReadSavedItems(LoginWindow.Email).Any())
             {
-                foreach (var item in ReadSavedItems(PrisijungimoLangas.email))
+                foreach (var item in ReadSavedItems(LoginWindow.Email))
                 {
                     DataGridLoggedIn.Items.Add(item);
                 }
@@ -160,8 +160,8 @@ namespace Price_comparison_engine
 
         private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            PrisijungimoLangas.email = "";
-            PrisijungimoLangas.NarioRole = Role.User;
+            LoginWindow.Email = "";
+            LoginWindow.UserRole = Role.User;
             var mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
@@ -206,7 +206,7 @@ namespace Price_comparison_engine
             {
                 var tempItem = (Item)DataGridLoggedIn.Items.GetItemAt(currentRowIndex);
 
-                var result = context.SavedItems.SingleOrDefault(b => b.Email == PrisijungimoLangas.email && b.PageUrl == tempItem.Link && b.ImgUrl == tempItem.Nuotrauka && b.ShopName == tempItem.Seller && b.ItemName == tempItem.Name && b.Price == tempItem.Price);
+                var result = context.SavedItems.SingleOrDefault(b => b.Email == LoginWindow.Email && b.PageUrl == tempItem.Link && b.ImgUrl == tempItem.Picture && b.ShopName == tempItem.Seller && b.ItemName == tempItem.Name && b.Price == tempItem.Price);
 
                 if (result != null)
                 {
@@ -229,7 +229,7 @@ namespace Price_comparison_engine
 
             using (var context = new DatabaseContext())
             {
-                var result = context.SavedItems.Where(x => x.Email == email).Select(x => new Item { Link = x.PageUrl, Nuotrauka = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
+                var result = context.SavedItems.Where(x => x.Email == email).Select(x => new Item { Link = x.PageUrl, Picture = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
 
                 foreach (var singleItem in result)
                 {

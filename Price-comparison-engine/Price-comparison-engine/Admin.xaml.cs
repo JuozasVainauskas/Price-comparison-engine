@@ -107,10 +107,10 @@ namespace Price_comparison_engine
                 context.SaveChanges();
             }
 
-            if (email == LoginWindow.email)
+            if (email == LoginWindow.Email)
             {
-                LoginWindow.email = "";
-                LoginWindow.userRole = Classes.Role.User;
+                LoginWindow.Email = "";
+                LoginWindow.UserRole = Classes.Role.User;
                 var mainWindow = new MainWindow();
                 mainWindow.Show();
                 mainWindowLoggedIn.Close();

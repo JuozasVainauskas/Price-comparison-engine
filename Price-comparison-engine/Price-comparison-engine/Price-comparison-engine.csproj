@@ -116,8 +116,8 @@
     <Compile Include="PatvirtinimoLangas.xaml.cs">
       <DependentUpon>PatvirtinimoLangas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PrisijungimoLangas.xaml.cs">
-      <DependentUpon>PrisijungimoLangas.xaml</DependentUpon>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistracijosLangas.xaml.cs">
       <DependentUpon>RegistracijosLangas.xaml</DependentUpon>
@@ -135,7 +135,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="DUK_Langas.xaml">
+    <Page Include="QaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,7 +147,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="KontaktuLangas.xaml">
+    <Page Include="ContactWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -159,11 +159,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="DUK_Langas.xaml.cs">
-      <DependentUpon>DUK_Langas.xaml</DependentUpon>
+    <Compile Include="QaWindow.xaml.cs">
+      <DependentUpon>QaWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KontaktuLangas.xaml.cs">
-      <DependentUpon>KontaktuLangas.xaml</DependentUpon>
+    <Compile Include="ContactWindow.xaml.cs">
+      <DependentUpon>ContactWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -177,7 +177,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PrisijungimoLangas.xaml">
+    <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

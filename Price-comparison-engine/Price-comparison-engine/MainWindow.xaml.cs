@@ -45,16 +45,16 @@ namespace Price_comparison_engine
             }
         }
 
-        private void DUKMygtukas_Click(object sender, RoutedEventArgs e)
+        private void QaClick(object sender, RoutedEventArgs e)
         {
-            var dukLangoAtidarymas = new DUK_Langas();
-            dukLangoAtidarymas.Show();
+            var qaWindow = new QaWindow();
+            qaWindow.Show();
         }
 
-        private void KontaktaiMygtukas_Click(object sender, RoutedEventArgs e)
+        private void ContactClick(object sender, RoutedEventArgs e)
         {
-            var kontaktuLangoAtidarymas = new KontaktuLangas();
-            kontaktuLangoAtidarymas.Show();
+            var contactWindow = new ContactWindow();
+            contactWindow.Show();
         }
 
         public  static string word;
@@ -72,10 +72,10 @@ namespace Price_comparison_engine
             registracijosLangoAtidarymas.Show();
         }
 
-        private void PrisijungtiMygtukas_Click(object sender, RoutedEventArgs e)
+        private void LoginClick(object sender, RoutedEventArgs e)
         {
-            var prisijungimoLangoAtidarymas = new PrisijungimoLangas(this);
-            prisijungimoLangoAtidarymas.Show();
+            var loginWindow = new LoginWindow(this);
+            loginWindow.Show();
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
