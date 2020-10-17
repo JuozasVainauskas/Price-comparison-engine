@@ -97,7 +97,6 @@
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
     <Compile Include="Klases\CommentsTable.cs" />
-    <Compile Include="Klases\Htmle.cs" />
     <Compile Include="Klases\ItemsTable.cs" />
     <Compile Include="Klases\Role.cs" />
     <Compile Include="Klases\SavedItems.cs" />
