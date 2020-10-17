@@ -1,4 +1,4 @@
-﻿namespace Price_comparison_engine.Klases
+﻿namespace Price_comparison_engine.Classes
 {
     public class Htmle
     {

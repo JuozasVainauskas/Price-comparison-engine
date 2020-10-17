@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Price_comparison_engine.Klases
+namespace Price_comparison_engine.Classes
 {
-    class GeneruotiHash
+    class GenerateHash
     {
-        public static string SukurtiSalt(int dydis)
+        public static string CreateSalt(int size)
         {
             var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
-            var buferis = new byte[dydis];
-            rng.GetBytes(buferis);
-            return Convert.ToBase64String(buferis);
+            var buffer = new byte[size];
+            rng.GetBytes(buffer);
+            return Convert.ToBase64String(buffer);
         }
 
-        public static string GenerateSHA256Hash(string ivedimas, string salt)
+        public static string GenerateSHA256Hash(string input, string salt)
         {
-            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(ivedimas + salt);
+            byte[] bytes = System.Text.Encoding.UTF8.GetBytes(input + salt);
             var sha256hashstring = new System.Security.Cryptography.SHA256Managed();
             byte[] hash = sha256hashstring.ComputeHash(bytes);
 

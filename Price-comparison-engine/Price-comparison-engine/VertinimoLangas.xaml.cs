@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -339,7 +339,7 @@ namespace Price_comparison_engine
         private static List<CommentsTable> ReadComments()
         {
             List<CommentsTable> temp;
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 temp = context.CommentsTable.ToList();
             }
@@ -348,7 +348,7 @@ namespace Price_comparison_engine
 
         private static void WriteComments(string email, int shopId, int serviceRating, int productsQualityRating, int deliveryRating, string comment)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.CommentsTable.SingleOrDefault(b => b.Email == email && b.ShopId == shopId);
                 
@@ -373,7 +373,7 @@ namespace Price_comparison_engine
         //Funkcija parasyta su ref, tai jei nori grazinti values, rasyti - Skaityti(pavadinimas, ref balsuSuma, ref balsavusiuSkaicius);
         private static void Skaityti(string shopName, ref int votesNumber, ref int votersNumber)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.ShopRatingTable.SingleOrDefault(c => c.ShopName == shopName);
 
@@ -387,7 +387,7 @@ namespace Price_comparison_engine
 
         private static void Rasyti(string shopName, int votesNumber, int votersNumber)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.ShopRatingTable.SingleOrDefault(b => b.ShopName == shopName);
                 if (result != null)

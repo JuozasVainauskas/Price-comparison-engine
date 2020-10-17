@@ -8,12 +8,12 @@
         Title="Admin" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
 
-        <ComboBox x:Name="RolesPriskirimas" HorizontalAlignment="Left" Margin="207,259,0,0" VerticalAlignment="Top" Width="131">
+        <ComboBox x:Name="selectRole" HorizontalAlignment="Left" Margin="207,259,0,0" VerticalAlignment="Top" Width="131">
             <ComboBoxItem Content="Vartotojas"/>
             <ComboBoxItem Content="Administratorius"/>
         </ComboBox>
         <TextBox x:Name="email" HorizontalAlignment="Left" Height="23" Margin="37,260,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.33,-0.383"/>
-        <Button Content="Priskirti" HorizontalAlignment="Left" Margin="373,261,0,0" VerticalAlignment="Top" Width="75" Click="Priskirti"/>
+        <Button Content="Priskirti" HorizontalAlignment="Left" Margin="373,261,0,0" VerticalAlignment="Top" Width="75" Click="RoleSetter"/>
         <Rectangle Fill="#FF8CD479" HorizontalAlignment="Left" Height="376" Margin="494,49,-0.4,-5" Stroke="Black" VerticalAlignment="Top" Width="300"/>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="43" Margin="494,1,-0.4,0" Stroke="Black" VerticalAlignment="Top" Width="300" RenderTransformOrigin="0.276,-0.94"/>
         <Rectangle Fill="#FF0FA943" HorizontalAlignment="Left" Height="43" Margin="0,1,0,0" Stroke="Black" VerticalAlignment="Top" Width="494"/>
@@ -29,7 +29,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="603,208,0,0" TextWrapping="Wrap" Text="Reklamos" VerticalAlignment="Top" Height="24" Width="128" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"/>
         <TextBlock HorizontalAlignment="Left" Margin="601,50,0,0" TextWrapping="Wrap" Text="Vartotojai" VerticalAlignment="Top" Height="35" Width="128" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"/>
         <TextBlock HorizontalAlignment="Left" Margin="605,8,0,0" TextWrapping="Wrap" Text="Statistika" VerticalAlignment="Top" Height="24" Width="128" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="White"/>
-        <DataGrid x:Name="UsersTable" HorizontalAlignment="Left" Height="153" Margin="37,79,0,0" VerticalAlignment="Top" Width="430" Initialized="RodytiVartotojus">
+        <DataGrid x:Name="UsersTable" HorizontalAlignment="Left" Height="153" Margin="37,79,0,0" VerticalAlignment="Top" Width="430" Initialized="ShowUsers">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" IsReadOnly="True" Binding="{Binding Path=ID}" Width="30"></DataGridTextColumn>
                 <DataGridTextColumn Header="Email" IsReadOnly="True"  Binding="{Binding Path=Email}" Width="300"></DataGridTextColumn>
@@ -37,18 +37,18 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock HorizontalAlignment="Left" Margin="194,47,0,0" TextWrapping="Wrap" Text="Visi vartotojai" VerticalAlignment="Top" Height="35" Width="144" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"/>
-        <TextBox x:Name="EmailToCreate" HorizontalAlignment="Left" Height="23" Margin="37,318,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.33,-0.383"/>
+        <TextBox x:Name="emailToCreate" HorizontalAlignment="Left" Height="23" Margin="37,318,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="152" RenderTransformOrigin="0.33,-0.383"/>
         <PasswordBox x:Name="PasswordToCreate" HorizontalAlignment="Left" Margin="207,318,0,0" VerticalAlignment="Top" Width="131" Height="23"/>
-        <Button Content="Sukurti" HorizontalAlignment="Left" Margin="373,322,0,0" VerticalAlignment="Top" Width="75" Click="SukurtiVartotoja"/>
+        <Button Content="Sukurti" HorizontalAlignment="Left" Margin="373,322,0,0" VerticalAlignment="Top" Width="75" Click="CreateUser"/>
         <TextBox x:Name="emailToDelete" HorizontalAlignment="Left" Height="23" Margin="123,378,0,0" TextWrapping="Wrap" Text="Email" VerticalAlignment="Top" Width="151" RenderTransformOrigin="0.33,-0.383"/>
-        <Button Content="Ištrinti" HorizontalAlignment="Left" Margin="309,383,0,0" VerticalAlignment="Top" Width="75" Click="IstrintiVartotoja"/>
+        <Button Content="Ištrinti" HorizontalAlignment="Left" Margin="309,383,0,0" VerticalAlignment="Top" Width="75" Click="DeleteUser"/>
         <TextBlock HorizontalAlignment="Left" Margin="194,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="144" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"><Run Text="Suteikti rolę"/><LineBreak/><Run/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="176,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="179" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E" Text="Sukurti vartotoją"/>
         <TextBlock HorizontalAlignment="Left" Margin="178,343,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="179" FontSize="22" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="#FF5B695E"><Run Text="Ištrinti"/><Run Text=" vartotoją"/></TextBlock>
-        <TextBlock x:Name="RegisteredUsers" HorizontalAlignment="Left" Margin="690,94,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="64" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
-        <TextBlock x:Name="Users" HorizontalAlignment="Left" Margin="598,126,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="87" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
-        <TextBlock x:Name="Admins" HorizontalAlignment="Left" Margin="649,159,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="96" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
-        <TextBlock x:Name="Goods" HorizontalAlignment="Left" Margin="709,366,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="75" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
+        <TextBlock x:Name="registeredUsers" HorizontalAlignment="Left" Margin="690,94,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="64" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
+        <TextBlock x:Name="users" HorizontalAlignment="Left" Margin="598,126,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="87" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
+        <TextBlock x:Name="admins" HorizontalAlignment="Left" Margin="649,159,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="96" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
+        <TextBlock x:Name="goods" HorizontalAlignment="Left" Margin="709,366,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="33" Width="75" FontSize="18" FontFamily="Yu Gothic UI Semibold" FontWeight="Bold" Foreground="Green"/>
 
     </Grid>
 </Window>

@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Price_comparison_engine.Klases;
+using Price_comparison_engine.Classes;
 
 namespace Price_comparison_engine
 {
@@ -16,7 +16,7 @@ namespace Price_comparison_engine
         public MainWindowLoggedIn()
         {
             InitializeComponent();
-            if (PrisijungimoLangas.NarioRole.Equals(Role.Administratorius))
+            if (PrisijungimoLangas.NarioRole.Equals(Role.Admin))
             {
                 administravimas.IsEnabled = true;
                 administravimas.Visibility = Visibility.Visible;
@@ -110,7 +110,7 @@ namespace Price_comparison_engine
         }
         private static void Skaityti(ref List<string> pageUrl, ref List<string> imgUrl)
         {
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var tempPageUrl = context.ItemsTable.Select(column => column.PageUrl).ToList();
                 var tempImgUrl = context.ItemsTable.Select(column => column.ImgUrl).ToList();
@@ -161,7 +161,7 @@ namespace Price_comparison_engine
         private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {
             PrisijungimoLangas.email = "";
-            PrisijungimoLangas.NarioRole = Role.Vartotojas;
+            PrisijungimoLangas.NarioRole = Role.User;
             var mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
@@ -202,7 +202,7 @@ namespace Price_comparison_engine
         {
             var currentRowIndex = DataGridLoggedIn.Items.IndexOf(DataGridLoggedIn.CurrentItem);
 
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var tempItem = (Item)DataGridLoggedIn.Items.GetItemAt(currentRowIndex);
 
@@ -227,7 +227,7 @@ namespace Price_comparison_engine
         {
             var item = new List<Item>();
 
-            using (var context = new DuomenuBazesKontekstas())
+            using (var context = new DatabaseContext())
             {
                 var result = context.SavedItems.Where(x => x.Email == email).Select(x => new Item { Link = x.PageUrl, Nuotrauka = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
 

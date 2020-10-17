@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -50,10 +50,10 @@ namespace Price_comparison_engine
             }
             else
             {
-                var passwordSalt = GeneruotiHash.SukurtiSalt(10);
-                var passwordHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, passwordSalt);
+                var passwordSalt = GenerateHash.CreateSalt(10);
+                var passwordHash = GenerateHash.GenerateSHA256Hash(slaptazodis.Password, passwordSalt);
 
-                using (var context = new DuomenuBazesKontekstas())
+                using (var context = new DatabaseContext())
                 {
                     var result = context.UserData.SingleOrDefault(b => b.Email == email);
                     if (result != null)

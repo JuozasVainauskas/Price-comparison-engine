@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -23,21 +23,21 @@ namespace Price_comparison_engine
     {
         readonly MainWindow pagrindinisLangas;
         readonly RegistracijosLangas registracijosLangas;
-        readonly DuomenuBazesKontekstas context;
-        private string kodas;
-        public PatvirtinimoLangas(DuomenuBazesKontekstas context, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
+        readonly DatabaseContext context;
+        private string code;
+        public PatvirtinimoLangas(DatabaseContext context, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string code, string email)
         {
             InitializeComponent();
-            new SiustiEmail(kodas, email);
+            new SendEmail(code, email);
             this.pagrindinisLangas = pagrindinisLangas;
             this.registracijosLangas = registracijosLangas;
             this.context = context;
-            this.kodas = kodas;
+            this.code = code;
         }
 
         private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            if (kodas.Equals(PatvirtinimoLangelis.Text))
+            if (code.Equals(PatvirtinimoLangelis.Text))
             {
                 context.SaveChanges();
 

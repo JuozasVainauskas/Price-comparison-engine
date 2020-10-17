@@ -1,4 +1,4 @@
-﻿using Price_comparison_engine.Klases;
+﻿using Price_comparison_engine.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class PatvirtLangasSlaptKeitimui : Window
     {
-        private string kodas;
+        private string code;
         private string email;
 
         public PatvirtLangasSlaptKeitimui()
@@ -43,10 +43,10 @@ namespace Price_comparison_engine
             else
             {
                 email = emailLangelis.Text;
-                kodas = GeneruotiHash.SukurtiSalt(16);
-                kodas = kodas.Remove(kodas.Length - 2);
+                code = GenerateHash.CreateSalt(16);
+                code = code.Remove(code.Length - 2);
 
-                new SiustiEmail(kodas, email);
+                new SendEmail(code, email);
 
                 emailLangelis.Visibility = Visibility.Collapsed;
                 pranesimas1.Visibility = Visibility.Collapsed;
@@ -61,7 +61,7 @@ namespace Price_comparison_engine
 
         private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            if (kodas.Equals(patvirtinimoLangelis.Text))
+            if (code.Equals(patvirtinimoLangelis.Text))
             {
                 var slaptazodzioKeitimoLangas = new SlaptazodzioKeitimoLangas(email);
                 slaptazodzioKeitimoLangas.Show();

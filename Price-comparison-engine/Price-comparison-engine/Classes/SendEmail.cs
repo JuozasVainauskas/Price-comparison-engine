@@ -9,11 +9,11 @@ using System.Windows;
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace Price_comparison_engine.Klases
+namespace Price_comparison_engine.Classes
 {
-    class SiustiEmail
+    class SendEmail
     {
-        public SiustiEmail(string kodas, string email)
+        public SendEmail(string kodas, string email)
         {
             var client = new SmtpClient()
             {
