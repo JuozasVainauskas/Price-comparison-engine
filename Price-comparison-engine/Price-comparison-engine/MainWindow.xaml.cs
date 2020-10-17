@@ -1,13 +1,20 @@
-﻿using Price_comparison_engine.Classes;
+﻿using Price_comparison_engine.Klases;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Price_comparison_engine
@@ -29,7 +36,7 @@ namespace Price_comparison_engine
         {
             InitializeComponent();
             DataDirectoryInitialize();
-            Read(ref pageUrl, ref imgUrl);
+            Skaityti(ref pageUrl, ref imgUrl);
             if (pageUrl.Count >= 3 && imgUrl.Count >= 3)
             {
                 img1.Source = new BitmapImage(new Uri(imgUrl[0], UriKind.Absolute));
@@ -38,154 +45,154 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Faq(object sender, RoutedEventArgs e)
+        private void DUKMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var dukLangoAtidarymas = new FaqWindow();
+            var dukLangoAtidarymas = new DUK_Langas();
             dukLangoAtidarymas.Show();
         }
 
-        private void Contacts(object sender, RoutedEventArgs e)
+        private void KontaktaiMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var openContactsWindow = new ContactsWindow();
-            openContactsWindow.Show();
+            var kontaktuLangoAtidarymas = new KontaktuLangas();
+            kontaktuLangoAtidarymas.Show();
         }
 
         public  static string word;
 
-        private void Search(object sender, RoutedEventArgs e)
+        private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
-            word = searchField.Text;
-            var openGoodsWindow = new GoodsWindow(null);
-            openGoodsWindow.Show();
+            word = ieskojimoLaukas.Text;
+            var prekiųLangoAtidarymas = new ItemsWindow(null);
+            prekiųLangoAtidarymas.Show();
         }
 
-        private void Register(object sender, RoutedEventArgs e)
+        private void RegistruotisMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var openRegistrationWindow = new RegistrationWindow(this);
-            openRegistrationWindow.Show();
+            var registracijosLangoAtidarymas = new RegistracijosLangas(this);
+            registracijosLangoAtidarymas.Show();
         }
 
-        private void Login(object sender, RoutedEventArgs e)
+        private void PrisijungtiMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            var openLoginWindow = new LoginWindow(this);
-            openLoginWindow.Show();
+            var prisijungimoLangoAtidarymas = new PrisijungimoLangas(this);
+            prisijungimoLangoAtidarymas.Show();
         }
 
-        private void WindowSizeChanged(object sender, SizeChangedEventArgs e)
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var widhDifference = this.ActualWidth / 1.2;
-            var heightDifference = this.ActualHeight / 1.1;
-            var widthDifferenceForBlocks = this.ActualHeight / 1.7;
-            var widthDifferenceForPhotos = this.ActualWidth / 1.4;
-            var heightDifferenceForPhotos = this.ActualHeight / 1.4;
-            ButtonResize(loginButton, widhDifference, heightDifference);
-            ButtonResize(registrationButton, widhDifference, heightDifference);
-            ButtonResize(faqButton, widhDifference, heightDifference);
-            ButtonResize(contactsButton, widhDifference, heightDifference);
-            ButtonResize(search, widhDifference, heightDifference);
-            TextBoxResize(searchField, widhDifference / 3, heightDifference);
-            RectangleResize(middleLine, widthDifferenceForBlocks);
-            RectangleResize(upperLine);
-            RectangleResize(middleLine);
-            RectangleResize(bottomLine);
-            SlideShowResize(img1, widthDifferenceForPhotos, heightDifferenceForPhotos);
-            SlideShowResize(img2, widthDifferenceForPhotos, heightDifferenceForPhotos);
-            SlideShowResize(img3, widthDifferenceForPhotos, heightDifferenceForPhotos);
-            SlideShowResize(toLeft, heightDifference, heightDifference);
-            SlideShowResize(toRight, heightDifference, heightDifference);
+            var skirtumasPlocio = this.ActualWidth / 1.2;
+            var skirtumasIlgio = this.ActualHeight / 1.1;
+            var skirtumasPlocioBlokeliui = this.ActualHeight / 1.7;
+            var skirtumasPlocioNuotraukai = this.ActualWidth / 1.4;
+            var skirtumasIlgioNuotraukai = this.ActualHeight / 1.4;
+            MygtukoResize(prisijungimosMygtukas, skirtumasPlocio, skirtumasIlgio);
+            MygtukoResize(registracijosMygtukas, skirtumasPlocio, skirtumasIlgio);
+            MygtukoResize(DUKMygtukas, skirtumasPlocio, skirtumasIlgio);
+            MygtukoResize(kontaktuMygtukas, skirtumasPlocio, skirtumasIlgio);
+            MygtukoResize(Ieškoti, skirtumasPlocio, skirtumasIlgio);
+            TextBoxResize(ieskojimoLaukas, skirtumasPlocio / 3, skirtumasIlgio);
+            RectangleResize(vidurinėLinija, skirtumasPlocioBlokeliui);
+            RectangleIštempimas(viršutinėLinija);
+            RectangleIštempimas(vidurinėLinija);
+            RectangleIštempimas(apatinėLinija);
+            SlideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(iKairePuse, skirtumasIlgio, skirtumasIlgio);
+            SlideShowResize(iDesinePuse, skirtumasIlgio, skirtumasIlgio);
         }
 
-        private void ButtonResize(Button button, double width, double height)
+        private void MygtukoResize(Button mygtukas, double plotis=0, double ilgis=0)
         {
-            button.Width = this.ActualWidth - width;
-            button.Height = this.ActualHeight - height;
+            mygtukas.Width = this.ActualWidth - plotis;
+            mygtukas.Height = this.ActualHeight - ilgis;
         }
 
-        private void TextBlockResize(TextBlock textblock, double width, double height)
+        private void TextBlockResize(TextBlock tekstoBlokas, double plotis=0, double ilgis=0)
         {
-            textblock.Width = this.ActualWidth - width;
-            textblock.Height = this.ActualHeight - height;
+            tekstoBlokas.Width = this.ActualWidth - plotis;
+            tekstoBlokas.Height = this.ActualHeight - ilgis;
         }
 
-        private void TextBoxResize(TextBox textbox, double width, double height)
+        private void TextBoxResize(TextBox tekstBoksas, double plotis=0, double ilgis=0)
         {
-            textbox.Width = this.ActualWidth - width;
-            textbox.Height = this.ActualHeight - height;
+            tekstBoksas.Width = this.ActualWidth - plotis;
+            tekstBoksas.Height = this.ActualHeight - ilgis;
         }
-        private void RectangleResize(Rectangle area, double height)
+        private void RectangleResize(Rectangle plotelis, double ilgis=0)
         {
-            area.Height = this.ActualHeight - height;
+            plotelis.Height = this.ActualHeight - ilgis;
         }
-        private void RectangleResize(Rectangle area)
+        private void RectangleIštempimas(Rectangle plotelis,double skirtumasPlocio=0)
         {
-            area.Width = this.ActualWidth;
+            plotelis.Width = this.ActualWidth-skirtumasPlocio;
         }
-        private void SlideShowResize(Image image,double width, double height)
+        private void SlideShowResize(Image nuotrauka,double plotis=0, double ilgis=0)
         {
-            image.Width = this.ActualWidth-width;
-            image.Height = this.ActualHeight-height;
+            nuotrauka.Width = this.ActualWidth-plotis;
+            nuotrauka.Height = this.ActualHeight-ilgis;
         }
 
         private static List<string> pageUrl = new List<string>();
         private static List<string> imgUrl = new List<string>();
 
-        public static int IndexFront = 3;
-        public static int IndexBack = 0;
-        public static int UrlIndex = 0;
+        public static int indexFront = 3;
+        public static int indexBack = 0;
+        public static int urlIndex = 0;
 
-        private void SliderBack(object sender, MouseButtonEventArgs e)
+        private void Slider_Back(object sender, MouseButtonEventArgs e)
         {
-            if (IndexBack > 0)
+            if (indexBack > 0)
             {
-                UrlIndex--;
-                IndexBack--;
-                IndexFront--;
-                img1.Source = new BitmapImage(new Uri(imgUrl[IndexBack], UriKind.Absolute));
-                img2.Source = new BitmapImage(new Uri(imgUrl[IndexBack + 1], UriKind.Absolute));
-                img3.Source = new BitmapImage(new Uri(imgUrl[IndexBack + 2], UriKind.Absolute));
+                urlIndex--;
+                indexBack--;
+                indexFront--;
+                img1.Source = new BitmapImage(new Uri(imgUrl[indexBack], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(imgUrl[indexBack + 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(imgUrl[indexBack + 2], UriKind.Absolute));
             }
         }
 
-        private void SliderFront(object sender, MouseButtonEventArgs e)
+        private void Slider_Front(object sender, MouseButtonEventArgs e)
         {
-            if (IndexFront < pageUrl.Count - 1)
+            if (indexFront < pageUrl.Count - 1)
             {
-                UrlIndex++;
-                img1.Source = new BitmapImage(new Uri(imgUrl[IndexFront - 2], UriKind.Absolute));
-                img2.Source = new BitmapImage(new Uri(imgUrl[IndexFront - 1], UriKind.Absolute));
-                img3.Source = new BitmapImage(new Uri(imgUrl[IndexFront], UriKind.Absolute));
-                IndexFront++;
-                IndexBack++;
+                urlIndex++;
+                img1.Source = new BitmapImage(new Uri(imgUrl[indexFront - 2], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(imgUrl[indexFront - 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(imgUrl[indexFront], UriKind.Absolute));
+                indexFront++;
+                indexBack++;
             }
         }
 
-        private void Img1MouseDown(object sender, MouseButtonEventArgs e)
+        private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(pageUrl[UrlIndex]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex]);
             }
         }
 
-        private void Img2MouseDown(object sender, MouseButtonEventArgs e)
+        private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(pageUrl[UrlIndex + 1]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex + 1]);
             }
         }
 
-        private void Img3MouseDown(object sender, MouseButtonEventArgs e)
+        private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(pageUrl[UrlIndex + 2]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex + 2]);
             }
         }
 
-        private static void Read(ref List<string> pageUrl, ref List<string> imgUrl)
+        private static void Skaityti(ref List<string> pageUrl, ref List<string> imgUrl)
         {
-            using (var context = new DatabaseContext())
+            using (var context = new DuomenuBazesKontekstas())
             {
                 var tempPageUrl = context.ItemsTable.Select(column => column.PageUrl).ToList();
                 var tempImgUrl = context.ItemsTable.Select(column => column.ImgUrl).ToList();

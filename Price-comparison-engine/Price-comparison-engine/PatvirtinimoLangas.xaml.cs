@@ -1,36 +1,48 @@
-﻿using Price_comparison_engine.Classes;
+﻿using Price_comparison_engine.Klases;
+using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
-
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace Price_comparison_engine
 {
     /// <summary>
     /// Interaction logic for PatvirtinimoLangas.xaml
     /// </summary>
-    public partial class ConfirmationWindow : Window
+    public partial class PatvirtinimoLangas : Window
     {
-        readonly MainWindow mainWindow;
-        readonly RegistrationWindow registrationWindow;
-        readonly DatabaseContext context;
-        private string code;
-        public ConfirmationWindow(DatabaseContext context, MainWindow mainWindow, RegistrationWindow registrationWindow, string code, string email)
+        readonly MainWindow pagrindinisLangas;
+        readonly RegistracijosLangas registracijosLangas;
+        readonly DuomenuBazesKontekstas context;
+        private string kodas;
+        public PatvirtinimoLangas(DuomenuBazesKontekstas context, MainWindow pagrindinisLangas, RegistracijosLangas registracijosLangas, string kodas, string email)
         {
             InitializeComponent();
-            new SendEmail(code, email);
-            this.mainWindow = mainWindow;
-            this.registrationWindow = registrationWindow;
+            new SiustiEmail(kodas, email);
+            this.pagrindinisLangas = pagrindinisLangas;
+            this.registracijosLangas = registracijosLangas;
             this.context = context;
-            this.code = code;
+            this.kodas = kodas;
         }
 
-        private void Confirm(object sender, RoutedEventArgs e)
+        private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            if (code.Equals(textboxConfirm.Text))
+            if (kodas.Equals(PatvirtinimoLangelis.Text))
             {
                 context.SaveChanges();
 
-                mainWindow.Close();
-                registrationWindow.Close();
+                pagrindinisLangas.Close();
+                registracijosLangas.Close();
                 MessageBox.Show("Sėkmingai prisiregistravote.");
 
                 var mainWindowLoggedIn = new MainWindowLoggedIn();

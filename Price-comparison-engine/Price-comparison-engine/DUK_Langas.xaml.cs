@@ -17,9 +17,9 @@ namespace Price_comparison_engine
     /// <summary>
     /// Interaction logic for DUK_Langas.xaml
     /// </summary>
-    public partial class FaqWindow : Window
+    public partial class DUK_Langas : Window
     {
-        public FaqWindow()
+        public DUK_Langas()
         {
             InitializeComponent();
         }

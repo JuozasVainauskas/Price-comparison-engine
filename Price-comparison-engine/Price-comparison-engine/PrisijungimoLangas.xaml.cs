@@ -1,31 +1,46 @@
-﻿using Price_comparison_engine.Classes;
+﻿using Price_comparison_engine.Klases;
 using System;
+using System.Net;
+using System.Net.Mail;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace Price_comparison_engine
 {
     /// <summary>
     /// Interaction logic for PrisijungimoLangas.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class PrisijungimoLangas : Window
     {
-        readonly MainWindow MainWindow;
-        public static Enum userRole { get; set; }
+        readonly MainWindow pagrindinisLangas;
+        public static Enum NarioRole { get; set; }
         public static string email { get; set; }
 
-        public LoginWindow(MainWindow mainWindow)
+        public PrisijungimoLangas(MainWindow pagrindinisLangas)
         {
             InitializeComponent();
-            this.MainWindow = mainWindow;
-            userRole = Role.User;
+            this.pagrindinisLangas = pagrindinisLangas;
+            NarioRole = Role.Vartotojas;
             email = "";
         }
-        private void Login(object sender, RoutedEventArgs e)
+        private void Prisijungti_mygtukas(object sender, RoutedEventArgs e)
         {
             email = Email.Text;
 
-            using (var context = new DatabaseContext())
+            using (var context = new DuomenuBazesKontekstas())
             {
                 var result = context.UserData.SingleOrDefault(c => c.Email == Email.Text);
                 
@@ -35,22 +50,22 @@ namespace Price_comparison_engine
                     var passworHash = result.PasswordHash;
                     if(result.Role == "0")
                     {
-                        userRole = Role.User;
+                        NarioRole = Role.Vartotojas;
                     }
                     else if (result.Role == "1")
                     {
-                        userRole = Role.Admin;
+                        NarioRole = Role.Administratorius;
                     }
 
-                    var usersPasswordInput = GenerateHash.GenerateSHA256Hash(passwordBox.Password, passwordSalt);
+                    var naudotojoIvestasSlaptazodis = GeneruotiHash.GenerateSHA256Hash(Slaptazodis.Password, passwordSalt);
 
-                    if (passworHash.Equals(usersPasswordInput))
+                    if (passworHash.Equals(naudotojoIvestasSlaptazodis))
                     {
                         var mainWindowLoggedIn = new MainWindowLoggedIn();
                         mainWindowLoggedIn.Show();
 
                         this.Close();
-                        MainWindow.Close();
+                        pagrindinisLangas.Close();
                     }
                     else
                     {
@@ -64,10 +79,10 @@ namespace Price_comparison_engine
             }
         }
 
-        private void CreateNewPassword(object sender, RoutedEventArgs e)
+        private void Sukurti_nauja_slaptazodi_mygtukas(object sender, RoutedEventArgs e)
         {
-            var confirmNewPasswordWindow = new ConfirmNewPasswordWindow();
-            confirmNewPasswordWindow.Show();
+            var patvirtLangasSlaptKeitimui = new PatvirtLangasSlaptKeitimui();
+            patvirtLangasSlaptKeitimui.Show();
         }
     }
 }

@@ -1,59 +1,70 @@
-﻿using Price_comparison_engine.Classes;
+﻿using Price_comparison_engine.Klases;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
-
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace Price_comparison_engine
 {
     /// <summary>
     /// Interaction logic for PatvirtLangasSlaptKeitimui.xaml
     /// </summary>
-    public partial class ConfirmNewPasswordWindow : Window
+    public partial class PatvirtLangasSlaptKeitimui : Window
     {
-        private string code;
+        private string kodas;
         private string email;
 
-        public ConfirmNewPasswordWindow()
+        public PatvirtLangasSlaptKeitimui()
         {
             InitializeComponent();
         }
 
-        private void Send(object sender, RoutedEventArgs e)
+        private void SiustiMygtukas(object sender, RoutedEventArgs e)
         {
             var pattern = new Regex(@"([a-zA-Z0-9]+)(@gmail.com)$", RegexOptions.Compiled);
-            if (string.IsNullOrWhiteSpace(emailBox.Text))
+            if (string.IsNullOrWhiteSpace(emailLangelis.Text))
             {
                 MessageBox.Show("Prašome užpildyti laukelį.");
             }
-            else if (!pattern.IsMatch(emailBox.Text))
+            else if (!pattern.IsMatch(emailLangelis.Text))
             {
                 MessageBox.Show("Email turi būti rašomas tokia tvarka:\nTuri sutapti su jūsų naudojamu gmail,\nkitaip negalėsite gauti patvirtinimo kodo,\nTuri būti naudojamos raidės arba skaičiai,\nTuri būti nors vienas skaičius arba raidė,\nEmail'o pabaiga turi baigtis: @gmail.com, pvz.: kazkas@gmail.com");
             }
             else
             {
-                email = emailBox.Text;
-                code = GenerateHash.CreateSalt(16);
-                code = code.Remove(code.Length - 2);
+                email = emailLangelis.Text;
+                kodas = GeneruotiHash.SukurtiSalt(16);
+                kodas = kodas.Remove(kodas.Length - 2);
 
-                new SendEmail(code, email);
+                new SiustiEmail(kodas, email);
 
-                emailBox.Visibility = Visibility.Collapsed;
-                message1.Visibility = Visibility.Collapsed;
-                sendCodeBtn.Visibility = Visibility.Collapsed;
+                emailLangelis.Visibility = Visibility.Collapsed;
+                pranesimas1.Visibility = Visibility.Collapsed;
+                siustiKodaMygtukas.Visibility = Visibility.Collapsed;
 
-                confirmationBox.Visibility = Visibility.Visible;
-                message2.Visibility = Visibility.Visible;
-                confirmBtn.Visibility = Visibility.Visible;
+                patvirtinimoLangelis.Visibility = Visibility.Visible;
+                pranesimas2.Visibility = Visibility.Visible;
+                patvirtintiMygtukas.Visibility = Visibility.Visible;
 
             }
         }
 
-        private void Confirm(object sender, RoutedEventArgs e)
+        private void PatvirtintiMygtukas(object sender, RoutedEventArgs e)
         {
-            if (code.Equals(confirmationBox.Text))
+            if (kodas.Equals(patvirtinimoLangelis.Text))
             {
-                var changePasswordWindow = new ChangePasswordWindow(email);
-                changePasswordWindow.Show();
+                var slaptazodzioKeitimoLangas = new SlaptazodzioKeitimoLangas(email);
+                slaptazodzioKeitimoLangas.Show();
                 this.Close();
             }
             else

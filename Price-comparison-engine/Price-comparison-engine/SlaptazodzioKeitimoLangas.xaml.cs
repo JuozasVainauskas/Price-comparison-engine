@@ -1,46 +1,59 @@
-﻿using Price_comparison_engine.Classes;
+﻿using Price_comparison_engine.Klases;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 
 namespace Price_comparison_engine
 {
     /// <summary>
     /// Interaction logic for SlaptazodzioKeitimoLangas.xaml
     /// </summary>
-    public partial class ChangePasswordWindow : Window
+    public partial class SlaptazodzioKeitimoLangas : Window
     {
 
         readonly string email;
 
-        public ChangePasswordWindow(string email)
+        public SlaptazodzioKeitimoLangas(string email)
         {
             InitializeComponent();
             this.email = email;
         }
 
-        private void ChangePassword(object sender, RoutedEventArgs e)
+        private void PakeistiSlaptazodi(object sender, RoutedEventArgs e)
         {
             var pattern = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
 
-            if (passwordBox.Password == "" || confirmPasswordBox.Password == "")
+            if (slaptazodis.Password == "" || slaptazodisPatvirtinti.Password == "")
             {
                 MessageBox.Show("Prašome užpildyti visus laukus.");
             }
-            else if (!pattern.IsMatch(passwordBox.Password))
+            else if (!pattern.IsMatch(slaptazodis.Password))
             {
                 MessageBox.Show("Slaptažodyje turi būti bent trys raidės ir vienas skaičius!!!");
             }
-            else if (passwordBox.Password != confirmPasswordBox.Password)
+            else if (slaptazodis.Password != slaptazodisPatvirtinti.Password)
             {
                 MessageBox.Show("Slaptažodžiai nesutampa.");
             }
             else
             {
-                var passwordSalt = GenerateHash.CreateSalt(10);
-                var passwordHash = GenerateHash.GenerateSHA256Hash(passwordBox.Password, passwordSalt);
+                var passwordSalt = GeneruotiHash.SukurtiSalt(10);
+                var passwordHash = GeneruotiHash.GenerateSHA256Hash(slaptazodis.Password, passwordSalt);
 
-                using (var context = new DatabaseContext())
+                using (var context = new DuomenuBazesKontekstas())
                 {
                     var result = context.UserData.SingleOrDefault(b => b.Email == email);
                     if (result != null)

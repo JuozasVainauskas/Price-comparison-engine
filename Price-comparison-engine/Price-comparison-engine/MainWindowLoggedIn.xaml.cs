@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Price_comparison_engine.Classes;
+using Price_comparison_engine.Klases;
 
 namespace Price_comparison_engine
 {
@@ -16,12 +16,12 @@ namespace Price_comparison_engine
         public MainWindowLoggedIn()
         {
             InitializeComponent();
-            if (LoginWindow.userRole.Equals(Role.Admin))
+            if (PrisijungimoLangas.NarioRole.Equals(Role.Administratorius))
             {
-                administration.IsEnabled = true;
-                administration.Visibility = Visibility.Visible;
+                administravimas.IsEnabled = true;
+                administravimas.Visibility = Visibility.Visible;
             }
-            Read(ref pageUrl, ref imgUrl);
+            Skaityti(ref pageUrl, ref imgUrl);
             if (pageUrl.Count >= 3 && imgUrl.Count >= 3)
             {
                 img1.Source = new BitmapImage(new Uri(imgUrl[0], UriKind.Absolute));
@@ -31,86 +31,86 @@ namespace Price_comparison_engine
         }
         public static async void GetHtmlAssync(DataGrid DataGridLoggedIn)
         {
-            if (ReadSavedItems(LoginWindow.email).Any())
+            if (ReadSavedItems(PrisijungimoLangas.email).Any())
             {
-                foreach (var item in ReadSavedItems(LoginWindow.email))
+                foreach (var item in ReadSavedItems(PrisijungimoLangas.email))
                 {
                     DataGridLoggedIn.Items.Add(item);
                 }
             }
         }
 
-        private void WindowSizeChanged(object sender, SizeChangedEventArgs e)
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            var widthDifferenceForPhotos = this.ActualWidth / 1.1;
-            var heightDifferenceForPhotos = this.ActualHeight / 1.1;
-            var widthDifference = this.ActualWidth / 1.2;
-            TextBoxResize(searchField, widthDifference / 3);
-            upperLine.Width = this.ActualWidth;
-            RectangleResize(bottomLine);
-            SlideShowResize(img1, widthDifferenceForPhotos, heightDifferenceForPhotos);
-            SlideShowResize(img2, widthDifferenceForPhotos, heightDifferenceForPhotos);
-            SlideShowResize(img3, widthDifferenceForPhotos, heightDifferenceForPhotos);
+            var skirtumasPlocioNuotraukai = this.ActualWidth / 1.1;
+            var skirtumasIlgioNuotraukai = this.ActualHeight / 1.1;
+            var skirtumasPlocio = this.ActualWidth / 1.2;
+            TextBoxResize(ieškojimoLaukas, skirtumasPlocio / 3);
+            viršutinėlinija.Width = this.ActualWidth;
+            RectangleIštempimas(apatinėLinija);
+            SlideShowResize(img1, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(img2, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
+            SlideShowResize(img3, skirtumasPlocioNuotraukai, skirtumasIlgioNuotraukai);
         }
         private static List<string> pageUrl = new List<string>();
         private static List<string> imgUrl = new List<string>();
 
-        public static int IndexFront = 3;
-        public static int IndexBack = 0;
-        public static int UrlIndex = 0;
+        public static int indexFront = 3;
+        public static int indexBack = 0;
+        public static int urlIndex = 0;
 
-        private void SliderBack(object sender, MouseButtonEventArgs e)
+        private void Slider_Back(object sender, MouseButtonEventArgs e)
         {
-            if (IndexBack > 0)
+            if (indexBack > 0)
             {
-                UrlIndex--;
-                IndexBack--;
-                IndexFront--;
-                img1.Source = new BitmapImage(new Uri(imgUrl[IndexBack], UriKind.Absolute));
-                img2.Source = new BitmapImage(new Uri(imgUrl[IndexBack + 1], UriKind.Absolute));
-                img3.Source = new BitmapImage(new Uri(imgUrl[IndexBack + 2], UriKind.Absolute));
+                urlIndex--;
+                indexBack--;
+                indexFront--;
+                img1.Source = new BitmapImage(new Uri(imgUrl[indexBack], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(imgUrl[indexBack + 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(imgUrl[indexBack + 2], UriKind.Absolute));
             }
         }
 
-        private void SliderFront(object sender, MouseButtonEventArgs e)
+        private void Slider_Front(object sender, MouseButtonEventArgs e)
         {
-            if (IndexFront < pageUrl.Count - 1)
+            if (indexFront < pageUrl.Count - 1)
             {
-                UrlIndex++;
-                img1.Source = new BitmapImage(new Uri(imgUrl[IndexFront - 2], UriKind.Absolute));
-                img2.Source = new BitmapImage(new Uri(imgUrl[IndexFront - 1], UriKind.Absolute));
-                img3.Source = new BitmapImage(new Uri(imgUrl[IndexFront], UriKind.Absolute));
-                IndexFront++;
-                IndexBack++;
+                urlIndex++;
+                img1.Source = new BitmapImage(new Uri(imgUrl[indexFront - 2], UriKind.Absolute));
+                img2.Source = new BitmapImage(new Uri(imgUrl[indexFront - 1], UriKind.Absolute));
+                img3.Source = new BitmapImage(new Uri(imgUrl[indexFront], UriKind.Absolute));
+                indexFront++;
+                indexBack++;
             }
         }
 
-        private void Img1MouseDown(object sender, MouseButtonEventArgs e)
+        private void Img1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(pageUrl[UrlIndex]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex]);
             }
         }
 
-        private void Img2MouseDown(object sender, MouseButtonEventArgs e)
+        private void Img2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(pageUrl[UrlIndex + 1]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex + 1]);
             }
         }
 
-        private void Img3MouseDown(object sender, MouseButtonEventArgs e)
+        private void Img3_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (pageUrl.Count >= 3)
             {
-                System.Diagnostics.Process.Start(pageUrl[UrlIndex + 2]);
+                System.Diagnostics.Process.Start(pageUrl[urlIndex + 2]);
             }
         }
-        private static void Read(ref List<string> pageUrl, ref List<string> imgUrl)
+        private static void Skaityti(ref List<string> pageUrl, ref List<string> imgUrl)
         {
-            using (var context = new DatabaseContext())
+            using (var context = new DuomenuBazesKontekstas())
             {
                 var tempPageUrl = context.ItemsTable.Select(column => column.PageUrl).ToList();
                 var tempImgUrl = context.ItemsTable.Select(column => column.ImgUrl).ToList();
@@ -126,87 +126,87 @@ namespace Price_comparison_engine
             }
         }
   
-        private void RectangleResize(Rectangle area, double height)
+        private void RectangleResize(Rectangle plotelis, double ilgis)
         {
-            area.Height = this.ActualHeight - height;
+            plotelis.Height = this.ActualHeight - ilgis;
         }
 
-        private void MygtukoResize(Button button, double width, double height)
+        private void MygtukoResize(Button mygtukas, double plotis, double ilgis)
         {
-            button.Width = this.ActualWidth - width;
-            button.Height = this.ActualHeight - height;
+            mygtukas.Width = this.ActualWidth - plotis;
+            mygtukas.Height = this.ActualHeight - ilgis;
         }
 
-        private void TextBoxResize(TextBox textbox, double width)
+        private void TextBoxResize(TextBox tekstBoksas, double plotis)
         {
-            textbox.Width = this.ActualWidth - width;
+            tekstBoksas.Width = this.ActualWidth - plotis;
         }
 
-        private void RectangleResize(Rectangle area)
+        private void RectangleIštempimas(Rectangle plotelis)
         {
-            area.Width = this.ActualWidth;
+            plotelis.Width = this.ActualWidth;
         }
 
-        private void SlideShowResize(Image image, double width, double height)
+        private void SlideShowResize(Image nuotrauka, double plotis, double ilgis)
         {
-            image.Width = this.ActualWidth - width;
-            image.Height = this.ActualHeight - height;
+            nuotrauka.Width = this.ActualWidth - plotis;
+            nuotrauka.Height = this.ActualHeight - ilgis;
         }
 
-       // public static int slideCounter = 1;
-       // public static int slideCounter2 = 3;
-       // public static int slideCounter_2 = 1;
-       // public static int slideCounter2_2 = 3;
+        public static int slideCounter = 1;
+        public static int slideCounter2 = 3;
+        public static int slideCounter_2 = 1;
+        public static int slideCounter2_2 = 3;
 
-        private void LogOut(object sender, RoutedEventArgs e)
+        private void AtsijungimoMygtukas_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow.email = "";
-            LoginWindow.userRole = Role.User;
+            PrisijungimoLangas.email = "";
+            PrisijungimoLangas.NarioRole = Role.Vartotojas;
             var mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
         }
 
-        private void Search(object sender, RoutedEventArgs e)
+        private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.word = searchField.Text;
-            GoodsWindow goodsWindow = new GoodsWindow(this);
-            goodsWindow.Show();
+            MainWindow.word = ieškojimoLaukas.Text;
+            ItemsWindow itemsWindow = new ItemsWindow(this);
+            itemsWindow.Show();
         }
 
-        private void AdminLogin(object sender, RoutedEventArgs e)
+        private void AdminPrisijungimas(object sender, RoutedEventArgs e)
         {
                 var adminLangoAtidarymas = new Admin(this);
                 adminLangoAtidarymas.Show();
         }
 
-        private void CurrentGoods(object sender, MouseButtonEventArgs e)
+        private void ImageClick_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             var name = (((Image)sender).DataContext as Item)?.Name;
-            var langas = new CurrentGoods(name);
+            var langas = new KonkretiPreke(name);
             langas.Show();
         }
-        private void Evaluate(object sender, RoutedEventArgs e)
+        private void VertintiClick(object sender, RoutedEventArgs e)
         {
-            var evaluationWindow = new EvaluationWindow();
-            evaluationWindow.Show();
+            var vertinimoLangoAtidarymas = new VertinimoLangas();
+            vertinimoLangoAtidarymas.Show();
         }
 
-        private void Link(object sender, RoutedEventArgs e)
+        private void LinkButton_Click(object sender, RoutedEventArgs e)
         {
             var link = (((Button)sender).DataContext as Item)?.Link;
             if (link != null) Process.Start(link);
         }
 
-        private void delete(object sender, RoutedEventArgs e)
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             var currentRowIndex = DataGridLoggedIn.Items.IndexOf(DataGridLoggedIn.CurrentItem);
 
-            using (var context = new DatabaseContext())
+            using (var context = new DuomenuBazesKontekstas())
             {
                 var tempItem = (Item)DataGridLoggedIn.Items.GetItemAt(currentRowIndex);
 
-                var result = context.SavedItems.SingleOrDefault(b => b.Email == LoginWindow.email && b.PageUrl == tempItem.Link && b.ImgUrl == tempItem.Photo && b.ShopName == tempItem.Seller && b.ItemName == tempItem.Name && b.Price == tempItem.Price);
+                var result = context.SavedItems.SingleOrDefault(b => b.Email == PrisijungimoLangas.email && b.PageUrl == tempItem.Link && b.ImgUrl == tempItem.Nuotrauka && b.ShopName == tempItem.Seller && b.ItemName == tempItem.Name && b.Price == tempItem.Price);
 
                 if (result != null)
                 {
@@ -218,7 +218,7 @@ namespace Price_comparison_engine
             DataGridLoggedIn.Items.RemoveAt(currentRowIndex);
         }
 
-        private void InitialiseDatagrid(object sender, EventArgs e)
+        private void DataGridLoggedIn_Initialized(object sender, EventArgs e)
         {
             GetHtmlAssync(DataGridLoggedIn);
         }
@@ -227,9 +227,9 @@ namespace Price_comparison_engine
         {
             var item = new List<Item>();
 
-            using (var context = new DatabaseContext())
+            using (var context = new DuomenuBazesKontekstas())
             {
-                var result = context.SavedItems.Where(x => x.Email == email).Select(x => new Item { Link = x.PageUrl, Photo = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
+                var result = context.SavedItems.Where(x => x.Email == email).Select(x => new Item { Link = x.PageUrl, Nuotrauka = x.ImgUrl, Seller = x.ShopName, Name = x.ItemName, Price = x.Price }).ToList();
 
                 foreach (var singleItem in result)
                 {
