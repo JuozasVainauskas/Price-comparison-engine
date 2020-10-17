@@ -169,9 +169,9 @@ namespace Price_comparison_engine
 
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.word = ieškojimoLaukas.Text;
-            ItemsWindow itemsWindow = new ItemsWindow(this);
-            itemsWindow.Show();
+            MainWindow.zodis = ieškojimoLaukas.Text;
+            PrekiuLangas prekiuLangas = new PrekiuLangas(this);
+            prekiuLangas.Show();
         }
 
         private void AdminPrisijungimas(object sender, RoutedEventArgs e)

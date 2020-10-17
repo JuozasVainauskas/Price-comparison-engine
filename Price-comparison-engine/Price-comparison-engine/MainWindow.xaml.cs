@@ -57,12 +57,12 @@ namespace Price_comparison_engine
             kontaktuLangoAtidarymas.Show();
         }
 
-        public  static string word;
+        public  static string zodis;
 
         private void Ieškoti_Click(object sender, RoutedEventArgs e)
         {
-            word = ieskojimoLaukas.Text;
-            var prekiųLangoAtidarymas = new ItemsWindow(null);
+            zodis = ieskojimoLaukas.Text;
+            var prekiųLangoAtidarymas = new PrekiuLangas(null);
             prekiųLangoAtidarymas.Show();
         }
 
