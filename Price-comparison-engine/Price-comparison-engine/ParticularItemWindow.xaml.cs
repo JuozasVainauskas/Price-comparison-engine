@@ -39,7 +39,6 @@ namespace Price_comparison_engine
         public static string[] Divided;
         static readonly string[] ItemsToSkip = { "Šaldytuvas", "Išmanusis", "telefonas", "Kompiuteris","mobilusis","apsauginis","stiklas" };
         public static int SoldOutBarbora;
-        public static int SoldOut;
         public ParticularItemWindow(string name)
         {
             NameToSearch = name;
@@ -332,20 +331,23 @@ namespace Price_comparison_engine
                             var priceTemporary = price;
                             priceTemporary = EliminatingEuroSimbol(priceTemporary);
                             var pricea = Convert.ToDouble(priceTemporary);
-                            var pavArray = name.Split();
-                            int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                            if (numberOfSameWords >= (Divided.Length / 2) + 1)
+                            if (name != null)
                             {
-                                var singleItem = new Item
+                                var pavArray = name.Split();
+                                int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                                if (numberOfSameWords >= (Divided.Length / 2) + 1)
                                 {
-                                    Imagee = "https://pagrindinis.barbora.lt/" + imgLink,
-                                    Sellerr = "Barbora",
-                                    Namee = name,
-                                    Priceaa = pricea,
-                                    Pricee = price,
-                                    Linkk = "https://pagrindinis.barbora.lt/" + link
-                                };
-                                prices.Add(singleItem);
+                                    var singleItem = new Item
+                                    {
+                                        Imagee = "https://pagrindinis.barbora.lt/" + imgLink,
+                                        Sellerr = "Barbora",
+                                        Namee = name,
+                                        Priceaa = pricea,
+                                        Pricee = price,
+                                        Linkk = "https://pagrindinis.barbora.lt/" + link
+                                    };
+                                    prices.Add(singleItem);
+                                }
                             }
                         }
 
@@ -382,16 +384,19 @@ namespace Price_comparison_engine
                         price = Convert.ToString(regex);
                         var pricea = Convert.ToDouble(price);
 
-                        var pavArray = name.Split();
-                        int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                        if (numberOfSameWords >= (Divided.Length/2)+1)
+                        if (name != null)
                         {
-                            var singleItem = new Item
+                            var pavArray = name.Split();
+                            int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                            if (numberOfSameWords >= (Divided.Length/2)+1)
                             {
-                                Imagee = imgLink, Sellerr = "Gintarine vaistine", Namee = name, Priceaa = pricea,
-                                Pricee = price+ '€', Linkk = "https://www.gintarine.lt/" + link
-                            };
-                            prices.Add(singleItem);
+                                var singleItem = new Item
+                                {
+                                    Imagee = imgLink, Sellerr = "Gintarine vaistine", Namee = name, Priceaa = pricea,
+                                    Pricee = price+ '€', Linkk = "https://www.gintarine.lt/" + link
+                                };
+                                prices.Add(singleItem);
+                            }
                         }
                     }
                 }
@@ -424,7 +429,8 @@ namespace Price_comparison_engine
 
                     string imgLink = productListItem
                         .Descendants("img").FirstOrDefault(node => node.GetAttributeValue("class", "")
-                            .Contains("replace-2x img-responsive")).GetAttributeValue("src", "");
+                            .Contains("replace-2x img-responsive"))
+                        ?.GetAttributeValue("src", "");
 
                     if (price != "")
                     {
@@ -434,16 +440,19 @@ namespace Price_comparison_engine
                         price = price + "€";
                         priceAtsarg = EliminatingEuroSimbol(priceAtsarg);
                         var pricea = Convert.ToDouble(priceAtsarg);
-                        var pavArray = name.Split();
-                        int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                        if (numberOfSameWords >= (Divided.Length/2)+1)
+                        if (name != null)
                         {
-                            var singleItem = new Item
+                            var pavArray = name.Split();
+                            int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                            if (numberOfSameWords >= (Divided.Length/2)+1)
                             {
-                                Imagee = imgLink, Sellerr = "BigBox", Namee = name, Priceaa = pricea,
-                                Pricee = price, Linkk = link
-                            };
-                            prices.Add(singleItem);
+                                var singleItem = new Item
+                                {
+                                    Imagee = imgLink, Sellerr = "BigBox", Namee = name, Priceaa = pricea,
+                                    Pricee = price, Linkk = link
+                                };
+                                prices.Add(singleItem);
+                            }
                         }
                     }
                 }
@@ -569,7 +578,7 @@ namespace Price_comparison_engine
 
                     var link = productListItem.Descendants("a").FirstOrDefault()?.GetAttributeValue("href", "");
 
-                    var imgLink = productListItem.Descendants("img").FirstOrDefault().GetAttributeValue("src", "");
+                    var imgLink = productListItem.Descendants("img").FirstOrDefault()?.GetAttributeValue("src", "");
 
                     price = EliminateSpaces(price);
                     price = EliminateSpacesElektromarkt(price);
@@ -577,18 +586,20 @@ namespace Price_comparison_engine
                     priceAtsarg = EliminatingEuroSimbol(priceAtsarg);
 
                     var pricea = Double.Parse(priceAtsarg);
-                    var pavArray = name.Split();
-                    int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                    if (numberOfSameWords >= (Divided.Length/2)+1)
+                    if (name != null)
                     {
-                        var singleItem = new Item
+                        var pavArray = name.Split();
+                        int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                        if (numberOfSameWords >= (Divided.Length/2)+1)
                         {
-                            Imagee = imgLink, Sellerr = "Elektromarkt", Namee = name, Priceaa = pricea,
-                            Pricee = price, Linkk = link
-                        };
-                        prices.Add(singleItem);
+                            var singleItem = new Item
+                            {
+                                Imagee = imgLink, Sellerr = "Elektromarkt", Namee = name, Priceaa = pricea,
+                                Pricee = price, Linkk = link
+                            };
+                            prices.Add(singleItem);
+                        }
                     }
-
                 }
             }
             else
@@ -639,7 +650,7 @@ namespace Price_comparison_engine
 
         private static string EliminatingSymbols(string price)
         {
-            var index = price.IndexOf("\n");
+            var index = price.IndexOf("\n", StringComparison.Ordinal);
             if (index > 0)
             {
                 price = price.Substring(0, index);
@@ -655,7 +666,7 @@ namespace Price_comparison_engine
 
         private static string EliminatingSymbols2(string price)
         {
-            var index = price.IndexOf("\n");
+            var index = price.IndexOf("\n", StringComparison.Ordinal);
             if (index > 0)
             {
                 price = price.Substring(0, index);
