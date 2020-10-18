@@ -33,33 +33,33 @@ namespace Price_comparison_engine
 
     public partial class ItemsWindow
     {
-        public static int soldOutBarbora;
-        public static int soldOut;
-        public static int loggedIn;
-        private static Regex _regEx = new Regex(" ");
-        MainWindowLoggedIn grLoggedIn;
+        public static int SoldOutBarbora;
+        public static int SoldOut;
+        public static int LoggedIn;
+        private static readonly Regex RegEx = new Regex(" ");
+        readonly MainWindowLoggedIn _grLoggedIn;
 
-        protected Htmle.HtmlE html = new Htmle.HtmlE(0,_regEx.Replace(MainWindow.word, "+"));
+        protected Htmle.HtmlE html = new Htmle.HtmlE(0,RegEx.Replace(MainWindow.word, "+"));
 
         public Htmle.HtmlE Htmla
         {
-            get { return html; }
-            set { html = value; }
+            get => html;
+            set => html = value;
         }
    
         public ItemsWindow(MainWindowLoggedIn grid)
         {
             InitializeComponent();
-            this.grLoggedIn = grid;
+            this._grLoggedIn = grid;
             if (string.IsNullOrWhiteSpace(LoginWindow.Email))
             {
                 dataGrid.Columns[5].Visibility = Visibility.Collapsed;
-                loggedIn = 0;
+                LoggedIn = 0;
             }
             else
             {
                 dataGrid.Columns[5].Visibility = Visibility.Visible;
-                loggedIn = 1;
+                LoggedIn = 1;
             }
         }
 
@@ -228,7 +228,7 @@ namespace Price_comparison_engine
                     .Contains("b-product-out-of-stock-backdrop")).ToList();
                 foreach (var unused in productListItemsSoldOut)
                 {
-                    soldOutBarbora++;
+                    SoldOutBarbora++;
                 }
                 return productListItems2;
             }
@@ -255,7 +255,7 @@ namespace Price_comparison_engine
                     .Contains("label-soldout")).ToList();
                 foreach (var unused in productListItemsSoldOut)
                 {
-                    soldOut++;
+                    SoldOut++;
                 }
                 return productListItems2;
             }
@@ -442,7 +442,7 @@ namespace Price_comparison_engine
         {
             if (productListItems != null)
             {
-                var countItems = productListItems.Count - soldOutBarbora;
+                var countItems = productListItems.Count - SoldOutBarbora;
 
                 foreach (var productListItem in productListItems)
                     if (countItems != 0)
@@ -488,7 +488,7 @@ namespace Price_comparison_engine
         {
             if (productListItems != null)
             {
-                var countItems = productListItems.Count - soldOut;
+                var countItems = productListItems.Count - SoldOut;
 
                 foreach (var productListItem in productListItems)
                     if (countItems != 0)
@@ -584,7 +584,7 @@ namespace Price_comparison_engine
 
         private static string PasalinimasTrikdanciuSimboliu(string price)
         {
-            var index = price.IndexOf("\n");
+            var index = price.IndexOf("\n", StringComparison.Ordinal);
             if (index > 0) price = price.Substring(0, index);
 
             var charsToChange = new[] { "." };
@@ -594,7 +594,7 @@ namespace Price_comparison_engine
 
         private static string PasalinimasTrikdanciuSimboliu2(string price)
         {
-            var index = price.IndexOf("\n");
+            var index = price.IndexOf("\n", StringComparison.Ordinal);
             if (index > 0) price = price.Substring(0, index);
 
             var charsToChange = new[] { "." };
@@ -681,10 +681,10 @@ namespace Price_comparison_engine
                 Price = price
             };
 
-            if (!grLoggedIn.DataGridLoggedIn.Items.Cast<Item>().Any(t => t.Link == link && t.Picture == photoUrll && t.Seller == shopName && t.Name == itemName && t.Price == price))
+            if (!_grLoggedIn.DataGridLoggedIn.Items.Cast<Item>().Any(t => t.Link == link && t.Picture == photoUrll && t.Seller == shopName && t.Name == itemName && t.Price == price))
             {
                 MessageBox.Show("Prekė sėkmingai išsaugota palyginimui!");
-                grLoggedIn.DataGridLoggedIn.Items.Add(singleItem);
+                _grLoggedIn.DataGridLoggedIn.Items.Add(singleItem);
             }
             else
             {
