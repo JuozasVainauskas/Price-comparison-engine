@@ -25,10 +25,10 @@ namespace Price_comparison_engine
             public string Text { get; set; }
         }
 
-        private static int votes = 0;
-        private static int votersCount = 0;
+        private static int _votes = 0;
+        private static int _votersCount = 0;
 
-        private static List<CommentsTable> commentsData = new List<CommentsTable>();
+        private static List<CommentsTable> _commentsData = new List<CommentsTable>();
 
 
         private static Dictionary<string, int> rating = new Dictionary<string, int>()
@@ -93,74 +93,74 @@ namespace Price_comparison_engine
 
         private void Shop(object sender, SelectionChangedEventArgs e)
         {
-            if (parduotuve.SelectedIndex == 0)
+            if (ShopComboBox.SelectedIndex == 0)
             {
-                FillList(commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
-                ReadRatings("Avitela", ref votes, ref votersCount);
+                FillList(_commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
+                ReadRatings("Avitela", ref _votes, ref _votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
-                var calc = (double)votes / (3 * votersCount);
-                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-                parduotuve.IsEnabled = false;
+                var calc = (double)_votes / (3 * _votersCount);
+                RatingAverage.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                ShopComboBox.IsEnabled = false;
             }
-            if (parduotuve.SelectedIndex == 1)
+            if (ShopComboBox.SelectedIndex == 1)
             {
-                FillList(commentsData.Where(c => c.ShopId == 1).ToList(), ListView);
-                ReadRatings("Elektromarkt", ref votes, ref votersCount);
+                FillList(_commentsData.Where(c => c.ShopId == 1).ToList(), ListView);
+                ReadRatings("Elektromarkt", ref _votes, ref _votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/elektromarkt.png", UriKind.RelativeOrAbsolute));
-                var calc = (double)votes / (3 * votersCount);
-                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-                parduotuve.IsEnabled = false;
+                var calc = (double)_votes / (3 * _votersCount);
+                RatingAverage.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                ShopComboBox.IsEnabled = false;
             }
-            if (parduotuve.SelectedIndex == 2)
+            if (ShopComboBox.SelectedIndex == 2)
             {
-                FillList(commentsData.Where(c => c.ShopId == 2).ToList(), ListView);
-                ReadRatings("Pigu", ref votes, ref votersCount);
+                FillList(_commentsData.Where(c => c.ShopId == 2).ToList(), ListView);
+                ReadRatings("Pigu", ref _votes, ref _votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
-                var calc = (double)votes / (3 * votersCount);
-                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-                parduotuve.IsEnabled = false;
+                var calc = (double)_votes / (3 * _votersCount);
+                RatingAverage.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                ShopComboBox.IsEnabled = false;
             }
-            if (parduotuve.SelectedIndex == 3)
+            if (ShopComboBox.SelectedIndex == 3)
             {
-                FillList(commentsData.Where(c => c.ShopId == 3).ToList(), ListView);
-                ReadRatings("Barbora", ref votes, ref votersCount);
+                FillList(_commentsData.Where(c => c.ShopId == 3).ToList(), ListView);
+                ReadRatings("Barbora", ref _votes, ref _votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
-                var calc = (double)votes / (3 * votersCount);
-                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-                parduotuve.IsEnabled = false;
+                var calc = (double)_votes / (3 * _votersCount);
+                RatingAverage.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                ShopComboBox.IsEnabled = false;
             }
-            if (parduotuve.SelectedIndex == 4)
+            if (ShopComboBox.SelectedIndex == 4)
             {
-                FillList(commentsData.Where(c => c.ShopId == 4).ToList(), ListView);
-                ReadRatings("Bigbox", ref votes, ref votersCount);
+                FillList(_commentsData.Where(c => c.ShopId == 4).ToList(), ListView);
+                ReadRatings("Bigbox", ref _votes, ref _votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
-                var calc = (double)votes / (3 * votersCount);
-                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-                parduotuve.IsEnabled = false;
+                var calc = (double)_votes / (3 * _votersCount);
+                RatingAverage.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                ShopComboBox.IsEnabled = false;
             }
-            if (parduotuve.SelectedIndex == 5)
+            if (ShopComboBox.SelectedIndex == 5)
             {
-                FillList(commentsData.Where(c => c.ShopId == 5).ToList(), ListView);
-                ReadRatings("Rde", ref votes, ref votersCount);
+                FillList(_commentsData.Where(c => c.ShopId == 5).ToList(), ListView);
+                ReadRatings("Rde", ref _votes, ref _votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
-                var calc = (double)votes / (3 * votersCount);
-                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-                parduotuve.IsEnabled = false;
+                var calc = (double)_votes / (3 * _votersCount);
+                RatingAverage.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                ShopComboBox.IsEnabled = false;
             }
-            if (parduotuve.SelectedIndex == 6)
+            if (ShopComboBox.SelectedIndex == 6)
             {
-                FillList(commentsData.Where(c => c.ShopId == 6).ToList(), ListView);
-                ReadRatings("GintarineVaistine", ref votes, ref votersCount);
+                FillList(_commentsData.Where(c => c.ShopId == 6).ToList(), ListView);
+                ReadRatings("GintarineVaistine", ref _votes, ref _votersCount);
                 ShopImg.Source = new BitmapImage(new Uri("Assets/avitela.png", UriKind.RelativeOrAbsolute));
-                var calc = (double)votes / (3 * votersCount);
-                ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-                parduotuve.IsEnabled = false;
+                var calc = (double)_votes / (3 * _votersCount);
+                RatingAverage.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+                ShopComboBox.IsEnabled = false;
             }
         }
 
         private void RateClick(object sender, RoutedEventArgs e)
         {
-            if (parduotuve.SelectedIndex == -1)
+            if (ShopComboBox.SelectedIndex == -1)
             {
                 MessageBox.Show("Turite pasirinkti parduotuvę.");
             }
@@ -170,147 +170,147 @@ namespace Price_comparison_engine
             }
             else
             {
-                if (parduotuve.SelectedIndex == 0 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 0) == null)
+                if (ShopComboBox.SelectedIndex == 0 && _commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 0) == null)
                 {
                     //Rating
-                    votersCount++;
-                    votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    _votersCount++;
+                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     singlePersonRatings["Avitela"]["Aptarnavimas"] = rating["Aptarnavimas"];
                     singlePersonRatings["Avitela"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
                     singlePersonRatings["Avitela"]["Pristatymas"] = rating["Pristatymas"];
-                    var calc = (double)votes / (3 * votersCount);
-                    WriteRatings("Avitela", votes, votersCount);
+                    var calc = (double)_votes / (3 * _votersCount);
+                    WriteRatings("Avitela", _votes, _votersCount);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(LoginWindow.Email, 0, singlePersonRatings["Avitela"]["Aptarnavimas"], singlePersonRatings["Avitela"]["PrekiuKokybe"], singlePersonRatings["Avitela"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
+                    WriteComments(LoginWindow.Email, 0, singlePersonRatings["Avitela"]["Aptarnavimas"], singlePersonRatings["Avitela"]["PrekiuKokybe"], singlePersonRatings["Avitela"]["Pristatymas"], CommentBox.Text);
+                    CommentBox.Clear();
+                    _commentsData = ReadComments();
+                    FillList(_commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
                 }
-                else if (parduotuve.SelectedIndex == 1 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 1) == null)
+                else if (ShopComboBox.SelectedIndex == 1 && _commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 1) == null)
                 {
                     //Rating
-                    votersCount++;
-                    votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    _votersCount++;
+                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     singlePersonRatings["Elektromarkt"]["Aptarnavimas"] = rating["Aptarnavimas"];
                     singlePersonRatings["Elektromarkt"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
                     singlePersonRatings["Elektromarkt"]["Pristatymas"] = rating["Pristatymas"];
-                    var calc = (double)votes / (3 * votersCount);
-                    WriteRatings("Elektromarkt", votes, votersCount);
+                    var calc = (double)_votes / (3 * _votersCount);
+                    WriteRatings("Elektromarkt", _votes, _votersCount);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(LoginWindow.Email, 1, singlePersonRatings["Elektromarkt"]["Aptarnavimas"], singlePersonRatings["Elektromarkt"]["PrekiuKokybe"], singlePersonRatings["Elektromarkt"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 1).ToList(), ListView);
+                    WriteComments(LoginWindow.Email, 1, singlePersonRatings["Elektromarkt"]["Aptarnavimas"], singlePersonRatings["Elektromarkt"]["PrekiuKokybe"], singlePersonRatings["Elektromarkt"]["Pristatymas"], CommentBox.Text);
+                    CommentBox.Clear();
+                    _commentsData = ReadComments();
+                    FillList(_commentsData.Where(c => c.ShopId == 1).ToList(), ListView);
                 }
-                else if (parduotuve.SelectedIndex == 2 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 2) == null)
+                else if (ShopComboBox.SelectedIndex == 2 && _commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 2) == null)
                 {
                     //Rating
-                    votersCount++;
-                    votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    _votersCount++;
+                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     singlePersonRatings["Pigu"]["Aptarnavimas"] = rating["Aptarnavimas"];
                     singlePersonRatings["Pigu"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
                     singlePersonRatings["Pigu"]["Pristatymas"] = rating["Pristatymas"];
-                    var calc = (double)votes / (3 * votersCount);
-                    WriteRatings("Pigu", votes, votersCount);
+                    var calc = (double)_votes / (3 * _votersCount);
+                    WriteRatings("Pigu", _votes, _votersCount);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(LoginWindow.Email, 2, singlePersonRatings["Pigu"]["Aptarnavimas"], singlePersonRatings["Pigu"]["PrekiuKokybe"], singlePersonRatings["Pigu"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 2).ToList(), ListView);
+                    WriteComments(LoginWindow.Email, 2, singlePersonRatings["Pigu"]["Aptarnavimas"], singlePersonRatings["Pigu"]["PrekiuKokybe"], singlePersonRatings["Pigu"]["Pristatymas"], CommentBox.Text);
+                    CommentBox.Clear();
+                    _commentsData = ReadComments();
+                    FillList(_commentsData.Where(c => c.ShopId == 2).ToList(), ListView);
                 }
-                else if (parduotuve.SelectedIndex == 3 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 3) == null)
+                else if (ShopComboBox.SelectedIndex == 3 && _commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 3) == null)
                 {
                     //Rating
-                    votersCount++;
-                    votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    _votersCount++;
+                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     singlePersonRatings["Barbora"]["Aptarnavimas"] = rating["Aptarnavimas"];
                     singlePersonRatings["Barbora"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
                     singlePersonRatings["Barbora"]["Pristatymas"] = rating["Pristatymas"];
-                    var calc = (double)votes / (3 * votersCount);
-                    WriteRatings("Barbora", votes, votersCount);
+                    var calc = (double)_votes / (3 * _votersCount);
+                    WriteRatings("Barbora", _votes, _votersCount);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(LoginWindow.Email, 3, singlePersonRatings["Barbora"]["Aptarnavimas"], singlePersonRatings["Barbora"]["PrekiuKokybe"], singlePersonRatings["Barbora"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 3).ToList(), ListView);
+                    WriteComments(LoginWindow.Email, 3, singlePersonRatings["Barbora"]["Aptarnavimas"], singlePersonRatings["Barbora"]["PrekiuKokybe"], singlePersonRatings["Barbora"]["Pristatymas"], CommentBox.Text);
+                    CommentBox.Clear();
+                    _commentsData = ReadComments();
+                    FillList(_commentsData.Where(c => c.ShopId == 3).ToList(), ListView);
                 }
-                else if (parduotuve.SelectedIndex == 4 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 4) == null)
+                else if (ShopComboBox.SelectedIndex == 4 && _commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 4) == null)
                 {
                     //Rating
-                    votersCount++;
-                    votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    _votersCount++;
+                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     singlePersonRatings["Bigbox"]["Aptarnavimas"] = rating["Aptarnavimas"];
                     singlePersonRatings["Bigbox"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
                     singlePersonRatings["Bigbox"]["Pristatymas"] = rating["Pristatymas"];
-                    var calc = (double)votes / (3 * votersCount);
-                    WriteRatings("Bigbox", votes, votersCount);
+                    var calc = (double)_votes / (3 * _votersCount);
+                    WriteRatings("Bigbox", _votes, _votersCount);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(LoginWindow.Email, 4, singlePersonRatings["Bigbox"]["Aptarnavimas"], singlePersonRatings["Bigbox"]["PrekiuKokybe"], singlePersonRatings["Bigbox"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 4).ToList(), ListView);
+                    WriteComments(LoginWindow.Email, 4, singlePersonRatings["Bigbox"]["Aptarnavimas"], singlePersonRatings["Bigbox"]["PrekiuKokybe"], singlePersonRatings["Bigbox"]["Pristatymas"], CommentBox.Text);
+                    CommentBox.Clear();
+                    _commentsData = ReadComments();
+                    FillList(_commentsData.Where(c => c.ShopId == 4).ToList(), ListView);
                 }
-                else if (parduotuve.SelectedIndex == 5 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 5) == null)
+                else if (ShopComboBox.SelectedIndex == 5 && _commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 5) == null)
                 {
                     //Rating
-                    votersCount++;
-                    votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    _votersCount++;
+                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     singlePersonRatings["Rde"]["Aptarnavimas"] = rating["Aptarnavimas"];
                     singlePersonRatings["Rde"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
                     singlePersonRatings["Rde"]["Pristatymas"] = rating["Pristatymas"];
-                    var calc = (double)votes / (3 * votersCount);
-                    WriteRatings("Rde", votes, votersCount);
+                    var calc = (double)_votes / (3 * _votersCount);
+                    WriteRatings("Rde", _votes, _votersCount);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(LoginWindow.Email, 5, singlePersonRatings["Rde"]["Aptarnavimas"], singlePersonRatings["Rde"]["PrekiuKokybe"], singlePersonRatings["Rde"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 5).ToList(), ListView);
+                    WriteComments(LoginWindow.Email, 5, singlePersonRatings["Rde"]["Aptarnavimas"], singlePersonRatings["Rde"]["PrekiuKokybe"], singlePersonRatings["Rde"]["Pristatymas"], CommentBox.Text);
+                    CommentBox.Clear();
+                    _commentsData = ReadComments();
+                    FillList(_commentsData.Where(c => c.ShopId == 5).ToList(), ListView);
                 }
-                else if (parduotuve.SelectedIndex == 6 && commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 6) == null)
+                else if (ShopComboBox.SelectedIndex == 6 && _commentsData.SingleOrDefault(c => c.Email == LoginWindow.Email && c.ShopId == 6) == null)
                 {
                     //Rating
-                    votersCount++;
-                    votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
+                    _votersCount++;
+                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
                     singlePersonRatings["GintarineVaistine"]["Aptarnavimas"] = rating["Aptarnavimas"];
                     singlePersonRatings["GintarineVaistine"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
                     singlePersonRatings["GintarineVaistine"]["Pristatymas"] = rating["Pristatymas"];
-                    var calc = (double)votes / (3 * votersCount);
-                    WriteRatings("GintarineVaistine", votes, votersCount);
+                    var calc = (double)_votes / (3 * _votersCount);
+                    WriteRatings("GintarineVaistine", _votes, _votersCount);
                     Atstatyti(calc);
                     //Comment
-                    WriteComments(LoginWindow.Email, 6, singlePersonRatings["GintarineVaistine"]["Aptarnavimas"], singlePersonRatings["GintarineVaistine"]["PrekiuKokybe"], singlePersonRatings["GintarineVaistine"]["Pristatymas"], KomentaruLangelis.Text);
-                    KomentaruLangelis.Clear();
-                    commentsData = ReadComments();
-                    FillList(commentsData.Where(c => c.ShopId == 6).ToList(), ListView);
+                    WriteComments(LoginWindow.Email, 6, singlePersonRatings["GintarineVaistine"]["Aptarnavimas"], singlePersonRatings["GintarineVaistine"]["PrekiuKokybe"], singlePersonRatings["GintarineVaistine"]["Pristatymas"], CommentBox.Text);
+                    CommentBox.Clear();
+                    _commentsData = ReadComments();
+                    FillList(_commentsData.Where(c => c.ShopId == 6).ToList(), ListView);
                 }
                 else
                 {
                     MessageBox.Show("Jau esate palikęs atsiliepimą už šią parduotuvę!");
-                    parduotuve.IsEnabled = true;
-                    parduotuve.SelectedIndex = -1;
-                    KomentaruLangelis.Clear();
+                    ShopComboBox.IsEnabled = true;
+                    ShopComboBox.SelectedIndex = -1;
+                    CommentBox.Clear();
                 }
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_0.png");
+                ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_0.png");
+                ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_0.png");
+                ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_0.png");
+                ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_0.png");
+                ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_0.png");
+                ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_0.png");
+                ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_0.png");
+                ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_0.png");
+                ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_0.png");
+                ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_0.png");
+                ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
+                ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
                 rating["Aptarnavimas"] = 0;
                 rating["PrekiuKokybe"] = 0;
                 rating["Pristatymas"] = 0;
@@ -400,60 +400,60 @@ namespace Price_comparison_engine
 
         private void Atstatyti(double calc)
         {
-            ivertinimas.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
-            parduotuve.IsEnabled = true;
-            parduotuve.SelectedIndex = -1;
+            RatingAverage.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
+            ShopComboBox.IsEnabled = true;
+            ShopComboBox.SelectedIndex = -1;
         }
 
         private void ListViewLoaded(object sender, RoutedEventArgs e)
         {
-            commentsData = ReadComments();
-            FillList(commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
+            _commentsData = ReadComments();
+            FillList(_commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
         }
 
         private void ChangeComments(object sender, SelectionChangedEventArgs e)
         {
-            if (PasirinktiKomentara.SelectedIndex == 0)
+            if (CommentComboBox.SelectedIndex == 0)
             {
-                FillList(commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
+                FillList(_commentsData.Where(c => c.ShopId == 0).ToList(), ListView);
             }
-            else if (PasirinktiKomentara.SelectedIndex == 1)
+            else if (CommentComboBox.SelectedIndex == 1)
             {
-                FillList(commentsData.Where(c => c.ShopId == 1).ToList(), ListView);
+                FillList(_commentsData.Where(c => c.ShopId == 1).ToList(), ListView);
             }
-            else if (PasirinktiKomentara.SelectedIndex == 2)
+            else if (CommentComboBox.SelectedIndex == 2)
             {
-                FillList(commentsData.Where(c => c.ShopId == 2).ToList(), ListView);
+                FillList(_commentsData.Where(c => c.ShopId == 2).ToList(), ListView);
             }
-            else if (PasirinktiKomentara.SelectedIndex == 3)
+            else if (CommentComboBox.SelectedIndex == 3)
             {
-                FillList(commentsData.Where(c => c.ShopId == 3).ToList(), ListView);
+                FillList(_commentsData.Where(c => c.ShopId == 3).ToList(), ListView);
             }
-            else if (PasirinktiKomentara.SelectedIndex == 4)
+            else if (CommentComboBox.SelectedIndex == 4)
             {
-                FillList(commentsData.Where(c => c.ShopId == 4).ToList(), ListView);
+                FillList(_commentsData.Where(c => c.ShopId == 4).ToList(), ListView);
             }
-            else if (PasirinktiKomentara.SelectedIndex == 5)
+            else if (CommentComboBox.SelectedIndex == 5)
             {
-                FillList(commentsData.Where(c => c.ShopId == 5).ToList(), ListView);
+                FillList(_commentsData.Where(c => c.ShopId == 5).ToList(), ListView);
             }
-            else if (PasirinktiKomentara.SelectedIndex == 6)
+            else if (CommentComboBox.SelectedIndex == 6)
             {
-                FillList(commentsData.Where(c => c.ShopId == 6).ToList(), ListView);
+                FillList(_commentsData.Where(c => c.ShopId == 6).ToList(), ListView);
             }
         }
 
-        private void ChangeImgSource(Button button, string imgSrc, string imgToChangeSrc)
+        private static void ChangeImgSource(Button button, string imgSrc, string imgToChangeSrc)
         {
             var ct = button.Template;
             var btnImage = (Image)ct.FindName(imgSrc, button);
             btnImage.Source = new BitmapImage(new Uri(imgToChangeSrc, UriKind.RelativeOrAbsolute));
         }
 
-        private bool CheckImgSource(Button button, string imgSrc)
+        private static bool CheckImgSource(Button button, string imgSrc)
         {
             var imgBool = false;
-            var imgToChangeSrc = "Assets/Star_1.png";
+            const string imgToChangeSrc = "Assets/Star_1.png";
 
             var ct = button.Template;
             var btnImage = (Image)ct.FindName(imgSrc, button);
@@ -468,453 +468,453 @@ namespace Price_comparison_engine
             return imgBool;
         }
 
-        private void AptarnavimasStar1(object sender, RoutedEventArgs e)
+        private void ServiceStar1(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
+            ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_1.png");
+            ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_0.png");
+            ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_0.png");
+            ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_0.png");
+            ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
             rating["Aptarnavimas"] = 1;
         }
 
-        private void AptarnavimasStar2(object sender, RoutedEventArgs e)
+        private void ServiceStar2(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
+            ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_1.png");
+            ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_1.png");
+            ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_0.png");
+            ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_0.png");
+            ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
             rating["Aptarnavimas"] = 2;
         }
 
-        private void AptarnavimasStar3(object sender, RoutedEventArgs e)
+        private void ServiceStar3(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
+            ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_1.png");
+            ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_1.png");
+            ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_1.png");
+            ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_0.png");
+            ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
             rating["Aptarnavimas"] = 3;
         }
 
-        private void AptarnavimasStar4(object sender, RoutedEventArgs e)
+        private void ServiceStar4(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
+            ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_1.png");
+            ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_1.png");
+            ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_1.png");
+            ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_1.png");
+            ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
             rating["Aptarnavimas"] = 4;
         }
 
-        private void AptarnavimasStar5(object sender, RoutedEventArgs e)
+        private void ServiceStar5(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_1.png");
-            ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_1.png");
+            ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_1.png");
+            ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_1.png");
+            ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_1.png");
+            ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_1.png");
+            ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_1.png");
             rating["Aptarnavimas"] = 5;
         }
 
-        private void PrekiuKokybeStar1(object sender, RoutedEventArgs e)
+        private void QualityStar1(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
+            ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_1.png");
+            ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_0.png");
+            ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_0.png");
+            ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_0.png");
+            ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
             rating["PrekiuKokybe"] = 1;
         }
 
-        private void PrekiuKokybeStar2(object sender, RoutedEventArgs e)
+        private void QualityStar2(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
+            ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_1.png");
+            ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_1.png");
+            ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_0.png");
+            ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_0.png");
+            ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
             rating["PrekiuKokybe"] = 2;
         }
 
-        private void PrekiuKokybeStar3(object sender, RoutedEventArgs e)
+        private void QualityStar3(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
+            ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_1.png");
+            ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_1.png");
+            ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_1.png");
+            ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_0.png");
+            ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
             rating["PrekiuKokybe"] = 3;
         }
 
-        private void PrekiuKokybeStar4(object sender, RoutedEventArgs e)
+        private void QualityStar4(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
+            ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_1.png");
+            ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_1.png");
+            ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_1.png");
+            ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_1.png");
+            ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
             rating["PrekiuKokybe"] = 4;
         }
 
-        private void PrekiuKokybeStar5(object sender, RoutedEventArgs e)
+        private void QualityStar5(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_1.png");
-            ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_1.png");
+            ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_1.png");
+            ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_1.png");
+            ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_1.png");
+            ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_1.png");
+            ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_1.png");
             rating["PrekiuKokybe"] = 5;
         }
 
-        private void PristatymasStar1(object sender, RoutedEventArgs e)
+        private void DeliveryStar1(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
+            ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_1.png");
+            ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_0.png");
+            ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_0.png");
+            ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
+            ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
             rating["Pristatymas"] = 1;
         }
 
-        private void PristatymasStar2(object sender, RoutedEventArgs e)
+        private void DeliveryStar2(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
+            ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_1.png");
+            ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_1.png");
+            ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_0.png");
+            ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
+            ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
             rating["Pristatymas"] = 2;
         }
 
-        private void PristatymasStar3(object sender, RoutedEventArgs e)
+        private void DeliveryStar3(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
+            ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_1.png");
+            ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_1.png");
+            ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_1.png");
+            ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
+            ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
             rating["Pristatymas"] = 3;
         }
 
-        private void PristatymasStar4(object sender, RoutedEventArgs e)
+        private void DeliveryStar4(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
+            ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_1.png");
+            ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_1.png");
+            ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_1.png");
+            ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_1.png");
+            ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
             rating["Pristatymas"] = 4;
         }
 
-        private void PristatymasStar5(object sender, RoutedEventArgs e)
+        private void DeliveryStar5(object sender, RoutedEventArgs e)
         {
-            ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_1.png");
-            ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_1.png");
+            ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_1.png");
+            ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_1.png");
+            ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_1.png");
+            ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_1.png");
+            ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_1.png");
             rating["Pristatymas"] = 5;
         }
 
-        private void AptarnavimasImg1_OnMouseEnter(object sender, MouseEventArgs e)
+        private void ServiceImg1_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_2.png");
             }
         }
 
-        private void AptarnavimasImg1_OnMouseLeave(object sender, MouseEventArgs e)
+        private void ServiceImg1_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_0.png");
             }
         }
 
-        private void AptarnavimasImg2_OnMouseEnter(object sender, MouseEventArgs e)
+        private void ServiceImg2_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service2, "ServiceImg2") && !CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_2.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_2.png");
+                ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_2.png");
             }
         }
 
-        private void AptarnavimasImg2_OnMouseLeave(object sender, MouseEventArgs e)
+        private void ServiceImg2_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service2, "ServiceImg2") && !CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_0.png");
+                ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_0.png");
             }
         }
 
-        private void AptarnavimasImg3_OnMouseEnter(object sender, MouseEventArgs e)
+        private void ServiceImg3_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service3, "ServiceImg3") && !CheckImgSource(Service2, "ServiceImg2") && !CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_2.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_2.png");
+                ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_2.png");
+                ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_2.png");
             }
         }
 
-        private void AptarnavimasImg3_OnMouseLeave(object sender, MouseEventArgs e)
+        private void ServiceImg3_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service3, "ServiceImg3") && !CheckImgSource(Service2, "ServiceImg2") && !CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_0.png");
+                ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_0.png");
+                ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_0.png");
             }
         }
 
-        private void AptarnavimasImg4_OnMouseEnter(object sender, MouseEventArgs e)
+        private void ServiceImg4_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service4, "ServiceImg4") && !CheckImgSource(Service3, "ServiceImg3") && !CheckImgSource(Service2, "ServiceImg2") && !CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_2.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_2.png");
+                ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_2.png");
+                ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_2.png");
+                ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_2.png");
             }
         }
 
-        private void AptarnavimasImg4_OnMouseLeave(object sender, MouseEventArgs e)
+        private void ServiceImg4_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service4, "ServiceImg4") && !CheckImgSource(Service3, "ServiceImg3") && !CheckImgSource(Service2, "ServiceImg2") && !CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_0.png");
+                ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_0.png");
+                ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_0.png");
+                ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_0.png");
             }
         }
 
-        private void AptarnavimasImg5_OnMouseEnter(object sender, MouseEventArgs e)
+        private void ServiceImg5_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas5, "AptarnavimasImg5") && !CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service5, "ServiceImg5") && !CheckImgSource(Service4, "ServiceImg4") && !CheckImgSource(Service3, "ServiceImg3") && !CheckImgSource(Service2, "ServiceImg2") && !CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_2.png");
-                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_2.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_2.png");
+                ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_2.png");
+                ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_2.png");
+                ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_2.png");
+                ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_2.png");
             }
         }
 
-        private void AptarnavimasImg5_OnMouseLeave(object sender, MouseEventArgs e)
+        private void ServiceImg5_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Aptarnavimas5, "AptarnavimasImg5") && !CheckImgSource(Aptarnavimas4, "AptarnavimasImg4") && !CheckImgSource(Aptarnavimas3, "AptarnavimasImg3") && !CheckImgSource(Aptarnavimas2, "AptarnavimasImg2") && !CheckImgSource(Aptarnavimas1, "AptarnavimasImg1"))
+            if (!CheckImgSource(Service5, "ServiceImg5") && !CheckImgSource(Service4, "ServiceImg4") && !CheckImgSource(Service3, "ServiceImg3") && !CheckImgSource(Service2, "ServiceImg2") && !CheckImgSource(Service1, "ServiceImg1"))
             {
-                ChangeImgSource(Aptarnavimas1, "AptarnavimasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas2, "AptarnavimasImg2", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas3, "AptarnavimasImg3", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas4, "AptarnavimasImg4", "Assets/Star_0.png");
-                ChangeImgSource(Aptarnavimas5, "AptarnavimasImg5", "Assets/Star_0.png");
+                ChangeImgSource(Service1, "ServiceImg1", "Assets/Star_0.png");
+                ChangeImgSource(Service2, "ServiceImg2", "Assets/Star_0.png");
+                ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_0.png");
+                ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_0.png");
+                ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
             }
         }
 
-        private void PrekiuKokybeImg1_OnMouseEnter(object sender, MouseEventArgs e)
+        private void QualityImg1_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_2.png");
             }
         }
 
-        private void PrekiuKokybeImg1_OnMouseLeave(object sender, MouseEventArgs e)
+        private void QualityImg1_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_0.png");
             }
         }
 
-        private void PrekiuKokybeImg2_OnMouseEnter(object sender, MouseEventArgs e)
+        private void QualityImg2_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality2, "QualityImg2") && !CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_2.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_2.png");
+                ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_2.png");
             }
         }
 
-        private void PrekiuKokybeImg2_OnMouseLeave(object sender, MouseEventArgs e)
+        private void QualityImg2_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality2, "QualityImg2") && !CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_0.png");
+                ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_0.png");
             }
         }
 
-        private void PrekiuKokybeImg3_OnMouseEnter(object sender, MouseEventArgs e)
+        private void QualityImg3_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality3, "QualityImg3") && !CheckImgSource(Quality2, "QualityImg2") && !CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_2.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_2.png");
+                ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_2.png");
+                ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_2.png");
             }
         }
 
-        private void PrekiuKokybeImg3_OnMouseLeave(object sender, MouseEventArgs e)
+        private void QualityImg3_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality3, "QualityImg3") && !CheckImgSource(Quality2, "QualityImg2") && !CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_0.png");
+                ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_0.png");
+                ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_0.png");
             }
         }
 
-        private void PrekiuKokybeImg4_OnMouseEnter(object sender, MouseEventArgs e)
+        private void QualityImg4_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality4, "QualityImg4") && !CheckImgSource(Quality3, "QualityImg3") && !CheckImgSource(Quality2, "QualityImg2") && !CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_2.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_2.png");
+                ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_2.png");
+                ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_2.png");
+                ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_2.png");
             }
         }
 
-        private void PrekiuKokybeImg4_OnMouseLeave(object sender, MouseEventArgs e)
+        private void QualityImg4_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality4, "QualityImg4") && !CheckImgSource(Quality3, "QualityImg3") && !CheckImgSource(Quality2, "QualityImg2") && !CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_0.png");
+                ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_0.png");
+                ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_0.png");
+                ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_0.png");
             }
         }
 
-        private void PrekiuKokybeImg5_OnMouseEnter(object sender, MouseEventArgs e)
+        private void QualityImg5_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe5, "PrekiuKokybeImg5") && !CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality5, "QualityImg5") && !CheckImgSource(Quality4, "QualityImg4") && !CheckImgSource(Quality3, "QualityImg3") && !CheckImgSource(Quality2, "QualityImg2") && !CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_2.png");
-                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_2.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_2.png");
+                ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_2.png");
+                ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_2.png");
+                ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_2.png");
+                ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_2.png");
             }
         }
 
-        private void PrekiuKokybeImg5_OnMouseLeave(object sender, MouseEventArgs e)
+        private void QualityImg5_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(PrekiuKokybe5, "PrekiuKokybeImg5") && !CheckImgSource(PrekiuKokybe4, "PrekiuKokybeImg4") && !CheckImgSource(PrekiuKokybe3, "PrekiuKokybeImg3") && !CheckImgSource(PrekiuKokybe2, "PrekiuKokybeImg2") && !CheckImgSource(PrekiuKokybe1, "PrekiuKokybeImg1"))
+            if (!CheckImgSource(Quality5, "QualityImg5") && !CheckImgSource(Quality4, "QualityImg4") && !CheckImgSource(Quality3, "QualityImg3") && !CheckImgSource(Quality2, "QualityImg2") && !CheckImgSource(Quality1, "QualityImg1"))
             {
-                ChangeImgSource(PrekiuKokybe1, "PrekiuKokybeImg1", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe2, "PrekiuKokybeImg2", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe3, "PrekiuKokybeImg3", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe4, "PrekiuKokybeImg4", "Assets/Star_0.png");
-                ChangeImgSource(PrekiuKokybe5, "PrekiuKokybeImg5", "Assets/Star_0.png");
+                ChangeImgSource(Quality1, "QualityImg1", "Assets/Star_0.png");
+                ChangeImgSource(Quality2, "QualityImg2", "Assets/Star_0.png");
+                ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_0.png");
+                ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_0.png");
+                ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
             }
         }
 
-        private void PristatymasImg1_OnMouseEnter(object sender, MouseEventArgs e)
+        private void DeliveryImg1_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_2.png");
             }
         }
 
-        private void PristatymasImg1_OnMouseLeave(object sender, MouseEventArgs e)
+        private void DeliveryImg1_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_0.png");
             }
         }
 
-        private void PristatymasImg2_OnMouseEnter(object sender, MouseEventArgs e)
+        private void DeliveryImg2_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery2, "DeliveryImg2") && !CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_2.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_2.png");
+                ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_2.png");
             }
         }
 
-        private void PristatymasImg2_OnMouseLeave(object sender, MouseEventArgs e)
+        private void DeliveryImg2_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery2, "DeliveryImg2") && !CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_0.png");
+                ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_0.png");
             }
         }
 
-        private void PristatymasImg3_OnMouseEnter(object sender, MouseEventArgs e)
+        private void DeliveryImg3_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery3, "DeliveryImg3") && !CheckImgSource(Delivery2, "DeliveryImg2") && !CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_2.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_2.png");
+                ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_2.png");
+                ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_2.png");
             }
         }
 
-        private void PristatymasImg3_OnMouseLeave(object sender, MouseEventArgs e)
+        private void DeliveryImg3_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery3, "DeliveryImg3") && !CheckImgSource(Delivery2, "DeliveryImg2") && !CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_0.png");
+                ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_0.png");
+                ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_0.png");
             }
         }
 
-        private void PristatymasImg4_OnMouseEnter(object sender, MouseEventArgs e)
+        private void DeliveryImg4_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery4, "DeliveryImg4") && !CheckImgSource(Delivery3, "DeliveryImg3") && !CheckImgSource(Delivery2, "DeliveryImg2") && !CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_2.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_2.png");
+                ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_2.png");
+                ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_2.png");
+                ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_2.png");
             }
         }
 
-        private void PristatymasImg4_OnMouseLeave(object sender, MouseEventArgs e)
+        private void DeliveryImg4_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery4, "DeliveryImg4") && !CheckImgSource(Delivery3, "DeliveryImg3") && !CheckImgSource(Delivery2, "DeliveryImg2") && !CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_0.png");
+                ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_0.png");
+                ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_0.png");
+                ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
             }
         }
 
-        private void PristatymasImg5_OnMouseEnter(object sender, MouseEventArgs e)
+        private void DeliveryImg5_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas5, "PristatymasImg5") && !CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery5, "DeliveryImg5") && !CheckImgSource(Delivery4, "DeliveryImg4") && !CheckImgSource(Delivery3, "DeliveryImg3") && !CheckImgSource(Delivery2, "DeliveryImg2") && !CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_2.png");
-                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_2.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_2.png");
+                ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_2.png");
+                ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_2.png");
+                ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_2.png");
+                ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_2.png");
             }
         }
 
-        private void PristatymasImg5_OnMouseLeave(object sender, MouseEventArgs e)
+        private void DeliveryImg5_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            if (!CheckImgSource(Pristatymas5, "PristatymasImg5") && !CheckImgSource(Pristatymas4, "PristatymasImg4") && !CheckImgSource(Pristatymas3, "PristatymasImg3") && !CheckImgSource(Pristatymas2, "PristatymasImg2") && !CheckImgSource(Pristatymas1, "PristatymasImg1"))
+            if (!CheckImgSource(Delivery5, "DeliveryImg5") && !CheckImgSource(Delivery4, "DeliveryImg4") && !CheckImgSource(Delivery3, "DeliveryImg3") && !CheckImgSource(Delivery2, "DeliveryImg2") && !CheckImgSource(Delivery1, "DeliveryImg1"))
             {
-                ChangeImgSource(Pristatymas1, "PristatymasImg1", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas2, "PristatymasImg2", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas3, "PristatymasImg3", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas4, "PristatymasImg4", "Assets/Star_0.png");
-                ChangeImgSource(Pristatymas5, "PristatymasImg5", "Assets/Star_0.png");
+                ChangeImgSource(Delivery1, "DeliveryImg1", "Assets/Star_0.png");
+                ChangeImgSource(Delivery2, "DeliveryImg2", "Assets/Star_0.png");
+                ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_0.png");
+                ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
+                ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
             }
         }
     }
