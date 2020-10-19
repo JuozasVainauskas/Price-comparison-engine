@@ -27,9 +27,13 @@ namespace Price_comparison_engine
     {
         public void DataDirectoryInitialize()
         {
-            var enviroment = System.Environment.CurrentDirectory;
-            var projectDirectory = Directory.GetParent(enviroment).Parent.FullName;
-            AppDomain.CurrentDomain.SetData("DataDirectory", projectDirectory);
+            var environment = System.Environment.CurrentDirectory;
+            var directoryInfo = Directory.GetParent(environment).Parent;
+            if (directoryInfo != null)
+            {
+                var projectDirectory = directoryInfo.FullName;
+                AppDomain.CurrentDomain.SetData("DataDirectory", projectDirectory);
+            }
         }
 
         public MainWindow()
@@ -81,25 +85,25 @@ namespace Price_comparison_engine
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var differenceOfWidth = this.ActualWidth / 1.2;
-            var skirtumasIlgio = this.ActualHeight / 1.1;
-            var differenceOfWidthBlokeliui = this.ActualHeight / 1.7;
-            var differenceOfWidthimagei = this.ActualWidth / 1.4;
-            var skirtumasIlgioimagei = this.ActualHeight / 1.4;
-            MygtukoResize(LoginButton, differenceOfWidth, skirtumasIlgio);
-            MygtukoResize(RegisteringButton, differenceOfWidth, skirtumasIlgio);
-            MygtukoResize(QaButton, differenceOfWidth, skirtumasIlgio);
-            MygtukoResize(ContactButton, differenceOfWidth, skirtumasIlgio);
-            MygtukoResize(SearchButton, differenceOfWidth, skirtumasIlgio);
-            TextBoxResize(SearchBox, differenceOfWidth / 3, skirtumasIlgio);
-            RectangleResize(MiddleLine, differenceOfWidthBlokeliui);
+            var differenceOfLength = this.ActualHeight / 1.1;
+            var differenceOfBlockWidth = this.ActualHeight / 1.7;
+            var differenceOfImageWidth = this.ActualWidth / 1.4;
+            var differenceOfImageLength = this.ActualHeight / 1.4;
+            MygtukoResize(LoginButton, differenceOfWidth, differenceOfLength);
+            MygtukoResize(RegisteringButton, differenceOfWidth, differenceOfLength);
+            MygtukoResize(QaButton, differenceOfWidth, differenceOfLength);
+            MygtukoResize(ContactButton, differenceOfWidth, differenceOfLength);
+            MygtukoResize(SearchButton, differenceOfWidth, differenceOfLength);
+            TextBoxResize(SearchBox, differenceOfWidth / 3, differenceOfLength);
+            RectangleResize(MiddleLine, differenceOfBlockWidth);
             RectangleWidening(UpperLine);
             RectangleWidening(MiddleLine);
             RectangleWidening(BottomLine);
-            SlideShowResize(Img1, differenceOfWidthimagei, skirtumasIlgioimagei);
-            SlideShowResize(Img2, differenceOfWidthimagei, skirtumasIlgioimagei);
-            SlideShowResize(Img3, differenceOfWidthimagei, skirtumasIlgioimagei);
-            SlideShowResize(ButtonRight, skirtumasIlgio, skirtumasIlgio);
-            SlideShowResize(ButtonLeft, skirtumasIlgio, skirtumasIlgio);
+            SlideShowResize(Img1, differenceOfImageWidth, differenceOfImageLength);
+            SlideShowResize(Img2, differenceOfImageWidth, differenceOfImageLength);
+            SlideShowResize(Img3, differenceOfImageWidth, differenceOfImageLength);
+            SlideShowResize(ButtonRight, differenceOfLength, differenceOfLength);
+            SlideShowResize(ButtonLeft, differenceOfLength, differenceOfLength);
         }
 
         private void MygtukoResize(Button button, double width=0, double length=0)
@@ -114,10 +118,10 @@ namespace Price_comparison_engine
             textBlock.Height = this.ActualHeight - length;
         }
 
-        private void TextBoxResize(TextBox tekstBoksas, double width=0, double length=0)
+        private void TextBoxResize(TextBox textBox, double width=0, double length=0)
         {
-            tekstBoksas.Width = this.ActualWidth - width;
-            tekstBoksas.Height = this.ActualHeight - length;
+            textBox.Width = this.ActualWidth - width;
+            textBox.Height = this.ActualHeight - length;
         }
         private void RectangleResize(Rectangle rectangle, double length=0)
         {

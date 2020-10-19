@@ -33,9 +33,9 @@ namespace Price_comparison_engine
 
     public partial class ItemsWindow
     {
-        public static int SoldOutBarbora;
-        public static int SoldOut;
-        public static int LoggedIn;
+        public static int soldOutBarbora;
+        public static int soldOut;
+        public static int loggedIn;
         private static readonly Regex RegEx = new Regex(" ");
         readonly MainWindowLoggedIn _grLoggedIn;
 
@@ -54,12 +54,12 @@ namespace Price_comparison_engine
             if (string.IsNullOrWhiteSpace(LoginWindow.Email))
             {
                 dataGrid.Columns[5].Visibility = Visibility.Collapsed;
-                LoggedIn = 0;
+                loggedIn = 0;
             }
             else
             {
                 dataGrid.Columns[5].Visibility = Visibility.Visible;
-                LoggedIn = 1;
+                loggedIn = 1;
             }
         }
 
@@ -228,7 +228,7 @@ namespace Price_comparison_engine
                     .Contains("b-product-out-of-stock-backdrop")).ToList();
                 foreach (var unused in productListItemsSoldOut)
                 {
-                    SoldOutBarbora++;
+                    soldOutBarbora++;
                 }
                 return productListItems2;
             }
@@ -255,7 +255,7 @@ namespace Price_comparison_engine
                     .Contains("label-soldout")).ToList();
                 foreach (var unused in productListItemsSoldOut)
                 {
-                    SoldOut++;
+                    soldOut++;
                 }
                 return productListItems2;
             }
@@ -442,7 +442,7 @@ namespace Price_comparison_engine
         {
             if (productListItems != null)
             {
-                var countItems = productListItems.Count - SoldOutBarbora;
+                var countItems = productListItems.Count - soldOutBarbora;
 
                 foreach (var productListItem in productListItems)
                     if (countItems != 0)
@@ -488,7 +488,7 @@ namespace Price_comparison_engine
         {
             if (productListItems != null)
             {
-                var countItems = productListItems.Count - SoldOut;
+                var countItems = productListItems.Count - soldOut;
 
                 foreach (var productListItem in productListItems)
                     if (countItems != 0)

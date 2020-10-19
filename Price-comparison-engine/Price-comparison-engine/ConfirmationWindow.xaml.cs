@@ -21,28 +21,28 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class ConfirmationWindow : Window
     {
-        readonly MainWindow mainWindow;
-        readonly RegisteringWindow registeringWindow;
-        readonly DatabaseContext context;
-        private string code;
+        private readonly MainWindow _mainWindow;
+        private readonly RegisteringWindow _registeringWindow;
+        private readonly DatabaseContext _context;
+        private readonly string _code;
         public ConfirmationWindow(DatabaseContext context, MainWindow mainWindow, RegisteringWindow registeringWindow, string code, string email)
         {
             InitializeComponent();
             new SendEmail(code, email);
-            this.mainWindow = mainWindow;
-            this.registeringWindow = registeringWindow;
-            this.context = context;
-            this.code = code;
+            _mainWindow = mainWindow;
+            _registeringWindow = registeringWindow;
+            _context = context;
+            _code = code;
         }
 
         private void ConfirmClick(object sender, RoutedEventArgs e)
         {
-            if (code.Equals(ConfirmBox.Text))
+            if (_code.Equals(ConfirmBox.Text))
             {
-                context.SaveChanges();
+                _context.SaveChanges();
 
-                mainWindow.Close();
-                registeringWindow.Close();
+                _mainWindow.Close();
+                _registeringWindow.Close();
                 MessageBox.Show("Sėkmingai prisiregistravote.");
 
                 var mainWindowLoggedIn = new MainWindowLoggedIn();

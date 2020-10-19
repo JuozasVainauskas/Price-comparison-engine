@@ -25,14 +25,14 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class LoginWindow : Window
     {
-        readonly MainWindow mainWindow;
+        readonly MainWindow _mainWindow;
         public static Enum UserRole { get; set; }
         public static string Email { get; set; }
 
-        public LoginWindow(MainWindow pagrindinisLangas)
+        public LoginWindow(MainWindow mainWindow)
         {
             InitializeComponent();
-            this.mainWindow = pagrindinisLangas;
+            _mainWindow = mainWindow;
             UserRole = Role.User;
             Email = "";
         }
@@ -47,7 +47,7 @@ namespace Price_comparison_engine
                 if (result != null)
                 {
                     var passwordSalt = result.PasswordSalt;
-                    var passworHash = result.PasswordHash;
+                    var passwordHash = result.PasswordHash;
                     if(result.Role == "0")
                     {
                         UserRole = Role.User;
@@ -57,15 +57,15 @@ namespace Price_comparison_engine
                         UserRole = Role.Admin;
                     }
 
-                    var userEnteredPassword = GenerateHash.GenerateSHA256Hash(passwordBox.Password, passwordSalt);
+                    var userEnteredPassword = GenerateHash.GenerateSha256Hash(passwordBox.Password, passwordSalt);
 
-                    if (passworHash.Equals(userEnteredPassword))
+                    if (passwordHash.Equals(userEnteredPassword))
                     {
                         var mainWindowLoggedIn = new MainWindowLoggedIn();
                         mainWindowLoggedIn.Show();
 
                         this.Close();
-                        mainWindow.Close();
+                        _mainWindow.Close();
                     }
                     else
                     {

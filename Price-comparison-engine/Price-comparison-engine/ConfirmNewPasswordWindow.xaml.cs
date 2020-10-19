@@ -21,8 +21,8 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class ConfirmNewPasswordWindow : Window
     {
-        private string code;
-        private string email;
+        private string _code;
+        private string _email;
 
         public ConfirmNewPasswordWindow()
         {
@@ -42,11 +42,11 @@ namespace Price_comparison_engine
             }
             else
             {
-                email = EmailBox.Text;
-                code = GenerateHash.CreateSalt(16);
-                code = code.Remove(code.Length - 2);
+                _email = EmailBox.Text;
+                _code = GenerateHash.CreateSalt(16);
+                _code = _code.Remove(_code.Length - 2);
 
-                new SendEmail(code, email);
+                new SendEmail(_code, _email);
 
                 EmailBox.Visibility = Visibility.Collapsed;
                 Message1.Visibility = Visibility.Collapsed;
@@ -61,9 +61,9 @@ namespace Price_comparison_engine
 
         private void ConfirmClick(object sender, RoutedEventArgs e)
         {
-            if (code.Equals(ConfirmBox.Text))
+            if (_code.Equals(ConfirmBox.Text))
             {
-                var passwordChangeWindow = new PasswordChangeWindow(email);
+                var passwordChangeWindow = new PasswordChangeWindow(_email);
                 passwordChangeWindow.Show();
                 this.Close();
             }
