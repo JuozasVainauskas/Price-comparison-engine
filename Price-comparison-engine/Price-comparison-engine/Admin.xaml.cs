@@ -13,13 +13,13 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class Admin : Window
     {
-        private MainWindowLoggedIn mainWindowLoggedIn;
+        private readonly MainWindowLoggedIn _mainWindowLoggedIn;
 
         public Admin(MainWindowLoggedIn mainWindowLoggedIn)
         {
             InitializeComponent();
             UpdateStatistics();
-            this.mainWindowLoggedIn = mainWindowLoggedIn;
+            _mainWindowLoggedIn = mainWindowLoggedIn;
         }
 
         private void UpdateStatistics()
@@ -33,7 +33,7 @@ namespace Price_comparison_engine
 
         private partial class User
         {
-            public int ID { get; set; }
+            public int Id { get; set; }
             public string Email { get; set; }   
             public string Role { get; set; }
         }
@@ -113,7 +113,7 @@ namespace Price_comparison_engine
                 LoginWindow.UserRole = Classes.Role.User;
                 var mainWindow = new MainWindow();
                 mainWindow.Show();
-                mainWindowLoggedIn.Close();
+                _mainWindowLoggedIn.Close();
                 this.Close();
             }
         }
@@ -136,7 +136,7 @@ namespace Price_comparison_engine
         private void Create(string email, string password)
         {
             var passwordSalt = GenerateHash.CreateSalt(10);
-            var passwordHash = GenerateHash.GenerateSHA256Hash(PasswordToCreate.Password, passwordSalt);
+            var passwordHash = GenerateHash.GenerateSha256Hash(PasswordToCreate.Password, passwordSalt);
 
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
@@ -210,7 +210,7 @@ namespace Price_comparison_engine
         {
             for (int i = 0; i < Email.Count; i++)
             {
-                var user = new User { ID = i, Email = Email[i], Role = Role[i] };
+                var user = new User { Id = i, Email = Email[i], Role = Role[i] };
                 UsersTable.Items.Add(user);
             }
         }
@@ -244,23 +244,19 @@ namespace Price_comparison_engine
                 List<int> statisticList = new List<int>();
 
                 var allUsers = context.UserData
-               .Where(o => o.UserId >= 0)
-               .Count();
+                    .Count(o => o.UserId >= 0);
                 statisticList.Add(allUsers);
 
                 var admins = context.UserData
-               .Where(o => o.Role == "1")
-               .Count();
+                    .Count(o => o.Role == "1");
                 statisticList.Add(admins);
 
                 var regularUsers = context.UserData
-               .Where(o => o.Role == "0")
-               .Count();
+                    .Count(o => o.Role == "0");
                 statisticList.Add(regularUsers);
 
                 var goods = context.ItemsTable
-               .Where(o => o.ItemId >= 0)
-               .Count();
+                    .Count(o => o.ItemId >= 0);
                 statisticList.Add(goods);
 
                 return statisticList;

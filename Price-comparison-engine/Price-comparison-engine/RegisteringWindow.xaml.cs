@@ -26,18 +26,18 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class RegisteringWindow : Window
     {
-        readonly MainWindow mainWindow;
+        private readonly MainWindow _mainWindow;
 
         public RegisteringWindow(MainWindow mainWindow)
         {
             InitializeComponent();
-            this.mainWindow = mainWindow;
+            _mainWindow = mainWindow;
         }
 
         private void RegisterClick(object sender, RoutedEventArgs e)
         {
             var passwordSalt = GenerateHash.CreateSalt(10);
-            var passwordHash = GenerateHash.GenerateSHA256Hash(PasswordBox.Password, passwordSalt);
+            var passwordHash = GenerateHash.GenerateSha256Hash(PasswordBox.Password, passwordSalt);
             
             var pattern1 = new Regex(@"(\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*[a-zA-Z]\.*)|(\.*[a-zA-Z]\.*[a-zA-Z]\.*[a-zA-Z]\.*\d+\.*)", RegexOptions.Compiled);
             var pattern2 = new Regex(@"([a-zA-Z0-9._-]*[a-zA-Z0-9][a-zA-Z0-9._-]*)(@gmail.com)$", RegexOptions.Compiled);
@@ -79,7 +79,7 @@ namespace Price_comparison_engine
 
                     var code = GenerateHash.CreateSalt(16);
                     code = code.Remove(code.Length - 2);
-                    var confirmationWindow = new ConfirmationWindow(context, mainWindow, this, code, EmailBox.Text.Trim());
+                    var confirmationWindow = new ConfirmationWindow(context, _mainWindow, this, code, EmailBox.Text.Trim());
                     confirmationWindow.Show();
                 }
             }

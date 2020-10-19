@@ -20,7 +20,7 @@ namespace Price_comparison_engine
             InitializeComponent();
         }
 
-        class Comment
+        private class Comment
         {
             public string Text { get; set; }
         }
@@ -31,7 +31,7 @@ namespace Price_comparison_engine
         private static List<CommentsTable> _commentsData = new List<CommentsTable>();
 
 
-        private static Dictionary<string, int> rating = new Dictionary<string, int>()
+        private static Dictionary<string, int> _rating = new Dictionary<string, int>()
         {
             {"Aptarnavimas", 0},
             {"PrekiuKokybe", 0},
@@ -164,7 +164,7 @@ namespace Price_comparison_engine
             {
                 MessageBox.Show("Turite pasirinkti parduotuvę.");
             }
-            else if (rating["Aptarnavimas"] == 0 || rating["PrekiuKokybe"] == 0 || rating["Pristatymas"] == 0)
+            else if (_rating["Aptarnavimas"] == 0 || _rating["PrekiuKokybe"] == 0 || _rating["Pristatymas"] == 0)
             {
                 MessageBox.Show("Turite pažymėti vertinimą prie visų kriterijų.");
             }
@@ -174,13 +174,13 @@ namespace Price_comparison_engine
                 {
                     //Rating
                     _votersCount++;
-                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
-                    singlePersonRatings["Avitela"]["Aptarnavimas"] = rating["Aptarnavimas"];
-                    singlePersonRatings["Avitela"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
-                    singlePersonRatings["Avitela"]["Pristatymas"] = rating["Pristatymas"];
+                    _votes += _rating["Aptarnavimas"] + _rating["PrekiuKokybe"] + _rating["Pristatymas"];
+                    singlePersonRatings["Avitela"]["Aptarnavimas"] = _rating["Aptarnavimas"];
+                    singlePersonRatings["Avitela"]["PrekiuKokybe"] = _rating["PrekiuKokybe"];
+                    singlePersonRatings["Avitela"]["Pristatymas"] = _rating["Pristatymas"];
                     var calc = (double)_votes / (3 * _votersCount);
                     WriteRatings("Avitela", _votes, _votersCount);
-                    Atstatyti(calc);
+                    Restore(calc);
                     //Comment
                     WriteComments(LoginWindow.Email, 0, singlePersonRatings["Avitela"]["Aptarnavimas"], singlePersonRatings["Avitela"]["PrekiuKokybe"], singlePersonRatings["Avitela"]["Pristatymas"], CommentBox.Text);
                     CommentBox.Clear();
@@ -191,13 +191,13 @@ namespace Price_comparison_engine
                 {
                     //Rating
                     _votersCount++;
-                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
-                    singlePersonRatings["Elektromarkt"]["Aptarnavimas"] = rating["Aptarnavimas"];
-                    singlePersonRatings["Elektromarkt"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
-                    singlePersonRatings["Elektromarkt"]["Pristatymas"] = rating["Pristatymas"];
+                    _votes += _rating["Aptarnavimas"] + _rating["PrekiuKokybe"] + _rating["Pristatymas"];
+                    singlePersonRatings["Elektromarkt"]["Aptarnavimas"] = _rating["Aptarnavimas"];
+                    singlePersonRatings["Elektromarkt"]["PrekiuKokybe"] = _rating["PrekiuKokybe"];
+                    singlePersonRatings["Elektromarkt"]["Pristatymas"] = _rating["Pristatymas"];
                     var calc = (double)_votes / (3 * _votersCount);
                     WriteRatings("Elektromarkt", _votes, _votersCount);
-                    Atstatyti(calc);
+                    Restore(calc);
                     //Comment
                     WriteComments(LoginWindow.Email, 1, singlePersonRatings["Elektromarkt"]["Aptarnavimas"], singlePersonRatings["Elektromarkt"]["PrekiuKokybe"], singlePersonRatings["Elektromarkt"]["Pristatymas"], CommentBox.Text);
                     CommentBox.Clear();
@@ -208,13 +208,13 @@ namespace Price_comparison_engine
                 {
                     //Rating
                     _votersCount++;
-                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
-                    singlePersonRatings["Pigu"]["Aptarnavimas"] = rating["Aptarnavimas"];
-                    singlePersonRatings["Pigu"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
-                    singlePersonRatings["Pigu"]["Pristatymas"] = rating["Pristatymas"];
+                    _votes += _rating["Aptarnavimas"] + _rating["PrekiuKokybe"] + _rating["Pristatymas"];
+                    singlePersonRatings["Pigu"]["Aptarnavimas"] = _rating["Aptarnavimas"];
+                    singlePersonRatings["Pigu"]["PrekiuKokybe"] = _rating["PrekiuKokybe"];
+                    singlePersonRatings["Pigu"]["Pristatymas"] = _rating["Pristatymas"];
                     var calc = (double)_votes / (3 * _votersCount);
                     WriteRatings("Pigu", _votes, _votersCount);
-                    Atstatyti(calc);
+                    Restore(calc);
                     //Comment
                     WriteComments(LoginWindow.Email, 2, singlePersonRatings["Pigu"]["Aptarnavimas"], singlePersonRatings["Pigu"]["PrekiuKokybe"], singlePersonRatings["Pigu"]["Pristatymas"], CommentBox.Text);
                     CommentBox.Clear();
@@ -225,13 +225,13 @@ namespace Price_comparison_engine
                 {
                     //Rating
                     _votersCount++;
-                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
-                    singlePersonRatings["Barbora"]["Aptarnavimas"] = rating["Aptarnavimas"];
-                    singlePersonRatings["Barbora"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
-                    singlePersonRatings["Barbora"]["Pristatymas"] = rating["Pristatymas"];
+                    _votes += _rating["Aptarnavimas"] + _rating["PrekiuKokybe"] + _rating["Pristatymas"];
+                    singlePersonRatings["Barbora"]["Aptarnavimas"] = _rating["Aptarnavimas"];
+                    singlePersonRatings["Barbora"]["PrekiuKokybe"] = _rating["PrekiuKokybe"];
+                    singlePersonRatings["Barbora"]["Pristatymas"] = _rating["Pristatymas"];
                     var calc = (double)_votes / (3 * _votersCount);
                     WriteRatings("Barbora", _votes, _votersCount);
-                    Atstatyti(calc);
+                    Restore(calc);
                     //Comment
                     WriteComments(LoginWindow.Email, 3, singlePersonRatings["Barbora"]["Aptarnavimas"], singlePersonRatings["Barbora"]["PrekiuKokybe"], singlePersonRatings["Barbora"]["Pristatymas"], CommentBox.Text);
                     CommentBox.Clear();
@@ -242,13 +242,13 @@ namespace Price_comparison_engine
                 {
                     //Rating
                     _votersCount++;
-                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
-                    singlePersonRatings["Bigbox"]["Aptarnavimas"] = rating["Aptarnavimas"];
-                    singlePersonRatings["Bigbox"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
-                    singlePersonRatings["Bigbox"]["Pristatymas"] = rating["Pristatymas"];
+                    _votes += _rating["Aptarnavimas"] + _rating["PrekiuKokybe"] + _rating["Pristatymas"];
+                    singlePersonRatings["Bigbox"]["Aptarnavimas"] = _rating["Aptarnavimas"];
+                    singlePersonRatings["Bigbox"]["PrekiuKokybe"] = _rating["PrekiuKokybe"];
+                    singlePersonRatings["Bigbox"]["Pristatymas"] = _rating["Pristatymas"];
                     var calc = (double)_votes / (3 * _votersCount);
                     WriteRatings("Bigbox", _votes, _votersCount);
-                    Atstatyti(calc);
+                    Restore(calc);
                     //Comment
                     WriteComments(LoginWindow.Email, 4, singlePersonRatings["Bigbox"]["Aptarnavimas"], singlePersonRatings["Bigbox"]["PrekiuKokybe"], singlePersonRatings["Bigbox"]["Pristatymas"], CommentBox.Text);
                     CommentBox.Clear();
@@ -259,13 +259,13 @@ namespace Price_comparison_engine
                 {
                     //Rating
                     _votersCount++;
-                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
-                    singlePersonRatings["Rde"]["Aptarnavimas"] = rating["Aptarnavimas"];
-                    singlePersonRatings["Rde"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
-                    singlePersonRatings["Rde"]["Pristatymas"] = rating["Pristatymas"];
+                    _votes += _rating["Aptarnavimas"] + _rating["PrekiuKokybe"] + _rating["Pristatymas"];
+                    singlePersonRatings["Rde"]["Aptarnavimas"] = _rating["Aptarnavimas"];
+                    singlePersonRatings["Rde"]["PrekiuKokybe"] = _rating["PrekiuKokybe"];
+                    singlePersonRatings["Rde"]["Pristatymas"] = _rating["Pristatymas"];
                     var calc = (double)_votes / (3 * _votersCount);
                     WriteRatings("Rde", _votes, _votersCount);
-                    Atstatyti(calc);
+                    Restore(calc);
                     //Comment
                     WriteComments(LoginWindow.Email, 5, singlePersonRatings["Rde"]["Aptarnavimas"], singlePersonRatings["Rde"]["PrekiuKokybe"], singlePersonRatings["Rde"]["Pristatymas"], CommentBox.Text);
                     CommentBox.Clear();
@@ -276,13 +276,13 @@ namespace Price_comparison_engine
                 {
                     //Rating
                     _votersCount++;
-                    _votes += rating["Aptarnavimas"] + rating["PrekiuKokybe"] + rating["Pristatymas"];
-                    singlePersonRatings["GintarineVaistine"]["Aptarnavimas"] = rating["Aptarnavimas"];
-                    singlePersonRatings["GintarineVaistine"]["PrekiuKokybe"] = rating["PrekiuKokybe"];
-                    singlePersonRatings["GintarineVaistine"]["Pristatymas"] = rating["Pristatymas"];
+                    _votes += _rating["Aptarnavimas"] + _rating["PrekiuKokybe"] + _rating["Pristatymas"];
+                    singlePersonRatings["GintarineVaistine"]["Aptarnavimas"] = _rating["Aptarnavimas"];
+                    singlePersonRatings["GintarineVaistine"]["PrekiuKokybe"] = _rating["PrekiuKokybe"];
+                    singlePersonRatings["GintarineVaistine"]["Pristatymas"] = _rating["Pristatymas"];
                     var calc = (double)_votes / (3 * _votersCount);
                     WriteRatings("GintarineVaistine", _votes, _votersCount);
-                    Atstatyti(calc);
+                    Restore(calc);
                     //Comment
                     WriteComments(LoginWindow.Email, 6, singlePersonRatings["GintarineVaistine"]["Aptarnavimas"], singlePersonRatings["GintarineVaistine"]["PrekiuKokybe"], singlePersonRatings["GintarineVaistine"]["Pristatymas"], CommentBox.Text);
                     CommentBox.Clear();
@@ -311,9 +311,9 @@ namespace Price_comparison_engine
                 ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_0.png");
                 ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
                 ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
-                rating["Aptarnavimas"] = 0;
-                rating["PrekiuKokybe"] = 0;
-                rating["Pristatymas"] = 0;
+                _rating["Aptarnavimas"] = 0;
+                _rating["PrekiuKokybe"] = 0;
+                _rating["Pristatymas"] = 0;
             }
         }
 
@@ -398,7 +398,7 @@ namespace Price_comparison_engine
             }
         }
 
-        private void Atstatyti(double calc)
+        private void Restore(double calc)
         {
             RatingAverage.Text = "Įvertinimas: " + calc.ToString("0.00") + "/5";
             ShopComboBox.IsEnabled = true;
@@ -475,7 +475,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_0.png");
             ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_0.png");
             ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
-            rating["Aptarnavimas"] = 1;
+            _rating["Aptarnavimas"] = 1;
         }
 
         private void ServiceStar2(object sender, RoutedEventArgs e)
@@ -485,7 +485,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_0.png");
             ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_0.png");
             ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
-            rating["Aptarnavimas"] = 2;
+            _rating["Aptarnavimas"] = 2;
         }
 
         private void ServiceStar3(object sender, RoutedEventArgs e)
@@ -495,7 +495,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_1.png");
             ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_0.png");
             ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
-            rating["Aptarnavimas"] = 3;
+            _rating["Aptarnavimas"] = 3;
         }
 
         private void ServiceStar4(object sender, RoutedEventArgs e)
@@ -505,7 +505,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_1.png");
             ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_1.png");
             ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_0.png");
-            rating["Aptarnavimas"] = 4;
+            _rating["Aptarnavimas"] = 4;
         }
 
         private void ServiceStar5(object sender, RoutedEventArgs e)
@@ -515,7 +515,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Service3, "ServiceImg3", "Assets/Star_1.png");
             ChangeImgSource(Service4, "ServiceImg4", "Assets/Star_1.png");
             ChangeImgSource(Service5, "ServiceImg5", "Assets/Star_1.png");
-            rating["Aptarnavimas"] = 5;
+            _rating["Aptarnavimas"] = 5;
         }
 
         private void QualityStar1(object sender, RoutedEventArgs e)
@@ -525,7 +525,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_0.png");
             ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_0.png");
             ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
-            rating["PrekiuKokybe"] = 1;
+            _rating["PrekiuKokybe"] = 1;
         }
 
         private void QualityStar2(object sender, RoutedEventArgs e)
@@ -535,7 +535,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_0.png");
             ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_0.png");
             ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
-            rating["PrekiuKokybe"] = 2;
+            _rating["PrekiuKokybe"] = 2;
         }
 
         private void QualityStar3(object sender, RoutedEventArgs e)
@@ -545,7 +545,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_1.png");
             ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_0.png");
             ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
-            rating["PrekiuKokybe"] = 3;
+            _rating["PrekiuKokybe"] = 3;
         }
 
         private void QualityStar4(object sender, RoutedEventArgs e)
@@ -555,7 +555,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_1.png");
             ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_1.png");
             ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_0.png");
-            rating["PrekiuKokybe"] = 4;
+            _rating["PrekiuKokybe"] = 4;
         }
 
         private void QualityStar5(object sender, RoutedEventArgs e)
@@ -565,7 +565,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Quality3, "QualityImg3", "Assets/Star_1.png");
             ChangeImgSource(Quality4, "QualityImg4", "Assets/Star_1.png");
             ChangeImgSource(Quality5, "QualityImg5", "Assets/Star_1.png");
-            rating["PrekiuKokybe"] = 5;
+            _rating["PrekiuKokybe"] = 5;
         }
 
         private void DeliveryStar1(object sender, RoutedEventArgs e)
@@ -575,7 +575,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_0.png");
             ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
             ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
-            rating["Pristatymas"] = 1;
+            _rating["Pristatymas"] = 1;
         }
 
         private void DeliveryStar2(object sender, RoutedEventArgs e)
@@ -585,7 +585,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_0.png");
             ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
             ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
-            rating["Pristatymas"] = 2;
+            _rating["Pristatymas"] = 2;
         }
 
         private void DeliveryStar3(object sender, RoutedEventArgs e)
@@ -595,7 +595,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_1.png");
             ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_0.png");
             ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
-            rating["Pristatymas"] = 3;
+            _rating["Pristatymas"] = 3;
         }
 
         private void DeliveryStar4(object sender, RoutedEventArgs e)
@@ -605,7 +605,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_1.png");
             ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_1.png");
             ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_0.png");
-            rating["Pristatymas"] = 4;
+            _rating["Pristatymas"] = 4;
         }
 
         private void DeliveryStar5(object sender, RoutedEventArgs e)
@@ -615,7 +615,7 @@ namespace Price_comparison_engine
             ChangeImgSource(Delivery3, "DeliveryImg3", "Assets/Star_1.png");
             ChangeImgSource(Delivery4, "DeliveryImg4", "Assets/Star_1.png");
             ChangeImgSource(Delivery5, "DeliveryImg5", "Assets/Star_1.png");
-            rating["Pristatymas"] = 5;
+            _rating["Pristatymas"] = 5;
         }
 
         private void ServiceImg1_OnMouseEnter(object sender, MouseEventArgs e)

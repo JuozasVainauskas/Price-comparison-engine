@@ -34,17 +34,18 @@ namespace Price_comparison_engine
 
     public partial class ParticularItemWindow
     {
-        public static CartesianChart CartesianChart;
-        public static string NameToSearch;
-        public static string[] Divided;
-        static readonly string[] ItemsToSkip = { "Šaldytuvas", "Išmanusis", "telefonas", "Kompiuteris","mobilusis","apsauginis","stiklas" };
-        public static int SoldOutBarbora;
+        public static CartesianChart cartesianChart;
+        public static string nameToSearch;
+        public static string[] divided;
+        private static readonly string[] ItemsToSkip = { "Šaldytuvas", "Išmanusis", "telefonas", "Kompiuteris","mobilusis","apsauginis","stiklas" };
+        public static int soldOutBarbora;
+
         public ParticularItemWindow(string name)
         {
-            NameToSearch = name;
-            Divided = NameToSearch.Split();
+            nameToSearch = name;
+            divided = nameToSearch.Split();
             InitializeComponent();
-            CartesianChart = cartesianChart1;
+            cartesianChart = cartesianChart1;
         }
 
         private static async void GetHtmlAssync(DataGrid dataGrid2)
@@ -167,7 +168,7 @@ namespace Price_comparison_engine
                         .Contains("b-product-out-of-stock-backdrop")).ToList();
                 foreach (var unused in productListItemsSoldOut)
                 {
-                    SoldOutBarbora++;
+                    soldOutBarbora++;
                 }
                 return productListItems2;
             }
@@ -272,12 +273,12 @@ namespace Price_comparison_engine
                             var priceBackUp = price;
                             priceBackUp = EliminatingSymbols2(priceBackUp);
                             priceBackUp = EliminatingEuroSimbol(priceBackUp);
-                            double pricea = Convert.ToDouble(priceBackUp);
+                            var pricea = Convert.ToDouble(priceBackUp);
                             if (name != null)
                             {
                                 var pavArray = name.Split();
-                                int numberOfSameWords=AlgorithmHowManyWordsAreTheSame(pavArray);
-                                if (numberOfSameWords >= (Divided.Length / 2)+1)
+                                var numberOfSameWords=AlgorithmHowManyWordsAreTheSame(pavArray);
+                                if (numberOfSameWords >= (divided.Length / 2)+1)
                                 {
                                     var singleItem = new Item
                                     {
@@ -303,7 +304,7 @@ namespace Price_comparison_engine
         {
             if (productListItems != null)
             {
-                var countItems = productListItems.Count - SoldOutBarbora;
+                var countItems = productListItems.Count - soldOutBarbora;
 
                 foreach (var productListItem in productListItems)
                     if (countItems != 0)
@@ -334,8 +335,8 @@ namespace Price_comparison_engine
                             if (name != null)
                             {
                                 var pavArray = name.Split();
-                                int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                                if (numberOfSameWords >= (Divided.Length / 2) + 1)
+                                var numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                                if (numberOfSameWords >= (divided.Length / 2) + 1)
                                 {
                                     var singleItem = new Item
                                     {
@@ -387,8 +388,8 @@ namespace Price_comparison_engine
                         if (name != null)
                         {
                             var pavArray = name.Split();
-                            int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                            if (numberOfSameWords >= (Divided.Length/2)+1)
+                            var numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                            if (numberOfSameWords >= (divided.Length/2)+1)
                             {
                                 var singleItem = new Item
                                 {
@@ -427,7 +428,7 @@ namespace Price_comparison_engine
 
                     var link = productListItem.Descendants("a").FirstOrDefault()?.GetAttributeValue("href", "");
 
-                    string imgLink = productListItem
+                    var imgLink = productListItem
                         .Descendants("img").FirstOrDefault(node => node.GetAttributeValue("class", "")
                             .Contains("replace-2x img-responsive"))
                         ?.GetAttributeValue("src", "");
@@ -443,8 +444,8 @@ namespace Price_comparison_engine
                         if (name != null)
                         {
                             var pavArray = name.Split();
-                            int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                            if (numberOfSameWords >= (Divided.Length/2)+1)
+                            var numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                            if (numberOfSameWords >= (divided.Length/2)+1)
                             {
                                 var singleItem = new Item
                                 {
@@ -490,8 +491,8 @@ namespace Price_comparison_engine
                         if (name != null)
                         {
                             var pavArray = name.Split();
-                            int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                            if (numberOfSameWords >= (Divided.Length/2)+1)
+                            var numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                            if (numberOfSameWords >= (divided.Length/2)+1)
                             {
                                 var singleItem = new Item
                                     {Sellerr = "Avitela", Namee = name, Priceaa = pricea, Pricee = price, Linkk = link};
@@ -525,7 +526,7 @@ namespace Price_comparison_engine
 
                     var link = "https://pigu.lt/" + productListItem.Descendants("a").FirstOrDefault()?.GetAttributeValue("href", "");
 
-                    string imgLink = productListItem
+                    var imgLink = productListItem
                         .Descendants("img").FirstOrDefault(node => node.GetAttributeValue("src", "")
                             .Contains("jpg"))
                         ?.GetAttributeValue("src", "");
@@ -540,8 +541,8 @@ namespace Price_comparison_engine
                     if (name != null)
                     {
                         var pavArray = name.Split();
-                        int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                        if (numberOfSameWords >= (Divided.Length/2)+1)
+                        var numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                        if (numberOfSameWords >= (divided.Length/2)+1)
                         {
                             var singleItem = new Item
                             {
@@ -589,8 +590,8 @@ namespace Price_comparison_engine
                     if (name != null)
                     {
                         var pavArray = name.Split();
-                        int numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
-                        if (numberOfSameWords >= (Divided.Length/2)+1)
+                        var numberOfSameWords = AlgorithmHowManyWordsAreTheSame(pavArray);
+                        if (numberOfSameWords >= (divided.Length/2)+1)
                         {
                             var singleItem = new Item
                             {
@@ -611,14 +612,14 @@ namespace Price_comparison_engine
 
         private static int AlgorithmHowManyWordsAreTheSame(string[] pavArray)
         {
-            int numberOfSameWords = 0;
+            var numberOfSameWords = 0;
             foreach (var t in pavArray)
             {
-                foreach (var t1 in Divided)
+                foreach (var t1 in divided)
                 {
                     if (t.Equals(t1, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        int acceptTheWord = 1;
+                        var acceptTheWord = 1;
                         foreach (var t2 in ItemsToSkip)
                         {
                             if (t.Equals(t2, StringComparison.CurrentCultureIgnoreCase))
@@ -738,7 +739,7 @@ namespace Price_comparison_engine
                 });
                 a += 5;
             }
-            CartesianChart.Series = new SeriesCollection
+            cartesianChart.Series = new SeriesCollection
             {
                 new LineSeries
                 {
@@ -779,7 +780,7 @@ namespace Price_comparison_engine
 
         private void konkretiPrekeLangas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            CartesianChart.Width = this.ActualWidth-50;
+            cartesianChart.Width = this.ActualWidth-50;
         }
     }
 }

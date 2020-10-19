@@ -23,13 +23,12 @@ namespace Price_comparison_engine
     /// </summary>
     public partial class PasswordChangeWindow : Window
     {
-
-        readonly string email;
+        private readonly string _email;
 
         public PasswordChangeWindow(string email)
         {
             InitializeComponent();
-            this.email = email;
+            _email = email;
         }
 
         private void ChangePasswordClick(object sender, RoutedEventArgs e)
@@ -51,11 +50,11 @@ namespace Price_comparison_engine
             else
             {
                 var passwordSalt = GenerateHash.CreateSalt(10);
-                var passwordHash = GenerateHash.GenerateSHA256Hash(PasswordBox.Password, passwordSalt);
+                var passwordHash = GenerateHash.GenerateSha256Hash(PasswordBox.Password, passwordSalt);
 
                 using (var context = new DatabaseContext())
                 {
-                    var result = context.UserData.SingleOrDefault(b => b.Email == email);
+                    var result = context.UserData.SingleOrDefault(b => b.Email == _email);
                     if (result != null)
                     {
                         result.PasswordHash = passwordHash;

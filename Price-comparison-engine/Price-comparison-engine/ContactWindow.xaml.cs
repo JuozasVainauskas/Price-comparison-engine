@@ -27,7 +27,6 @@ namespace Price_comparison_engine
         {
             try
             {
-
                 LaunchEmailClientByShellExecute();
             }
             catch (Exception ex)
