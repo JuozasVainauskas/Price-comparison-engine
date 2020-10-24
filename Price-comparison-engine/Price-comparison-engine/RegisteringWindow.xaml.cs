@@ -77,6 +77,8 @@ namespace Price_comparison_engine
                     };
                     context.UserData.Add(userData);
 
+                    LoginWindow.Email = EmailBox.Text;
+
                     var code = GenerateHash.CreateSalt(16);
                     code = code.Remove(code.Length - 2);
                     var confirmationWindow = new ConfirmationWindow(context, _mainWindow, this, code, EmailBox.Text.Trim());
