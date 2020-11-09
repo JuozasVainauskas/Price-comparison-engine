@@ -10,7 +10,7 @@
 - [x] Search field
 - [x] FAQ
 - [x] Admin panel
-- [x] Contacts -> *Needs an update*
+- [x] Contacts
 - [x] Searched products' list/Interface
 - [x] Slideshow
 - [x] Stars/comments under the shops
