@@ -15,8 +15,6 @@
 - [x] Slideshow
 - [x] Stars/comments under the shops
 - [x] Saving products
-- [ ] Comments under the products
-- [ ] Review about the page
 
 **Back-End**
 - [x] Gather data from online shop websites
@@ -30,8 +28,6 @@
 - [x] Products' list cashing
 - [x] Stars/comments under the shops
 - [x] Saving products
-- [ ] Comments under the products
-- [ ] Review about the page
 
 ## Initial goal
 Create a program/website/app which takes the data of the prices from different shopping websites and provides a comparison in a visual manner
