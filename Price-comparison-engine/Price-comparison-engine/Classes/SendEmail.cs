@@ -25,7 +25,7 @@ namespace Price_comparison_engine.Classes
                 Credentials = new NetworkCredential()
                 {
                     UserName = "smartshopautobot@gmail.com",
-                    Password = "adminNull0"
+                    Password = "adminNull1001"
                 }
             };
             var fromEmail = new MailAddress("smartshopautobot@gmail.com", "Smart Shop");
