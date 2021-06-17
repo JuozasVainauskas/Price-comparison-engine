@@ -1,4 +1,7 @@
 # Price comparison engine
+
+Desktop application which is capable of comparing product prices on different online shops and informing the user where he can buy the specific item for the lowest price possible
+
 ### Students working on the project: 
 - Juozas Vainauskas
 - Ernestas Ščevinskas
